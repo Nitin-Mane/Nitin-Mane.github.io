@@ -212,28 +212,48 @@ $(window).on("load", function () {
 // Store Semester Recap data
 const sem_temp = [
   {
-    event_name: "Google Machine Learning",
-    event_type: "Facilitator",
+    event_name: "Google Machine learning Training",
+    event_type: "Speaker Session",
+    event_image: "Google_machineleaning.jpg",
+  },
+  {
+    event_name: "Alexa Skill Seminar",
+    event_type: "Bookmyshow Mumbai",
+    event_image: "bookmyshow_event.jpg",
+  },
+  {
+    event_name: "Best Project Award",
+    event_type: "IEEE MIT SKEP Program ",
+    event_image: "iit_prizeevent.jpg",
+  },
+  {
+    event_name: "Future Technology Session",
+    event_type: "Mumbai",
+    event_image: "mumbai_event_village.jpg",
+  },
+  {
+    event_name: "Google MLCC Training",
+    event_type: "Facilitator Lead",
     event_image: "machinelearning_seminar.jpg",
   },
   {
     event_name: "Introduction to Electronics Hacks",
-    event_type: "Hackster event",
+    event_type: "Hackster Session",
     event_image: "electronics_seminars.jpg",
   },
   {
     event_name: "Introduction to Internet of Things",
-    event_type: "Hackster Event",
+    event_type: "Hackster Session",
     event_image: "iot_seminar.jpg",
   },
   {
     event_name: "Introduction to Embedded System",
-    event_type: "Hackster Event",
+    event_type: "Hackster Session",
     event_image: "embedded_system_seminar.jpg",
   },
   {
-    event_name: "Wireless Robot Development",
-    event_type: "School Training Program",
+    event_name: "School Level Wireless Robot Development",
+    event_type: "Hackster Session",
     event_image: "school_technical.jpg",
   },
 ];

@@ -10,7 +10,7 @@ const research = [
   conferences: "Publisher: SSRN Electronic Journal",
   researchYr: 2022,
   citebox: "popup1",
-  image: "assets/images/research-page/object-tracking.jpg",
+  image: "assets/images/research-page/nitin_research.png",
   citation: {
   vancouver:
   "Mishra, Abhilasha and Mane, Nitin and Mishra, Aaditya and Dixit, Amitabh and Mishra, Sparsh and Agrawal, Aditi and Pagare, Rajendraprasad, An Improved Object Tracking and Estimating Using Adaptive Kalman Filter Based Yolov5 Model and Mixed Precision for Efficient Inference Performance. Available at SSRN: https://ssrn.com/abstract=4187576 or http://dx.doi.org/10.2139/ssrn.4187576",

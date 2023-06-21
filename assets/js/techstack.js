@@ -54,6 +54,11 @@ const techStack = [
     langName:"C",
     langDesc:"<li>C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system</li>"
   },
+  {
+    langImage:"assets/images/techstack-page/MATLAB-logo.png",
+    langName:"MATLAB",
+    langDesc:"<li>MATLAB is a high-level programming language and environment designed specifically for numerical and scientific computing.</li>"
+  },
 ];
 
 const displayTechStacksCards = () => {

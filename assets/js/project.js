@@ -8,23 +8,15 @@ const projectcards = document.querySelector(".projectcards");
 const projects = [
   {
   title: "Computer Pointer Controller",
-  cardImage: "assets/images/project-page/computer-pointer-controller.jpg",
+  cardImage: "assets/images/project-page/computer_pointer.png",
   description: "A gaze detection model to control the mouse pointer of the computer. Used Intel model and Gaze Estimation model to estimate user's gaze and change the mouse pointer position accordingly.",
-  tagimg: "https://cdn.iconscout.com/icon/free/png-512/python-14-569257.png",
+  tagimg: "assets/images/project-page/computer_pointer.png",
   Previewlink: "https://github.com/Nitin-Mane/Computer-Pointer-Controller",
   Githublink: "https://github.com/Nitin-Mane/Computer-Pointer-Controller",
   },
   {
-  title: "Peter Moss COVID-19 AI Research Project (MATLAB)",
-  cardImage: "assets/images/project-page/covid-19-ai-research.jpg",
-  description: "xDNN Classifiers based on the work of collaborators. Utilized eXplainable Deep Learning (xDNN) for real-time predictions in medical support applications.",
-  tagimg: "https://cdn.iconscout.com/icon/free/png-512/matlab-275215.png",
-  Previewlink: "https://github.com/COVID-19-AI-Research-Project/xDNN/tree/master/Projects/Matlab/1",
-  Githublink: "https://github.com/COVID-19-AI-Research-Project/xDNN/tree/master/Projects/Matlab/1",
-  },
-  {
   title: "Smart Queuing System",
-  cardImage: "assets/images/project-page/smart-queuing-system.jpg",
+  cardImage: "assets/images/project-page/smart_queue.png",
   description: "Developed job submission files and python scripts for AI model. Evaluated system performance in manufacturing, retail, and transportation scenarios.",
   tagimg: "https://cdn.iconscout.com/icon/free/png-512/python-14-569257.png",
   Previewlink: "https://github.com/Nitin-Mane/Smart-Queuing-System",
@@ -32,17 +24,17 @@ const projects = [
   },
   {
   title: "Peter Moss COVID-19 AI Research Project (Python)",
-  cardImage: "assets/images/project-page/covid-19-ai-research.jpg",
+  cardImage: "assets/images/project-page/webpage_covid.png",
   description: "Implemented eXplainable DNN architecture for real-time predictions in medical support applications. Utilized eXplainable Deep Learning (xDNN) on the edge.",
-  tagimg: "https://cdn.iconscout.com/icon/free/png-512/python-14-569257.png",
+  tagimg: "https://github.com/COVID-19-AI-Research-Project/xDNN/raw/master/Projects/Python/1/Media/Project_Images/webpage_covid.pngs",
   Previewlink: "https://github.com/COVID-19-AI-Research-Project/xDNN/tree/master/Projects/Python/1",
   Githublink: "https://github.com/COVID-19-AI-Research-Project/xDNN/tree/master/Projects/Python/1",
   },
   {
   title: "People Counter App Edge",
-  cardImage: "assets/images/project-page/people-counter-app.jpg",
+  cardImage: "assets/images/project-page/people-counter-image.png",
   description: "Deployed AI solution for people counter app. Utilized OpenVINO Toolkit and computer vision techniques for processing.",
-  tagimg: "https://cdn.iconscout.com/icon/free/png-512/python-14-569257.png",
+  tagimg: "https://github.com/Nitin-Mane/People-Counter-App-Edge/raw/master/images/people-counter-image.png",
   Previewlink: "https://github.com/Nitin-Mane/People-Counter-App-Edge",
   Githublink: "https://github.com/Nitin-Mane/People-Counter-App-Edge",
   }
