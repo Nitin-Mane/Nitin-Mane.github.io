@@ -166,6 +166,15 @@ generateOpenSourceCards();
 const volunteership = document.querySelector(".volunteership-cards");
 const volunteeringCards = [
   {
+    title: "IEEE CEDA Bombay - Nagpur Chapter",
+    cardImage: "assets/images/volunteering-page/ieee-future-networks.jpg",
+    place: "IEEE CEDA",
+    time: "Apr 2024 - Present · 3 mos",
+    description:
+    "Science and Technology",
+    role: "Chair (CEDA Bombay Chapter)",
+  },
+  {
   title: "IEEE Future Networks",
   cardImage: "assets/images/volunteering-page/ieee-future-networks.jpg",
   place: "IEEE Future Networks",
