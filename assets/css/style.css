@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Agustina";
   src: url(../fonts/Agustina.woff);
+  font-display: swap;
 }
 
 
@@ -35,8 +36,8 @@ html[data-theme="light"] {
 
 html[data-theme="dark"] {
   --bg-mybtn: rgb(230, 109, 129);
-  --bg-nav: #6617cb;
-  --bg-nav-img: linear-gradient(315deg, #6617cb 0%, #882463 74%);
+  --bg-nav: #1a1a2e;
+  --bg-nav-img: linear-gradient(315deg, #1a1a2e 0%, #16213e 74%);
   --bg-footer: linear-gradient(315deg, #6617cb 0%, #882463 74%);
   --bg: #191919;
   --text: #ffffff;
@@ -69,7 +70,8 @@ html[data-theme="dark"] {
 */
 
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -243,44 +245,38 @@ html {
 
 /* Dark Mode toggle switch button */
 .dark_toggler {
-  -webkit-appearance: none;
+  background-color: #e8e0ff;
+  background-image: none;
   position: relative;
+  -webkit-appearance: none;
   cursor: pointer;
   width: 100px;
   height: 40px;
-  background-image: url(https://i.postimg.cc/857jHw2q/Screenshot-2020-04-16-at-1-07-06-PM.png);
-  background-size: cover;
   border-radius: 50px;
   outline: none;
-  transition: background-image 0.9s;
+  transition: background-color 0.9s;
   box-shadow: 0px 2px 5px 1px gray;
 }
 
-.dark_toggler:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 40px;
-  width: 40px;
-  background-color: navy;
-  border-radius: 50px;
-  transition: all 0.9s;
-  background-color: #f7ca33;
-}
-
 .dark_toggler:checked {
-  background-image: url(https://i.postimg.cc/Hn0nstVK/Screenshot-2020-04-16-at-1-07-19-PM.png);
-  transition: background-image 0.9s;
-  box-shadow: 0px 2px 5px 1px rgb(187, 134, 201);
+  background-color: #2d1b4e;
+  background-image: none;
 }
 
-.dark_toggler:checked:before {
-  transform: translate(150%);
-  transition: all 0.9s;
-  background-color: #bb86fc;
+.dark_toggler::after {
+  content: "☀️";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
 }
-/* end of dark mode toggle switch button */
+
+.dark_toggler:checked::after {
+  content: "🌙";
+  left: 8px;
+  right: auto;
+}
 
 html {
   background-color: #f6f6f6;
@@ -514,9 +510,8 @@ html[light-mode="light"] .navbar-brand:hover{
 /* Also have a look at the scroll to top button if changing footer's height (below upArrow in app.js) */
 
 .footer {
-  padding-top: 10px;
-  font-family: "Poppins", sans-serif;
-  background-color: #121212;
+  padding: 2rem 0 1rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 }
 
 .tag {
@@ -1090,5 +1085,12 @@ outline: none;
     color: #ff1f5a;
     margin-top: -100px;
     transform: scale(0) rotateZ(-90deg);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html:not([light-mode="light"]) {
+    --bg-nav: #1a1a2e;
+    --bg: #191919;
+    --text: #ffffff;
   }
 }

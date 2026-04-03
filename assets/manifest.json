@@ -1,0 +1,17 @@
+{
+  "name": "Nitin Mane | Portfolio",
+  "short_name": "Nitin Mane",
+  "description": "Senior Software Engineer portfolio showcasing projects, research, and experience",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#191919",
+  "theme_color": "#6617cb",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "698x698",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
