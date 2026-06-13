@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering Blog | Nitin Mane</title>
+  <meta name="description" content="Engineering articles by Nitin Mane on edge AI anomaly detection, multi-modal LLM/RAG plant intelligence, and a smart weed remover robot using NVIDIA Jetson Nano with a 6-DOF parallel robot." />
+  <meta name="keywords" content="Nitin Mane blog, Industrial Anomaly Detection, Edge AI, Multi-modal LLM, RAG, Plant Intelligence, Smart Weed Remover Robot, NVIDIA Jetson Nano, 6 DOF Parallel Robot" />
+  <meta name="author" content="Nitin Mane" />
+  <link rel="canonical" href="https://www.nitinmane.me/blog.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#060a12" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="blog" />
+  <meta property="og:site_name" content="Nitin Mane" />
+  <meta property="og:title" content="Engineering Blog | Nitin Mane" />
+  <meta property="og:description" content="Notes on edge AI, plant intelligence, robotics and mechatronics systems." />
+  <meta property="og:url" content="https://www.nitinmane.me/blog.html" />
+  <meta property="og:image" content="https://www.nitinmane.me/assets/images/profile.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Engineering Blog | Nitin Mane" />
+  <meta name="twitter:description" content="Notes on edge AI, plant intelligence, robotics and mechatronics systems." />
+  <meta name="twitter:image" content="https://www.nitinmane.me/assets/images/profile.png" />
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/images/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/images/profile.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/blog.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Engineering Blog | Nitin Mane",
+    "url": "https://www.nitinmane.me/blog.html",
+    "author": {
+      "@type": "Person",
+      "name": "Nitin Mane",
+      "url": "https://www.nitinmane.me/"
+    },
+    "blogPost": [
+      { "@type": "BlogPosting", "headline": "Industrial Anomaly Detection at the Edge", "url": "https://www.nitinmane.me/blog.html#industrial-anomaly-detection-edge" },
+      { "@type": "BlogPosting", "headline": "Multi-Modal LLM/RAG for Plant Intelligence", "url": "https://www.nitinmane.me/blog.html#multimodal-llm-rag-plant-intelligence" },
+      { "@type": "BlogPosting", "headline": "Smart Weed Remover Robot: NVIDIA Jetson Nano with 6-DOF Parallel Robot", "url": "https://www.nitinmane.me/blog.html#smart-weed-remover-robot" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Ambient background -->
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere__glow atmosphere__glow--cyan"></div>
+    <div class="atmosphere__glow atmosphere__glow--amber"></div>
+    <div class="atmosphere__glow atmosphere__glow--violet"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand">
+        <span class="nav__brand-mark"><span>NM</span></span>
+        <span class="nav__brand-text">Nitin<span>Mane</span></span>
+      </a>
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="experience.html" class="nav__link">Experience</a>
+        <a href="projects.html" class="nav__link">Projects</a>
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="blog.html" class="nav__link">Blog</a>
+        <a href="education.html" class="nav__link">Education</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="contact.html" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
+      </nav>
+      <div class="nav__actions">
+        <span class="nav__status"><span class="nav__status-dot"></span><span data-ist-clock>00:00 IST &middot; BHILAI, IN</span></span>
+        <a href="contact.html" class="btn btn--primary btn--sm btn--nav-cta">Let's Talk</a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="page-header blog-header">
+      <div class="container">
+        <div class="page-header__crumbs reveal">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span class="text-cyan">Blog</span>
+        </div>
+        <span class="eyebrow reveal" style="--reveal-delay:40ms">Engineering Notes</span>
+        <h1 class="page-header__title reveal" style="--reveal-delay:80ms">Blog</h1>
+        <p class="page-header__lede reveal" style="--reveal-delay:120ms">
+          Practical notes on the systems I like building: edge perception, industrial intelligence,
+          robotics, and the bits of engineering discipline that make them survive outside demos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ ARTICLE INDEX ============ -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="blog-index">
+          <a class="card blog-index-card reveal reveal--scale" href="#industrial-anomaly-detection-edge">
+            <span class="tag tag--cyan">Edge AI</span>
+            <h2>Industrial Anomaly Detection at the Edge</h2>
+            <p>Why plant-floor vision systems need local inference, careful alert design and deployment-aware models.</p>
+          </a>
+          <a class="card blog-index-card reveal reveal--scale" style="--reveal-delay:80ms" href="#multimodal-llm-rag-plant-intelligence">
+            <span class="tag tag--violet">LLM/RAG</span>
+            <h2>Multi-Modal LLM/RAG for Plant Intelligence</h2>
+            <p>Turning camera detections, sensor telemetry and logs into operator-ready context.</p>
+          </a>
+          <a class="card blog-index-card reveal reveal--scale" style="--reveal-delay:160ms" href="#smart-weed-remover-robot">
+            <span class="tag tag--amber">Robotics</span>
+            <h2>Smart Weed Remover Robot</h2>
+            <p>NVIDIA Jetson Nano perception paired with a 6-DOF parallel robot for field-level weed removal.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARTICLE 01 ============ -->
+    <article id="industrial-anomaly-detection-edge" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 01</span>
+          <div class="tag-row">
+            <span class="tag tag--cyan">Edge AI</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Industrial IoT</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 5 min</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>Industrial Anomaly Detection at the Edge</h2>
+          <p class="blog-article__lede">
+            Industrial anomaly detection is not just a model problem. It is a latency, reliability,
+            environment and trust problem wrapped around a model.
+          </p>
+          <p>
+            A plant-floor camera feed can reveal equipment anomalies, unsafe movement, missing PPE,
+            blocked passages or near-miss events before they become incidents. The challenge is that
+            the signal is noisy: lighting changes, dust, vibration, occlusion, glare and camera drift
+            all create cases that look obvious to a human but confusing to a detector.
+          </p>
+          <h3>Why edge deployment matters</h3>
+          <p>
+            Sending every frame to the cloud is rarely the right first move. Industrial networks can be
+            bandwidth constrained, cloud round-trips add latency, and safety alerts lose value when
+            they arrive late. Edge inference keeps the detection loop close to the machine: frames are
+            processed locally, alerts are generated near the source, and only compressed events or
+            summaries need to travel upstream.
+          </p>
+          <h3>A practical pipeline</h3>
+          <p>
+            The pipeline I prefer starts with a production-shaped YOLO detector, then optimizes it for
+            the target edge device using an inference runtime such as OpenVINO. A lightweight event
+            layer sits after detection: it smooths short-lived false positives, applies zone rules,
+            maps detections to equipment regions and emits events with timestamps, confidence and
+            frame evidence.
+          </p>
+          <p>
+            This event layer is where many demos become systems. A single frame detection is not
+            always an anomaly. A pattern across frames, a detection inside a restricted zone, or a
+            sequence that violates a known operating state is much more useful to operators.
+          </p>
+          <h3>Designing for operators</h3>
+          <p>
+            The alert should say what happened, where it happened, how confident the system is and
+            what evidence it used. That makes the system auditable. It also gives plant teams a way to
+            tune thresholds without treating the model as magic.
+          </p>
+          <p>
+            The end goal is not to replace human supervision. It is to give operators a second set of
+            tireless eyes that can watch every frame and surface the moments worth human attention.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ ARTICLE 02 ============ -->
+    <article id="multimodal-llm-rag-plant-intelligence" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 02</span>
+          <div class="tag-row">
+            <span class="tag tag--violet">LLM/RAG</span>
+            <span class="tag">Plant Intelligence</span>
+            <span class="tag">Multi-modal</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 5 min</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>Multi-Modal LLM/RAG for Plant Intelligence</h2>
+          <p class="blog-article__lede">
+            A detector can tell you that something changed. A plant-intelligence layer should help
+            explain what changed, why it matters and what to check next.
+          </p>
+          <p>
+            Industrial data is naturally multi-modal. Cameras see motion and condition. Sensors record
+            vibration, temperature, current, speed and pressure. Logs capture alarms, operator actions
+            and maintenance history. Each stream is useful alone, but the real value appears when the
+            streams are fused into context.
+          </p>
+          <h3>The role of RAG</h3>
+          <p>
+            Retrieval-augmented generation gives an LLM access to the plant's own documentation and
+            event memory: standard operating procedures, maintenance notes, equipment manuals, prior
+            incidents and alarm definitions. Instead of producing a generic explanation, the model can
+            ground its response in the specific machine, zone and operating condition.
+          </p>
+          <h3>From detections to narratives</h3>
+          <p>
+            A useful architecture treats computer-vision detections and sensor anomalies as structured
+            events. Each event includes timestamp, camera or sensor ID, equipment zone, confidence,
+            class label and any linked frame evidence. The RAG layer then retrieves relevant context:
+            what equipment lives in that zone, what the normal operating envelope looks like and what
+            previous events resembled the current one.
+          </p>
+          <p>
+            The LLM's job is not to invent a diagnosis. Its job is to summarize evidence, show the
+            retrieved basis, rank possible causes and suggest checks. For example: "Repeated rod
+            misalignment detected near Zone B between 14:02 and 14:04. Similar historical events were
+            associated with roller wear. Check camera feed B3, roller alignment and vibration trend."
+          </p>
+          <h3>Guardrails for the plant floor</h3>
+          <p>
+            Plant intelligence needs conservative behavior. Outputs should preserve uncertainty, cite
+            retrieved evidence and avoid unsupported action commands. The best user experience is a
+            compact alert first, with expandable evidence for engineers who need the full chain.
+          </p>
+          <p>
+            Done well, a multi-modal LLM/RAG system becomes a translation layer between raw machine
+            signals and human operational judgment.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ ARTICLE 03 ============ -->
+    <article id="smart-weed-remover-robot" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 03</span>
+          <div class="tag-row">
+            <span class="tag tag--amber">Robotics</span>
+            <span class="tag">NVIDIA Jetson Nano</span>
+            <span class="tag">6-DOF Parallel Robot</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 6 min</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>Smart Weed Remover Robot: NVIDIA Jetson Nano with 6-DOF Parallel Robot</h2>
+          <p class="blog-article__lede">
+            A weed-removal robot is a good mechatronics problem because perception and actuation have
+            to agree in real space, not just on a screen.
+          </p>
+          <p>
+            The concept is straightforward: a mobile platform moves through crop rows, a camera
+            identifies weeds, and a robotic mechanism removes the target plant without damaging the
+            crop. The hard part is precision. A false positive can damage a crop. A delayed command
+            can miss the weed. A weak mechanism can detect correctly and still fail physically.
+          </p>
+          <h3>System architecture</h3>
+          <p>
+            The NVIDIA Jetson Nano is a practical edge-compute choice for this class of prototype
+            because it can run lightweight vision models close to the camera while still fitting the
+            power and size constraints of a field robot. The vision stack detects weed candidates,
+            estimates their image coordinates and projects them into the robot's working frame.
+          </p>
+          <p>
+            The actuation layer uses a 6-DOF parallel robot to position the end effector over the
+            weed. A parallel mechanism is attractive here because it can offer stiffness and precise
+            positioning inside a bounded workspace. That matters when the tool has to strike, cut,
+            pull or disturb soil at a small target point.
+          </p>
+          <h3>Calibration is the quiet hero</h3>
+          <p>
+            The camera, mobile base and manipulator each have their own coordinate frame. The robot
+            only works when those frames are calibrated well enough that a pixel-level detection turns
+            into a reliable physical target. Camera calibration, height estimation, crop-row geometry
+            and end-effector offset all become part of the intelligence pipeline.
+          </p>
+          <h3>Control loop</h3>
+          <p>
+            A robust loop looks like this: detect the weed, verify it across a few frames, estimate
+            the target point, pause or slow the base, move the 6-DOF mechanism into position, actuate,
+            and then confirm that the target has changed. The confirmation step is important because
+            agriculture is messy. Soil texture, leaf overlap and shadows can fool a one-shot system.
+          </p>
+          <p>
+            The engineering goal is a robot that uses chemicals less, handles weeds selectively and
+            gives farmers a tool that is precise enough to be trusted. It is not just an AI project or
+            a mechanical project. It is the integration that makes it useful.
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__brand">
+          <span class="nav__brand-mark"><span>NM</span></span>
+          <span class="footer__brand-name">Nitin Mane</span>
+        </a>
+        <p>
+          Mechatronics researcher &amp; AI/Robotics engineer based in Bhilai, India - designing
+          systems where embedded hardware meets machine intelligence.
+        </p>
+        <div class="social-row" aria-label="Social profiles">
+          <a href="https://github.com/Nitin-Mane" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 3.5 5.4 3.8 5.4 3.8a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 10.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/nitingmane/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://twitter.com/Mnitin52" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.kaggle.com/mnitin59" target="_blank" rel="noopener" aria-label="Kaggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18M5 13l6.5-6M5 13l7 8M14 3v18M14 13l6.5-6"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nitin_mane/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h3 class="footer__heading">Navigate</h3>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Currently</h3>
+        <ul class="footer__links">
+          <li>M.Tech Mechatronics @ IIT Bhilai</li>
+          <li>Intel Software Innovator</li>
+          <li>Arm Developer Ambassador</li>
+          <li>IEEE Chair, CEDA Nagpur Chapter</li>
+          <li><a href="mailto:mnitin59@gmail.com">mnitin59@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>&copy; <span data-year>2026</span> Nitin Mane. All systems nominal.</span>
+      <span>Designed &amp; built with HTML, CSS, vanilla JS and Three.js</span>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

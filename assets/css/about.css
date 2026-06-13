@@ -1,0 +1,219 @@
+/* =============================================================
+   ABOUT — bio grid, quick facts, skills, principles, beyond
+   ============================================================= */
+
+/* ---------- Bio + quick facts ---------- */
+.bio__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.bio__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.bio__content .section__title {
+  margin-bottom: var(--space-2);
+}
+
+.bio__content p {
+  max-width: 68ch;
+}
+
+.bio__facts {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-5));
+}
+
+.quick-facts {
+  padding: var(--space-6);
+}
+
+.quick-facts__list {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  list-style: none;
+}
+
+.quick-facts__list li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  color: var(--color-cyan);
+}
+
+.quick-facts__list li > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-facts__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.quick-facts__value {
+  margin-top: 2px;
+  color: var(--color-text);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-snug);
+}
+
+@media (max-width: 900px) {
+  .bio__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+  .bio__facts {
+    position: static;
+  }
+}
+
+/* ---------- Skills ---------- */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+
+.skill-group {
+  padding: var(--space-6);
+}
+
+.skill-group__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-display-s);
+  margin-bottom: var(--space-5);
+}
+
+.skill-group__index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  color: var(--color-cyan);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-s);
+  padding: 2px var(--space-2);
+}
+
+/* ---------- Working principles ---------- */
+.principles__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.principle-card {
+  position: relative;
+}
+
+.principle-card__index {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  color: var(--color-text-dim);
+}
+
+.principle-card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-m);
+  background: var(--color-cyan-dim);
+  color: var(--color-cyan);
+  margin-bottom: var(--space-4);
+}
+
+.principle-card h3 {
+  font-size: var(--fs-display-s);
+  margin-bottom: var(--space-2);
+  padding-right: var(--space-6);
+}
+
+@media (max-width: 1100px) {
+  .principles__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .principles__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Beyond engineering ---------- */
+.beyond__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.beyond-card {
+  align-items: center;
+  text-align: center;
+}
+
+.beyond-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.beyond-card__icon.tag--cyan {
+  color: var(--color-cyan);
+  border-color: rgba(46, 230, 214, 0.3);
+  background: var(--color-cyan-dim);
+}
+
+.beyond-card__icon.tag--amber {
+  color: var(--color-amber);
+  border-color: rgba(255, 180, 84, 0.3);
+  background: var(--color-amber-dim);
+}
+
+.beyond-card__icon.tag--violet {
+  color: var(--color-violet);
+  border-color: rgba(180, 139, 255, 0.3);
+  background: var(--color-violet-dim);
+}
+
+.beyond-card h3 {
+  font-size: var(--fs-body-l);
+  margin-bottom: var(--space-2);
+}
+
+.beyond-card p {
+  font-size: var(--fs-body-s);
+}
+
+@media (max-width: 1100px) {
+  .beyond__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .beyond__grid {
+    grid-template-columns: 1fr;
+  }
+}

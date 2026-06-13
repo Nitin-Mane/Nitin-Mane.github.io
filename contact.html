@@ -1,75 +1,424 @@
-<!DOCTYPE html>
-<html lang="en" light-mode="dark">
-
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Nitin Mane | Contact</title>
-    <meta name="theme-color" content="#6617cb" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="contact, Nitin Mane, portfolio, software engineer, email" />
-    <meta name="description" content="Get in touch with Nitin Mane, Senior Software Engineer. Send a message via the contact form." />
-    <meta name="robots" content="index,follow" />
-    <meta property="og:site_name" content="https://nitinmane.me/contact.html">
-    <meta property="og:title" content="Nitin Mane | Contact">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nitinmane.me/contact.html">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="https://nitinmane.me/contact.html">
-    <meta name="application-name" content="Nitin Mane | Contact" />
-    <meta name="apple-mobile-web-app-title" content="Nitin Mane | Contact" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/preloader.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link id='favicon' rel="shortcut icon" href="assets/images/favicon.png" type="image/x-png">
-    <script defer src="./assets/js/dynamicTitle.js"></script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MBVQKP3');</script>
-    <link rel="manifest" href="assets/manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Nitin Mane | AI, Robotics &amp; Mechatronics Collaboration</title>
+  <meta name="description" content="Contact Nitin Mane for edge AI, robotics, computer vision, LLM/RAG systems, IEEE talks, workshops, mentoring and research collaboration." />
+  <meta name="keywords" content="Contact Nitin Mane, AI Engineer, Robotics Engineer, Mechatronics Researcher, Edge AI, Computer Vision, IIT Bhilai, IEEE Speaker" />
+  <meta name="author" content="Nitin Mane" />
+  <link rel="canonical" href="https://www.nitinmane.me/contact.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#060a12" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nitin Mane" />
+  <meta property="og:title" content="Contact Nitin Mane | AI, Robotics & Mechatronics Collaboration" />
+  <meta property="og:description" content="Start a conversation about edge AI, robotics, computer vision, LLM/RAG systems, IEEE talks, workshops or research collaboration." />
+  <meta property="og:url" content="https://www.nitinmane.me/contact.html" />
+  <meta property="og:image" content="https://www.nitinmane.me/assets/images/profile.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact Nitin Mane | AI, Robotics & Mechatronics Collaboration" />
+  <meta name="twitter:description" content="Start a conversation about edge AI, robotics, computer vision, LLM/RAG systems, IEEE talks, workshops or research collaboration." />
+  <meta name="twitter:image" content="https://www.nitinmane.me/assets/images/profile.png" />
+  <meta name="twitter:creator" content="@Mnitin52" />
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/images/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/images/profile.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/contact.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://www.nitinmane.me/contact.html#contact-page",
+        "url": "https://www.nitinmane.me/contact.html",
+        "name": "Contact Nitin Mane",
+        "description": "Contact page for edge AI, robotics, computer vision, LLM/RAG, teaching, talks and research collaboration."
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.nitinmane.me/#person",
+        "name": "Nitin Mane",
+        "url": "https://www.nitinmane.me/",
+        "email": "mailto:mnitin59@gmail.com",
+        "jobTitle": "Mechatronics Researcher and AI/Robotics Engineer",
+        "sameAs": [
+          "https://github.com/Nitin-Mane",
+          "https://www.linkedin.com/in/nitingmane/",
+          "https://twitter.com/Mnitin52",
+          "https://www.kaggle.com/mnitin59",
+          "https://www.instagram.com/nitin_mane/"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.nitinmane.me/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.nitinmane.me/contact.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-<body class="no-scroll-preload">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBVQKP3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+  <!-- Ambient background -->
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere__glow atmosphere__glow--cyan"></div>
+    <div class="atmosphere__glow atmosphere__glow--amber"></div>
+    <div class="atmosphere__glow atmosphere__glow--violet"></div>
+  </div>
 
-    <!-- loader -->
-    <div class="loader-container">
-        <div class="atom">
-            <div class="electron"></div>
-            <div class="electron-alpha"></div>
-            <div class="electron-omega"></div>
-        </div>
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand">
+        <span class="nav__brand-mark"><span>NM</span></span>
+        <span class="nav__brand-text">Nitin<span>Mane</span></span>
+      </a>
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="experience.html" class="nav__link">Experience</a>
+        <a href="projects.html" class="nav__link">Projects</a>
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="blog.html" class="nav__link">Blog</a>
+        <a href="education.html" class="nav__link">Education</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="contact.html" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
+      </nav>
+      <div class="nav__actions">
+        <span class="nav__status"><span class="nav__status-dot"></span><span data-ist-clock>00:00 IST &middot; BHILAI, IN</span></span>
+        <a href="contact.html" class="btn btn--primary btn--sm btn--nav-cta">Let's Talk</a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <!--Dynamic Nav Bar-->
+  <main id="main">
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="page-header contact-header">
+      <div class="container">
+        <div class="page-header__crumbs reveal">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span class="text-cyan">Contact</span>
+        </div>
+        <span class="eyebrow reveal" style="--reveal-delay:40ms">Signal Link - 07</span>
+        <h1 class="page-header__title reveal" style="--reveal-delay:80ms">Let's Build Something Useful</h1>
+        <p class="page-header__lede reveal" style="--reveal-delay:120ms">
+          Reach out for research collaboration, engineering consulting, IEEE talks, workshops,
+          mentoring, or production-grade AI and robotics systems.
+        </p>
+      </div>
+    </section>
 
-    <div class="container pt-5" style="min-height: 60vh;">
-        <div class="row justify-content-center pt-5 mt-5">
-            <div class="col-md-8 text-center">
-                <h1 class="mb-3" style="font-family: 'Poppins', sans-serif; font-weight: 600;">Get in Touch</h1>
-                <p style="font-size: 1.1rem; color: var(--text-color);">
-                    Feel free to reach out via the contact form below or connect on social media.
-                </p>
+    <!-- ============ CONTACT HUB ============ -->
+    <section class="section section--tight contact-hub">
+      <div class="container contact-hub__grid">
+        <div class="contact-hub__main">
+          <div class="section__head reveal">
+            <span class="eyebrow">Primary Channel</span>
+            <h2 class="section__title">The fastest route is email.</h2>
+            <p class="section__lede">
+              I read every serious note. A short brief with context, timeline and what you want to
+              explore is perfect.
+            </p>
+          </div>
+
+          <div class="contact-cards">
+            <article class="card contact-card reveal reveal--scale">
+              <div class="contact-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              </div>
+              <div>
+                <span class="contact-card__label">Email</span>
+                <h3>mnitin59@gmail.com</h3>
+                <p>Best for collaborations, consulting, talks and project proposals.</p>
+              </div>
+              <div class="contact-card__actions">
+                <a class="project-card__link" href="mailto:mnitin59@gmail.com?subject=Collaboration%20Inquiry%20from%20Portfolio">
+                  Send Email
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <button class="project-card__link contact-card__copy" type="button" data-copy="mnitin59@gmail.com">
+                  <span data-copy-label>Copy Email</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+            </article>
+
+            <article class="card contact-card reveal reveal--scale" style="--reveal-delay:70ms">
+              <div class="contact-card__icon contact-card__icon--violet">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div>
+                <span class="contact-card__label">Professional Network</span>
+                <h3>LinkedIn</h3>
+                <p>Useful for speaking invitations, hiring conversations and professional updates.</p>
+              </div>
+              <div class="contact-card__actions">
+                <a class="project-card__link" href="https://www.linkedin.com/in/nitingmane/" target="_blank" rel="noopener">
+                  Open LinkedIn
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="card contact-card reveal reveal--scale" style="--reveal-delay:140ms">
+              <div class="contact-card__icon contact-card__icon--amber">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 3.5 5.4 3.8 5.4 3.8a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 10.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              </div>
+              <div>
+                <span class="contact-card__label">Open Source</span>
+                <h3>GitHub</h3>
+                <p>Explore public repositories, experiments and implementation-heavy project work.</p>
+              </div>
+              <div class="contact-card__actions">
+                <a class="project-card__link" href="https://github.com/Nitin-Mane" target="_blank" rel="noopener">
+                  View GitHub
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="contact-hub__aside reveal reveal--right" aria-label="Collaboration snapshot">
+          <div class="frame contact-console">
+            <span class="eyebrow">Collaboration Console</span>
+            <div class="contact-console__status">
+              <span class="nav__status-dot"></span>
+              <span>Open to focused AI, robotics and research conversations</span>
             </div>
+
+            <dl class="contact-console__list">
+              <div>
+                <dt>Location</dt>
+                <dd>Bhilai, Chhattisgarh, India</dd>
+              </div>
+              <div>
+                <dt>Current Focus</dt>
+                <dd>M.Tech Mechatronics at IIT Bhilai</dd>
+              </div>
+              <div>
+                <dt>Best Fit</dt>
+                <dd>Edge AI, computer vision, robotics, LLM/RAG and technical communities</dd>
+              </div>
+              <div>
+                <dt>Response Window</dt>
+                <dd>Usually within a few working days</dd>
+              </div>
+            </dl>
+
+            <div class="tag-row contact-console__tags" aria-label="Topics">
+              <span class="tag tag--cyan">Edge AI</span>
+              <span class="tag tag--amber">Robotics</span>
+              <span class="tag tag--violet">LLM/RAG</span>
+              <span class="tag">IEEE Talks</span>
+              <span class="tag">Mentoring</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ MESSAGE BRIEF ============ -->
+    <section class="section message-brief">
+      <div class="container message-brief__grid">
+        <div class="message-brief__copy reveal reveal--left">
+          <span class="eyebrow">Message Brief</span>
+          <h2 class="section__title">A good first note saves a lot of cycles.</h2>
+          <p class="section__lede">
+            A concise outline is enough. Tell me what you are building, why it matters, what stage
+            it is in and where you think I can help.
+          </p>
+
+          <div class="brief-points">
+            <div class="brief-point">
+              <span>01</span>
+              <p><strong>Problem:</strong> What system, research question or event are you planning?</p>
+            </div>
+            <div class="brief-point">
+              <span>02</span>
+              <p><strong>Context:</strong> Hardware, datasets, constraints, audience or timeline.</p>
+            </div>
+            <div class="brief-point">
+              <span>03</span>
+              <p><strong>Ask:</strong> Collaboration, consulting, review, talk, mentoring or implementation.</p>
+            </div>
+          </div>
         </div>
+
+        <form class="frame contact-form reveal reveal--right" action="mailto:mnitin59@gmail.com" method="post" enctype="text/plain">
+          <div class="contact-form__head">
+            <span class="eyebrow">Quick Draft</span>
+            <p>This static form opens your email client with the details you enter.</p>
+          </div>
+
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="Name" autocomplete="name" required />
+          </label>
+
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="Email" autocomplete="email" required />
+          </label>
+
+          <label class="field">
+            <span>Topic</span>
+            <select name="Topic" required>
+              <option value="">Select a topic</option>
+              <option>Research collaboration</option>
+              <option>Engineering consulting</option>
+              <option>Talk or workshop</option>
+              <option>Mentoring</option>
+              <option>General inquiry</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Message</span>
+            <textarea name="Message" rows="6" placeholder="A short brief with goals, context and timeline..." required></textarea>
+          </label>
+
+          <div class="contact-form__actions">
+            <button class="btn btn--primary" type="submit">
+              Draft Email
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <a class="btn btn--ghost" href="mailto:mnitin59@gmail.com?subject=Portfolio%20Inquiry">Open Mail App</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ SOCIALS ============ -->
+    <section class="section section--tight contact-socials">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow">Elsewhere</span>
+          <h2 class="section__title">Follow the work in public.</h2>
+          <p class="section__lede">
+            Repositories, professional updates, research notes and community work live across these channels.
+          </p>
+        </div>
+
+        <div class="social-grid">
+          <a class="card social-card reveal reveal--scale" href="https://github.com/Nitin-Mane" target="_blank" rel="noopener">
+            <span>GitHub</span>
+            <strong>Code and experiments</strong>
+          </a>
+          <a class="card social-card reveal reveal--scale" style="--reveal-delay:70ms" href="https://www.linkedin.com/in/nitingmane/" target="_blank" rel="noopener">
+            <span>LinkedIn</span>
+            <strong>Professional updates</strong>
+          </a>
+          <a class="card social-card reveal reveal--scale" style="--reveal-delay:140ms" href="https://twitter.com/Mnitin52" target="_blank" rel="noopener">
+            <span>X / Twitter</span>
+            <strong>Tech notes and community</strong>
+          </a>
+          <a class="card social-card reveal reveal--scale" style="--reveal-delay:210ms" href="https://www.kaggle.com/mnitin59" target="_blank" rel="noopener">
+            <span>Kaggle</span>
+            <strong>ML notebooks and data work</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__brand">
+          <span class="nav__brand-mark"><span>NM</span></span>
+          <span class="footer__brand-name">Nitin Mane</span>
+        </a>
+        <p>
+          Mechatronics researcher &amp; AI/Robotics engineer based in Bhilai, India - designing
+          systems where embedded hardware meets machine intelligence.
+        </p>
+        <div class="social-row" aria-label="Social profiles">
+          <a href="https://github.com/Nitin-Mane" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 3.5 5.4 3.8 5.4 3.8a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 10.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/nitingmane/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://twitter.com/Mnitin52" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.kaggle.com/mnitin59" target="_blank" rel="noopener" aria-label="Kaggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18M5 13l6.5-6M5 13l7 8M14 3v18M14 13l6.5-6"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nitin_mane/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h3 class="footer__heading">Navigate</h3>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Currently</h3>
+        <ul class="footer__links">
+          <li>M.Tech Mechatronics @ IIT Bhilai</li>
+          <li>Intel Software Innovator</li>
+          <li>Arm Developer Ambassador</li>
+          <li>IEEE Chair, CEDA Nagpur Chapter</li>
+          <li><a href="mailto:mnitin59@gmail.com">mnitin59@gmail.com</a></li>
+        </ul>
+      </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <div class="container footer__bottom">
+      <span>&copy; <span data-year>2026</span> Nitin Mane. All systems nominal.</span>
+      <span>Designed &amp; built with HTML, CSS, vanilla JS and Three.js</span>
+    </div>
+  </footer>
 
+  <button class="to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
 </html>

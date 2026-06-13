@@ -1,0 +1,20 @@
+{
+  "name": "Nitin Mane Portfolio",
+  "short_name": "Nitin Mane",
+  "description": "Portfolio of Nitin Mane, a mechatronics researcher and AI/Robotics engineer working across edge AI, computer vision, robotics and LLM/RAG systems.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#060a12",
+  "theme_color": "#060a12",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "technology", "education"],
+  "icons": [
+    {
+      "src": "/assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
