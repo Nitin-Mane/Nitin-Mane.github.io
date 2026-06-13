@@ -7,7 +7,7 @@
 
 # 🌐 Personal Website
 
-[![Website Deploy](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml)
+[![Website Deploy](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml)
 ![HTML](https://img.shields.io/badge/HTML5-Static_Webpages-orange?style=for-the-badge&logo=html5)
 ![CSS](https://img.shields.io/badge/CSS3-Custom_Theme-blue?style=for-the-badge&logo=css3)
 ![Hosting](https://img.shields.io/badge/Hosted_on-Namecheap-purple?style=for-the-badge)
@@ -76,33 +76,67 @@ The purpose of this website is to present my profile, technical work, research p
 
 ## 📁 Project Structure
 
+````markdown
+## 📁 Project Structure
+
 ```text
-REPOSITORY/
-│
-├── index.html
-├── about.html
-├── projects.html
-├── research.html
-├── contact.html
+PERSONAL_WEBSITE/
 │
 ├── assets/
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── docs/
+│   │   ├── Nitin_Mane_CV.pdf
+│   │   └── Nitin_Mane_Resume.pdf
+│   │
 │   ├── images/
-│   ├── icons/
-│   └── documents/
+│   │   └── website images and profile assets
+│   │
+│   └── js/
+│       └── JavaScript files
 │
-├── css/
-│   └── style.css
+├── 404.html
+├── about.html
+├── blog.html
+├── contact.html
+├── education.html
+├── experience.html
+├── index.html
+├── projects.html
+├── research.html
 │
-├── js/
-│   └── script.js
-│
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
+├── CNAME
+├── robots.txt
+├── site.webmanifest
+├── sitemap.xml
 │
 └── README.md
 ````
 
+### Folder Description
+
+| Path               | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| `index.html`       | Main homepage of the personal website                   |
+| `about.html`       | About/profile section                                   |
+| `education.html`   | Academic background and qualifications                  |
+| `experience.html`  | Professional experience and roles                       |
+| `projects.html`    | Projects and technical work                             |
+| `research.html`    | Research work, publications, and academic contributions |
+| `blog.html`        | Blog or article section                                 |
+| `contact.html`     | Contact details and communication links                 |
+| `404.html`         | Custom error page for broken or missing links           |
+| `assets/css/`      | CSS files used for styling the website                  |
+| `assets/js/`       | JavaScript files used for interactivity                 |
+| `assets/images/`   | Images, profile photos, icons, and visual assets        |
+| `assets/docs/`     | Resume, CV, and downloadable documents                  |
+| `CNAME`            | Custom domain configuration file                        |
+| `robots.txt`       | Search engine crawling instructions                     |
+| `sitemap.xml`      | Website sitemap for search engines                      |
+| `site.webmanifest` | Web app/site metadata file                              |
+
+```
 ---
 
 ## 🎨 Documentation Theme
