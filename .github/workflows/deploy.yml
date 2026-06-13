@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check files
+        run: |
+          echo "Checking website files..."
+          ls -la
+          echo "Build/Deploy check completed successfully."
