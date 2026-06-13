@@ -17,7 +17,7 @@
 
 ### A responsive personal portfolio website built using static HTML and CSS.
 
-🔗 **Live Website:** [https://yourdomain.com](https://yourdomain.com)
+🔗 **Live Website:** [https://nitinmane.me](https://nitinmane.me)
 
 </div>
 
@@ -327,7 +327,7 @@ Ctrl + F5
 
 For any query or collaboration, please visit the contact section of the website.
 
-🌐 Website: https://yourdomain.com
+🌐 Website: https://nitinmane.me
 
 ---
 
