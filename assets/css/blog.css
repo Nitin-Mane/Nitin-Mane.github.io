@@ -67,6 +67,15 @@
   color: var(--color-text);
 }
 
+.blog-article__cta {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
 @media (max-width: 1000px) {
   .blog-index {
     grid-template-columns: 1fr;

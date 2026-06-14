@@ -3,6 +3,19 @@
    ============================================================= */
 
 /* ---------- Certification grid ---------- */
+.cert-group__title {
+  font-size: var(--fs-body-l);
+  font-family: var(--font-mono);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-4);
+}
+
+.cert-group__title:not(:first-of-type) {
+  margin-top: var(--space-8);
+}
+
 .cert__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

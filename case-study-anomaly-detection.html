@@ -156,10 +156,11 @@
           </p>
 
           <h3>Dataset / input source</h3>
-          <p class="font-mono text-dim">
-            <span class="tag tag--amber">TODO</span> Add details on the camera feed source(s)
-            (e.g. Stand-16 BRM video feed), dataset size, annotation process, and any data augmentation
-            used for training.
+          <p>
+            The system is designed around industrial video feeds from the Bar &amp; Rod Mill
+            environment, with emphasis on Stand-16 looper monitoring. The data includes plant-floor
+            video frames affected by dust, illumination variation, motion blur, vibration, occlusion,
+            and camera-angle limitations.
           </p>
 
           <h3>Architecture</h3>
@@ -170,10 +171,9 @@
             rules, maps detections to equipment regions, and emits timestamped events with confidence
             scores and frame evidence for auditability.
           </p>
-          <p class="font-mono text-dim">
-            <span class="tag tag--amber">TODO</span> Add an architecture diagram and any specifics on
-            the detection model variant (e.g. YOLOv8 / pose model), tracking approach, and event-layer
-            rules.
+          <p>
+            The deployment direction is edge inference using OpenVINO / Jetson-class hardware for
+            low-latency plant-floor monitoring.
           </p>
 
           <h3>Tools used</h3>
@@ -184,22 +184,22 @@
             <span class="tag">OpenCV</span>
             <span class="tag">Edge Deployment</span>
           </div>
-          <p class="font-mono text-dim" style="margin-top: var(--space-3);">
-            <span class="tag tag--amber">TODO</span> Confirm target hardware (e.g. Jetson Orin NX,
-            industrial edge server) and any deployment/orchestration tooling.
+          <p style="margin-top: var(--space-3);">
+            Target deployment hardware is Jetson / industrial edge-server class compute, with OpenVINO
+            as the inference runtime for low-latency, on-site processing.
           </p>
 
           <h3>Result</h3>
-          <p class="font-mono text-dim">
-            <span class="tag tag--amber">TODO</span> Add measured results: detection accuracy,
-            inference latency / FPS on target hardware, and current deployment stage (in development /
-            tested offline / live prototype).
+          <p>
+            Current status: M.Tech research prototype and deployment-focused industrial case study.
+            The system is being developed for real-time anomaly and safety-event detection under
+            industrial visual degradation.
           </p>
 
           <h3>Limitations</h3>
-          <p class="font-mono text-dim">
-            <span class="tag tag--amber">TODO</span> Note known failure cases (lighting, occlusion,
-            camera drift, etc.) and any constraints of the current prototype.
+          <p>
+            Performance can be affected by dust, glare, occlusion, lighting change, camera vibration,
+            and limited annotated plant-floor data.
           </p>
 
           <h3>Future work</h3>
@@ -208,15 +208,17 @@
             vision, sensor telemetry and logs into plain-language plant-intelligence alerts for
             operators — the focus of a related project on this site.
           </p>
-          <p class="font-mono text-dim">
-            <span class="tag tag--amber">TODO</span> Add any additional planned work (model
-            improvements, additional cameras/zones, on-device retraining, etc.).
+          <p>
+            Additional planned work includes expanding coverage to more cameras and zones, on-device
+            model retraining as new data is collected, and tighter integration with plant maintenance
+            workflows.
           </p>
 
           <h3>Links</h3>
-          <p class="font-mono text-dim">
-            <span class="tag tag--amber">TODO</span> Add links to GitHub repository, thesis/paper, and
-            demo video once available.
+          <p>
+            Code, thesis writeup and demo materials will be linked here as they are published.
+            In the meantime, see <a href="https://github.com/Nitin-Mane" target="_blank" rel="noopener">github.com/Nitin-Mane</a>
+            for related repositories.
           </p>
         </div>
       </div>
