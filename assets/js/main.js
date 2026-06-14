@@ -40,10 +40,15 @@
   }
 
   /* ---------- Nav: active link by current path ---------- */
-  const currentPage = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  const normalizeRoute = (value) => {
+    const path = (value || "").split("#")[0].split("?")[0].replace(/\/+$/g, "");
+    const lastSegment = path.split("/").filter(Boolean).pop() || "index";
+    return lastSegment.replace(/\.html$/i, "").toLowerCase() || "index";
+  };
+  const currentPath = normalizeRoute(location.pathname);
   document.querySelectorAll(".nav__link").forEach((link) => {
-    const href = (link.getAttribute("href") || "").toLowerCase();
-    if (href === currentPage || (currentPage === "" && href === "index.html")) {
+    const href = normalizeRoute(link.getAttribute("href"));
+    if (href === currentPath) {
       link.classList.add("is-active");
       link.setAttribute("aria-current", "page");
     }

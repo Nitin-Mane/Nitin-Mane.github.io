@@ -177,7 +177,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.nav__link-cta {
+.nav__links .nav__link-cta {
   display: none;
 }
 
@@ -226,7 +226,7 @@
     display: none;
   }
 
-  .nav__link-cta {
+  .nav__links .nav__link-cta {
     display: inline-flex;
     margin-top: var(--space-3);
   }

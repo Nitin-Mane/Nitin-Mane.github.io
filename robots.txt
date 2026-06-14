@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /old_website_reference/
-
+Disallow: /
 Sitemap: https://www.nitinmane.me/sitemap.xml

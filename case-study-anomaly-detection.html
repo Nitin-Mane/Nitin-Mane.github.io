@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: Realtime Industrial Anomaly Detection | Nitin Mane</title>
+  <meta name="description" content="Case study: a YOLO-based edge AI pipeline for Bar & Rod Mill video analytics, detecting equipment anomalies and safety violations with low-latency inference via OpenVINO. M.Tech research project at IIT Bhilai." />
+  <meta name="keywords" content="Nitin Mane, Industrial Anomaly Detection, Edge AI, YOLOv8, OpenVINO, Computer Vision, IIT Bhilai, Bar and Rod Mill, Case Study" />
+  <meta name="author" content="Nitin Mane" />
+  <link rel="canonical" href="https://www.nitinmane.me/case-study-anomaly-detection" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#060a12" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Nitin Mane" />
+  <meta property="og:title" content="Case Study: Realtime Industrial Anomaly Detection | Nitin Mane" />
+  <meta property="og:description" content="A YOLO-based edge AI pipeline for Bar & Rod Mill video analytics, detecting equipment anomalies and safety violations with low-latency inference via OpenVINO." />
+  <meta property="og:url" content="https://www.nitinmane.me/case-study-anomaly-detection" />
+  <meta property="og:image" content="https://www.nitinmane.me/assets/images/profile_nitinmane.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case Study: Realtime Industrial Anomaly Detection | Nitin Mane" />
+  <meta name="twitter:description" content="A YOLO-based edge AI pipeline for Bar & Rod Mill video analytics, detecting equipment anomalies and safety violations with low-latency inference via OpenVINO." />
+  <meta name="twitter:image" content="https://www.nitinmane.me/assets/images/profile_nitinmane.png" />
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/images/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/images/profile_nitinmane.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/blog.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Case Study: Realtime Industrial Anomaly Detection",
+    "url": "https://www.nitinmane.me/case-study-anomaly-detection",
+    "author": {
+      "@type": "Person",
+      "name": "Nitin Mane",
+      "url": "https://www.nitinmane.me/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Ambient background -->
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere__glow atmosphere__glow--cyan"></div>
+    <div class="atmosphere__glow atmosphere__glow--amber"></div>
+    <div class="atmosphere__glow atmosphere__glow--violet"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand">
+        <span class="nav__brand-mark"><span>NM</span></span>
+        <span class="nav__brand-text">Nitin<span>Mane</span></span>
+      </a>
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="experience.html" class="nav__link">Experience</a>
+        <a href="projects.html" class="nav__link">Projects</a>
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="blog.html" class="nav__link">Blog</a>
+        <a href="education.html" class="nav__link">Education</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="contact.html" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
+      </nav>
+      <div class="nav__actions">
+        <span class="nav__status"><span class="nav__status-dot"></span><span data-ist-clock>BHILAI, IN</span></span>
+        <a href="contact.html" class="btn btn--primary btn--sm btn--nav-cta">Let's Talk</a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="page-header blog-header">
+      <div class="container">
+        <div class="page-header__crumbs reveal">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="projects.html">Projects</a>
+          <span>/</span>
+          <span class="text-cyan">Case Study</span>
+        </div>
+        <span class="eyebrow reveal" style="--reveal-delay:40ms">Case Study — Edge AI / Computer Vision</span>
+        <h1 class="page-header__title reveal" style="--reveal-delay:80ms">Realtime Industrial Anomaly Detection</h1>
+        <p class="page-header__lede reveal" style="--reveal-delay:120ms">
+          A YOLO-based edge AI pipeline for Bar &amp; Rod Mill video analytics — detecting equipment
+          anomalies and safety violations from live plant camera feeds, with low-latency inference on
+          edge hardware via OpenVINO. Forms the applied core of my M.Tech research at IIT Bhilai.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDY BODY ============ -->
+    <section class="section section--tight">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">At a glance</span>
+          <div class="tag-row">
+            <span class="tag tag--cyan">Edge AI</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Industrial IoT</span>
+            <span class="tag">YOLOv8</span>
+            <span class="tag">OpenVINO</span>
+          </div>
+          <p class="font-mono text-dim">Status: M.Tech research project, IIT Bhilai (FY25–26)</p>
+          <div class="project-card__links" style="margin-top: var(--space-4);">
+            <a href="blog.html#industrial-anomaly-detection-edge" class="project-card__link">
+              Background reading
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>Problem</h2>
+          <p>
+            Bar &amp; Rod Mill (BRM) plant floors run continuous video feeds across loopers, rolling
+            stands and material-handling zones. Equipment anomalies, near-miss events and safety
+            violations need to be caught early — but a human watching every camera, every shift, does
+            not scale.
+          </p>
+
+          <h3>Why it matters</h3>
+          <p>
+            Sending every frame to the cloud for analysis adds latency and bandwidth cost that
+            industrial networks often can't absorb. Safety alerts also lose their value if they arrive
+            late. The goal of this project is to push detection to the edge — close to the camera and
+            the machine — so that anomalies and unsafe conditions are flagged in near real time.
+          </p>
+
+          <h3>Dataset / input source</h3>
+          <p class="font-mono text-dim">
+            <span class="tag tag--amber">TODO</span> Add details on the camera feed source(s)
+            (e.g. Stand-16 BRM video feed), dataset size, annotation process, and any data augmentation
+            used for training.
+          </p>
+
+          <h3>Architecture</h3>
+          <p>
+            The pipeline starts with a production-shaped YOLO detector trained on plant-floor footage,
+            optimised for the target edge device using the OpenVINO inference runtime. A lightweight
+            event layer sits after detection — it smooths short-lived false positives, applies zone
+            rules, maps detections to equipment regions, and emits timestamped events with confidence
+            scores and frame evidence for auditability.
+          </p>
+          <p class="font-mono text-dim">
+            <span class="tag tag--amber">TODO</span> Add an architecture diagram and any specifics on
+            the detection model variant (e.g. YOLOv8 / pose model), tracking approach, and event-layer
+            rules.
+          </p>
+
+          <h3>Tools used</h3>
+          <div class="tag-row">
+            <span class="tag">YOLOv8</span>
+            <span class="tag">OpenVINO</span>
+            <span class="tag">Python</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Edge Deployment</span>
+          </div>
+          <p class="font-mono text-dim" style="margin-top: var(--space-3);">
+            <span class="tag tag--amber">TODO</span> Confirm target hardware (e.g. Jetson Orin NX,
+            industrial edge server) and any deployment/orchestration tooling.
+          </p>
+
+          <h3>Result</h3>
+          <p class="font-mono text-dim">
+            <span class="tag tag--amber">TODO</span> Add measured results: detection accuracy,
+            inference latency / FPS on target hardware, and current deployment stage (in development /
+            tested offline / live prototype).
+          </p>
+
+          <h3>Limitations</h3>
+          <p class="font-mono text-dim">
+            <span class="tag tag--amber">TODO</span> Note known failure cases (lighting, occlusion,
+            camera drift, etc.) and any constraints of the current prototype.
+          </p>
+
+          <h3>Future work</h3>
+          <p>
+            A natural extension is feeding detected events into a multi-modal LLM/RAG layer that fuses
+            vision, sensor telemetry and logs into plain-language plant-intelligence alerts for
+            operators — the focus of a related project on this site.
+          </p>
+          <p class="font-mono text-dim">
+            <span class="tag tag--amber">TODO</span> Add any additional planned work (model
+            improvements, additional cameras/zones, on-device retraining, etc.).
+          </p>
+
+          <h3>Links</h3>
+          <p class="font-mono text-dim">
+            <span class="tag tag--amber">TODO</span> Add links to GitHub repository, thesis/paper, and
+            demo video once available.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__brand">
+          <span class="nav__brand-mark"><span>NM</span></span>
+          <span class="footer__brand-name">Nitin Mane</span>
+        </a>
+        <p>
+          Mechatronics researcher &amp; AI/Robotics engineer based in Bhilai, India - designing
+          systems where embedded hardware meets machine intelligence.
+        </p>
+        <div class="social-row" aria-label="Social profiles">
+          <a href="https://github.com/Nitin-Mane" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 3.5 5.4 3.8 5.4 3.8a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 10.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/nitingmane/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://twitter.com/Mnitin52" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.kaggle.com/mnitin59" target="_blank" rel="noopener" aria-label="Kaggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18M5 13l6.5-6M5 13l7 8M14 3v18M14 13l6.5-6"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nitin_mane/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h3 class="footer__heading">Navigate</h3>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Currently</h3>
+        <ul class="footer__links">
+          <li>M.Tech Mechatronics @ IIT Bhilai</li>
+          <li>Intel Software Innovator</li>
+          <li>Arm Developer Ambassador</li>
+          <li>IEEE Chair, CEDA Nagpur Chapter</li>
+          <li><a href="mailto:mnitin59@gmail.com">mnitin59@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>&copy; <span data-year>2026</span> Nitin Mane. All systems nominal.</span>
+      <span>Designed &amp; built with HTML, CSS, vanilla JS and Three.js</span>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

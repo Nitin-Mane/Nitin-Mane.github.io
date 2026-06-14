@@ -99,6 +99,7 @@ PERSONAL_WEBSITE/
 ├── 404.html
 ├── about.html
 ├── blog.html
+├── case-study-anomaly-detection.html
 ├── contact.html
 ├── education.html
 ├── experience.html
@@ -106,6 +107,7 @@ PERSONAL_WEBSITE/
 ├── projects.html
 ├── research.html
 │
+├── .htaccess
 ├── CNAME
 ├── robots.txt
 ├── site.webmanifest
@@ -120,6 +122,7 @@ PERSONAL_WEBSITE/
 | ------------------ | ------------------------------------------------------- |
 | `index.html`       | Main homepage of the personal website                   |
 | `about.html`       | About/profile section                                   |
+| `case-study-anomaly-detection.html` | Case study: Realtime Industrial Anomaly Detection project |
 | `education.html`   | Academic background and qualifications                  |
 | `experience.html`  | Professional experience and roles                       |
 | `projects.html`    | Projects and technical work                             |
@@ -131,12 +134,42 @@ PERSONAL_WEBSITE/
 | `assets/js/`       | JavaScript files used for interactivity                 |
 | `assets/images/`   | Images, profile photos, icons, and visual assets        |
 | `assets/docs/`     | Resume, CV, and downloadable documents                  |
+| `.htaccess`        | Apache rewrite rules for clean (extensionless) URLs      |
 | `CNAME`            | Custom domain configuration file                        |
 | `robots.txt`       | Search engine crawling instructions                     |
 | `sitemap.xml`      | Website sitemap for search engines                      |
 | `site.webmanifest` | Web app/site metadata file                              |
 
 ```
+---
+
+## 🔗 Clean URLs
+
+The site is configured to hide the `.html` extension from every page using
+the included `.htaccess` (Apache / cPanel hosting on Namecheap):
+
+| File             | Live URL                          |
+| ----------------- | ---------------------------------- |
+| `index.html`       | `https://nitinmane.me/`            |
+| `about.html`       | `https://nitinmane.me/about`       |
+| `experience.html`  | `https://nitinmane.me/experience`  |
+| `case-study-anomaly-detection.html` | `https://nitinmane.me/case-study-anomaly-detection` |
+| `projects.html`    | `https://nitinmane.me/projects`    |
+| `research.html`    | `https://nitinmane.me/research`    |
+| `blog.html`        | `https://nitinmane.me/blog`        |
+| `education.html`   | `https://nitinmane.me/education`   |
+| `contact.html`     | `https://nitinmane.me/contact`     |
+| `404.html`         | Served automatically for unknown paths |
+
+All internal links, the sitemap, and canonical/Open Graph URLs use these
+extensionless paths. Requests made directly to a `*.html` URL are
+301-redirected to the clean URL.
+
+> **Note:** `.htaccess` rewrite rules only take effect on Apache-based
+> hosting (Namecheap/cPanel). They have no effect when previewing with
+> `python -m http.server`, so local previews will still need the `.html`
+> extension in the address bar.
+
 ---
 
 ## 🎨 Documentation Theme

@@ -76,6 +76,52 @@
   max-width: 58ch;
 }
 
+.hero__tagline {
+  margin-top: var(--space-4);
+}
+
+.hero__hiring {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-s);
+  color: var(--color-text-dim);
+}
+
+.hero__hiring-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.hero__hiring-label {
+  flex: 0 0 auto;
+  min-width: 6.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--color-cyan);
+}
+
+.featured-proof {
+  margin-top: var(--space-7);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.featured-proof__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
+  flex: 0 0 auto;
+}
+
 .hero__footer {
   margin-top: var(--space-9);
   display: flex;

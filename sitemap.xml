@@ -7,43 +7,49 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.nitinmane.me/about.html</loc>
+    <loc>https://www.nitinmane.me/about</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.nitinmane.me/experience.html</loc>
+    <loc>https://www.nitinmane.me/experience</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.nitinmane.me/projects.html</loc>
+    <loc>https://www.nitinmane.me/projects</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.nitinmane.me/research.html</loc>
+    <loc>https://www.nitinmane.me/case-study-anomaly-detection</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.nitinmane.me/research</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.nitinmane.me/blog.html</loc>
+    <loc>https://www.nitinmane.me/blog</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.nitinmane.me/education.html</loc>
+    <loc>https://www.nitinmane.me/education</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nitinmane.me/contact.html</loc>
+    <loc>https://www.nitinmane.me/contact</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
