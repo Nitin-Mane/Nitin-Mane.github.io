@@ -106,6 +106,7 @@ PERSONAL_WEBSITE/
 ├── index.html
 ├── projects.html
 ├── research.html
+├── speakers.html
 │
 ├── .htaccess
 ├── CNAME
@@ -128,6 +129,7 @@ PERSONAL_WEBSITE/
 | `projects.html`    | Projects and technical work                             |
 | `research.html`    | Research work, publications, and academic contributions |
 | `blog.html`        | Blog or article section                                 |
+| `speakers.html`    | Speaking engagements, mentoring and workshop photo galleries |
 | `contact.html`     | Contact details and communication links                 |
 | `404.html`         | Custom error page for broken or missing links           |
 | `assets/css/`      | CSS files used for styling the website                  |

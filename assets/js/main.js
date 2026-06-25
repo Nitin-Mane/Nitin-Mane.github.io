@@ -236,4 +236,84 @@
     const years = new Date().getFullYear() - since;
     el.textContent = String(years);
   });
+
+  /* ---------- Sliding photo galleries (speaking / workshop pages) ---------- */
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll(".gallery").forEach((gallery) => {
+    const track = gallery.querySelector(".gallery__track");
+    const slides = Array.from(gallery.querySelectorAll(".gallery__slide"));
+    if (!track || slides.length < 2) return;
+
+    let index = 0;
+
+    const dots = document.createElement("div");
+    dots.className = "gallery__dots";
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "gallery__dot" + (i === 0 ? " is-active" : "");
+      dot.setAttribute("aria-label", `Go to photo ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dots.appendChild(dot);
+    });
+
+    const makeArrow = (dir, label, points) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `gallery__arrow gallery__arrow--${dir}`;
+      btn.setAttribute("aria-label", label);
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${points}"/></svg>`;
+      return btn;
+    };
+    const prevBtn = makeArrow("prev", "Previous photo", "15 18 9 12 15 6");
+    const nextBtn = makeArrow("next", "Next photo", "9 18 15 12 9 6");
+
+    const count = document.createElement("span");
+    count.className = "gallery__count";
+
+    gallery.append(prevBtn, nextBtn, dots, count);
+
+    const dotEls = Array.from(dots.children);
+    const render = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dotEls.forEach((d, i) => d.classList.toggle("is-active", i === index));
+      count.textContent = `${index + 1} / ${slides.length}`;
+    };
+    const goTo = (i) => {
+      index = (i + slides.length) % slides.length;
+      render();
+    };
+
+    prevBtn.addEventListener("click", () => goTo(index - 1));
+    nextBtn.addEventListener("click", () => goTo(index + 1));
+    render();
+
+    if (!reduceMotion) {
+      let timer = setInterval(() => goTo(index + 1), 4500);
+      const restart = () => {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(index + 1), 4500);
+      };
+      gallery.addEventListener("mouseenter", () => clearInterval(timer));
+      gallery.addEventListener("mouseleave", restart);
+      gallery.addEventListener("focusin", () => clearInterval(timer));
+      gallery.addEventListener("focusout", restart);
+    }
+
+    let touchStartX = null;
+    gallery.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.touches[0].clientX;
+      },
+      { passive: true }
+    );
+    gallery.addEventListener("touchend", (e) => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+      touchStartX = null;
+    });
+  });
 })();

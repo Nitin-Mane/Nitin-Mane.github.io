@@ -59,13 +59,13 @@
 /* ---------- Badges ---------- */
 .badges__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-5);
 }
 
 .badge-card {
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-4);
 }
 
@@ -85,13 +85,31 @@
   margin-bottom: var(--space-1);
 }
 
-.badge-card--credly {
-  align-items: flex-start;
-}
-
 .badge-card__embed {
   flex-shrink: 0;
   min-width: 150px;
+}
+
+.badge-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.badge-card__desc {
+  font-size: var(--fs-body-s);
+  color: var(--color-text-muted);
+}
+
+.badge-card__id {
+  font-size: var(--fs-body-s);
+  color: var(--color-text-dim);
+  word-break: break-all;
+}
+
+.badge-card__body .project-card__link {
+  margin-top: var(--space-1);
 }
 
 @media (max-width: 900px) {
