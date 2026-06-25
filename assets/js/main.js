@@ -6,6 +6,45 @@
 (() => {
   "use strict";
 
+  /* ---------- Theme toggle ---------- */
+  const root = document.documentElement;
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const themeKey = "nitinmane-theme";
+
+  const setTheme = (theme) => {
+    const nextTheme = theme === "light" ? "light" : "dark";
+    const isLight = nextTheme === "light";
+    root.setAttribute("data-theme", nextTheme);
+    if (themeMeta) {
+      themeMeta.setAttribute("content", isLight ? "#f7f9fc" : "#060a12");
+    }
+    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(isLight));
+      btn.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
+      btn.title = isLight ? "Switch to dark theme" : "Switch to light theme";
+    });
+  };
+
+  let initialTheme = root.getAttribute("data-theme") || "dark";
+  try {
+    initialTheme = localStorage.getItem(themeKey) || initialTheme;
+  } catch (error) {
+    initialTheme = "dark";
+  }
+  setTheme(initialTheme);
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      setTheme(nextTheme);
+      try {
+        localStorage.setItem(themeKey, nextTheme);
+      } catch (error) {
+        /* localStorage unavailable - theme still changes for this page view */
+      }
+    });
+  });
+
   /* ---------- Footer year ---------- */
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = String(new Date().getFullYear());
@@ -181,7 +220,7 @@
       minute: "2-digit",
     });
     const update = () => {
-      clock.textContent = `${fmt.format(new Date())} IST · BHILAI, IN`;
+      clock.textContent = `${fmt.format(new Date())} IST · AURANGABAD, IN`;
     };
     update();
     setInterval(update, 30000);

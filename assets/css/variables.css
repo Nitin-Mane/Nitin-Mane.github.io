@@ -3,6 +3,8 @@
    ============================================================= */
 
 :root {
+  color-scheme: dark;
+
   /* ---------- Surfaces ---------- */
   --color-bg: #060a12;
   --color-bg-alt: #080d18;
@@ -12,6 +14,13 @@
   --color-border: rgba(150, 200, 225, 0.10);
   --color-border-strong: rgba(150, 210, 230, 0.22);
   --color-border-accent: rgba(45, 230, 214, 0.35);
+  --nav-bg: rgba(6, 10, 18, 0.55);
+  --nav-bg-scrolled: rgba(6, 10, 18, 0.82);
+  --nav-menu-bg: rgba(6, 10, 18, 0.97);
+  --overlay-bg: rgba(13, 20, 34, 0.85);
+  --field-bg: rgba(6, 10, 18, 0.55);
+  --form-color-scheme: dark;
+  --tag-bg: rgba(255, 255, 255, 0.02);
 
   /* ---------- Accents ---------- */
   --color-cyan: #2ee6d6;
@@ -94,4 +103,47 @@
   --z-content: 10;
   --z-nav: 100;
   --z-overlay: 200;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #f7f9fc;
+  --color-bg-alt: #edf2f8;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5fa;
+  --color-surface-3: #dce5ef;
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-border-strong: rgba(15, 23, 42, 0.22);
+  --color-border-accent: rgba(0, 128, 128, 0.38);
+  --nav-bg: rgba(247, 249, 252, 0.74);
+  --nav-bg-scrolled: rgba(247, 249, 252, 0.94);
+  --nav-menu-bg: rgba(247, 249, 252, 0.98);
+  --overlay-bg: rgba(255, 255, 255, 0.9);
+  --field-bg: rgba(255, 255, 255, 0.78);
+  --form-color-scheme: light;
+  --tag-bg: rgba(15, 23, 42, 0.035);
+
+  --color-cyan: #007a78;
+  --color-cyan-bright: #009b97;
+  --color-cyan-dim: rgba(0, 122, 120, 0.12);
+  --color-amber: #9a5b00;
+  --color-amber-bright: #b86c00;
+  --color-amber-dim: rgba(154, 91, 0, 0.12);
+  --color-violet: #6f46c8;
+  --color-violet-dim: rgba(111, 70, 200, 0.12);
+  --color-red-signal: #b42318;
+  --color-green-signal: #147d44;
+
+  --color-text: #101827;
+  --color-text-muted: #475569;
+  --color-text-dim: #64748b;
+  --color-text-on-accent: #ffffff;
+
+  --glow-cyan: 0 0 22px rgba(0, 122, 120, 0.22);
+  --glow-amber: 0 0 22px rgba(154, 91, 0, 0.18);
+  --shadow-card: 0 18px 45px -28px rgba(15, 23, 42, 0.35);
+  --shadow-lift: 0 26px 50px -32px rgba(15, 23, 42, 0.42);
+
+  --grid-line: rgba(15, 23, 42, 0.05);
 }
