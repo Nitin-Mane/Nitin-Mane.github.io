@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "<!-- ========================================================= --> <!-- Personal Website README.md                               --> <!-- Static HTML/CSS Website Hosted on Namecheap              --> <!-- ========================================================= -->",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --env=jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nitin-Mane/Nitin-Mane.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Nitin-Mane/Nitin-Mane.github.io/issues"
+  },
+  "homepage": "https://github.com/Nitin-Mane/Nitin-Mane.github.io#readme",
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1"
+  }
+}
