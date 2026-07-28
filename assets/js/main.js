@@ -52,11 +52,19 @@
 
   /* ---------- Nav: scroll state ---------- */
   const nav = document.querySelector(".nav");
-  const onScroll = () => {
+  let navTicking = false;
+  const updateNav = () => {
     if (!nav) return;
     nav.classList.toggle("is-scrolled", window.scrollY > 12);
+    navTicking = false;
   };
-  onScroll();
+  const onScroll = () => {
+    if (!navTicking) {
+      window.requestAnimationFrame(updateNav);
+      navTicking = true;
+    }
+  };
+  updateNav(); // initialize state
   window.addEventListener("scroll", onScroll, { passive: true });
 
   /* ---------- Nav: mobile toggle ---------- */
