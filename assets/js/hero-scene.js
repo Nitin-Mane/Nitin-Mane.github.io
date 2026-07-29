@@ -21,28 +21,8 @@ function createGlowTexture() {
   return new THREE.CanvasTexture(canvas);
 }
 
-function initScene(canvas) {
-  const mode = canvas.dataset.signalScene || "hero";
-  const isCompact = mode === "compact";
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-  camera.position.set(0, 0, isCompact ? 8.5 : 11);
-
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch (err) {
-    canvas.closest("[data-scene-wrapper]")?.classList.add("scene-fallback");
-    return;
-  }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
-
-  const glowTexture = createGlowTexture();
-
-  /* ---------- Core: nested wireframe polyhedra ---------- */
+function createCore(isCompact, glowTexture) {
   const core = new THREE.Group();
-  scene.add(core);
 
   const outerGeo = new THREE.IcosahedronGeometry(isCompact ? 2.0 : 2.6, 1);
   const outerLines = new THREE.LineSegments(
@@ -73,7 +53,10 @@ function initScene(canvas) {
   );
   core.add(corePoints);
 
-  /* ---------- Satellites: orbiting modular shapes ---------- */
+  return { core, outerLines, innerLines, corePoints };
+}
+
+function createSatellites(isCompact) {
   const satellites = [];
   const satelliteDefs = isCompact
     ? [
@@ -92,11 +75,13 @@ function initScene(canvas) {
       new THREE.EdgesGeometry(def.geo),
       new THREE.LineBasicMaterial({ color: def.color, transparent: true, opacity: 0.85 })
     );
-    scene.add(mesh);
     satellites.push({ mesh, ...def, offset: i * 1.45 });
   });
 
-  /* ---------- Starfield ---------- */
+  return satellites;
+}
+
+function createStarfield(isCompact, glowTexture) {
   const starCount = isCompact ? 220 : 650;
   const starPositions = new Float32Array(starCount * 3);
   for (let i = 0; i < starCount; i++) {
@@ -121,6 +106,38 @@ function initScene(canvas) {
       blending: THREE.AdditiveBlending,
     })
   );
+  return stars;
+}
+
+function initScene(canvas) {
+  const mode = canvas.dataset.signalScene || "hero";
+  const isCompact = mode === "compact";
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0, isCompact ? 8.5 : 11);
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  } catch (err) {
+    canvas.closest("[data-scene-wrapper]")?.classList.add("scene-fallback");
+    return;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+
+  const glowTexture = createGlowTexture();
+
+  /* ---------- Core ---------- */
+  const { core, outerLines, innerLines, corePoints } = createCore(isCompact, glowTexture);
+  scene.add(core);
+
+  /* ---------- Satellites ---------- */
+  const satellites = createSatellites(isCompact);
+  satellites.forEach(sat => scene.add(sat.mesh));
+
+  /* ---------- Starfield ---------- */
+  const stars = createStarfield(isCompact, glowTexture);
   scene.add(stars);
 
   /* ---------- Pointer parallax ---------- */
