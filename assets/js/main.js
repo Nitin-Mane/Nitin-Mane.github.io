@@ -287,6 +287,15 @@
   /* ---------- Sliding photo galleries (speaking / workshop pages) ---------- */
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const makeArrow = (dir, label, points) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `gallery__arrow gallery__arrow--${dir}`;
+    btn.setAttribute("aria-label", label);
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${points}"/></svg>`;
+    return btn;
+  };
+
   document.querySelectorAll(".gallery").forEach((gallery) => {
     const track = gallery.querySelector(".gallery__track");
     const slides = Array.from(gallery.querySelectorAll(".gallery__slide"));
@@ -305,14 +314,6 @@
       dots.appendChild(dot);
     });
 
-    const makeArrow = (dir, label, points) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = `gallery__arrow gallery__arrow--${dir}`;
-      btn.setAttribute("aria-label", label);
-      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${points}"/></svg>`;
-      return btn;
-    };
     const prevBtn = makeArrow("prev", "Previous photo", "15 18 9 12 15 6");
     const nextBtn = makeArrow("next", "Next photo", "9 18 15 12 9 6");
 
