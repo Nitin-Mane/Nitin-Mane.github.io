@@ -240,19 +240,23 @@
     const items = document.querySelectorAll(targetSelector);
     const buttons = group.querySelectorAll(".filter-btn");
 
+    const itemData = Array.from(items).map(item => ({
+      el: item,
+      tags: (item.getAttribute("data-tags") || "").split(",")
+    }));
+
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         buttons.forEach((b) => b.classList.remove("is-active"));
         btn.classList.add("is-active");
         const filter = btn.getAttribute("data-filter");
 
-        items.forEach((item) => {
-          const tags = (item.getAttribute("data-tags") || "").split(",");
+        itemData.forEach(({ el, tags }) => {
           const show = filter === "all" || tags.includes(filter);
-          item.style.display = show ? "" : "none";
+          el.style.display = show ? "" : "none";
           if (show) {
-            item.classList.remove("is-visible");
-            requestAnimationFrame(() => item.classList.add("is-visible"));
+            el.classList.remove("is-visible");
+            requestAnimationFrame(() => el.classList.add("is-visible"));
           }
         });
       });
