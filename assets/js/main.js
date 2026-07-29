@@ -240,14 +240,18 @@
     const items = document.querySelectorAll(targetSelector);
     const buttons = group.querySelectorAll(".filter-btn");
 
+    const itemTagsList = Array.from(items).map(item =>
+      (item.getAttribute("data-tags") || "").split(",")
+    );
+
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         buttons.forEach((b) => b.classList.remove("is-active"));
         btn.classList.add("is-active");
         const filter = btn.getAttribute("data-filter");
 
-        items.forEach((item) => {
-          const tags = (item.getAttribute("data-tags") || "").split(",");
+        items.forEach((item, index) => {
+          const tags = itemTagsList[index];
           const show = filter === "all" || tags.includes(filter);
           item.style.display = show ? "" : "none";
           if (show) {
