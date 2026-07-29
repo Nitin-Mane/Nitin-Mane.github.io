@@ -47,4 +47,32 @@ describe('main.js rotator', () => {
     const rotator = document.querySelector('[data-rotator]');
     expect(rotator.textContent).toBe('');
   });
+
+  it('handles empty data-rotator attribute', () => {
+    // Set up the DOM with empty attribute
+    document.body.innerHTML = '<div data-rotator="">Original Text</div>';
+
+    // Execution should not throw
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+
+    // With empty JSON, JSON.parse throws and fallback to [], text unchanged
+    const rotator = document.querySelector('[data-rotator]');
+    expect(rotator.textContent).toBe('Original Text');
+  });
+
+  it('handles missing data-rotator attribute gracefully', () => {
+    // Set up the DOM with missing attribute
+    document.body.innerHTML = '<div>Original Text</div>';
+
+    // Execution should not throw
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+
+    // Text content should remain unchanged since there is no rotator
+    const div = document.querySelector('div');
+    expect(div.textContent).toBe('Original Text');
+  });
 });
