@@ -10,6 +10,7 @@
   const root = document.documentElement;
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   const themeKey = "nitinmane-theme";
+  const themeToggleBtns = document.querySelectorAll("[data-theme-toggle]");
 
   const setTheme = (theme) => {
     const nextTheme = theme === "light" ? "light" : "dark";
@@ -18,7 +19,7 @@
     if (themeMeta) {
       themeMeta.setAttribute("content", isLight ? "#f7f9fc" : "#060a12");
     }
-    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    themeToggleBtns.forEach((btn) => {
       btn.setAttribute("aria-pressed", String(isLight));
       btn.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
       btn.title = isLight ? "Switch to dark theme" : "Switch to light theme";
@@ -33,7 +34,7 @@
   }
   setTheme(initialTheme);
 
-  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+  themeToggleBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
       setTheme(nextTheme);
