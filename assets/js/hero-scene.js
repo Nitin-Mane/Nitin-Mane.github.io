@@ -141,14 +141,16 @@ function initScene(canvas) {
   scene.add(stars);
 
   /* ---------- Pointer parallax ---------- */
+  let winWidth = window.innerWidth;
+  let winHeight = window.innerHeight;
   let targetRotX = 0;
   let targetRotY = 0;
   if (!REDUCE_MOTION) {
     window.addEventListener(
       "pointermove",
       (e) => {
-        targetRotY = ((e.clientX / window.innerWidth) * 2 - 1) * 0.28;
-        targetRotX = ((e.clientY / window.innerHeight) * 2 - 1) * 0.18;
+        targetRotY = ((e.clientX / winWidth) * 2 - 1) * 0.28;
+        targetRotX = ((e.clientY / winHeight) * 2 - 1) * 0.18;
       },
       { passive: true }
     );
@@ -156,6 +158,8 @@ function initScene(canvas) {
 
   /* ---------- Resize ---------- */
   function resize() {
+    winWidth = window.innerWidth;
+    winHeight = window.innerHeight;
     const rect = canvas.parentElement.getBoundingClientRect();
     const width = Math.max(rect.width, 1);
     const height = Math.max(rect.height, 1);
