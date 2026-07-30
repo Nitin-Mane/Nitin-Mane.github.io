@@ -187,8 +187,9 @@
   const counters = document.querySelectorAll("[data-counter]");
   if (counters.length) {
     const animateCounter = (el) => {
-      const target = parseFloat(el.getAttribute("data-counter"));
-      const decimals = (el.getAttribute("data-counter").split(".")[1] || "").length;
+      const counterVal = el.getAttribute("data-counter");
+      const target = parseFloat(counterVal);
+      const decimals = (counterVal.split(".")[1] || "").length;
       const duration = 1400;
       const start = performance.now();
       const step = (now) => {
