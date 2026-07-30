@@ -10,6 +10,7 @@
     const root = document.documentElement;
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const themeKey = "nitinmane-theme";
+    const themeToggleBtns = document.querySelectorAll("[data-theme-toggle]");
 
     const setTheme = (theme) => {
       const nextTheme = theme === "light" ? "light" : "dark";
@@ -18,7 +19,7 @@
       if (themeMeta) {
         themeMeta.setAttribute("content", isLight ? "#f7f9fc" : "#060a12");
       }
-      document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+      themeToggleBtns.forEach((btn) => {
         btn.setAttribute("aria-pressed", String(isLight));
         btn.setAttribute(
           "aria-label",
@@ -36,7 +37,7 @@
     }
     setTheme(initialTheme);
 
-    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    themeToggleBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const nextTheme =
           root.getAttribute("data-theme") === "light" ? "dark" : "light";
@@ -204,9 +205,9 @@
     const counters = document.querySelectorAll("[data-counter]");
     if (counters.length) {
       const animateCounter = (el) => {
-        const target = parseFloat(el.getAttribute("data-counter"));
-        const decimals = (el.getAttribute("data-counter").split(".")[1] || "")
-          .length;
+        const counterVal = el.getAttribute("data-counter");
+        const target = parseFloat(counterVal);
+        const decimals = (counterVal.split(".")[1] || "").length;
         const duration = 1400;
         const start = performance.now();
         const step = (now) => {
@@ -261,6 +262,9 @@
       const targetSelector = group.getAttribute("data-filter-group");
       const items = document.querySelectorAll(targetSelector);
       const buttons = group.querySelectorAll(".filter-btn");
+      const itemTagsList = Array.from(items).map((item) =>
+        (item.getAttribute("data-tags") || "").split(","),
+      );
 
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -268,8 +272,8 @@
           btn.classList.add("is-active");
           const filter = btn.getAttribute("data-filter");
 
-          items.forEach((item) => {
-            const tags = (item.getAttribute("data-tags") || "").split(",");
+          items.forEach((item, index) => {
+            const tags = itemTagsList[index];
             const show = filter === "all" || tags.includes(filter);
             item.style.display = show ? "" : "none";
             if (show) {
@@ -313,6 +317,14 @@
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+    const makeArrow = (dir, label, points) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `gallery__arrow gallery__arrow--${dir}`;
+      btn.setAttribute("aria-label", label);
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${points}"/></svg>`;
+      return btn;
+    };
 
     document.querySelectorAll(".gallery").forEach((gallery) => {
       const track = gallery.querySelector(".gallery__track");
@@ -332,14 +344,6 @@
         dots.appendChild(dot);
       });
 
-      const makeArrow = (dir, label, points) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = `gallery__arrow gallery__arrow--${dir}`;
-        btn.setAttribute("aria-label", label);
-        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${points}"/></svg>`;
-        return btn;
-      };
       const prevBtn = makeArrow("prev", "Previous photo", "15 18 9 12 15 6");
       const nextBtn = makeArrow("next", "Next photo", "9 18 15 12 9 6");
 
