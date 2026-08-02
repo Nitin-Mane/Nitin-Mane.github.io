@@ -11,7 +11,7 @@
   --color-surface: #0d1422;
   --color-surface-2: #121b2e;
   --color-surface-3: #182338;
-  --color-border: rgba(150, 200, 225, 0.10);
+  --color-border: rgba(150, 200, 225, 0.1);
   --color-border-strong: rgba(150, 210, 230, 0.22);
   --color-border-accent: rgba(45, 230, 214, 0.35);
   --nav-bg: rgba(6, 10, 18, 0.55);
@@ -37,7 +37,7 @@
   /* ---------- Text ---------- */
   --color-text: #eaf2fb;
   --color-text-muted: #93a4c0;
-  --color-text-dim: #5b6a85;
+  --color-text-dim: #7d8cad;
   --color-text-on-accent: #06121b;
 
   /* ---------- Typography ---------- */
