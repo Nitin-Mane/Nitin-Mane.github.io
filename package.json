@@ -19,10 +19,18 @@
   },
   "homepage": "https://github.com/Nitin-Mane/Nitin-Mane.github.io#readme",
   "devDependencies": {
+    "@axe-core/cli": "^4.12.1",
     "@babel/core": "^8.0.1",
     "@babel/preset-env": "^8.0.2",
     "babel-jest": "^30.4.1",
+    "broken-link-checker": "^0.7.8",
+    "eslint": "^10.8.0",
+    "html-validator-cli": "^7.0.1",
+    "htmlhint": "^1.9.2",
+    "http-server": "^14.1.1",
     "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1"
+    "jest-environment-jsdom": "^30.4.1",
+    "lighthouse": "^13.4.1",
+    "stylelint": "^17.14.1"
   }
 }

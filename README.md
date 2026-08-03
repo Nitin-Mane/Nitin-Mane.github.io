@@ -7,7 +7,7 @@
 
 # 🌐 Personal Website
 
-[![Website Deploy](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml)
+[![Website Deploy](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml)
 ![HTML](https://img.shields.io/badge/HTML5-Static_Webpages-orange?style=for-the-badge&logo=html5)
 ![CSS](https://img.shields.io/badge/CSS3-Custom_Theme-blue?style=for-the-badge&logo=css3)
 ![Hosting](https://img.shields.io/badge/Hosted_on-Namecheap-purple?style=for-the-badge)
@@ -80,7 +80,7 @@ The purpose of this website is to present my profile, technical work, research p
 ## 📁 Project Structure
 
 ```text
-PERSONAL_WEBSITE/
+Nitin-Mane.github.io/
 │
 ├── assets/
 │   ├── css/
@@ -303,7 +303,7 @@ This repository uses GitHub Actions to track the project status.
 Workflow badge used in this README:
 
 ```markdown
-[![Website Deploy](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml)
+[![Website Deploy](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml)
 ```
 
 Make sure this file exists:
@@ -320,7 +320,7 @@ name: Website Deploy
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -338,13 +338,48 @@ jobs:
           test -f index.html
           echo "Website files verified successfully."
 
-      - name: Deployment Status
-        run: |
-          echo "Static website source updated successfully."
-          echo "Upload latest files to Namecheap public_html folder if manual hosting is used."
+      - name: Accessibility Check
+        run: npx @axe-core/cli index.html
+
+      - name: Run Lighthouse CI
+        run: npx lighthouse http://localhost:8080 --output=html --output-path=./report.html
 ```
 
+> **Note:** The GitHub Actions workflow performs quality assurance checks on Pull Requests and pushes to `master`. The actual production deployment to Namecheap is performed manually via cPanel/FTP after the QA pipeline passes, meaning this workflow acts as a continuous integration check rather than a continuous deployment pipeline.
+
 ---
+
+
+## 🧪 Local Development & Quality Checks
+
+To preview the website locally and run quality checks, ensure you have Node.js installed, then run:
+
+```bash
+# Install development dependencies
+npm ci
+
+# Run static HTTP server (preview)
+npx http-server . -p 8000
+
+# Validate HTML structure
+npx htmlhint "**/*.html"
+
+# Lint CSS
+npx stylelint "assets/css/**/*.css"
+
+# Lint JavaScript
+npx eslint "assets/js/**/*.js"
+
+# Run tests
+npm test
+```
+
+### Accessibility and Performance Expectations
+We expect the following minimum Lighthouse scores for any new pull request:
+- Performance: 90
+- Accessibility: 95
+- Best Practices: 95
+- SEO: 95
 
 ## 🧪 Local Preview
 

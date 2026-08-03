@@ -3,7 +3,7 @@
    Mounts on any <canvas data-signal-scene="hero|compact">
    ============================================================= */
 
-import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+import * as THREE from "./three.module.js";
 
 const REDUCE_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
