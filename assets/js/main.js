@@ -72,18 +72,30 @@
   const navToggle = document.querySelector(".nav__toggle");
   const navLinks = document.querySelector(".nav__links");
   if (navToggle && navLinks) {
+    const closeNav = () => {
+      if (navLinks.classList.contains("is-open")) {
+        navLinks.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        navToggle.focus();
+      }
+    };
     navToggle.addEventListener("click", () => {
       const isOpen = navLinks.classList.toggle("is-open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
       document.body.style.overflow = isOpen ? "hidden" : "";
+      if (isOpen) {
+        const firstLink = navLinks.querySelector("a");
+        if (firstLink) firstLink.focus();
+      }
     });
 
     navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("is-open");
-        navToggle.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
-      });
+      link.addEventListener("click", closeNav);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
     });
   }
 
@@ -247,9 +259,15 @@
     );
 
     buttons.forEach((btn) => {
+      // Initialize aria-pressed
+      btn.setAttribute("aria-pressed", btn.classList.contains("is-active") ? "true" : "false");
       btn.addEventListener("click", () => {
-        buttons.forEach((b) => b.classList.remove("is-active"));
+        buttons.forEach((b) => {
+            b.classList.remove("is-active");
+            b.setAttribute("aria-pressed", "false");
+        });
         btn.classList.add("is-active");
+        btn.setAttribute("aria-pressed", "true");
         const filter = btn.getAttribute("data-filter");
 
         items.forEach((item, index) => {
@@ -257,8 +275,11 @@
           const show = filter === "all" || tags.includes(filter);
           item.style.display = show ? "" : "none";
           if (show) {
+            item.removeAttribute("tabindex");
             item.classList.remove("is-visible");
             requestAnimationFrame(() => item.classList.add("is-visible"));
+          } else {
+            item.setAttribute("tabindex", "-1");
           }
         });
       });
@@ -272,13 +293,20 @@
       const label = btn.querySelector("[data-copy-label]");
       const original = label ? label.textContent : btn.textContent;
       try {
+        if (!navigator.clipboard) throw new Error('Clipboard API not available');
         await navigator.clipboard.writeText(value);
+        if (label) {
+          label.textContent = "Copied!";
+          setTimeout(() => (label.textContent = original), 1800);
+        } else {
+          btn.textContent = "Copied!";
+          setTimeout(() => (btn.textContent = original), 1800);
+        }
       } catch (e) {
-        /* clipboard unavailable — ignore */
-      }
-      if (label) {
-        label.textContent = "Copied!";
-        setTimeout(() => (label.textContent = original), 1800);
+        /* clipboard unavailable — fallback */
+        const fallbackText = label ? label : btn;
+        fallbackText.textContent = "Failed to copy";
+        setTimeout(() => (fallbackText.textContent = original), 1800);
       }
     });
   });
@@ -347,12 +375,22 @@
       let timer = setInterval(() => goTo(index + 1), 4500);
       const restart = () => {
         clearInterval(timer);
-        timer = setInterval(() => goTo(index + 1), 4500);
+        if (!document.hidden) {
+            timer = setInterval(() => goTo(index + 1), 4500);
+        }
       };
       gallery.addEventListener("mouseenter", () => clearInterval(timer));
       gallery.addEventListener("mouseleave", restart);
       gallery.addEventListener("focusin", () => clearInterval(timer));
       gallery.addEventListener("focusout", restart);
+      gallery.addEventListener("touchstart", () => clearInterval(timer), { passive: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            clearInterval(timer);
+        } else {
+            restart();
+        }
+      });
     }
 
     let touchStartX = null;
