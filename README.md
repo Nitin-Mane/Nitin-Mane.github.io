@@ -7,7 +7,7 @@
 
 # 🌐 Personal Website
 
-[![Website Deploy](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml)
+[![Website Deploy](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml)
 ![HTML](https://img.shields.io/badge/HTML5-Static_Webpages-orange?style=for-the-badge&logo=html5)
 ![CSS](https://img.shields.io/badge/CSS3-Custom_Theme-blue?style=for-the-badge&logo=css3)
 ![Hosting](https://img.shields.io/badge/Hosted_on-Namecheap-purple?style=for-the-badge)
@@ -303,7 +303,7 @@ This repository uses GitHub Actions to track the project status.
 Workflow badge used in this README:
 
 ```markdown
-[![Website Deploy](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/USERNAME/REPOSITORY/actions/workflows/deploy.yml)
+[![Website Deploy](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Nitin-Mane/Nitin-Mane.github.io/actions/workflows/deploy.yml)
 ```
 
 Make sure this file exists:
