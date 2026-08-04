@@ -5,20 +5,34 @@
 
 import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
-const REDUCE_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const REDUCE_MOTION = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+
+let cachedGlowTexture = null;
 
 function createGlowTexture() {
+  if (cachedGlowTexture) return cachedGlowTexture;
+
   const size = 128;
   const canvas = document.createElement("canvas");
   canvas.width = canvas.height = size;
   const ctx = canvas.getContext("2d");
-  const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  const gradient = ctx.createRadialGradient(
+    size / 2,
+    size / 2,
+    0,
+    size / 2,
+    size / 2,
+    size / 2,
+  );
   gradient.addColorStop(0, "rgba(255,255,255,1)");
   gradient.addColorStop(0.35, "rgba(255,255,255,0.55)");
   gradient.addColorStop(1, "rgba(255,255,255,0)");
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, size, size);
-  return new THREE.CanvasTexture(canvas);
+  cachedGlowTexture = new THREE.CanvasTexture(canvas);
+  return cachedGlowTexture;
 }
 
 function createCore(isCompact, glowTexture) {
@@ -27,14 +41,22 @@ function createCore(isCompact, glowTexture) {
   const outerGeo = new THREE.IcosahedronGeometry(isCompact ? 2.0 : 2.6, 1);
   const outerLines = new THREE.LineSegments(
     new THREE.EdgesGeometry(outerGeo),
-    new THREE.LineBasicMaterial({ color: 0x2ee6d6, transparent: true, opacity: 0.55 })
+    new THREE.LineBasicMaterial({
+      color: 0x2ee6d6,
+      transparent: true,
+      opacity: 0.55,
+    }),
   );
   core.add(outerLines);
 
   const innerGeo = new THREE.IcosahedronGeometry(isCompact ? 1.1 : 1.5, 0);
   const innerLines = new THREE.LineSegments(
     new THREE.EdgesGeometry(innerGeo),
-    new THREE.LineBasicMaterial({ color: 0xffb454, transparent: true, opacity: 0.32 })
+    new THREE.LineBasicMaterial({
+      color: 0xffb454,
+      transparent: true,
+      opacity: 0.32,
+    }),
   );
   core.add(innerLines);
 
@@ -49,7 +71,7 @@ function createCore(isCompact, glowTexture) {
       depthWrite: false,
       color: 0x9ff7ee,
       blending: THREE.AdditiveBlending,
-    })
+    }),
   );
   core.add(corePoints);
 
@@ -60,20 +82,60 @@ function createSatellites(isCompact) {
   const satellites = [];
   const satelliteDefs = isCompact
     ? [
-        { geo: new THREE.OctahedronGeometry(0.32), color: 0xffb454, radius: 3.4, speed: 0.55, tilt: 0.4 },
-        { geo: new THREE.TetrahedronGeometry(0.3), color: 0x2ee6d6, radius: 4.1, speed: -0.4, tilt: -0.5 },
+        {
+          geo: new THREE.OctahedronGeometry(0.32),
+          color: 0xffb454,
+          radius: 3.4,
+          speed: 0.55,
+          tilt: 0.4,
+        },
+        {
+          geo: new THREE.TetrahedronGeometry(0.3),
+          color: 0x2ee6d6,
+          radius: 4.1,
+          speed: -0.4,
+          tilt: -0.5,
+        },
       ]
     : [
-        { geo: new THREE.OctahedronGeometry(0.45), color: 0xffb454, radius: 4.4, speed: 0.55, tilt: 0.4 },
-        { geo: new THREE.TetrahedronGeometry(0.4), color: 0x2ee6d6, radius: 5.4, speed: -0.4, tilt: -0.55 },
-        { geo: new THREE.TorusGeometry(0.4, 0.12, 8, 24), color: 0xb48bff, radius: 6.2, speed: 0.32, tilt: 0.25 },
-        { geo: new THREE.BoxGeometry(0.5, 0.5, 0.5), color: 0x2ee6d6, radius: 3.4, speed: -0.7, tilt: 0.8 },
+        {
+          geo: new THREE.OctahedronGeometry(0.45),
+          color: 0xffb454,
+          radius: 4.4,
+          speed: 0.55,
+          tilt: 0.4,
+        },
+        {
+          geo: new THREE.TetrahedronGeometry(0.4),
+          color: 0x2ee6d6,
+          radius: 5.4,
+          speed: -0.4,
+          tilt: -0.55,
+        },
+        {
+          geo: new THREE.TorusGeometry(0.4, 0.12, 8, 24),
+          color: 0xb48bff,
+          radius: 6.2,
+          speed: 0.32,
+          tilt: 0.25,
+        },
+        {
+          geo: new THREE.BoxGeometry(0.5, 0.5, 0.5),
+          color: 0x2ee6d6,
+          radius: 3.4,
+          speed: -0.7,
+          tilt: 0.8,
+        },
       ];
 
   satelliteDefs.forEach((def, i) => {
     const mesh = new THREE.LineSegments(
       new THREE.EdgesGeometry(def.geo),
-      new THREE.LineBasicMaterial({ color: def.color, transparent: true, opacity: 0.85 })
+      new THREE.LineBasicMaterial({
+        color: def.color,
+        transparent: true,
+        opacity: 0.85,
+      }),
     );
     satellites.push({ mesh, ...def, offset: i * 1.45 });
   });
@@ -104,7 +166,7 @@ function createStarfield(isCompact, glowTexture) {
       opacity: 0.6,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
-    })
+    }),
   );
   return stars;
 }
@@ -119,7 +181,11 @@ function initScene(canvas) {
 
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+    });
   } catch (err) {
     canvas.closest("[data-scene-wrapper]")?.classList.add("scene-fallback");
     return;
@@ -129,12 +195,15 @@ function initScene(canvas) {
   const glowTexture = createGlowTexture();
 
   /* ---------- Core ---------- */
-  const { core, outerLines, innerLines, corePoints } = createCore(isCompact, glowTexture);
+  const { core, outerLines, innerLines, corePoints } = createCore(
+    isCompact,
+    glowTexture,
+  );
   scene.add(core);
 
   /* ---------- Satellites ---------- */
   const satellites = createSatellites(isCompact);
-  satellites.forEach(sat => scene.add(sat.mesh));
+  satellites.forEach((sat) => scene.add(sat.mesh));
 
   /* ---------- Starfield ---------- */
   const stars = createStarfield(isCompact, glowTexture);
@@ -152,7 +221,7 @@ function initScene(canvas) {
         targetRotY = ((e.clientX / winWidth) * 2 - 1) * 0.28;
         targetRotX = ((e.clientY / winHeight) * 2 - 1) * 0.18;
       },
-      { passive: true }
+      { passive: true },
     );
   }
 
@@ -198,7 +267,7 @@ function initScene(canvas) {
       sat.mesh.position.set(
         Math.cos(angle) * sat.radius,
         Math.sin(angle * 0.6) * sat.radius * 0.3 * sat.tilt,
-        Math.sin(angle) * sat.radius
+        Math.sin(angle) * sat.radius,
       );
       sat.mesh.rotation.set(t * 0.6, t * 0.4, 0);
     });
@@ -226,7 +295,10 @@ function boot() {
   });
 }
 
-if (document.readyState === "complete" || document.readyState === "interactive") {
+if (
+  document.readyState === "complete" ||
+  document.readyState === "interactive"
+) {
   boot();
 } else {
   document.addEventListener("DOMContentLoaded", boot);
