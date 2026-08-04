@@ -267,10 +267,10 @@
 
   /* ---------- Copy email to clipboard ---------- */
   document.querySelectorAll("[data-copy]").forEach((btn) => {
+    const value = btn.getAttribute("data-copy");
+    const label = btn.querySelector("[data-copy-label]");
+    const original = label ? label.textContent : btn.textContent;
     btn.addEventListener("click", async () => {
-      const value = btn.getAttribute("data-copy");
-      const label = btn.querySelector("[data-copy-label]");
-      const original = label ? label.textContent : btn.textContent;
       try {
         await navigator.clipboard.writeText(value);
       } catch (e) {
