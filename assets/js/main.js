@@ -280,10 +280,10 @@
       );
 
       buttons.forEach((btn) => {
+        const filter = btn.getAttribute("data-filter");
         btn.addEventListener("click", () => {
           buttons.forEach((b) => b.classList.remove("is-active"));
           btn.classList.add("is-active");
-          const filter = btn.getAttribute("data-filter");
 
           items.forEach((item, index) => {
             const tags = itemTagsList[index];
