@@ -148,3 +148,67 @@ describe('normalizeRoute', () => {
     expect(normalizeRoute('/about.HtMl')).toBe('about');
   });
 });
+
+describe('initCopyEmail', () => {
+  let writeTextMock;
+
+  beforeEach(() => {
+    jest.resetModules();
+    jest.useFakeTimers();
+
+    writeTextMock = jest.fn();
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: writeTextMock,
+      },
+    });
+
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('handles clipboard copy failure gracefully', async () => {
+    document.body.innerHTML = `
+      <button data-copy="test@example.com">
+        <span data-copy-label>Copy</span>
+      </button>
+    `;
+
+    writeTextMock.mockRejectedValueOnce(new Error('Clipboard error'));
+
+    require('../assets/js/main.js');
+
+    const btn = document.querySelector('[data-copy]');
+    const label = document.querySelector('[data-copy-label]');
+
+    // Fire click
+    btn.dispatchEvent(new window.MouseEvent('click'));
+
+    // Wait for promises to flush
+    await Promise.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(writeTextMock).toHaveBeenCalledWith('test@example.com');
+    expect(label.textContent).toBe('Copied!');
+
+    // Advance timer to test resetting text
+    jest.advanceTimersByTime(1800);
+    expect(label.textContent).toBe('Copy');
+  });
+});
