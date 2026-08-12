@@ -339,7 +339,20 @@
       btn.type = "button";
       btn.className = `gallery__arrow gallery__arrow--${dir}`;
       btn.setAttribute("aria-label", label);
-      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${points}"/></svg>`;
+      btn.innerHTML = `
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="${points}"/>
+        </svg>
+      `.trim();
       return btn;
     };
 
