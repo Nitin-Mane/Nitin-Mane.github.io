@@ -59,7 +59,8 @@
     "blogPost": [
       { "@type": "BlogPosting", "headline": "Industrial Anomaly Detection at the Edge", "url": "https://www.nitinmane.me/blog#industrial-anomaly-detection-edge" },
       { "@type": "BlogPosting", "headline": "Multi-Modal LLM/RAG for Plant Intelligence", "url": "https://www.nitinmane.me/blog#multimodal-llm-rag-plant-intelligence" },
-      { "@type": "BlogPosting", "headline": "Smart Weed Remover Robot: NVIDIA Jetson Nano with 6-DOF Parallel Robot", "url": "https://www.nitinmane.me/blog#smart-weed-remover-robot" }
+      { "@type": "BlogPosting", "headline": "Smart Weed Remover Robot: NVIDIA Jetson Nano with 6-DOF Parallel Robot", "url": "https://www.nitinmane.me/blog#smart-weed-remover-robot" },
+      { "@type": "BlogPosting", "headline": "UltraEdge AIPC Studio: Building a Local Multimodal AI Lab on an AI PC", "url": "https://www.nitinmane.me/blog#ultraedge-aipc-studio" }
     ]
   }
   </script>
@@ -144,6 +145,11 @@
             <span class="tag tag--amber">Robotics</span>
             <h2>Smart Weed Remover Robot</h2>
             <p>NVIDIA Jetson Nano perception paired with a 6-DOF parallel robot for field-level weed removal.</p>
+          </a>
+          <a class="card blog-index-card reveal reveal--scale" style="--reveal-delay:240ms" href="#ultraedge-aipc-studio">
+            <span class="tag tag--cyan">AI PC</span>
+            <h2>UltraEdge AIPC Studio: Building a Local Multimodal AI Lab on an AI PC</h2>
+            <p>A local-first developer console for Intel AI PCs to prepare models, inspect hardware, run multimodal assistants, and benchmark performance.</p>
           </a>
         </div>
       </div>
@@ -352,6 +358,83 @@
           <div class="blog-article__cta">
             <a href="projects" class="project-card__link">
               Related project: Robotics &amp; Mechatronics
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="contact" class="project-card__link">
+              Contact for collaboration
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ ARTICLE 04 ============ -->
+    <article id="ultraedge-aipc-studio" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 04</span>
+          <div class="tag-row">
+            <span class="tag tag--cyan">AI PC</span>
+            <span class="tag">Edge AI</span>
+            <span class="tag">Local AI</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 7 min</p>
+          <p class="font-mono text-dim">Published: August 2026<br />Author: Nitin Mane</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>UltraEdge AIPC Studio: Building a Local Multimodal AI Lab on an AI PC</h2>
+          <p class="blog-article__lede">
+            UltraEdge AIPC Studio is a local-first developer console for Intel AI PCs. It treats the AI PC as a real engineering workstation.
+          </p>
+          <p>Most AI demos look great when everything is already installed, the model is warm, the camera behaves, the GPU is happy, and nobody asks where the data went.</p>
+          <p>Industrial AI is less forgiving.</p>
+          <p>In a real engineering workflow, the questions arrive fast:</p>
+          <p>Can this run locally?
+Which device is doing the work: CPU, GPU, or NPU?
+How much memory does the model need?
+What happens when the network is not available?
+Can I test audio, video, text, and code in one place?
+And the classic question: why did this work perfectly yesterday?</p>
+          <p>That is the practical problem I wanted to explore with UltraEdge AIPC Studio.</p>
+          <p>UltraEdge AIPC Studio is a local-first developer console for Intel AI PCs. It is built around a simple idea: an AI PC should not only run a chatbot. It should become a small local AI lab where engineers can prepare models, inspect hardware, run multimodal assistants, benchmark performance, and review privacy controls before pretending something is production-ready.</p>
+          <p>Project repository: UltraEdge AIPC Studio on GitHub</p>
+          <p>For the multimodal model direction, I also used OpenVINO’s Qwen2.5-Omni notebook as an important reference point: Omnimodal assistant with Qwen2.5-Omni and OpenVINO.</p>
+          <h3>Why an AI PC Studio?</h3>
+          <p>Usually, when testing a new model or workflow, you have to run multiple scripts, open different terminals, and guess what the hardware is actually doing.</p>
+          <p>I wanted a single unified interface that lets you:</p>
+          <p>1. Check hardware status (CPU/GPU/NPU usage) before running a model.
+2. Manage models easily (download, optimize, set execution targets).
+3. Chat with models across text, audio, and video modalities.
+4. Execute code generated by the model locally inside a safe sandbox.
+5. Benchmark model latency and throughput directly on the target hardware.</p>
+          <h3>The Stack in Plain English</h3>
+          <p>To build this, I used:</p>
+          <p>- Intel OpenVINO: The engine that makes models run fast across CPU, GPU, and NPU.
+- Python (FastAPI): The backend server managing models and hardware checks.
+- React (Next.js): The frontend dashboard.
+- Qwen2.5-Omni: A powerful multimodal model that handles audio, vision, and text natively.</p>
+          <h3>What We Will Do</h3>
+          <p>The following steps will guide you through cloning the repository, installing the dependencies, starting the studio, and running your first multimodal inference locally on an AI PC.</p>
+          <h3>Step 1: Clone the Project</h3>
+          <p>First, get the code from GitHub.</p>
+          <h3>Step 2: Install the Backend</h3>
+          <p>You can use standard Python virtual environment or Conda to install the dependencies.</p>
+          <h3>Step 3: Install the Frontend</h3>
+          <p>Navigate to the frontend directory and install the Node packages via npm.</p>
+          <h3>Step 4: Start the Application</h3>
+          <p>Start the FastAPI backend, and in a new terminal, start the Next.js frontend.</p>
+          <h3>Step 5: Use the Dashboard as the Control Room</h3>
+          <p>Open your browser to `http://localhost:3000`. The first thing you'll see is the hardware dashboard showing real-time metrics for your Intel CPU, Arc GPU, and NPU.</p>
+          <h3>Closing Thoughts</h3>
+          <p>Industrial AI does not need more magical thinking.</p>
+          <p>It needs local tests, visible hardware context, practical model management, benchmark evidence, privacy-conscious defaults, and honest notes about what failed.</p>
+          <p>UltraEdge AIPC Studio is built in that spirit. It treats the AI PC as a real engineering workstation: a place to prepare models, test multimodal workflows, measure performance, and understand limits before making deployment claims.</p>
+          <p>That is the kind of AI PC workflow I want to see more often.</p>
+          <div class="blog-article__cta">
+            <a href="https://github.com/mnitin59/UltraEdge-AIPC-Studio" class="project-card__link" target="_blank" rel="noopener">
+              View on GitHub
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
             <a href="contact" class="project-card__link">
