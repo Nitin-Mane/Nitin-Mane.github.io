@@ -1,0 +1,13 @@
+🧹 Extract gallery arrow SVG creation to a helper function
+
+🎯 **What:** The code health issue addressed
+Extracted the inline SVG HTML string construction for gallery arrows into a dedicated helper function `createGalleryArrowSVG` utilizing `document.createElementNS`.
+
+💡 **Why:** How this improves maintainability
+The original `innerHTML` assignment used a long, multiline template string that decreased code readability and maintainability within `main.js`. By using `document.createElementNS`, we construct the SVG and its child elements idiomatically, improving readability and avoiding injection risks from long raw HTML strings.
+
+✅ **Verification:** How you confirmed the change is safe
+Ran the full Jest test suite (`npm test`) to ensure all tests passed successfully. Specifically checked `tests/main.test.js` to confirm `initSlidingGalleries()` and other logic remain unaffected. Checked Prettier code formatting manually.
+
+✨ **Result:** The improvement achieved
+A significantly cleaner, more readable `makeArrow` function with standardized DOM manipulation techniques for constructing inline SVGs.
