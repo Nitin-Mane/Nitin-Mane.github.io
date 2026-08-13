@@ -334,25 +334,33 @@
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
+    const createGalleryArrowSVG = (points) => {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("width", "16");
+      svg.setAttribute("height", "16");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("fill", "none");
+      svg.setAttribute("stroke", "currentColor");
+      svg.setAttribute("stroke-width", "2");
+      svg.setAttribute("stroke-linecap", "round");
+      svg.setAttribute("stroke-linejoin", "round");
+
+      const polyline = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "polyline",
+      );
+      polyline.setAttribute("points", points);
+
+      svg.appendChild(polyline);
+      return svg;
+    };
+
     const makeArrow = (dir, label, points) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = `gallery__arrow gallery__arrow--${dir}`;
       btn.setAttribute("aria-label", label);
-      btn.innerHTML = `
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <polyline points="${points}"/>
-        </svg>
-      `.trim();
+      btn.appendChild(createGalleryArrowSVG(points));
       return btn;
     };
 
