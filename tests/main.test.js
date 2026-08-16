@@ -212,3 +212,87 @@ describe('initCopyEmail', () => {
     expect(label.textContent).toBe('Copy');
   });
 });
+
+
+describe('initNavToggle', () => {
+  beforeEach(() => {
+    jest.resetModules();
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+
+    // Clear document body overflow
+    document.body.style.overflow = '';
+  });
+
+  it('handles missing DOM elements gracefully', () => {
+    document.body.innerHTML = '<div></div>';
+
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+  });
+
+  it('toggles mobile navigation on button click', () => {
+    document.body.innerHTML = `
+      <button class="nav__toggle" aria-expanded="false"></button>
+      <div class="nav__links"></div>
+    `;
+
+    require('../assets/js/main.js');
+
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
+
+    // Initially not open
+    expect(navLinks.classList.contains('is-open')).toBe(false);
+
+    // Click to open
+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(true);
+    expect(navToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(document.body.style.overflow).toBe('hidden');
+
+    // Click to close
+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(false);
+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(document.body.style.overflow).toBe('');
+  });
+
+  it('closes mobile navigation when a link is clicked', () => {
+    document.body.innerHTML = `
+      <button class="nav__toggle" aria-expanded="false"></button>
+      <div class="nav__links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    `;
+
+    require('../assets/js/main.js');
+
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
+    const links = document.querySelectorAll('.nav__links a');
+
+    // Open first
+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(true);
+
+    // Click a link
+    links[0].dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(false);
+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(document.body.style.overflow).toBe('');
+  });
+});
