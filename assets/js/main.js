@@ -6,6 +6,10 @@
 (() => {
   "use strict";
 
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
   const initThemeToggle = () => {
     /* ---------- Theme toggle ---------- */
     const root = document.documentElement;
@@ -172,9 +176,6 @@
         words = [];
       }
       if (words.length) {
-        const reduceMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        ).matches;
         let wordIndex = 0;
         let charIndex = 0;
         let deleting = false;
@@ -330,9 +331,6 @@
 
   const initSlidingGalleries = () => {
     /* ---------- Sliding photo galleries (speaking / workshop pages) ---------- */
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
 
     const createGalleryArrowSVG = (points) => {
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
