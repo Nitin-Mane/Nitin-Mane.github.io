@@ -277,7 +277,7 @@
       const buttons = group.querySelectorAll(".filter-btn");
 
       const itemTagsList = Array.from(items).map((item) =>
-        (item.getAttribute("data-tags") || "").split(","),
+        new Set((item.getAttribute("data-tags") || "").split(",")),
       );
 
       buttons.forEach((btn) => {
@@ -288,7 +288,7 @@
 
           items.forEach((item, index) => {
             const tags = itemTagsList[index];
-            const show = filter === "all" || tags.includes(filter);
+            const show = filter === "all" || tags.has(filter);
             item.style.display = show ? "" : "none";
             if (show) {
               item.classList.remove("is-visible");
