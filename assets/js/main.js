@@ -223,7 +223,8 @@
         const start = performance.now();
         const step = (now) => {
           const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
+          const p = 1 - progress;
+          const eased = 1 - p * p * p;
           const value = target * eased;
           el.textContent = decimals
             ? value.toFixed(decimals)
