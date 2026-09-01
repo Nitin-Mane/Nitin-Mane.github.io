@@ -296,3 +296,51 @@ describe('initNavToggle', () => {
     expect(document.body.style.overflow).toBe('');
   });
 });
+
+describe('initCurrentYearStamp', () => {
+  beforeEach(() => {
+    jest.resetModules();
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('calculates the correct years since the given year', () => {
+    jest.useFakeTimers().setSystemTime(new Date('2025-01-01T00:00:00Z'));
+
+    document.body.innerHTML = `
+      <span data-years-since="2015"></span>
+      <span data-years-since="2020"></span>
+    `;
+
+    require('../assets/js/main.js');
+
+    const spans = document.querySelectorAll('[data-years-since]');
+    expect(spans[0].textContent).toBe('10');
+    expect(spans[1].textContent).toBe('5');
+
+    jest.useRealTimers();
+  });
+
+  it('handles missing data-years-since attribute gracefully', () => {
+    document.body.innerHTML = '<div>No years since</div>';
+
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+  });
+});
