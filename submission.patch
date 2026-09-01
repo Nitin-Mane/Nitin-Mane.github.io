@@ -1,16 +1,153 @@
+diff --git a/commit_message.txt b/commit_message.txt
+index 1c98ef9..d342a8c 100644
+--- a/commit_message.txt
++++ b/commit_message.txt
+@@ -1,10 +1,3 @@
+-🧪 Add tests for initNavToggle
++🧪 add test for graceful localStorage failure on theme toggle
+
+-🎯 **What:** This testing improvement adds missing test coverage for the `initNavToggle` function located in `assets/js/main.js`. It ensures the mobile navigation menu behaves correctly when interacted with.
+-📊 **Coverage:** The new tests cover:
+-- Gracefully handling cases where `.nav__toggle` or `.nav__links` elements are missing from the DOM.
+-- Toggling the `.is-open` class on `.nav__links` when `.nav__toggle` is clicked.
+-- Toggling the `aria-expanded` attribute on `.nav__toggle`.
+-- Toggling `document.body.style.overflow` between `hidden` and empty.
+-- Closing the navigation menu automatically when an inner anchor link is clicked.
+-✨ **Result:** Test coverage is now complete for the mobile navigation feature, preventing future regressions and improving overall confidence in refactoring.
++Added a new test in `tests/main.test.js` to ensure the application does not crash and correctly toggles the `data-theme` attribute on the root element even if `localStorage.setItem` throws an error. Also updated `pr_description.md` with the description of this testing improvement.
+diff --git a/pr_description.md b/pr_description.md
+index 1c98ef9..8aaf9af 100644
+--- a/pr_description.md
++++ b/pr_description.md
+@@ -1,10 +1,7 @@
+-🧪 Add tests for initNavToggle
++Title: 🧪 Testing Improvement for Theme Toggle
+
+-🎯 **What:** This testing improvement adds missing test coverage for the `initNavToggle` function located in `assets/js/main.js`. It ensures the mobile navigation menu behaves correctly when interacted with.
+-📊 **Coverage:** The new tests cover:
+-- Gracefully handling cases where `.nav__toggle` or `.nav__links` elements are missing from the DOM.
+-- Toggling the `.is-open` class on `.nav__links` when `.nav__toggle` is clicked.
+-- Toggling the `aria-expanded` attribute on `.nav__toggle`.
+-- Toggling `document.body.style.overflow` between `hidden` and empty.
+-- Closing the navigation menu automatically when an inner anchor link is clicked.
+-✨ **Result:** Test coverage is now complete for the mobile navigation feature, preventing future regressions and improving overall confidence in refactoring.
++🎯 **What:** Missing error test for localStorage.setItem in theme toggle. The test now verifies that if `localStorage.setItem` throws an error (e.g. quota exceeded, disabled by user), the application gracefully catches it and continues to change the theme without crashing.
++
++📊 **Coverage:** The scenario where `localStorage.setItem` fails during the theme toggle click event in `main.js` is now tested.
++
++✨ **Result:** Increased confidence in the robustness of the theme toggling functionality in `assets/js/main.js`, verifying it won't crash the UI when local storage is unavailable.
+diff --git a/submission.patch b/submission.patch
+index b8cebf5..e69de29 100644
+--- a/submission.patch
++++ b/submission.patch
+@@ -1,92 +0,0 @@
+-diff --git a/tests/main.test.js b/tests/main.test.js
+-index 415c8f7..adfa030 100644
+---- a/tests/main.test.js
+-+++ b/tests/main.test.js
+-@@ -212,3 +212,87 @@ describe('initCopyEmail', () => {
+-     expect(label.textContent).toBe('Copy');
+-   });
+- });
+-+
+-+
+-+describe('initNavToggle', () => {
+-+  beforeEach(() => {
+-+    jest.resetModules();
+-+    Object.defineProperty(window, 'matchMedia', {
+-+      writable: true,
+-+      value: jest.fn().mockImplementation(query => ({
+-+        matches: false,
+-+        media: query,
+-+        onchange: null,
+-+        addListener: jest.fn(),
+-+        removeListener: jest.fn(),
+-+        addEventListener: jest.fn(),
+-+        removeEventListener: jest.fn(),
+-+        dispatchEvent: jest.fn(),
+-+      })),
+-+    });
+-+
+-+    // Clear document body overflow
+-+    document.body.style.overflow = '';
+-+  });
+-+
+-+  it('handles missing DOM elements gracefully', () => {
+-+    document.body.innerHTML = '<div></div>';
+-+
+-+    expect(() => {
+-+      require('../assets/js/main.js');
+-+    }).not.toThrow();
+-+  });
+-+
+-+  it('toggles mobile navigation on button click', () => {
+-+    document.body.innerHTML = `
+-+      <button class="nav__toggle" aria-expanded="false"></button>
+-+      <div class="nav__links"></div>
+-+    `;
+-+
+-+    require('../assets/js/main.js');
+-+
+-+    const navToggle = document.querySelector('.nav__toggle');
+-+    const navLinks = document.querySelector('.nav__links');
+-+
+-+    // Initially not open
+-+    expect(navLinks.classList.contains('is-open')).toBe(false);
+-+
+-+    // Click to open
+-+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+-+    expect(navLinks.classList.contains('is-open')).toBe(true);
+-+    expect(navToggle.getAttribute('aria-expanded')).toBe('true');
+-+    expect(document.body.style.overflow).toBe('hidden');
+-+
+-+    // Click to close
+-+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+-+    expect(navLinks.classList.contains('is-open')).toBe(false);
+-+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
+-+    expect(document.body.style.overflow).toBe('');
+-+  });
+-+
+-+  it('closes mobile navigation when a link is clicked', () => {
+-+    document.body.innerHTML = `
+-+      <button class="nav__toggle" aria-expanded="false"></button>
+-+      <div class="nav__links">
+-+        <a href="#about" class="nav-link">About</a>
+-+        <a href="#contact" class="nav-link">Contact</a>
+-+      </div>
+-+    `;
+-+
+-+    require('../assets/js/main.js');
+-+
+-+    const navToggle = document.querySelector('.nav__toggle');
+-+    const navLinks = document.querySelector('.nav__links');
+-+    const links = document.querySelectorAll('.nav__links a');
+-+
+-+    // Open first
+-+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+-+    expect(navLinks.classList.contains('is-open')).toBe(true);
+-+
+-+    // Click a link
+-+    links[0].dispatchEvent(new window.MouseEvent('click'));
+-+    expect(navLinks.classList.contains('is-open')).toBe(false);
+-+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
+-+    expect(document.body.style.overflow).toBe('');
+-+  });
+-+});
 diff --git a/tests/main.test.js b/tests/main.test.js
-index 415c8f7..adfa030 100644
+index bd98d6e..0b0a657 100644
 --- a/tests/main.test.js
 +++ b/tests/main.test.js
-@@ -212,3 +212,87 @@ describe('initCopyEmail', () => {
-     expect(label.textContent).toBe('Copy');
+@@ -296,3 +296,63 @@ describe('initNavToggle', () => {
+     expect(document.body.style.overflow).toBe('');
    });
  });
++describe('initThemeToggle', () => {
++  let setItemMock;
 +
-+
-+describe('initNavToggle', () => {
 +  beforeEach(() => {
 +    jest.resetModules();
++
++    // We mock matchMedia since it's used globally in main.js
 +    Object.defineProperty(window, 'matchMedia', {
 +      writable: true,
 +      value: jest.fn().mockImplementation(query => ({
@@ -25,68 +162,42 @@ index 415c8f7..adfa030 100644
 +      })),
 +    });
 +
-+    // Clear document body overflow
-+    document.body.style.overflow = '';
++    setItemMock = jest.spyOn(Storage.prototype, 'setItem');
++
++    document.documentElement.setAttribute('data-theme', 'light');
++    // Using simple document structure that main.js expects
++    document.body.innerHTML = `
++      <button data-theme-toggle aria-pressed="true"></button>
++    `;
 +  });
 +
-+  it('handles missing DOM elements gracefully', () => {
-+    document.body.innerHTML = '<div></div>';
++  afterEach(() => {
++    jest.restoreAllMocks();
++  });
 +
++  it('changes theme even when localStorage.setItem throws an error', () => {
++    // Make setItem throw
++    setItemMock.mockImplementation(() => {
++      throw new Error('localStorage is full or disabled');
++    });
++
++    // Run the main script to attach event listeners
 +    expect(() => {
 +      require('../assets/js/main.js');
 +    }).not.toThrow();
-+  });
 +
-+  it('toggles mobile navigation on button click', () => {
-+    document.body.innerHTML = `
-+      <button class="nav__toggle" aria-expanded="false"></button>
-+      <div class="nav__links"></div>
-+    `;
++    const btn = document.querySelector('[data-theme-toggle]');
++    const root = document.documentElement;
 +
-+    require('../assets/js/main.js');
++    // When required, main.js calls setTheme(initialTheme). initialTheme here is 'light'.
++    // setTheme('light') sets data-theme to 'light'.
++    expect(root.getAttribute('data-theme')).toBe('light');
 +
-+    const navToggle = document.querySelector('.nav__toggle');
-+    const navLinks = document.querySelector('.nav__links');
++    // Fire click
++    btn.dispatchEvent(new window.MouseEvent('click'));
 +
-+    // Initially not open
-+    expect(navLinks.classList.contains('is-open')).toBe(false);
-+
-+    // Click to open
-+    navToggle.dispatchEvent(new window.MouseEvent('click'));
-+    expect(navLinks.classList.contains('is-open')).toBe(true);
-+    expect(navToggle.getAttribute('aria-expanded')).toBe('true');
-+    expect(document.body.style.overflow).toBe('hidden');
-+
-+    // Click to close
-+    navToggle.dispatchEvent(new window.MouseEvent('click'));
-+    expect(navLinks.classList.contains('is-open')).toBe(false);
-+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
-+    expect(document.body.style.overflow).toBe('');
-+  });
-+
-+  it('closes mobile navigation when a link is clicked', () => {
-+    document.body.innerHTML = `
-+      <button class="nav__toggle" aria-expanded="false"></button>
-+      <div class="nav__links">
-+        <a href="#about" class="nav-link">About</a>
-+        <a href="#contact" class="nav-link">Contact</a>
-+      </div>
-+    `;
-+
-+    require('../assets/js/main.js');
-+
-+    const navToggle = document.querySelector('.nav__toggle');
-+    const navLinks = document.querySelector('.nav__links');
-+    const links = document.querySelectorAll('.nav__links a');
-+
-+    // Open first
-+    navToggle.dispatchEvent(new window.MouseEvent('click'));
-+    expect(navLinks.classList.contains('is-open')).toBe(true);
-+
-+    // Click a link
-+    links[0].dispatchEvent(new window.MouseEvent('click'));
-+    expect(navLinks.classList.contains('is-open')).toBe(false);
-+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
-+    expect(document.body.style.overflow).toBe('');
++    // Should change to dark and not crash
++    expect(root.getAttribute('data-theme')).toBe('dark');
++    expect(setItemMock).toHaveBeenCalledWith('nitinmane-theme', 'dark');
 +  });
 +});

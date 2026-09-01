@@ -1,10 +1,3 @@
-🧪 Add tests for initNavToggle
+🧪 add test for graceful localStorage failure on theme toggle
 
-🎯 **What:** This testing improvement adds missing test coverage for the `initNavToggle` function located in `assets/js/main.js`. It ensures the mobile navigation menu behaves correctly when interacted with.
-📊 **Coverage:** The new tests cover:
-- Gracefully handling cases where `.nav__toggle` or `.nav__links` elements are missing from the DOM.
-- Toggling the `.is-open` class on `.nav__links` when `.nav__toggle` is clicked.
-- Toggling the `aria-expanded` attribute on `.nav__toggle`.
-- Toggling `document.body.style.overflow` between `hidden` and empty.
-- Closing the navigation menu automatically when an inner anchor link is clicked.
-✨ **Result:** Test coverage is now complete for the mobile navigation feature, preventing future regressions and improving overall confidence in refactoring.
+Added a new test in `tests/main.test.js` to ensure the application does not crash and correctly toggles the `data-theme` attribute on the root element even if `localStorage.setItem` throws an error. Also updated `pr_description.md` with the description of this testing improvement.

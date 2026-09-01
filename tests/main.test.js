@@ -296,3 +296,63 @@ describe('initNavToggle', () => {
     expect(document.body.style.overflow).toBe('');
   });
 });
+describe('initThemeToggle', () => {
+  let setItemMock;
+
+  beforeEach(() => {
+    jest.resetModules();
+
+    // We mock matchMedia since it's used globally in main.js
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+
+    setItemMock = jest.spyOn(Storage.prototype, 'setItem');
+
+    document.documentElement.setAttribute('data-theme', 'light');
+    // Using simple document structure that main.js expects
+    document.body.innerHTML = `
+      <button data-theme-toggle aria-pressed="true"></button>
+    `;
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('changes theme even when localStorage.setItem throws an error', () => {
+    // Make setItem throw
+    setItemMock.mockImplementation(() => {
+      throw new Error('localStorage is full or disabled');
+    });
+
+    // Run the main script to attach event listeners
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+
+    const btn = document.querySelector('[data-theme-toggle]');
+    const root = document.documentElement;
+
+    // When required, main.js calls setTheme(initialTheme). initialTheme here is 'light'.
+    // setTheme('light') sets data-theme to 'light'.
+    expect(root.getAttribute('data-theme')).toBe('light');
+
+    // Fire click
+    btn.dispatchEvent(new window.MouseEvent('click'));
+
+    // Should change to dark and not crash
+    expect(root.getAttribute('data-theme')).toBe('dark');
+    expect(setItemMock).toHaveBeenCalledWith('nitinmane-theme', 'dark');
+  });
+});
