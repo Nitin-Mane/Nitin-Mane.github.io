@@ -296,3 +296,61 @@ describe('initNavToggle', () => {
     expect(document.body.style.overflow).toBe('');
   });
 });
+
+describe('initFooterYear', () => {
+  beforeEach(() => {
+    jest.resetModules();
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('updates elements with data-year attribute to current year', () => {
+    // Mock Date to return a fixed year
+    const mockDate = new Date('2024-01-01T00:00:00Z');
+    const spy = jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+
+    // Setup DOM
+    document.body.innerHTML = `
+      <footer>
+        <p>Copyright <span data-year>2020</span></p>
+        <p>Also <span data-year></span></p>
+      </footer>
+    `;
+
+    require('../assets/js/main.js');
+
+    const yearElements = document.querySelectorAll('[data-year]');
+    expect(yearElements.length).toBe(2);
+    expect(yearElements[0].textContent).toBe('2024');
+    expect(yearElements[1].textContent).toBe('2024');
+
+    spy.mockRestore();
+  });
+
+  it('does nothing if no data-year elements exist', () => {
+    document.body.innerHTML = `
+      <footer>
+        <p>No year element here</p>
+      </footer>
+    `;
+
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+  });
+});
