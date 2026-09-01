@@ -296,3 +296,62 @@ describe('initNavToggle', () => {
     expect(document.body.style.overflow).toBe('');
   });
 });
+
+describe('initBackToTop', () => {
+  beforeEach(() => {
+    jest.resetModules();
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+    window.scrollTo = jest.fn();
+    // Ensure we start with clean DOM and scroll state
+    document.body.innerHTML = '';
+    window.scrollY = 0;
+  });
+
+  it('handles missing .to-top element gracefully', () => {
+    // DOM has no .to-top
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+  });
+
+  it('toggles is-visible class based on scroll position', () => {
+    document.body.innerHTML = '<a href="#" class="to-top">Top</a>';
+    require('../assets/js/main.js');
+    const toTop = document.querySelector('.to-top');
+
+    // Initially should not have is-visible since window.scrollY is 0
+    expect(toTop.classList.contains('is-visible')).toBe(false);
+
+    // Mock scroll past threshold (480)
+    window.scrollY = 500;
+    window.dispatchEvent(new Event('scroll'));
+    expect(toTop.classList.contains('is-visible')).toBe(true);
+
+    // Mock scroll back up
+    window.scrollY = 200;
+    window.dispatchEvent(new Event('scroll'));
+    expect(toTop.classList.contains('is-visible')).toBe(false);
+  });
+
+  it('scrolls to top smoothly on click', () => {
+    document.body.innerHTML = '<a href="#" class="to-top">Top</a>';
+    require('../assets/js/main.js');
+    const toTop = document.querySelector('.to-top');
+
+    toTop.dispatchEvent(new window.MouseEvent('click'));
+
+    expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
+  });
+});
