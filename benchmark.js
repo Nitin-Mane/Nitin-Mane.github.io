@@ -50,10 +50,7 @@ document.body.appendChild(script);
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 
-const start = performance.now();
 for (let i = 0; i < 100; i++) {
   btn1.click();
   btn2.click();
 }
-const end = performance.now();
-console.log("Time taken: " + (end - start).toFixed(2) + " ms");
