@@ -148,3 +148,209 @@ describe('normalizeRoute', () => {
     expect(normalizeRoute('/about.HtMl')).toBe('about');
   });
 });
+
+describe('initCopyEmail', () => {
+  let writeTextMock;
+
+  beforeEach(() => {
+    jest.resetModules();
+    jest.useFakeTimers();
+
+    writeTextMock = jest.fn();
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: writeTextMock,
+      },
+    });
+
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('handles clipboard copy failure gracefully', async () => {
+    document.body.innerHTML = `
+      <button data-copy="test@example.com">
+        <span data-copy-label>Copy</span>
+      </button>
+    `;
+
+    writeTextMock.mockRejectedValueOnce(new Error('Clipboard error'));
+
+    require('../assets/js/main.js');
+
+    const btn = document.querySelector('[data-copy]');
+    const label = document.querySelector('[data-copy-label]');
+
+    // Fire click
+    btn.dispatchEvent(new window.MouseEvent('click'));
+
+    // Wait for promises to flush
+    await Promise.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(writeTextMock).toHaveBeenCalledWith('test@example.com');
+    expect(label.textContent).toBe('Failed to copy');
+
+    // Advance timer to test resetting text
+    jest.advanceTimersByTime(1800);
+    expect(label.textContent).toBe('Copy');
+  });
+});
+
+
+describe('initNavToggle', () => {
+  beforeEach(() => {
+    jest.resetModules();
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+
+    // Clear document body overflow
+    document.body.style.overflow = '';
+  });
+
+  it('handles missing DOM elements gracefully', () => {
+    document.body.innerHTML = '<div></div>';
+
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+  });
+
+  it('toggles mobile navigation on button click', () => {
+    document.body.innerHTML = `
+      <button class="nav__toggle" aria-expanded="false"></button>
+      <div class="nav__links"></div>
+    `;
+
+    require('../assets/js/main.js');
+
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
+
+    // Initially not open
+    expect(navLinks.classList.contains('is-open')).toBe(false);
+
+    // Click to open
+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(true);
+    expect(navToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(document.body.style.overflow).toBe('hidden');
+
+    // Click to close
+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(false);
+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(document.body.style.overflow).toBe('');
+  });
+
+  it('closes mobile navigation when a link is clicked', () => {
+    document.body.innerHTML = `
+      <button class="nav__toggle" aria-expanded="false"></button>
+      <div class="nav__links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    `;
+
+    require('../assets/js/main.js');
+
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
+    const links = document.querySelectorAll('.nav__links a');
+
+    // Open first
+    navToggle.dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(true);
+
+    // Click a link
+    links[0].dispatchEvent(new window.MouseEvent('click'));
+    expect(navLinks.classList.contains('is-open')).toBe(false);
+    expect(navToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(document.body.style.overflow).toBe('');
+  });
+});
+
+describe('initFooterYear', () => {
+  beforeEach(() => {
+    jest.resetModules();
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('updates elements with data-year attribute to current year', () => {
+    // Mock Date to return a fixed year
+    const mockDate = new Date('2024-01-01T00:00:00Z');
+    const spy = jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+
+    // Setup DOM
+    document.body.innerHTML = `
+      <footer>
+        <p>Copyright <span data-year>2020</span></p>
+        <p>Also <span data-year></span></p>
+      </footer>
+    `;
+
+    require('../assets/js/main.js');
+
+    const yearElements = document.querySelectorAll('[data-year]');
+    expect(yearElements.length).toBe(2);
+    expect(yearElements[0].textContent).toBe('2024');
+    expect(yearElements[1].textContent).toBe('2024');
+
+    spy.mockRestore();
+  });
+
+  it('does nothing if no data-year elements exist', () => {
+    document.body.innerHTML = `
+      <footer>
+        <p>No year element here</p>
+      </footer>
+    `;
+
+    expect(() => {
+      require('../assets/js/main.js');
+    }).not.toThrow();
+  });
+});
