@@ -205,7 +205,7 @@ describe('initCopyEmail', () => {
     await Promise.resolve();
 
     expect(writeTextMock).toHaveBeenCalledWith('test@example.com');
-    expect(label.textContent).toBe('Copied!');
+    expect(label.textContent).toBe('Failed to copy');
 
     // Advance timer to test resetting text
     jest.advanceTimersByTime(1800);

@@ -6,105 +6,98 @@
 (() => {
   "use strict";
 
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
+  /* ---------- Theme toggle ---------- */
+  const root = document.documentElement;
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const themeKey = "nitinmane-theme";
+  const themeToggleBtns = document.querySelectorAll("[data-theme-toggle]");
 
-  const initThemeToggle = () => {
-    /* ---------- Theme toggle ---------- */
-    const root = document.documentElement;
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
-    const themeKey = "nitinmane-theme";
-    const themeToggleBtns = document.querySelectorAll("[data-theme-toggle]");
-
-    const setTheme = (theme) => {
-      const nextTheme = theme === "light" ? "light" : "dark";
-      const isLight = nextTheme === "light";
-      root.setAttribute("data-theme", nextTheme);
-      if (themeMeta) {
-        themeMeta.setAttribute("content", isLight ? "#f7f9fc" : "#060a12");
-      }
-      themeToggleBtns.forEach((btn) => {
-        btn.setAttribute("aria-pressed", String(isLight));
-        btn.setAttribute(
-          "aria-label",
-          isLight ? "Switch to dark theme" : "Switch to light theme",
-        );
-        btn.title = isLight ? "Switch to dark theme" : "Switch to light theme";
-      });
-    };
-
-    let initialTheme = root.getAttribute("data-theme") || "dark";
-    try {
-      initialTheme = localStorage.getItem(themeKey) || initialTheme;
-    } catch (error) {
-      initialTheme = "dark";
+  const setTheme = (theme) => {
+    const nextTheme = theme === "light" ? "light" : "dark";
+    const isLight = nextTheme === "light";
+    root.setAttribute("data-theme", nextTheme);
+    if (themeMeta) {
+      themeMeta.setAttribute("content", isLight ? "#f7f9fc" : "#060a12");
     }
-    setTheme(initialTheme);
-
     themeToggleBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const nextTheme =
-          root.getAttribute("data-theme") === "light" ? "dark" : "light";
-        setTheme(nextTheme);
-        try {
-          localStorage.setItem(themeKey, nextTheme);
-        } catch (error) {
-          /* localStorage unavailable - theme still changes for this page view */
-        }
-      });
+      btn.setAttribute("aria-pressed", String(isLight));
+      btn.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
+      btn.title = isLight ? "Switch to dark theme" : "Switch to light theme";
     });
   };
 
-  const initFooterYear = () => {
-    /* ---------- Footer year ---------- */
-    document.querySelectorAll("[data-year]").forEach((el) => {
-      el.textContent = new Date().getFullYear().toString();
+  let initialTheme = root.getAttribute("data-theme") || "dark";
+  try {
+    initialTheme = localStorage.getItem(themeKey) || initialTheme;
+  } catch (error) {
+    initialTheme = "dark";
+  }
+  setTheme(initialTheme);
+
+  themeToggleBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      setTheme(nextTheme);
+      try {
+        localStorage.setItem(themeKey, nextTheme);
+      } catch (error) {
+        /* localStorage unavailable - theme still changes for this page view */
+      }
     });
-  };
+  });
 
-  const initNavScrollState = () => {
-    /* ---------- Nav: scroll state ---------- */
-    const nav = document.querySelector(".nav");
-    if (nav) {
-      let ticking = false;
-      const updateNav = () => {
-        nav.classList.toggle("is-scrolled", window.scrollY > 12);
-        ticking = false;
-      };
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (!ticking) {
-            requestAnimationFrame(updateNav);
-            ticking = true;
-          }
-        },
-        { passive: true },
-      );
-      updateNav();
+  /* ---------- Footer year ---------- */
+  document.querySelectorAll("[data-year]").forEach((el) => {
+    el.textContent = String(new Date().getFullYear());
+  });
+
+  /* ---------- Nav: scroll state ---------- */
+  const nav = document.querySelector(".nav");
+  let navTicking = false;
+  const updateNav = () => {
+    if (!nav) return;
+    nav.classList.toggle("is-scrolled", window.scrollY > 12);
+    navTicking = false;
+  };
+  const onScroll = () => {
+    if (!navTicking) {
+      window.requestAnimationFrame(updateNav);
+      navTicking = true;
     }
   };
+  updateNav(); // initialize state
+  window.addEventListener("scroll", onScroll, { passive: true });
 
-  const initNavToggle = () => {
-    /* ---------- Mobile nav toggle ---------- */
-    const navToggle = document.querySelector(".nav__toggle");
-    const navLinks = document.querySelector(".nav__links");
-    if (navToggle && navLinks) {
-      navToggle.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("is-open");
-        navToggle.setAttribute("aria-expanded", String(isOpen));
-        document.body.style.overflow = isOpen ? "hidden" : "";
-      });
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("is-open");
-          navToggle.setAttribute("aria-expanded", "false");
-          document.body.style.overflow = "";
-        });
-      });
-    }
-  };
+  /* ---------- Nav: mobile toggle ---------- */
+  const navToggle = document.querySelector(".nav__toggle");
+  const navLinks = document.querySelector(".nav__links");
+  if (navToggle && navLinks) {
+    const closeNav = () => {
+      if (navLinks.classList.contains("is-open")) {
+        navLinks.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        navToggle.focus();
+      }
+    };
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      document.body.style.overflow = isOpen ? "hidden" : "";
+      if (isOpen) {
+        const firstLink = navLinks.querySelector("a");
+        if (firstLink) firstLink.focus();
+      }
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeNav);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
+    });
+  }
 
   /* ---------- Nav: active link by current path ---------- */
   const normalizeRoute = (value) => {
@@ -112,342 +105,309 @@
     const lastSegment = path.split("/").filter(Boolean).pop() || "index";
     return lastSegment.replace(/\.html$/i, "").toLowerCase() || "index";
   };
+  const currentPath = normalizeRoute(location.pathname);
+  document.querySelectorAll(".nav__link").forEach((link) => {
+    const href = normalizeRoute(link.getAttribute("href"));
+    if (href === currentPath) {
+      link.classList.add("is-active");
+      link.setAttribute("aria-current", "page");
+    }
+  });
 
-  const initActiveNavLink = () => {
-    const currentPath = normalizeRoute(location.pathname);
-    document.querySelectorAll(".nav__link").forEach((link) => {
-      const href = normalizeRoute(link.getAttribute("href"));
-      if (href === currentPath) {
-        link.classList.add("is-active");
-        link.setAttribute("aria-current", "page");
+  /* ---------- Scroll reveal ---------- */
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    );
+    revealEls.forEach((el, i) => {
+      if (!el.style.getPropertyValue("--reveal-delay")) {
+        el.style.setProperty("--reveal-delay", `${(i % 6) * 70}ms`);
       }
+      io.observe(el);
     });
-  };
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  }
 
-  const initScrollReveal = () => {
-    /* ---------- Scroll reveal ---------- */
-    const revealEls = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window && revealEls.length) {
-      const io = new IntersectionObserver(
+  /* ---------- Back to top ---------- */
+  const toTop = document.querySelector(".to-top");
+  if (toTop) {
+    window.addEventListener(
+      "scroll",
+      () => toTop.classList.toggle("is-visible", window.scrollY > 480),
+      { passive: true }
+    );
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  /* ---------- Role / focus typing rotator ---------- */
+  const rotator = document.querySelector("[data-rotator]");
+  if (rotator) {
+    let words;
+    try {
+      words = JSON.parse(rotator.getAttribute("data-rotator"));
+    } catch (e) {
+      words = [];
+    }
+    if (words.length) {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let wordIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const tick = () => {
+        const word = words[wordIndex];
+        if (!deleting) {
+          charIndex++;
+          rotator.textContent = word.slice(0, charIndex);
+          if (charIndex === word.length) {
+            deleting = true;
+            setTimeout(tick, 1800);
+            return;
+          }
+        } else {
+          charIndex--;
+          rotator.textContent = word.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+          }
+        }
+        setTimeout(tick, deleting ? 35 : 65);
+      };
+
+      if (reduceMotion) {
+        rotator.textContent = words[0];
+      } else {
+        rotator.textContent = "";
+        setTimeout(tick, 600);
+      }
+    }
+  }
+
+  /* ---------- Animated counters ---------- */
+  const counters = document.querySelectorAll("[data-counter]");
+  if (counters.length) {
+    const animateCounter = (el) => {
+      const counterVal = el.getAttribute("data-counter");
+      const target = parseFloat(counterVal);
+      const decimals = (counterVal.split(".")[1] || "").length;
+      const duration = 1400;
+      const start = performance.now();
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = target * eased;
+        el.textContent = decimals ? value.toFixed(decimals) : Math.round(value).toString();
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    if ("IntersectionObserver" in window) {
+      const cio = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              io.unobserve(entry.target);
+              animateCounter(entry.target);
+              cio.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+        { threshold: 0.5 }
       );
-      revealEls.forEach((el, i) => {
-        if (!el.style.getPropertyValue("--reveal-delay")) {
-          el.style.setProperty("--reveal-delay", `${(i % 6) * 70}ms`);
-        }
-        io.observe(el);
-      });
+      counters.forEach((el) => cio.observe(el));
     } else {
-      revealEls.forEach((el) => el.classList.add("is-visible"));
+      counters.forEach(animateCounter);
     }
-  };
+  }
 
-  const initBackToTop = () => {
-    /* ---------- Back to top ---------- */
-    const toTop = document.querySelector(".to-top");
-    if (toTop) {
-      window.addEventListener(
-        "scroll",
-        () => toTop.classList.toggle("is-visible", window.scrollY > 480),
-        { passive: true },
-      );
-      toTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
-  };
+  /* ---------- HUD local time (Asia/Kolkata) ---------- */
+  const clock = document.querySelector("[data-ist-clock]");
+  if (clock) {
+    const fmt = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const update = () => {
+      clock.textContent = `${fmt.format(new Date())} IST · AURANGABAD, IN`;
+    };
+    update();
+    setInterval(update, 30000);
+  }
 
-  const initTypingRotator = () => {
-    /* ---------- Role / focus typing rotator ---------- */
-    const rotator = document.querySelector("[data-rotator]");
-    if (rotator) {
-      let words;
-      try {
-        words = JSON.parse(rotator.getAttribute("data-rotator"));
-      } catch (e) {
-        words = [];
-      }
-      if (words.length) {
-        let wordIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
+  /* ---------- Filter bar (projects / experience) ---------- */
+  document.querySelectorAll("[data-filter-group]").forEach((group) => {
+    const targetSelector = group.getAttribute("data-filter-group");
+    const items = document.querySelectorAll(targetSelector);
+    const buttons = group.querySelectorAll(".filter-btn");
 
-        const tick = () => {
-          const word = words[wordIndex];
-          if (!deleting) {
-            charIndex++;
-            rotator.textContent = word.slice(0, charIndex);
-            if (charIndex === word.length) {
-              deleting = true;
-              setTimeout(tick, 1800);
-              return;
-            }
-          } else {
-            charIndex--;
-            rotator.textContent = word.slice(0, charIndex);
-            if (charIndex === 0) {
-              deleting = false;
-              wordIndex = (wordIndex + 1) % words.length;
-            }
-          }
-          setTimeout(tick, deleting ? 35 : 65);
-        };
+    const itemTagsList = Array.from(items).map(item =>
+      (item.getAttribute("data-tags") || "").split(",")
+    );
 
-        if (reduceMotion) {
-          rotator.textContent = words[0];
-        } else {
-          rotator.textContent = "";
-          setTimeout(tick, 600);
-        }
-      }
-    }
-  };
-
-  const initAnimatedCounters = () => {
-    /* ---------- Animated counters ---------- */
-    const counters = document.querySelectorAll("[data-counter]");
-    if (counters.length) {
-      const animateCounter = (el) => {
-        const counterVal = el.getAttribute("data-counter");
-        const target = parseFloat(counterVal);
-        const decimals = (counterVal.split(".")[1] || "").length;
-        const duration = 1400;
-        const start = performance.now();
-        const step = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const p = 1 - progress;
-          const eased = 1 - p * p * p;
-          const value = target * eased;
-          el.textContent = decimals
-            ? value.toFixed(decimals)
-            : Math.round(value).toString();
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      };
-
-      if ("IntersectionObserver" in window) {
-        const cio = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                cio.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.5 },
-        );
-        counters.forEach((el) => cio.observe(el));
-      } else {
-        counters.forEach(animateCounter);
-      }
-    }
-  };
-
-  const initHUDClock = () => {
-    /* ---------- HUD local time (Asia/Kolkata) ---------- */
-    const clock = document.querySelector("[data-ist-clock]");
-    if (clock) {
-      const fmt = new Intl.DateTimeFormat("en-GB", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      const update = () => {
-        clock.textContent = `${fmt.format(new Date())} IST · AURANGABAD, IN`;
-      };
-      update();
-      setInterval(update, 30000);
-    }
-  };
-
-  const initFilterBars = () => {
-    /* ---------- Filter bar (projects / experience) ---------- */
-    document.querySelectorAll("[data-filter-group]").forEach((group) => {
-      const targetSelector = group.getAttribute("data-filter-group");
-      const items = document.querySelectorAll(targetSelector);
-      const buttons = group.querySelectorAll(".filter-btn");
-
-      const itemTagsList = Array.from(items).map((item) =>
-        new Set((item.getAttribute("data-tags") || "").split(",")),
-      );
-
-      buttons.forEach((btn) => {
+    buttons.forEach((btn) => {
+      // Initialize aria-pressed
+      btn.setAttribute("aria-pressed", btn.classList.contains("is-active") ? "true" : "false");
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => {
+            b.classList.remove("is-active");
+            b.setAttribute("aria-pressed", "false");
+        });
+        btn.classList.add("is-active");
+        btn.setAttribute("aria-pressed", "true");
         const filter = btn.getAttribute("data-filter");
-        btn.addEventListener("click", () => {
-          buttons.forEach((b) => b.classList.remove("is-active"));
-          btn.classList.add("is-active");
 
-          items.forEach((item, index) => {
-            const tags = itemTagsList[index];
-            const show = filter === "all" || tags.has(filter);
-            item.style.display = show ? "" : "none";
-            if (show) {
-              item.classList.remove("is-visible");
-              requestAnimationFrame(() => item.classList.add("is-visible"));
-            }
-          });
+        items.forEach((item, index) => {
+          const tags = itemTagsList[index];
+          const show = filter === "all" || tags.includes(filter);
+          item.style.display = show ? "" : "none";
+          if (show) {
+            item.removeAttribute("tabindex");
+            item.classList.remove("is-visible");
+            requestAnimationFrame(() => item.classList.add("is-visible"));
+          } else {
+            item.setAttribute("tabindex", "-1");
+          }
         });
       });
     });
-  };
+  });
 
-  const initCopyEmail = () => {
-    /* ---------- Copy email to clipboard ---------- */
-    document.querySelectorAll("[data-copy]").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const label = btn.querySelector("[data-copy-label]");
-        const value = btn.getAttribute("data-copy");
-        const original = label ? label.textContent : btn.textContent;
-        try {
-          await navigator.clipboard.writeText(value);
-        } catch (e) {
-          /* clipboard unavailable — ignore */
-        }
+  /* ---------- Copy email to clipboard ---------- */
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const value = btn.getAttribute("data-copy");
+      const label = btn.querySelector("[data-copy-label]");
+      const original = label ? label.textContent : btn.textContent;
+      try {
+        if (!navigator.clipboard) throw new Error('Clipboard API not available');
+        await navigator.clipboard.writeText(value);
         if (label) {
           label.textContent = "Copied!";
           setTimeout(() => (label.textContent = original), 1800);
+        } else {
+          btn.textContent = "Copied!";
+          setTimeout(() => (btn.textContent = original), 1800);
+        }
+      } catch (e) {
+        /* clipboard unavailable — fallback */
+        const fallbackText = label ? label : btn;
+        fallbackText.textContent = "Failed to copy";
+        setTimeout(() => (fallbackText.textContent = original), 1800);
+      }
+    });
+  });
+
+  /* ---------- Current year stamp for "experience since" ---------- */
+  document.querySelectorAll("[data-years-since]").forEach((el) => {
+    const since = parseInt(el.getAttribute("data-years-since"), 10);
+    const years = new Date().getFullYear() - since;
+    el.textContent = String(years);
+  });
+
+  /* ---------- Sliding photo galleries (speaking / workshop pages) ---------- */
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const makeArrow = (dir, label, points) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `gallery__arrow gallery__arrow--${dir}`;
+    btn.setAttribute("aria-label", label);
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${points}"/></svg>`;
+    return btn;
+  };
+
+  document.querySelectorAll(".gallery").forEach((gallery) => {
+    const track = gallery.querySelector(".gallery__track");
+    const slides = Array.from(gallery.querySelectorAll(".gallery__slide"));
+    if (!track || slides.length < 2) return;
+
+    let index = 0;
+
+    const dots = document.createElement("div");
+    dots.className = "gallery__dots";
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "gallery__dot" + (i === 0 ? " is-active" : "");
+      dot.setAttribute("aria-label", `Go to photo ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dots.appendChild(dot);
+    });
+
+    const prevBtn = makeArrow("prev", "Previous photo", "15 18 9 12 15 6");
+    const nextBtn = makeArrow("next", "Next photo", "9 18 15 12 9 6");
+
+    const count = document.createElement("span");
+    count.className = "gallery__count";
+
+    gallery.append(prevBtn, nextBtn, dots, count);
+
+    const dotEls = Array.from(dots.children);
+    const render = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dotEls.forEach((d, i) => d.classList.toggle("is-active", i === index));
+      count.textContent = `${index + 1} / ${slides.length}`;
+    };
+    const goTo = (i) => {
+      index = (i + slides.length) % slides.length;
+      render();
+    };
+
+    prevBtn.addEventListener("click", () => goTo(index - 1));
+    nextBtn.addEventListener("click", () => goTo(index + 1));
+    render();
+
+    if (!reduceMotion) {
+      let timer = setInterval(() => goTo(index + 1), 4500);
+      const restart = () => {
+        clearInterval(timer);
+        if (!document.hidden) {
+            timer = setInterval(() => goTo(index + 1), 4500);
+        }
+      };
+      gallery.addEventListener("mouseenter", () => clearInterval(timer));
+      gallery.addEventListener("mouseleave", restart);
+      gallery.addEventListener("focusin", () => clearInterval(timer));
+      gallery.addEventListener("focusout", restart);
+      gallery.addEventListener("touchstart", () => clearInterval(timer), { passive: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            clearInterval(timer);
+        } else {
+            restart();
         }
       });
+    }
+
+    let touchStartX = null;
+    gallery.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.touches[0].clientX;
+      },
+      { passive: true }
+    );
+    gallery.addEventListener("touchend", (e) => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+      touchStartX = null;
     });
-  };
-
-  const initCurrentYearStamp = () => {
-    /* ---------- Current year stamp for "experience since" ---------- */
-    document.querySelectorAll("[data-years-since]").forEach((el) => {
-      const since = parseInt(el.getAttribute("data-years-since"), 10);
-      const years = new Date().getFullYear() - since;
-      el.textContent = String(years);
-    });
-  };
-
-  const initSlidingGalleries = () => {
-    /* ---------- Sliding photo galleries (speaking / workshop pages) ---------- */
-
-    const createGalleryArrowSVG = (points) => {
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svg.setAttribute("width", "16");
-      svg.setAttribute("height", "16");
-      svg.setAttribute("viewBox", "0 0 24 24");
-      svg.setAttribute("fill", "none");
-      svg.setAttribute("stroke", "currentColor");
-      svg.setAttribute("stroke-width", "2");
-      svg.setAttribute("stroke-linecap", "round");
-      svg.setAttribute("stroke-linejoin", "round");
-
-      const polyline = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "polyline",
-      );
-      polyline.setAttribute("points", points);
-
-      svg.appendChild(polyline);
-      return svg;
-    };
-
-    const makeArrow = (dir, label, points) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = `gallery__arrow gallery__arrow--${dir}`;
-      btn.setAttribute("aria-label", label);
-      btn.appendChild(createGalleryArrowSVG(points));
-      return btn;
-    };
-
-    document.querySelectorAll(".gallery").forEach((gallery) => {
-      const track = gallery.querySelector(".gallery__track");
-      const slides = Array.from(gallery.querySelectorAll(".gallery__slide"));
-      if (!track || slides.length < 2) return;
-
-      let index = 0;
-
-      const dots = document.createElement("div");
-      dots.className = "gallery__dots";
-      slides.forEach((_, i) => {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.className = "gallery__dot" + (i === 0 ? " is-active" : "");
-        dot.setAttribute("aria-label", `Go to photo ${i + 1}`);
-        dot.addEventListener("click", () => goTo(i));
-        dots.appendChild(dot);
-      });
-
-      const prevBtn = makeArrow("prev", "Previous photo", "15 18 9 12 15 6");
-      const nextBtn = makeArrow("next", "Next photo", "9 18 15 12 9 6");
-
-      const count = document.createElement("span");
-      count.className = "gallery__count";
-
-      gallery.append(prevBtn, nextBtn, dots, count);
-
-      const dotEls = Array.from(dots.children);
-      const render = () => {
-        track.style.transform = `translateX(-${index * 100}%)`;
-        dotEls.forEach((d, i) => d.classList.toggle("is-active", i === index));
-        count.textContent = `${index + 1} / ${slides.length}`;
-      };
-      const goTo = (i) => {
-        index = (i + slides.length) % slides.length;
-        render();
-      };
-
-      prevBtn.addEventListener("click", () => goTo(index - 1));
-      nextBtn.addEventListener("click", () => goTo(index + 1));
-      render();
-
-      if (!reduceMotion) {
-        let timer = setInterval(() => goTo(index + 1), 4500);
-        const restart = () => {
-          clearInterval(timer);
-          timer = setInterval(() => goTo(index + 1), 4500);
-        };
-        gallery.addEventListener("mouseenter", () => clearInterval(timer));
-        gallery.addEventListener("mouseleave", restart);
-        gallery.addEventListener("focusin", () => clearInterval(timer));
-        gallery.addEventListener("focusout", restart);
-      }
-
-      let touchStartX = null;
-      gallery.addEventListener(
-        "touchstart",
-        (e) => {
-          touchStartX = e.touches[0].clientX;
-        },
-        { passive: true },
-      );
-      gallery.addEventListener("touchend", (e) => {
-        if (touchStartX === null) return;
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
-        touchStartX = null;
-      });
-    });
-  };
-
-  initThemeToggle();
-  initFooterYear();
-  initNavScrollState();
-  initNavToggle();
-  initActiveNavLink();
-  initScrollReveal();
-  initBackToTop();
-  initTypingRotator();
-  initAnimatedCounters();
-  initHUDClock();
-  initFilterBars();
-  initCopyEmail();
-  initCurrentYearStamp();
-  initSlidingGalleries();
-
+  });
   if (typeof module !== "undefined" && module.exports) {
     module.exports = { normalizeRoute };
   }

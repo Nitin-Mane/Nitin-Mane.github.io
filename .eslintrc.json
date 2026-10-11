@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-undef": "error"
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

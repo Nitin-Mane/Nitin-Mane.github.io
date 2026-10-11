@@ -1,6 +1,5 @@
-
 // Mock out THREE.js, as we don't want to load a remote URL in our tests.
-jest.mock('https://unpkg.com/three@0.160.0/build/three.module.js', () => ({
+jest.mock("../assets/js/three.module.js", () => ({
   Scene: class Scene {
     constructor() {
       this.rotation = { x: 0, y: 0, z: 0 };
