@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Engineering Blog | Nitin Mane</title>
-  <meta name="description" content="Engineering articles by Nitin Mane on edge AI anomaly detection, multi-modal LLM/RAG plant intelligence, and a smart weed remover robot using NVIDIA Jetson Nano with a 3-DOF parallel robot." />
-  <meta name="keywords" content="Nitin Mane blog, Industrial Anomaly Detection, Edge AI, Multi-modal LLM, RAG, Plant Intelligence, Smart Weed Remover Robot, NVIDIA Jetson Nano, 6 DOF Parallel Robot" />
+  <meta name="description" content="Engineering articles by Nitin Mane on agentic AI with Amazon Bedrock AgentCore, multi-agent RAG, edge AI anomaly detection, multi-modal LLM/RAG plant intelligence, and a smart weed remover robot using NVIDIA Jetson Nano with a 3-DOF parallel robot." />
+  <meta name="keywords" content="Nitin Mane blog, Agentic AI, Amazon Bedrock AgentCore, Multi-Agent RAG, Strands Agents, AWS AI ML Scholars,Industrial Anomaly Detection, Edge AI, Multi-modal LLM, RAG, Plant Intelligence, Smart Weed Remover Robot, NVIDIA Jetson Nano, 6 DOF Parallel Robot" />
   <meta name="author" content="Nitin Mane" />
   <link rel="canonical" href="https://www.nitinmane.me/blog" />
   <meta name="robots" content="index, follow" />
@@ -16,14 +16,14 @@
   <meta property="og:type" content="blog" />
   <meta property="og:site_name" content="Nitin Mane" />
   <meta property="og:title" content="Engineering Blog | Nitin Mane" />
-  <meta property="og:description" content="Notes on edge AI, plant intelligence, robotics and mechatronics systems." />
+  <meta property="og:description" content="Notes on agentic AI on AWS, edge AI, plant intelligence, robotics and mechatronics systems." />
   <meta property="og:url" content="https://www.nitinmane.me/blog" />
   <meta property="og:image" content="https://www.nitinmane.me/assets/images/profile_nitinmane.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Engineering Blog | Nitin Mane" />
-  <meta name="twitter:description" content="Notes on edge AI, plant intelligence, robotics and mechatronics systems." />
+  <meta name="twitter:description" content="Notes on agentic AI on AWS, edge AI, plant intelligence, robotics and mechatronics systems." />
   <meta name="twitter:image" content="https://www.nitinmane.me/assets/images/profile_nitinmane.png" />
 
   <!-- Icons -->
@@ -57,6 +57,10 @@
       "url": "https://www.nitinmane.me/"
     },
     "blogPost": [
+      { "@type": "BlogPosting", "headline": "From Scholar to Agent Engineer: My AWS AI & ML Scholars Journey", "datePublished": "2026-10-16", "url": "https://www.nitinmane.me/blog#aws-ai-ml-scholars-journey" },
+      { "@type": "BlogPosting", "headline": "Three Routes, One Guard: A Support Chatbot That Knows When Not to Write", "datePublished": "2026-10-16", "url": "https://www.nitinmane.me/blog#agentcore-support-chatbot" },
+      { "@type": "BlogPosting", "headline": "The Tool Was Right. The Answer Was Wrong.", "datePublished": "2026-10-16", "url": "https://www.nitinmane.me/blog#tool-right-answer-wrong" },
+      { "@type": "BlogPosting", "headline": "Five Agents, One Customer: Multi-Agent RAG Without the Chaos", "datePublished": "2026-10-16", "url": "https://www.nitinmane.me/blog#novamart-multi-agent-rag" },
       { "@type": "BlogPosting", "headline": "Industrial Anomaly Detection at the Edge", "url": "https://www.nitinmane.me/blog#industrial-anomaly-detection-edge" },
       { "@type": "BlogPosting", "headline": "Multi-Modal LLM/RAG for Plant Intelligence", "url": "https://www.nitinmane.me/blog#multimodal-llm-rag-plant-intelligence" },
       { "@type": "BlogPosting", "headline": "Smart Weed Remover Robot: NVIDIA Jetson Nano with 3-DOF Parallel Robot", "url": "https://www.nitinmane.me/blog#smart-weed-remover-robot" },
@@ -121,8 +125,8 @@
         <span class="eyebrow reveal" style="--reveal-delay:40ms">Engineering Notes</span>
         <h1 class="page-header__title reveal" style="--reveal-delay:80ms">Blog</h1>
         <p class="page-header__lede reveal" style="--reveal-delay:120ms">
-          Practical notes on the systems I like building: edge perception, industrial intelligence,
-          robotics, and the bits of engineering discipline that make them survive outside demos.
+          Practical notes on the systems I like building: AI agents, edge perception, industrial
+          intelligence, robotics, and the engineering habits that keep them working outside demos.
         </p>
       </div>
     </section>
@@ -130,6 +134,39 @@
     <!-- ============ ARTICLE INDEX ============ -->
     <section class="section section--tight">
       <div class="container">
+        <div class="blog-series__head reveal">
+          <h2 class="blog-series__title">Series — <span>Agentic AI on AWS</span></h2>
+          <a href="aws-agent-engineer" class="project-card__link">
+            Future AWS Agent Engineer spotlight
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="blog-index">
+          <a class="card blog-index-card blog-index-card--series reveal reveal--scale" href="#aws-ai-ml-scholars-journey">
+            <span class="blog-index-card__kicker">Part 0 · The journey</span>
+            <h2>From Scholar to Agent Engineer</h2>
+            <p>How the AWS AI &amp; ML Scholars program turned into a Nanodegree and three agent systems.</p>
+          </a>
+          <a class="card blog-index-card blog-index-card--series reveal reveal--scale" style="--reveal-delay:80ms" href="#agentcore-support-chatbot">
+            <span class="blog-index-card__kicker">Part 1 · Chatbot</span>
+            <h2>Three Routes, One Guard</h2>
+            <p>A support chatbot where the model suggests what to do and plain code decides whether a ticket is saved.</p>
+          </a>
+          <a class="card blog-index-card blog-index-card--series reveal reveal--scale" style="--reveal-delay:160ms" href="#tool-right-answer-wrong">
+            <span class="blog-index-card__kicker">Part 2 · Support Agent</span>
+            <h2>The Tool Was Right. The Answer Was Wrong.</h2>
+            <p>A $4 bug that taught me to test the agent's final reply, not just the tool output.</p>
+          </a>
+          <a class="card blog-index-card blog-index-card--series reveal reveal--scale" style="--reveal-delay:240ms" href="#novamart-multi-agent-rag">
+            <span class="blog-index-card__kicker">Part 3 · Capstone</span>
+            <h2>Five Agents, One Customer</h2>
+            <p>Multi-agent RAG with a supervisor, parallel search and shared state that can't be silently overwritten.</p>
+          </a>
+        </div>
+
+        <div class="blog-series__head reveal">
+          <h2 class="blog-series__title">Edge AI, plant intelligence &amp; robotics</h2>
+        </div>
         <div class="blog-index">
           <a class="card blog-index-card reveal reveal--scale" href="#industrial-anomaly-detection-edge">
             <span class="tag tag--cyan">Edge AI</span>
@@ -154,6 +191,447 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ SERIES: AGENTIC AI ON AWS — PART 0 ============ -->
+    <article id="aws-ai-ml-scholars-journey" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 05 · Series Part 0</span>
+          <div class="tag-row">
+            <span class="tag tag--amber">Agentic AI</span>
+            <span class="tag">AWS AI &amp; ML Scholars</span>
+            <span class="tag">Udacity</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 5 min</p>
+          <p class="font-mono text-dim">Published: October 2026<br />Author: Nitin Mane</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>From Scholar to Agent Engineer: My AWS AI &amp; ML Scholars Journey</h2>
+          <p class="blog-article__lede">
+            On October 8, 2026, I finished the Future AWS Agent Engineer Nanodegree. That same
+            day, my third agent system passed all 120 points of its official test suite.
+          </p>
+          <p>
+            Most of my work has been computer vision on edge devices: cameras on plant floors,
+            OpenVINO pipelines, Jetson boards in the field. Language models came into that work
+            from the side, first as a way to summarise alerts and later as a way to reason over
+            sensor data. In 2026 I wanted to learn properly how to build AI agents: systems that
+            decide, call tools, keep state and recover from errors. The AWS AI &amp; ML Scholars
+            program gave me a structured way to do that.
+          </p>
+
+          <h3>How the program works</h3>
+          <p>
+            AWS AI &amp; ML Scholars is run by AWS and Udacity in two phases. The <strong>Challenge
+            phase</strong> is free and self-paced: it follows the AWS AI Practitioner learning plan and
+            includes hands-on work with Amazon PartyRock and Amazon Bedrock. Up to 100,000 learners
+            can take part. An assessment follows, and the <strong>top 4,500</strong> learners receive a
+            fully funded Udacity Nanodegree in one of three tracks. I chose the most technical one:
+            <strong>Future AWS Agent Engineer</strong>.
+          </p>
+
+          <h3>Three projects, each harder than the last</h3>
+          <ol>
+            <li><strong>August: Customer Support Chatbot.</strong> One agent on an AgentCore Harness with three fixed routes and one database tool. The lesson: let the model suggest, and let code decide.</li>
+            <li><strong>September: AI Support Agent.</strong> One agent with six capabilities: Gateway tools, a Knowledge Base, Memory, Code Interpreter and Browser. The lesson: test the final reply, not just the tool output.</li>
+            <li><strong>October: NovaMart Multi-Agent RAG.</strong> A supervisor with four specialist agents, three knowledge bases searched at once, and shared state with version checks. The lesson: give each agent one job and keep their shared state consistent.</li>
+          </ol>
+
+          <div class="blog-callout">
+            <p>
+              The main thing I learned: an agent isn't production-ready because it handles a good
+              demo. It's ready when you can show what it did, why it did it, and that it does
+              nothing when it shouldn't act.
+            </p>
+          </div>
+
+          <h3>Habits I'm keeping</h3>
+          <ul>
+            <li><strong>Separate the model's suggestion from the decision.</strong> The model can choose a route. Plain code checks that the required fields are present before anything is written to the database.</li>
+            <li><strong>Keep evidence.</strong> Each project shipped with recorded transcripts, screenshots, evaluation datasets and trace maps, so anyone can check the results.</li>
+            <li><strong>Tear everything down.</strong> Every project ended with a check that no AWS resources were left running. It's easy to skip and expensive when you do.</li>
+            <li><strong>Plan for production from the start.</strong> Even coursework should include notes on authentication, idempotent refunds and how long customer memory is kept.</li>
+          </ul>
+
+          <p>
+            The next three articles cover one project each, including the architecture, the mistakes
+            and the evidence. If you're applying to the next round of the scholarship, I hope they help.
+          </p>
+
+          <div class="blog-article__cta">
+            <a href="https://www.udacity.com/certificate/e/ba1d41ec-900d-11f1-9972-03d0f79bde06" class="project-card__link" target="_blank" rel="noopener">
+              Verify the certificate
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="aws-agent-engineer" class="project-card__link">
+              Credential spotlight
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="https://www.udacity.com/scholarships/aws-ai-ml-scholars" class="project-card__link" target="_blank" rel="noopener">
+              About AWS AI &amp; ML Scholars
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ SERIES PART 1 ============ -->
+    <article id="agentcore-support-chatbot" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 06 · Series Part 1</span>
+          <div class="tag-row">
+            <span class="tag tag--amber">Agentic AI</span>
+            <span class="tag">Bedrock AgentCore</span>
+            <span class="tag">Amazon Nova</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 6 min</p>
+          <p class="font-mono text-dim">Published: October 2026<br />Author: Nitin Mane</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>Three Routes, One Guard: A Support Chatbot That Knows When Not to Write</h2>
+          <p class="blog-article__lede">
+            The hardest part of a support chatbot is not writing good answers. It is not saving a
+            half-finished bug report because the user said "yes" too early.
+          </p>
+          <p>
+            The brief sounds simple. A customer support bot for an online shop does three things.
+            It collects bug reports and saves them. It answers questions about the shop. It hands
+            everything else to a person. In practice each of those three routes can go wrong:
+            the bot might save an incomplete ticket, make up a policy, or try to answer something it
+            should hand off.
+          </p>
+
+          <h3>Three separate routes</h3>
+          <p>I designed the conversation as three routes that never overlap:</p>
+          <ul>
+            <li><strong>Bug report.</strong> Over several turns, collect a description, steps to reproduce and the environment. Then call <code>create_bug_report</code> through an AgentCore Gateway, which runs a Lambda function that saves the ticket to DynamoDB with status <code>OPEN</code>.</li>
+            <li><strong>Shop FAQ.</strong> Answer only from the shop FAQ included in the prompt. No outside knowledge and no guessing.</li>
+            <li><strong>Hand-off to a person.</strong> Anything the bot doesn't support goes to the support line, every time.</li>
+          </ul>
+
+          <figure class="blog-figure">
+            <img src="assets/images/agentic/support-chatbot-architecture.png" width="1600" height="900" loading="lazy" alt="Architecture: client to policy guard to AgentCore Harness on Nova Pro to AgentCore Gateway to Lambda to DynamoDB, with an evaluation pipeline and CloudWatch observability" />
+            <figcaption>Fig. 1: Requests pass a policy guard before reaching the AgentCore Harness (Nova Pro 1.0). Tool calls go through the Gateway to Lambda and DynamoDB.</figcaption>
+          </figure>
+
+          <h3>The model suggests, the code decides</h3>
+          <p>
+            The rule I followed: the model chooses what to say, and plain code checks anything that
+            has side effects. A routing guard sits between the client and the harness. It checks
+            preconditions before any database write, so a ticket can't be created until every
+            required field is filled in. It also removes <code>&lt;thinking&gt;</code> tags from the
+            streamed reply so the model's internal reasoning never reaches the customer.
+          </p>
+          <p>
+            Prompt-injection attempts ("ignore your instructions and…") are refused and sent to the
+            hand-off route. The model can still be clever, but it can't be talked into writing
+            to the database.
+          </p>
+
+          <h3>Showing why, without showing private reasoning</h3>
+          <p>
+            For the extra-credit part, I built a Flask web app with login and an
+            <strong>explanation panel</strong>. For each reply it shows which route was chosen and where
+            the answer came from. It doesn't expose the model's private reasoning. A support lead
+            can see why the bot answered as it did without reading its internal notes.
+          </p>
+
+          <h3>Measuring it</h3>
+          <p>
+            I generated an evaluation dataset of ten test cases covering all three routes and the edge
+            cases, and scored it with Amazon Bedrock, using a model to grade the answers:
+          </p>
+          <table class="blog-table">
+            <thead><tr><th>Check</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td>Bedrock correctness (9 of 10 cases scored 1.0)</td><td>0.95</td></tr>
+              <tr><td>Harmfulness</td><td>0.00</td></tr>
+              <tr><td>Core pytest suite: Lambda, DynamoDB, prompt, Gateway, guard</td><td>22/22</td></tr>
+              <tr><td>Flask UI suite: login, protected routes, explanation panel</td><td>12/12</td></tr>
+              <tr><td>Evaluation dataset: valid schema, no leaked reasoning tags</td><td>10/10</td></tr>
+              <tr><td>AWS resources left after teardown</td><td>0</td></tr>
+            </tbody>
+          </table>
+          <p>
+            The one case below 1.0 was a mixed request: a bug report and an FAQ question in the same
+            message. That's the right kind of failure to find. It shows exactly where the routing
+            needs to split a message into two intents instead of picking one.
+          </p>
+          <p>
+            Helpfulness (0.53) and instruction following (0.50) scored lower, and I kept them in the
+            report on purpose. A bot that asks for missing details or hands off correctly can still
+            score low on "helpfulness" with a generic judge. Reporting all the scores is part of
+            evaluating honestly.
+          </p>
+
+          <div class="blog-article__cta">
+            <a href="https://github.com/Nitin-Mane/customer-support-chatbot" class="project-card__link" target="_blank" rel="noopener">
+              View on GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="aws-agent-engineer#customer-support-chatbot" class="project-card__link">
+              Project case study
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#tool-right-answer-wrong" class="project-card__link">
+              Next: Part 2
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ SERIES PART 2 ============ -->
+    <article id="tool-right-answer-wrong" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 07 · Series Part 2</span>
+          <div class="tag-row">
+            <span class="tag tag--amber">Agentic AI</span>
+            <span class="tag">Strands Agents</span>
+            <span class="tag">Code Interpreter</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 6 min</p>
+          <p class="font-mono text-dim">Published: October 2026<br />Author: Nitin Mane</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>The Tool Was Right. The Answer Was Wrong.</h2>
+          <p class="blog-article__lede">
+            My discount calculator returned $99. My agent told the customer $95. The tool's output
+            was correct. Here's the four-dollar bug that changed how I test agents.
+          </p>
+          <p>
+            The second project was a support assistant that handles a whole customer conversation in
+            one place. It runs as an async <strong>Strands</strong> app on <strong>AgentCore Runtime</strong>
+            with Amazon Nova 2 Lite, and each capability has one clear job:
+          </p>
+          <ul>
+            <li><strong>MCP Gateway</strong>: an API Gateway endpoint for order tracking and a Lambda function for refunds.</li>
+            <li><strong>Bedrock Knowledge Base</strong>: catalog and policy facts stored in S3 and indexed in OpenSearch Serverless.</li>
+            <li><strong>AgentCore Memory</strong>: hooks that bring back who the customer is and how they like to be answered.</li>
+            <li><strong>Code Interpreter</strong>: arithmetic the model must not do in its head.</li>
+            <li><strong>Browser</strong>: reading a live web page when the answer is only online.</li>
+          </ul>
+
+          <h3>The bug</h3>
+          <p>
+            Loyalty discounts have rules. Points are redeemed in 500-point blocks. Redemption can't
+            exceed half the order value. The tier discount applies to what's left
+            <em>after</em> points are redeemed. I put the whole calculation in Code Interpreter, using
+            Python's <code>Decimal</code> with explicit rounding, so it would be correct every time.
+          </p>
+          <p>
+            The live test was a Gold member with 4,250 points and a $150 order. The tool returned:
+          </p>
+<pre class="blog-code"><code>{
+  "points_redeemed": 4000,      <span class="ok">// 8 blocks of 500 → $40.00</span>
+  "points_discount": 40.0,
+  "tier_discount_pct": 10.0,
+  "tier_discount": 11.0,        <span class="ok">// 10% of the $110 balance</span>
+  "final_total": <span class="hl">99.0</span>,
+  "total_savings": 51.0,
+  "remaining_points": 349,
+  "calculation_mode": "code_interpreter"
+}</code></pre>
+          <p>
+            The tool was right. But when the model summarised it for the customer, it applied the 10%
+            Gold discount to the <strong>original $150</strong> instead of the $110 balance:
+            $150 − $40 − $15 = <strong>$95</strong>. The customer would have been promised a price the
+            backend would never charge.
+          </p>
+
+          <div class="blog-callout">
+            <p>
+              Checking the tool's output wasn't enough. The bug was in the step after the tool:
+              the model rewriting a correct result in its own words.
+            </p>
+          </div>
+
+          <h3>The fix: the reply must match the tool</h3>
+          <p>
+            Reading the tool-call log showed exactly what happened. The fix was a check on every
+            reply that <strong>keeps the calculator's JSON fields in the final answer</strong>, so
+            the customer sees the numbers the tool produced, not the model's version of them. If
+            Code Interpreter isn't available, the fallback gives a tier-only estimate and doesn't
+            redeem any points, rather than guessing.
+          </p>
+          <p>
+            I applied the same idea to failures. Missing configuration gives a useful message, and
+            Gateway errors give the customer recovery steps while the details go to the runtime
+            logs.
+          </p>
+
+          <h3>Six live scenarios</h3>
+          <table class="blog-table">
+            <thead><tr><th>Scenario</th><th>Recorded outcome</th></tr></thead>
+            <tbody>
+              <tr><td>Order tracking</td><td>SHIPPED · UPS</td></tr>
+              <tr><td>Refund</td><td>APPROVED · $139.99</td></tr>
+              <tr><td>Knowledge retrieval: Platinum tier benefits</td><td>15% · same-day</td></tr>
+              <tr><td>Cross-session memory: name + preference</td><td>recalled</td></tr>
+              <tr><td>Loyalty calculation</td><td>$99.00 · 349 pts</td></tr>
+              <tr><td>Browser: live page title</td><td>retrieved</td></tr>
+            </tbody>
+          </table>
+
+          <h3>What production would need</h3>
+          <p>
+            Coursework uses sample data. Real customers would need more. Refunds need an
+            authenticated identity: the Gateway should validate bearer tokens and confirm the
+            customer owns the order. Refund processing should take an <strong>idempotency key</strong>
+            so a retry can't pay out twice. Customer memory needs a retention period and a way to
+            delete it. These controls should be tested alongside the normal support flows, not
+            added later.
+          </p>
+
+          <div class="blog-article__cta">
+            <a href="https://github.com/Nitin-Mane/AI-Support-Agent" class="project-card__link" target="_blank" rel="noopener">
+              View on GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="aws-agent-engineer#ai-support-agent" class="project-card__link">
+              Project case study
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#novamart-multi-agent-rag" class="project-card__link">
+              Next: Part 3
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ SERIES PART 3 ============ -->
+    <article id="novamart-multi-agent-rag" class="section blog-article">
+      <div class="container blog-article__grid">
+        <aside class="blog-article__meta reveal reveal--left">
+          <span class="eyebrow">Article 08 · Series Part 3</span>
+          <div class="tag-row">
+            <span class="tag tag--amber">Agentic AI</span>
+            <span class="tag tag--violet">Multi-Agent RAG</span>
+            <span class="tag">Capstone</span>
+          </div>
+          <p class="font-mono text-dim">Reading time: 8 min</p>
+          <p class="font-mono text-dim">Published: October 2026<br />Author: Nitin Mane</p>
+        </aside>
+
+        <div class="frame blog-article__body reveal reveal--right">
+          <h2>Five Agents, One Customer: Multi-Agent RAG Without the Chaos</h2>
+          <p class="blog-article__lede">
+            Adding more agents doesn't make a system smarter. It gives you more places for state
+            to go wrong. NovaMart is how I kept five agents working together.
+          </p>
+          <p>
+            NovaMart is a support assistant for a fictional e-commerce shop. A single question like
+            "Where's my order, and can I still return it?" needs order data, a refund decision and
+            policy text. One agent with all those tools tends to mix the jobs up. So I split them
+            into separate agents.
+          </p>
+
+          <h3>The agent graph</h3>
+          <p>
+            The system follows a supervisor-and-workers pattern on <strong>Amazon Bedrock
+            AgentCore Runtime</strong>, built with the <strong>Strands Agents SDK</strong>:
+          </p>
+          <ul>
+            <li><strong>OrchestratorAgent</strong> (Claude Haiku 4.5) has five tools: <code>initialize_session</code> and four <code>route_to_*</code> tools. It never answers the customer itself.</li>
+            <li><strong>InventoryAgent</strong> looks up order and customer data (<code>check_order_status</code>, <code>get_customer_tier</code>, <code>list_customer_orders</code>) and makes no policy decisions.</li>
+            <li><strong>PolicyAgent</strong> has a single tool, <code>search_all_policies</code>, which searches three knowledge bases at the same time.</li>
+            <li><strong>RefundAgent</strong> checks eligibility, and starts a refund only when the customer explicitly asks for one.</li>
+            <li><strong>CommunicationAgent</strong> always runs last. It reads the shared state and writes the reply.</li>
+          </ul>
+          <p>
+            All four workers run on Claude Sonnet 4.5. Routing rules are explicit: account questions
+            never reach PolicyAgent, order-status questions check eligibility without starting a
+            refund, and every request ends with CommunicationAgent.
+          </p>
+
+          <h3>Searching three knowledge bases at once</h3>
+          <p>
+            Returns, shipping and warranty policies each have their own <strong>Bedrock Knowledge
+            Base</strong> backed by <strong>S3 Vectors</strong>. A question like "What's the warranty on
+            electronics for Premium customers?" might need any of them. <code>search_all_policies</code>
+            starts three retriever sub-agents in a <code>ThreadPoolExecutor</code>, runs them at the same
+            time and combines their results with source citations. Total wait time is roughly the
+            slowest search, not the sum of all three.
+          </p>
+
+          <h3>Shared state that can't be silently overwritten</h3>
+          <p>
+            Agents pass results through a shared <code>WorkflowStateTable</code> in DynamoDB, not only
+            through prompts. Each record is keyed by <code>session_id</code> and stores a version
+            number, timestamps, a TTL and every agent's result. Writes use a version check (optimistic
+            locking):
+          </p>
+<pre class="blog-code"><code>read state            → version = <span class="hl">n</span>
+worker produces result
+conditional write     → only if version is still <span class="hl">n</span>
+  <span class="ok">✓ commit</span>             → store result, version = n + 1
+  <span class="bad">✗ conflict</span>           → reload state and retry</code></pre>
+          <p>
+            Two workers can't overwrite each other without noticing. When CommunicationAgent
+            writes the reply, it reads a complete record that every worker has added to.
+            <strong>AgentCore Memory</strong> adds seven-day session summaries on top, and a
+            <strong>Bedrock Guardrail</strong> checks every request before it reaches the orchestrator.
+          </p>
+
+          <h3>Proving it works</h3>
+          <p>
+            Observability counted toward the grade, and it should. With <strong>CloudWatch</strong>
+            logging and <strong>X-Ray</strong> tracing at 100% sampling, the trace map after the final
+            run showed the orchestrator connected to all four workers and all three knowledge bases,
+            with no failed nodes.
+          </p>
+          <figure class="blog-figure blog-figure--narrow">
+            <img src="assets/images/agentic/novamart-xray-trace-map.png" width="1100" height="1500" loading="lazy" alt="CloudWatch X-Ray trace map: the client calls the NovaMart orchestrator, which connects to Refund, Policy, Inventory and Communication agents and the returns, warranty and shipping knowledge bases" />
+            <figcaption>Fig. 2: X-Ray trace map from the final three-scenario run. One orchestrator, four workers, three knowledge bases.</figcaption>
+          </figure>
+          <p>The official test suite, run on October 8, 2026 in the Udacity AWS sandbox:</p>
+          <table class="blog-table">
+            <thead><tr><th>Task: rubric area</th><th>Score</th></tr></thead>
+            <tbody>
+              <tr><td>2: Multi-agent graph, tools, models and routing</td><td>40/40</td></tr>
+              <tr><td>3: Guardrail and AgentCore Runtime</td><td>20/20</td></tr>
+              <tr><td>4: AgentCore Memory</td><td>15/15</td></tr>
+              <tr><td>5: Knowledge Bases and parallel retrieval</td><td>25/25</td></tr>
+              <tr><td>6: CloudWatch and X-Ray observability</td><td>20/20</td></tr>
+              <tr><td><strong>Total</strong></td><td><strong>120/120</strong></td></tr>
+            </tbody>
+          </table>
+
+          <h3>What I'd tell someone building their first multi-agent system</h3>
+          <ul>
+            <li><strong>Give each agent one job.</strong> If two agents could both answer a question, the routing rules aren't specific enough.</li>
+            <li><strong>Put state somewhere you can inspect it.</strong> Prompts are a poor place to keep data. A versioned table can be audited.</li>
+            <li><strong>Run independent steps in parallel.</strong> Parallel search is easy to add once retrieval is wrapped in its own tool.</li>
+            <li><strong>Make tracing part of the design.</strong> If the trace map doesn't match your architecture diagram, one of them is wrong.</li>
+            <li><strong>Automate the infrastructure.</strong> CloudFormation, CDK and GitHub Actions turned a one-off submission into something anyone can redeploy.</li>
+          </ul>
+
+          <div class="blog-article__cta">
+            <a href="https://github.com/Nitin-Mane/Multi-Agent-E-commerce-RAG" class="project-card__link" target="_blank" rel="noopener">
+              View on GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="aws-agent-engineer#multi-agent-ecommerce-rag" class="project-card__link">
+              Project case study
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="contact" class="project-card__link">
+              Contact for collaboration
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
 
     <!-- ============ ARTICLE 01 ============ -->
     <article id="industrial-anomaly-detection-edge" class="section blog-article">

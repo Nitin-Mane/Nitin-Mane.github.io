@@ -1,0 +1,555 @@
+/* =============================================================
+   AGENTIC AI — Future AWS Agent Engineer spotlight
+   Credential plate, journey pipeline, mission dossiers,
+   agent-flow diagrams and the home / projects spotlight strip.
+   ============================================================= */
+
+/* ---------- Credential plate ---------- */
+.credential {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.credential__plate {
+  padding: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  overflow: hidden;
+}
+
+.credential__seal {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-green-signal);
+}
+
+.credential__seal-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-green-signal);
+  box-shadow: 0 0 0 4px rgba(109, 255, 176, 0.14);
+}
+
+.credential__kicker {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.credential__title {
+  font-size: var(--fs-display-m);
+  line-height: var(--lh-tight);
+}
+
+.credential__title span {
+  color: var(--color-amber);
+}
+
+.credential__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4) var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px dashed var(--color-border-strong);
+}
+
+.credential__facts dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  color: var(--color-text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.credential__facts dd {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.credential__facts .font-mono {
+  font-size: var(--fs-body-s);
+}
+
+.credential__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.credential__stats .stat__value {
+  font-size: var(--fs-display-m);
+}
+
+.stat--amber .stat__value {
+  color: var(--color-amber);
+}
+
+.stat--violet .stat__value {
+  color: var(--color-violet);
+}
+
+.stat__hint {
+  font-size: var(--fs-body-s);
+  color: var(--color-text-dim);
+}
+
+/* ---------- Journey pipeline ---------- */
+.journey {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-4);
+  list-style: none;
+  counter-reset: journey;
+  position: relative;
+}
+
+.journey::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-violet), var(--color-amber));
+  opacity: 0.5;
+}
+
+.journey__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-8);
+}
+
+.journey__step::before {
+  counter-increment: journey;
+  content: "0" counter(journey);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-accent);
+  background: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  color: var(--color-cyan);
+}
+
+.journey__step--done::before {
+  content: "\2713";
+  color: var(--color-text-on-accent);
+  background: var(--color-amber);
+  border-color: var(--color-amber);
+  font-size: 1rem;
+}
+
+.journey__when {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  color: var(--color-text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.journey__title {
+  font-size: 1.15rem;
+}
+
+.journey__step p {
+  font-size: var(--fs-body-s);
+}
+
+/* ---------- Mission dossier ---------- */
+.mission {
+  scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+}
+
+.mission + .mission {
+  margin-top: var(--space-8);
+}
+
+.mission__panel {
+  padding: var(--space-7);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-7);
+}
+
+.mission__index {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-border-accent);
+}
+
+.mission__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mission__title {
+  font-size: var(--fs-display-m);
+  line-height: var(--lh-tight);
+}
+
+.mission__tagline {
+  font-size: var(--fs-body-l);
+  color: var(--color-text);
+}
+
+.mission__body h4 {
+  margin-top: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-cyan);
+}
+
+.mission__body p {
+  margin-top: var(--space-2);
+}
+
+.mission__list {
+  margin-top: var(--space-2);
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mission__list li::marker {
+  color: var(--color-cyan);
+}
+
+.mission__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.mission__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.mission__metrics .stat {
+  padding: var(--space-4);
+}
+
+.mission__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------- Agent-flow diagram ---------- */
+.flow {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  padding: var(--space-5);
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--color-bg-alt);
+}
+
+.flow__caption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-4);
+}
+
+.flow__chain {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.flow__node {
+  position: relative;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-left: 3px solid var(--color-cyan);
+  border-radius: var(--radius-s);
+  background: var(--color-surface);
+}
+
+.flow__node strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.flow__node span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-dim);
+}
+
+.flow__node--violet {
+  border-left-color: var(--color-violet);
+}
+
+.flow__node--amber {
+  border-left-color: var(--color-amber);
+}
+
+.flow__node--guard {
+  border-left-color: var(--color-green-signal);
+}
+
+.flow__arrow {
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.flow__arrow::before {
+  content: "";
+  width: 1px;
+  height: 14px;
+  background: var(--color-border-accent);
+}
+
+.flow__fan {
+  display: grid;
+  grid-template-columns: repeat(var(--fan-cols, 3), minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.flow__fan .flow__node {
+  padding: var(--space-2) var(--space-3);
+}
+
+.flow__fan .flow__node strong {
+  font-size: 0.9rem;
+}
+
+/* ---------- Progression table ---------- */
+.progression {
+  display: grid;
+  grid-template-columns: 1.1fr repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.progression > div {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--fs-body-s);
+}
+
+.progression__head {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem !important;
+  color: var(--color-text);
+  background: var(--color-surface-2);
+}
+
+.progression__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s) !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+/* ---------- Capability map ---------- */
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.capability h3 {
+  font-size: 1.2rem;
+  margin: var(--space-3) 0 var(--space-3);
+}
+
+.capability p {
+  font-size: var(--fs-body-s);
+  margin-bottom: var(--space-4);
+}
+
+.capability__icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border-accent);
+  color: var(--color-cyan);
+  background: var(--color-cyan-dim);
+}
+
+/* ---------- Spotlight strip (home + projects) ---------- */
+.agentic-spotlight {
+  padding: var(--space-6) var(--space-7);
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
+  background:
+    radial-gradient(120% 140% at 0% 0%, var(--color-amber-dim), transparent 55%),
+    radial-gradient(120% 140% at 100% 100%, var(--color-violet-dim), transparent 55%),
+    linear-gradient(165deg, var(--color-surface), var(--color-surface-2));
+}
+
+.agentic-spotlight__title {
+  font-size: var(--fs-display-s);
+  margin: var(--space-3) 0;
+}
+
+.agentic-spotlight__title span {
+  color: var(--color-amber);
+}
+
+.agentic-spotlight__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.agentic-spotlight__list a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  transition: border-color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+
+.agentic-spotlight__list a:hover {
+  border-color: var(--color-border-accent);
+  transform: translateX(4px);
+}
+
+.agentic-spotlight__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  color: var(--color-amber);
+}
+
+.agentic-spotlight__metric {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  color: var(--color-cyan);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .credential,
+  .mission__panel,
+  .agentic-spotlight {
+    grid-template-columns: 1fr;
+  }
+
+  .journey {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .journey::before {
+    left: 22px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, var(--color-cyan), var(--color-violet), var(--color-amber));
+  }
+
+  .journey__step {
+    padding-top: 0;
+    padding-left: calc(44px + var(--space-5));
+    min-height: 44px;
+  }
+
+  .capabilities {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .progression {
+    grid-template-columns: 1fr;
+  }
+
+  .progression__label {
+    background: var(--color-surface-2);
+  }
+
+  .progression > div[data-col]::before {
+    content: attr(data-col) " — ";
+    font-family: var(--font-mono);
+    color: var(--color-cyan);
+  }
+
+  .progression__head {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .credential__plate,
+  .mission__panel,
+  .agentic-spotlight {
+    padding: var(--space-5);
+  }
+
+  .credential__facts,
+  .credential__stats,
+  .mission__metrics,
+  .capabilities {
+    grid-template-columns: 1fr;
+  }
+
+  .flow__fan {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

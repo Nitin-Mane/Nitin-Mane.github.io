@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Nitin Mane</title>
-  <meta name="description" content="A filterable build log of Nitin Mane's projects — edge AI &amp; computer vision, multi-modal LLM systems, autonomous robotics and Intel OpenVINO research." />
-  <meta name="keywords" content="Nitin Mane, Projects, Edge AI, Computer Vision, OpenVINO, Robotics, LLM, RAG, Generative AI, Portfolio" />
+  <meta name="description" content="A filterable build log of Nitin Mane's projects — agentic AI on Amazon Bedrock AgentCore, edge AI &amp; computer vision, multi-modal LLM systems, autonomous robotics and Intel OpenVINO research." />
+  <meta name="keywords" content="Nitin Mane, Projects, Agentic AI, Amazon Bedrock AgentCore, Multi-Agent RAG, Edge AI, Computer Vision, OpenVINO, Robotics, LLM, RAG, Generative AI, Portfolio" />
   <meta name="author" content="Nitin Mane" />
   <link rel="canonical" href="https://www.nitinmane.me/projects" />
   <meta name="robots" content="index, follow" />
@@ -43,6 +43,7 @@
   <link rel="stylesheet" href="assets/css/components.css" />
   <link rel="stylesheet" href="assets/css/animations.css" />
   <link rel="stylesheet" href="assets/css/projects.css" />
+  <link rel="stylesheet" href="assets/css/agentic.css" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -112,9 +113,38 @@
         <span class="eyebrow reveal" style="--reveal-delay:40ms">Build Log — 03</span>
         <h1 class="page-header__title reveal" style="--reveal-delay:80ms">Projects</h1>
         <p class="page-header__lede reveal" style="--reveal-delay:120ms">
-          Nine builds spanning industrial edge AI, multi-modal LLM systems, autonomous robotics
-          and Intel OpenVINO research — filter by focus area or jump straight to the code.
+          Twelve builds spanning agentic AI on AWS, industrial edge AI, multi-modal LLM systems,
+          autonomous robotics and Intel OpenVINO research — filter by focus area or jump straight
+          to the code.
         </p>
+      </div>
+    </section>
+
+    <!-- ============ AGENTIC AI SPOTLIGHT ============ -->
+    <section class="section section--tight" style="padding-bottom: 0;">
+      <div class="container">
+        <div class="frame agentic-spotlight reveal reveal--scale">
+          <div>
+            <span class="eyebrow">New — Future AWS Agent Engineer · Udacity</span>
+            <h2 class="agentic-spotlight__title">Three agent systems on <span>Amazon Bedrock AgentCore</span>.</h2>
+            <p>
+              Built for a Nanodegree funded by the AWS AI &amp; ML Scholars program and completed on
+              October 8, 2026. The projects go from one guarded chatbot to a team of five agents.
+            </p>
+            <div class="btn-row" style="margin-top: var(--space-5);">
+              <a href="aws-agent-engineer" class="btn btn--primary btn--sm">
+                Open the Spotlight
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="https://www.udacity.com/certificate/e/ba1d41ec-900d-11f1-9972-03d0f79bde06" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Verify Certificate</a>
+            </div>
+          </div>
+          <ul class="agentic-spotlight__list">
+            <li><a href="aws-agent-engineer#customer-support-chatbot"><span class="agentic-spotlight__num">01</span>Customer Support Chatbot<span class="agentic-spotlight__metric">0.95 correct</span></a></li>
+            <li><a href="aws-agent-engineer#ai-support-agent"><span class="agentic-spotlight__num">02</span>AI Support Agent<span class="agentic-spotlight__metric">6/6 live</span></a></li>
+            <li><a href="aws-agent-engineer#multi-agent-ecommerce-rag"><span class="agentic-spotlight__num">03</span>NovaMart Multi-Agent RAG<span class="agentic-spotlight__metric">120/120</span></a></li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -123,6 +153,7 @@
       <div class="container">
         <div class="filter-bar reveal" data-filter-group=".project-card">
           <button type="button" class="filter-btn is-active" data-filter="all">All Projects</button>
+          <button type="button" class="filter-btn" data-filter="agentic">Agentic AI on AWS</button>
           <button type="button" class="filter-btn" data-filter="edge-ai">Edge AI</button>
           <button type="button" class="filter-btn" data-filter="genai">GenAI &amp; LLMs</button>
           <button type="button" class="filter-btn" data-filter="robotics">Robotics</button>
@@ -131,6 +162,127 @@
         </div>
 
         <div class="projects__grid">
+          <!-- Agentic AI 03 — capstone -->
+          <article class="card project-card project-card--lg reveal reveal--scale" data-tags="agentic,genai">
+            <div class="project-card__top">
+              <div class="tag-row">
+                <span class="tag tag--amber">Agentic AI</span>
+                <span class="tag tag--violet">Multi-Agent RAG</span>
+              </div>
+              <span class="font-mono text-dim">Oct 2026</span>
+            </div>
+            <h3 class="project-card__title">NovaMart Multi-Agent E-commerce RAG</h3>
+            <p>
+              A supervisor agent on Amazon Bedrock AgentCore that sends each question to inventory,
+              policy, refund and communication agents. The policy agent searches three Bedrock
+              knowledge bases (S3 Vectors) at once, and all agents share a versioned DynamoDB state
+              table. Capstone of the Future AWS Agent Engineer Nanodegree; scored 120/120 on the
+              official tests.
+            </p>
+            <div class="tag-row project-card__tech">
+              <span class="tag">Strands Agents</span>
+              <span class="tag">AgentCore Runtime</span>
+              <span class="tag">Claude Haiku / Sonnet 4.5</span>
+              <span class="tag">S3 Vectors</span>
+              <span class="tag">DynamoDB</span>
+              <span class="tag">X-Ray</span>
+            </div>
+            <dl class="project-card__meta">
+              <dt>Pattern</dt>
+              <dd>Orchestrator → 4 specialist workers</dd>
+              <dt>Retrieval</dt>
+              <dd>Returns, Shipping, Warranty KBs in parallel</dd>
+              <dt>State</dt>
+              <dd>DynamoDB with optimistic locking + AgentCore Memory</dd>
+              <dt>Safety</dt>
+              <dd>Bedrock Guardrail, explicit routing rules</dd>
+              <dt>Delivery</dt>
+              <dd>CloudFormation, AWS CDK, GitHub Actions</dd>
+              <dt>Result</dt>
+              <dd>120/120 official tests; X-Ray trace map with no failed nodes</dd>
+            </dl>
+            <div class="project-card__links">
+              <a href="https://github.com/Nitin-Mane/Multi-Agent-E-commerce-RAG" target="_blank" rel="noopener" class="project-card__link">
+                View Repository
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="aws-agent-engineer#multi-agent-ecommerce-rag" class="project-card__link">
+                Case Study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="blog#novamart-multi-agent-rag" class="project-card__link">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Agentic AI 01 -->
+          <article class="card project-card reveal reveal--scale" data-tags="agentic,genai" style="--reveal-delay:60ms">
+            <div class="project-card__top">
+              <div class="tag-row">
+                <span class="tag tag--amber">Agentic AI</span>
+              </div>
+              <span class="font-mono text-dim">Aug 2026</span>
+            </div>
+            <h3 class="project-card__title">Customer Support Chatbot</h3>
+            <p>
+              A support chatbot on an AgentCore Harness with Amazon Nova Pro and three separate
+              routes: it collects bug reports (saved to DynamoDB through a Gateway Lambda tool),
+              answers from the shop FAQ, or hands off to a person. Plain code decides when a ticket
+              may be written.
+            </p>
+            <div class="tag-row project-card__tech">
+              <span class="tag">AgentCore Gateway</span>
+              <span class="tag">Nova Pro</span>
+              <span class="tag">Lambda</span>
+              <span class="tag">0.95 correctness</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Nitin-Mane/customer-support-chatbot" target="_blank" rel="noopener" class="project-card__link">
+                View Repository
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="blog#agentcore-support-chatbot" class="project-card__link">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Agentic AI 02 -->
+          <article class="card project-card reveal reveal--scale" data-tags="agentic,genai" style="--reveal-delay:120ms">
+            <div class="project-card__top">
+              <div class="tag-row">
+                <span class="tag tag--amber">Agentic AI</span>
+              </div>
+              <span class="font-mono text-dim">Sep 2026</span>
+            </div>
+            <h3 class="project-card__title">AI Support Agent</h3>
+            <p>
+              A Strands agent on AgentCore Runtime (Nova 2 Lite) that tracks orders, issues refunds,
+              looks up policies in a Knowledge Base, remembers customers between sessions, works out
+              discounts in Code Interpreter and reads live pages with Browser. All six live scenarios
+              passed.
+            </p>
+            <div class="tag-row project-card__tech">
+              <span class="tag">Strands</span>
+              <span class="tag">MCP Gateway</span>
+              <span class="tag">AgentCore Memory</span>
+              <span class="tag">Code Interpreter</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Nitin-Mane/AI-Support-Agent" target="_blank" rel="noopener" class="project-card__link">
+                View Repository
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="blog#tool-right-answer-wrong" class="project-card__link">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
           <!-- 1 -->
           <article class="card project-card project-card--lg reveal reveal--scale" data-tags="edge-ai">
             <div class="project-card__top">
@@ -424,6 +576,24 @@
         <div class="frame reveal reveal--scale" style="padding: var(--space-6);">
           <ul class="featured-github">
             <li>
+              <a href="https://github.com/Nitin-Mane/Multi-Agent-E-commerce-RAG" target="_blank" rel="noopener" class="project-card__link">
+                NovaMart Multi-Agent E-commerce RAG
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Nitin-Mane/AI-Support-Agent" target="_blank" rel="noopener" class="project-card__link">
+                AI Support Agent (AgentCore)
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Nitin-Mane/customer-support-chatbot" target="_blank" rel="noopener" class="project-card__link">
+                Customer Support Chatbot (AgentCore)
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </li>
+            <li>
               <a href="case-study-anomaly-detection" class="project-card__link">
                 Industrial Anomaly Detection
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -471,7 +641,7 @@
           <span class="eyebrow">Open Source</span>
           <h2 class="section__title cta__title">500+ repositories.<br />One GitHub profile.</h2>
           <p class="section__lede">
-            These nine are the highlights — for everything else, from quick experiments to
+            These twelve are the highlights — for everything else, from quick experiments to
             archived coursework, the full history is on GitHub.
           </p>
           <div class="btn-row" style="margin-top: var(--space-6); justify-content: center;">
