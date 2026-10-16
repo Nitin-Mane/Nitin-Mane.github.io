@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future AWS Agent Engineer | Nitin Mane</title>
+  <meta name="description" content="Nitin Mane completed the Future AWS Agent Engineer Nanodegree (Udacity, AWS AI &amp; ML Scholars) on October 8, 2026 — three agentic AI systems on Amazon Bedrock AgentCore: a guarded support chatbot, a tool-using support agent and a five-agent RAG team." />
+  <meta name="keywords" content="Nitin Mane, Future AWS Agent Engineer, Udacity Nanodegree, AWS AI ML Scholars, Amazon Bedrock AgentCore, Strands Agents, Multi-Agent RAG, Agentic AI, Amazon Nova" />
+  <meta name="author" content="Nitin Mane" />
+  <link rel="canonical" href="https://www.nitinmane.me/aws-agent-engineer" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#060a12" />
+  <script src="assets/js/theme-init.js"></script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nitin Mane" />
+  <meta property="og:title" content="Future AWS Agent Engineer | Nitin Mane" />
+  <meta property="og:description" content="Udacity Nanodegree via AWS AI &amp; ML Scholars — three agentic AI systems on Amazon Bedrock AgentCore, from one guarded chatbot to a five-agent RAG team." />
+  <meta property="og:url" content="https://www.nitinmane.me/aws-agent-engineer" />
+  <meta property="og:image" content="https://www.nitinmane.me/assets/images/agentic/support-chatbot-architecture.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Future AWS Agent Engineer | Nitin Mane" />
+  <meta name="twitter:description" content="Udacity Nanodegree via AWS AI &amp; ML Scholars — three agentic AI systems on Amazon Bedrock AgentCore." />
+  <meta name="twitter:image" content="https://www.nitinmane.me/assets/images/agentic/support-chatbot-architecture.png" />
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/images/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/images/profile_nitinmane.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/agentic.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalCredential",
+    "name": "Future AWS Agent Engineer Nanodegree",
+    "credentialCategory": "Verified Certificate of Nanodegree Program Completion",
+    "url": "https://www.udacity.com/certificate/e/ba1d41ec-900d-11f1-9972-03d0f79bde06",
+    "dateCreated": "2026-10-08",
+    "recognizedBy": { "@type": "Organization", "name": "Udacity", "url": "https://www.udacity.com/" },
+    "about": { "@type": "EducationalOccupationalProgram", "name": "AWS AI & ML Scholars", "url": "https://www.udacity.com/scholarships/aws-ai-ml-scholars" },
+    "subjectOf": { "@type": "Person", "name": "Nitin Mane", "url": "https://www.nitinmane.me/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.nitinmane.me/" },
+      { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.nitinmane.me/projects" },
+      { "@type": "ListItem", "position": 3, "name": "Future AWS Agent Engineer", "item": "https://www.nitinmane.me/aws-agent-engineer" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Ambient background -->
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere__glow atmosphere__glow--cyan"></div>
+    <div class="atmosphere__glow atmosphere__glow--amber"></div>
+    <div class="atmosphere__glow atmosphere__glow--violet"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="nav__brand">
+        <span class="nav__brand-mark"><span>NM</span></span>
+        <span class="nav__brand-text">Nitin<span>Mane</span></span>
+      </a>
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <a href="/" class="nav__link">Home</a>
+        <a href="about" class="nav__link">About</a>
+        <a href="experience" class="nav__link">Experience</a>
+        <a href="projects" class="nav__link">Projects</a>
+        <a href="research" class="nav__link">Research</a>
+        <a href="blog" class="nav__link">Blog</a>
+        <a href="education" class="nav__link">Education</a>
+        <a href="speakers" class="nav__link">Speaking</a>
+        <a href="contact" class="nav__link">Contact</a>
+        <a href="contact" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
+      </nav>
+      <div class="nav__actions">
+        <span class="nav__status"><span class="nav__status-dot"></span><span data-ist-clock>AURANGABAD, IN</span></span>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+          <span class="theme-toggle__track" aria-hidden="true">
+            <span class="theme-toggle__thumb"></span>
+          </span>
+        </button>
+        <a href="contact" class="btn btn--primary btn--sm btn--nav-cta">Let's Talk</a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="page-header">
+      <div class="container">
+        <div class="page-header__crumbs reveal">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="projects">Projects</a>
+          <span>/</span>
+          <span class="text-cyan">AWS Agent Engineer</span>
+        </div>
+        <span class="eyebrow reveal" style="--reveal-delay:40ms">Credential Spotlight — AWS AI &amp; ML Scholars</span>
+        <h1 class="page-header__title reveal" style="--reveal-delay:80ms">Future AWS Agent Engineer</h1>
+        <p class="page-header__lede reveal" style="--reveal-delay:120ms">
+          A fully funded Udacity Nanodegree earned through the AWS AI &amp; ML Scholars program and
+          completed on October 8, 2026. Three agent systems on Amazon Bedrock AgentCore, each one
+          harder than the last: a guarded chatbot, a support agent with six tools, and a team of
+          five agents that answers questions from three knowledge bases.
+        </p>
+        <div class="btn-row reveal" style="--reveal-delay:160ms; margin-top: var(--space-6);">
+          <a href="https://www.udacity.com/certificate/e/ba1d41ec-900d-11f1-9972-03d0f79bde06" target="_blank" rel="noopener" class="btn btn--primary">
+            Verify Certificate
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a href="#missions" class="btn">Explore the Three Builds</a>
+          <a href="blog#aws-ai-ml-scholars-journey" class="btn btn--ghost">Read the Journey</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CREDENTIAL ============ -->
+    <section class="section section--tight">
+      <div class="container credential">
+        <div class="frame credential__plate reveal reveal--left">
+          <span class="credential__seal"><span class="credential__seal-dot"></span>Verified by Udacity</span>
+          <div>
+            <p class="credential__kicker">Verified Certificate of Nanodegree Program Completion</p>
+            <h2 class="credential__title" style="margin-top: var(--space-3);">Future <span>AWS</span> Agent Engineer</h2>
+          </div>
+          <p>
+            One of three tracks in Phase 2 of AWS AI &amp; ML Scholars, a program run by AWS and
+            Udacity. Up to 100,000 learners started the free Challenge phase, and the top 4,500 on the
+            assessment were given a fully funded Nanodegree. The track covers Amazon Bedrock, Amazon
+            Nova, retrieval-augmented generation (RAG), and single- and multi-agent systems.
+          </p>
+          <dl class="credential__facts">
+            <div>
+              <dt>Recipient</dt>
+              <dd>Nitin Mane</dd>
+            </div>
+            <div>
+              <dt>Completed</dt>
+              <dd>October 8, 2026</dd>
+            </div>
+            <div>
+              <dt>Issuer</dt>
+              <dd>Udacity</dd>
+            </div>
+            <div>
+              <dt>Pathway</dt>
+              <dd>AWS AI &amp; ML Scholars</dd>
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <dt>Certificate ID</dt>
+              <dd class="font-mono">ba1d41ec-900d-11f1-9972-03d0f79bde06</dd>
+            </div>
+          </dl>
+          <div class="project-card__links" style="margin-top: 0;">
+            <a href="https://www.udacity.com/certificate/e/ba1d41ec-900d-11f1-9972-03d0f79bde06" target="_blank" rel="noopener" class="project-card__link">
+              View certificate on Udacity
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://www.udacity.com/scholarships/aws-ai-ml-scholars" target="_blank" rel="noopener" class="project-card__link">
+              About the scholarship
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="credential__stats">
+          <div class="stat reveal reveal--scale">
+            <span class="stat__value">03</span>
+            <span class="stat__label">Agent systems built</span>
+            <span class="stat__hint">From one routed chatbot to five cooperating agents</span>
+          </div>
+          <div class="stat stat--amber reveal reveal--scale" style="--reveal-delay:60ms">
+            <span class="stat__value">120/120</span>
+            <span class="stat__label">Official test score</span>
+            <span class="stat__hint">Multi-agent RAG assignment, Udacity AWS sandbox</span>
+          </div>
+          <div class="stat stat--violet reveal reveal--scale" style="--reveal-delay:120ms">
+            <span class="stat__value">0.95</span>
+            <span class="stat__label">Bedrock correctness</span>
+            <span class="stat__hint">LLM-as-a-judge score, harmfulness 0.00</span>
+          </div>
+          <div class="stat reveal reveal--scale" style="--reveal-delay:180ms">
+            <span class="stat__value">6/6</span>
+            <span class="stat__label">Live scenarios passed</span>
+            <span class="stat__hint">Orders, refunds, RAG, memory, maths, browser</span>
+          </div>
+          <div class="stat reveal reveal--scale" style="--reveal-delay:240ms">
+            <span class="stat__value">34</span>
+            <span class="stat__label">Automated tests</span>
+            <span class="stat__hint">22 core + 12 UI tests, all passing</span>
+          </div>
+          <div class="stat stat--amber reveal reveal--scale" style="--reveal-delay:300ms">
+            <span class="stat__value">0</span>
+            <span class="stat__label">AWS resources left running</span>
+            <span class="stat__hint">Teardown checked after every project</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">01 — The Pathway</span>
+          <h2 class="section__title">From scholar to agent engineer.</h2>
+          <p class="section__lede">
+            The scholarship has two phases: a free, self-paced Challenge, and then a Nanodegree for
+            the learners who score highest on the assessment. I built one project each month.
+          </p>
+        </div>
+
+        <ol class="journey">
+          <li class="journey__step reveal">
+            <span class="journey__when">Spring 2026</span>
+            <h3 class="journey__title">Challenge phase</h3>
+            <p>Self-paced AWS AI Practitioner learning plan, plus hands-on work in Amazon PartyRock and Amazon Bedrock.</p>
+          </li>
+          <li class="journey__step reveal" style="--reveal-delay:60ms">
+            <span class="journey__when">July 2026</span>
+            <h3 class="journey__title">Assessment &amp; selection</h3>
+            <p>An assessment to rank learners. The top 4,500 receive a fully funded Udacity Nanodegree.</p>
+          </li>
+          <li class="journey__step reveal" style="--reveal-delay:120ms">
+            <span class="journey__when">August 2026</span>
+            <h3 class="journey__title">Project 01 — Chatbot</h3>
+            <p>A three-route support chatbot on an AgentCore Harness. It saves bug reports to DynamoDB through a Gateway tool.</p>
+          </li>
+          <li class="journey__step reveal" style="--reveal-delay:180ms">
+            <span class="journey__when">September 2026</span>
+            <h3 class="journey__title">Project 02 — Support Agent</h3>
+            <p>A Strands agent on AgentCore Runtime with six capabilities: Gateway tools, a Knowledge Base, Memory, Code Interpreter and Browser.</p>
+          </li>
+          <li class="journey__step journey__step--done reveal" style="--reveal-delay:240ms">
+            <span class="journey__when">October 8, 2026</span>
+            <h3 class="journey__title">Project 03 &amp; graduation</h3>
+            <p>NovaMart, a multi-agent RAG system that scored 120/120 on the official tests, and the Nanodegree completed the same day.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ MISSIONS ============ -->
+    <section class="section" id="missions">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">02 — Three Builds</span>
+          <h2 class="section__title">One agent, then six tools, then five agents.</h2>
+          <p class="section__lede">
+            Each project made the system harder to keep under control. Each time, the useful work
+            was deciding which parts the model handles and which parts plain code enforces.
+          </p>
+        </div>
+
+        <!-- ---------- MISSION 01 ---------- -->
+        <article class="mission" id="customer-support-chatbot">
+          <div class="frame mission__panel reveal reveal--scale">
+            <div class="mission__body">
+              <div class="mission__head">
+                <span class="mission__index" aria-hidden="true">01</span>
+                <div class="tag-row">
+                  <span class="tag tag--amber">Agentic AI</span>
+                  <span class="tag">August 2026</span>
+                </div>
+                <h3 class="mission__title">Customer Support Chatbot</h3>
+                <p class="mission__tagline">A support chatbot with three separate routes, where plain code decides when the database may be written to.</p>
+              </div>
+
+              <h4>The problem</h4>
+              <p>
+                Support bots fail in two common ways: they make up answers, and they save incomplete
+                tickets. This one has three routes that never overlap. It collects bug reports over
+                several turns, answers only from the shop's FAQ, and sends everything else to a
+                person.
+              </p>
+
+              <h4>What I built</h4>
+              <ul class="mission__list">
+                <li>An <strong>AgentCore Harness</strong> on Amazon Nova Pro 1.0 that keeps conversation state across turns.</li>
+                <li>An <strong>AgentCore Gateway</strong> that gives the model one tool, defined by an OpenAPI contract: a Lambda function that writes bug reports to DynamoDB.</li>
+                <li>A <strong>routing guard</strong> in plain code that blocks early writes, removes <code>&lt;thinking&gt;</code> tags from replies and handles fallbacks.</li>
+                <li>A <strong>Flask web app</strong> with login and a panel that shows which route was chosen and the source of each answer.</li>
+                <li><strong>Bedrock evaluation</strong> on a JSONL dataset, with a model scoring the answers and a per-case metrics table.</li>
+              </ul>
+            </div>
+
+            <div class="mission__side">
+              <div class="flow" role="img" aria-label="Request flow: client, policy guard, AgentCore Harness with Nova Pro, Gateway, Lambda, DynamoDB">
+                <p class="flow__caption">Request path</p>
+                <ol class="flow__chain">
+                  <li class="flow__node"><strong>Client</strong><span>Flask UI · CLI chat</span></li>
+                  <li class="flow__arrow" aria-hidden="true">request</li>
+                  <li class="flow__node flow__node--guard"><strong>Policy Guard</strong><span>route · preconditions · output filter</span></li>
+                  <li class="flow__arrow" aria-hidden="true">approved input</li>
+                  <li class="flow__node flow__node--violet"><strong>AgentCore Harness</strong><span>Amazon Nova Pro 1.0 · grounded prompt</span></li>
+                  <li class="flow__arrow" aria-hidden="true">tool call</li>
+                  <li class="flow__node flow__node--amber"><strong>Gateway → Lambda → DynamoDB</strong><span>create_bug_report · OPEN ticket</span></li>
+                </ol>
+              </div>
+
+              <div class="mission__metrics">
+                <div class="stat"><span class="stat__value">0.95</span><span class="stat__label">Correctness</span></div>
+                <div class="stat stat--amber"><span class="stat__value">0.00</span><span class="stat__label">Harmfulness</span></div>
+                <div class="stat stat--violet"><span class="stat__value">34/34</span><span class="stat__label">Tests passing</span></div>
+                <div class="stat"><span class="stat__value">10/10</span><span class="stat__label">Eval cases valid</span></div>
+              </div>
+
+              <div class="tag-row">
+                <span class="tag">Bedrock AgentCore</span>
+                <span class="tag">Amazon Nova Pro</span>
+                <span class="tag">AWS Lambda</span>
+                <span class="tag">DynamoDB</span>
+                <span class="tag">CloudFormation</span>
+                <span class="tag">Flask</span>
+                <span class="tag">pytest</span>
+              </div>
+
+              <div class="mission__links">
+                <a href="https://github.com/Nitin-Mane/customer-support-chatbot" target="_blank" rel="noopener" class="project-card__link">
+                  View Repository
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="blog#agentcore-support-chatbot" class="project-card__link">
+                  Read the Build Notes
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- MISSION 02 ---------- -->
+        <article class="mission" id="ai-support-agent">
+          <div class="frame mission__panel reveal reveal--scale">
+            <div class="mission__body">
+              <div class="mission__head">
+                <span class="mission__index" aria-hidden="true">02</span>
+                <div class="tag-row">
+                  <span class="tag tag--amber">Agentic AI</span>
+                  <span class="tag">September 2026</span>
+                </div>
+                <h3 class="mission__title">AI Support Agent</h3>
+                <p class="mission__tagline">One conversation can track an order, issue a refund, look up a policy, remember the customer, work out a discount and read a website.</p>
+              </div>
+
+              <h4>The problem</h4>
+              <p>
+                Real support requests need several backend services. An agent with many tools is only
+                useful if every tool has a clear job, and if the final reply keeps the numbers the
+                tools returned.
+              </p>
+
+              <h4>What I built</h4>
+              <ul class="mission__list">
+                <li>An async <strong>Strands</strong> app on <strong>AgentCore Runtime</strong> using Amazon Nova 2 Lite.</li>
+                <li>An <strong>MCP Gateway</strong> with two targets: an API Gateway endpoint for orders and a Lambda function for refunds.</li>
+                <li><strong>Bedrock Knowledge Base</strong> search over a product catalog in S3, indexed in OpenSearch Serverless.</li>
+                <li><strong>AgentCore Memory</strong> hooks that bring back customer preferences in later sessions.</li>
+                <li><strong>Code Interpreter</strong> for loyalty discounts (Python <code>Decimal</code>, exact rounding) and <strong>Browser</strong> for reading live web pages.</li>
+                <li>A check on every reply that copies the calculator's exact figures, so the model cannot restate them wrongly.</li>
+              </ul>
+            </div>
+
+            <div class="mission__side">
+              <div class="flow" role="img" aria-label="Customer request reaches AgentCore Runtime running a Strands agent on Nova 2 Lite, which fans out to six capabilities">
+                <p class="flow__caption">Tool fan-out</p>
+                <ol class="flow__chain">
+                  <li class="flow__node"><strong>Customer</strong><span>one conversation, many intents</span></li>
+                  <li class="flow__arrow" aria-hidden="true">invoke</li>
+                  <li class="flow__node flow__node--violet"><strong>AgentCore Runtime</strong><span>Strands agent · Amazon Nova 2 Lite</span></li>
+                  <li class="flow__arrow" aria-hidden="true">selects tool</li>
+                  <li>
+                    <div class="flow__fan" style="--fan-cols:3">
+                      <div class="flow__node flow__node--amber"><strong>Orders</strong><span>API Gateway</span></div>
+                      <div class="flow__node flow__node--amber"><strong>Refunds</strong><span>Lambda</span></div>
+                      <div class="flow__node"><strong>Policies</strong><span>Knowledge Base</span></div>
+                      <div class="flow__node"><strong>Memory</strong><span>cross-session</span></div>
+                      <div class="flow__node flow__node--guard"><strong>Maths</strong><span>Code Interpreter</span></div>
+                      <div class="flow__node flow__node--violet"><strong>Web</strong><span>Browser</span></div>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="mission__metrics">
+                <div class="stat"><span class="stat__value">6/6</span><span class="stat__label">Live scenarios</span></div>
+                <div class="stat stat--amber"><span class="stat__value">$99.00</span><span class="stat__label">Exact discount total</span></div>
+                <div class="stat stat--violet"><span class="stat__value">$139.99</span><span class="stat__label">Refund approved</span></div>
+                <div class="stat"><span class="stat__value">2</span><span class="stat__label">Sessions, one memory</span></div>
+              </div>
+
+              <div class="tag-row">
+                <span class="tag">Strands Agents</span>
+                <span class="tag">AgentCore Runtime</span>
+                <span class="tag">MCP Gateway</span>
+                <span class="tag">Bedrock Knowledge Bases</span>
+                <span class="tag">OpenSearch Serverless</span>
+                <span class="tag">Code Interpreter</span>
+                <span class="tag">Python 3.13</span>
+              </div>
+
+              <div class="mission__links">
+                <a href="https://github.com/Nitin-Mane/AI-Support-Agent" target="_blank" rel="noopener" class="project-card__link">
+                  View Repository
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="blog#tool-right-answer-wrong" class="project-card__link">
+                  Read the Build Notes
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- MISSION 03 ---------- -->
+        <article class="mission" id="multi-agent-ecommerce-rag">
+          <div class="frame mission__panel reveal reveal--scale">
+            <div class="mission__body">
+              <div class="mission__head">
+                <span class="mission__index" aria-hidden="true">03</span>
+                <div class="tag-row">
+                  <span class="tag tag--amber">Agentic AI</span>
+                  <span class="tag tag--violet">Capstone</span>
+                  <span class="tag">October 2026</span>
+                </div>
+                <h3 class="mission__title">NovaMart Multi-Agent E-commerce RAG</h3>
+                <p class="mission__tagline">A supervisor agent sends each question to four specialist agents, which share state and search three knowledge bases at once.</p>
+              </div>
+
+              <h4>The problem</h4>
+              <p>
+                An e-commerce support question often needs order data, a refund decision and policy
+                text at the same time. A single agent ends up mixing these jobs together. NovaMart
+                gives each job to its own agent and keeps all of their work in one shared, versioned
+                record.
+              </p>
+
+              <h4>What I built</h4>
+              <ul class="mission__list">
+                <li>An <strong>OrchestratorAgent</strong> (Claude Haiku 4.5) with five routing tools, and four <strong>Claude Sonnet 4.5</strong> agents for inventory, policy, refunds and the final reply.</li>
+                <li><strong>Parallel RAG</strong>: the PolicyAgent searches the Returns, Shipping and Warranty knowledge bases (stored in S3 Vectors) at the same time using a <code>ThreadPoolExecutor</code>.</li>
+                <li>A shared <strong>WorkflowState</strong> table in DynamoDB with optimistic locking: each write must match the expected version or it retries.</li>
+                <li><strong>AgentCore Memory</strong> for seven-day session summaries and a <strong>Bedrock Guardrail</strong> on the runtime.</li>
+                <li><strong>CloudWatch and X-Ray</strong> tracing, CloudFormation and CDK for infrastructure, and GitHub Actions for validation and deployment.</li>
+              </ul>
+            </div>
+
+            <div class="mission__side">
+              <div class="flow" role="img" aria-label="AgentCore Runtime with Guardrail feeds the Orchestrator, which routes to Inventory, Policy, Refund and Communication agents; Policy searches three knowledge bases in parallel">
+                <p class="flow__caption">Hub &amp; spoke</p>
+                <ol class="flow__chain">
+                  <li class="flow__node flow__node--guard"><strong>AgentCore Runtime + Guardrail</strong><span>session_id · customer_id</span></li>
+                  <li class="flow__arrow" aria-hidden="true">validated payload</li>
+                  <li class="flow__node flow__node--violet"><strong>OrchestratorAgent</strong><span>Claude Haiku 4.5 · 5 routing tools</span></li>
+                  <li class="flow__arrow" aria-hidden="true">routes by intent</li>
+                  <li>
+                    <div class="flow__fan" style="--fan-cols:4">
+                      <div class="flow__node flow__node--amber"><strong>Inventory</strong><span>DynamoDB</span></div>
+                      <div class="flow__node flow__node--amber"><strong>Policy</strong><span>3 × KB</span></div>
+                      <div class="flow__node flow__node--amber"><strong>Refund</strong><span>eligibility</span></div>
+                      <div class="flow__node flow__node--amber"><strong>Comms</strong><span>always last</span></div>
+                    </div>
+                  </li>
+                  <li class="flow__arrow" aria-hidden="true">read / write</li>
+                  <li class="flow__node"><strong>WorkflowStateTable</strong><span>versioned · optimistic locking · TTL</span></li>
+                </ol>
+              </div>
+
+              <div class="mission__metrics">
+                <div class="stat stat--amber"><span class="stat__value">120/120</span><span class="stat__label">Official tests</span></div>
+                <div class="stat"><span class="stat__value">5</span><span class="stat__label">Cooperating agents</span></div>
+                <div class="stat stat--violet"><span class="stat__value">3</span><span class="stat__label">Knowledge bases in parallel</span></div>
+                <div class="stat"><span class="stat__value">0</span><span class="stat__label">Failed trace nodes</span></div>
+              </div>
+
+              <div class="tag-row">
+                <span class="tag">Strands Agents</span>
+                <span class="tag">AgentCore Runtime &amp; Memory</span>
+                <span class="tag">S3 Vectors</span>
+                <span class="tag">DynamoDB</span>
+                <span class="tag">X-Ray</span>
+                <span class="tag">AWS CDK</span>
+                <span class="tag">GitHub Actions</span>
+              </div>
+
+              <div class="mission__links">
+                <a href="https://github.com/Nitin-Mane/Multi-Agent-E-commerce-RAG" target="_blank" rel="noopener" class="project-card__link">
+                  View Repository
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="blog#novamart-multi-agent-rag" class="project-card__link">
+                  Read the Build Notes
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PROGRESSION ============ -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">03 — Side by Side</span>
+          <h2 class="section__title">How the design changed.</h2>
+          <p class="section__lede">
+            The same questions came up in every project: where state lives, where answers come
+            from, and how to prove the system works.
+          </p>
+        </div>
+
+        <div class="progression reveal reveal--scale" role="table" aria-label="Comparison of the three projects">
+          <div class="progression__head" role="columnheader"></div>
+          <div class="progression__head" role="columnheader">01 · Chatbot</div>
+          <div class="progression__head" role="columnheader">02 · Support Agent</div>
+          <div class="progression__head" role="columnheader">03 · NovaMart</div>
+
+          <div class="progression__label" role="rowheader">Pattern</div>
+          <div data-col="01" role="cell">One agent, three fixed routes</div>
+          <div data-col="02" role="cell">One agent, six tools</div>
+          <div data-col="03" role="cell">Supervisor and four specialist agents</div>
+
+          <div class="progression__label" role="rowheader">Model</div>
+          <div data-col="01" role="cell">Amazon Nova Pro 1.0</div>
+          <div data-col="02" role="cell">Amazon Nova 2 Lite</div>
+          <div data-col="03" role="cell">Claude Haiku 4.5 + Sonnet 4.5</div>
+
+          <div class="progression__label" role="rowheader">Knowledge</div>
+          <div data-col="01" role="cell">FAQ included in the prompt</div>
+          <div data-col="02" role="cell">Knowledge Base on OpenSearch Serverless</div>
+          <div data-col="03" role="cell">3 Knowledge Bases on S3 Vectors, searched in parallel</div>
+
+          <div class="progression__label" role="rowheader">State</div>
+          <div data-col="01" role="cell">Harness session</div>
+          <div data-col="02" role="cell">AgentCore Memory across sessions</div>
+          <div data-col="03" role="cell">Versioned DynamoDB state + Memory</div>
+
+          <div class="progression__label" role="rowheader">Safety</div>
+          <div data-col="01" role="cell">Routing guard in code</div>
+          <div data-col="02" role="cell">Reply check against tool output</div>
+          <div data-col="03" role="cell">Bedrock Guardrail + routing rules</div>
+
+          <div class="progression__label" role="rowheader">Proof</div>
+          <div data-col="01" role="cell">Bedrock LLM-as-a-judge, 34 tests</div>
+          <div data-col="02" role="cell">6 recorded live scenarios</div>
+          <div data-col="03" role="cell">120/120 official tests, X-Ray trace map</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CAPABILITIES ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">04 — Skills</span>
+          <h2 class="section__title">What I can now build.</h2>
+        </div>
+
+        <div class="capabilities">
+          <article class="card capability reveal reveal--scale">
+            <span class="capability__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5 6.5 17M12 11.5l5.5 5.5"/></svg></span>
+            <h3>Multi-agent orchestration</h3>
+            <p>Supervisor and worker design, routing rules, specialist agents and a fixed final step.</p>
+            <div class="tag-row"><span class="tag">Strands Agents</span><span class="tag">Agent graphs</span></div>
+          </article>
+          <article class="card capability reveal reveal--scale" style="--reveal-delay:60ms">
+            <span class="capability__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+            <h3>Retrieval (RAG)</h3>
+            <p>Bedrock Knowledge Bases on S3 Vectors and OpenSearch Serverless, parallel search, and answers that cite their sources.</p>
+            <div class="tag-row"><span class="tag">Knowledge Bases</span><span class="tag">S3 Vectors</span></div>
+          </article>
+          <article class="card capability reveal reveal--scale" style="--reveal-delay:120ms">
+            <span class="capability__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></span>
+            <h3>Agent tools</h3>
+            <p>AgentCore Gateway (MCP and OpenAPI), Lambda and API Gateway targets, Code Interpreter and Browser.</p>
+            <div class="tag-row"><span class="tag">MCP</span><span class="tag">OpenAPI</span></div>
+          </article>
+          <article class="card capability reveal reveal--scale">
+            <span class="capability__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></span>
+            <h3>State and memory</h3>
+            <p>Session state, memory across sessions, and versioned DynamoDB writes so agents don't overwrite each other.</p>
+            <div class="tag-row"><span class="tag">AgentCore Memory</span><span class="tag">DynamoDB</span></div>
+          </article>
+          <article class="card capability reveal reveal--scale" style="--reveal-delay:60ms">
+            <span class="capability__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3>Safety and evaluation</h3>
+            <p>Guardrails, guards written in code, prompt-injection defences, model-graded evaluation and tests run against the live system.</p>
+            <div class="tag-row"><span class="tag">Guardrails</span><span class="tag">Bedrock Evaluation</span></div>
+          </article>
+          <article class="card capability reveal reveal--scale" style="--reveal-delay:120ms">
+            <span class="capability__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+            <h3>Operations</h3>
+            <p>CloudWatch logs, X-Ray traces, CloudFormation and CDK, GitHub Actions, and a checked teardown so nothing keeps costing money.</p>
+            <div class="tag-row"><span class="tag">X-Ray</span><span class="tag">AWS CDK</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="section cta">
+      <div class="container">
+        <div class="cta__panel reveal reveal--scale">
+          <span class="eyebrow">Let's Build</span>
+          <h2 class="section__title cta__title">Building agents on AWS?</h2>
+          <p class="section__lede">
+            I'm interested in agent systems that touch real operations: support, plant floors and
+            edge devices. I can help design the architecture, the guardrails and the evaluation.
+          </p>
+          <div class="btn-row" style="margin-top: var(--space-6); justify-content: center;">
+            <a href="contact" class="btn btn--primary">
+              Start a Conversation
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="projects" class="btn btn--ghost">See All Projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="/" class="nav__brand">
+          <span class="nav__brand-mark"><span>NM</span></span>
+          <span class="footer__brand-name">Nitin Mane</span>
+        </a>
+        <p>
+          Computer Vision and Edge AI Engineer | Robotics and Mechatronics based in Chhatrapati Sambhajinagar (Aurangabad), India — designing
+          systems where embedded hardware meets machine intelligence.
+        </p>
+        <div class="social-row" aria-label="Social profiles">
+          <a href="https://github.com/Nitin-Mane" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 3.5 5.4 3.8 5.4 3.8a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 10.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/nitingmane/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://twitter.com/Mnitin52" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.kaggle.com/mnitin59" target="_blank" rel="noopener" aria-label="Kaggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18M5 13l6.5-6M5 13l7 8M14 3v18M14 13l6.5-6"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nitin_mane/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h3 class="footer__heading">Navigate</h3>
+        <ul class="footer__links">
+          <li><a href="/">Home</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="experience">Experience</a></li>
+          <li><a href="projects">Projects</a></li>
+          <li><a href="research">Research</a></li>
+          <li><a href="blog">Blog</a></li>
+          <li><a href="education">Education</a></li>
+          <li><a href="speakers">Speaking</a></li>
+          <li><a href="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Currently</h3>
+        <ul class="footer__links">
+          <li>M.Tech Mechatronics, IIT Bhilai, 2024–2026</li>
+          <li>Intel Software Innovator</li>
+          <li>Arm Developer Ambassador</li>
+          <li>IEEE Chair, CEDA Nagpur Chapter</li>
+          <li><a href="mailto:mnitin59@gmail.com">mnitin59@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>© <span data-year>2026</span> Nitin Mane. All systems nominal.</span>
+      <span>Designed &amp; built with HTML, CSS, vanilla JS and Three.js</span>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

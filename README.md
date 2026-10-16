@@ -99,6 +99,7 @@ Nitin-Mane.github.io/
 ├── 404.html
 ├── about.html
 ├── blog.html
+├── aws-agent-engineer.html
 ├── case-study-anomaly-detection.html
 ├── contact.html
 ├── education.html
@@ -123,6 +124,7 @@ Nitin-Mane.github.io/
 | ------------------ | ------------------------------------------------------- |
 | `index.html`       | Main homepage of the personal website                   |
 | `about.html`       | About/profile section                                   |
+| `aws-agent-engineer.html` | Future AWS Agent Engineer Nanodegree spotlight: credential and three Bedrock AgentCore projects |
 | `case-study-anomaly-detection.html` | Case study: Realtime Industrial Anomaly Detection project |
 | `education.html`   | Academic background and qualifications                  |
 | `experience.html`  | Professional experience and roles                       |
