@@ -295,6 +295,70 @@ describe('initNavToggle', () => {
     expect(navToggle.getAttribute('aria-expanded')).toBe('false');
     expect(document.body.style.overflow).toBe('');
   });
+
+  const groupedNav = `
+    <nav class="nav__links">
+      <div class="nav__group" id="g1">
+        <button class="nav__link nav__group-toggle" aria-expanded="false">About</button>
+        <div class="nav__menu"><a href="about" class="nav__menu-link">About Me</a></div>
+      </div>
+      <div class="nav__group" id="g2">
+        <button class="nav__link nav__group-toggle" aria-expanded="false">Work</button>
+        <div class="nav__menu"><a href="projects" class="nav__menu-link">Projects</a></div>
+      </div>
+    </nav>
+    <p id="outside">Outside</p>
+  `;
+
+  it('opens one nav group at a time', () => {
+    document.body.innerHTML = groupedNav;
+    require('../assets/js/main.js');
+
+    const [t1, t2] = document.querySelectorAll('.nav__group-toggle');
+    const g1 = document.getElementById('g1');
+    const g2 = document.getElementById('g2');
+
+    t1.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+    expect(g1.classList.contains('is-open')).toBe(true);
+    expect(t1.getAttribute('aria-expanded')).toBe('true');
+
+    t2.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+    expect(g1.classList.contains('is-open')).toBe(false);
+    expect(g2.classList.contains('is-open')).toBe(true);
+
+    t2.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+    expect(g2.classList.contains('is-open')).toBe(false);
+    expect(t2.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('closes nav groups on outside click and Escape', () => {
+    document.body.innerHTML = groupedNav;
+    require('../assets/js/main.js');
+
+    const t1 = document.querySelector('.nav__group-toggle');
+    const g1 = document.getElementById('g1');
+
+    t1.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+    document.getElementById('outside').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+    expect(g1.classList.contains('is-open')).toBe(false);
+
+    t1.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+    document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape' }));
+    expect(g1.classList.contains('is-open')).toBe(false);
+    expect(t1.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('marks the group of the current page as active, not the toggle buttons', () => {
+    window.history.pushState({}, '', '/projects');
+    document.body.innerHTML = groupedNav;
+    require('../assets/js/main.js');
+
+    const [t1, t2] = document.querySelectorAll('.nav__group-toggle');
+    expect(document.querySelector('a[href="projects"]').classList.contains('is-active')).toBe(true);
+    expect(t2.classList.contains('is-active')).toBe(true);
+    expect(t1.classList.contains('is-active')).toBe(false);
+    window.history.pushState({}, '', '/');
+  });
 });
 
 describe('initFooterYear', () => {
