@@ -92,7 +92,13 @@
           </div>
         </div>
         <a href="blog" class="nav__link">Blog</a>
-        <a href="speakers" class="nav__link">Speaking</a>
+        <div class="nav__group">
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-menu-community">Community<svg class="nav__chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav__menu" id="nav-menu-community">
+            <a href="speakers" class="nav__menu-link"><span class="nav__menu-title">Speaking</span><span class="nav__menu-desc">Talks &amp; hands-on workshops</span></a>
+            <a href="mentor" class="nav__menu-link"><span class="nav__menu-title">Mentorship</span><span class="nav__menu-desc">1:1 sessions on Topmate</span></a>
+          </div>
+        </div>
         <a href="contact" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
       </nav>
       <div class="nav__actions">
@@ -122,9 +128,9 @@
         <span class="eyebrow reveal" style="--reveal-delay:40ms">Talks &amp; Outreach — 06</span>
         <h1 class="page-header__title reveal" style="--reveal-delay:80ms">On The Circuit</h1>
         <p class="page-header__lede reveal" style="--reveal-delay:120ms">
-          Invited talks, hands-on workshops and mentor sessions — wired across IEEE student
-          branches, Google's developer communities, Intel developer meets and school STEM
-          outreach camps.
+          Invited talks and hands-on workshops across IEEE student branches, Google developer
+          communities, Intel developer meets and school STEM outreach camps. Looking for
+          one-to-one help instead? See <a href="mentor">Mentorship</a>.
         </p>
       </div>
     </section>
@@ -155,14 +161,10 @@
             <div class="talk-card__gallery">
               <div class="gallery" aria-roledescription="carousel" aria-label="Photo gallery">
                 <div class="gallery__track">
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/01.jpg" alt="Opening ceremony of Intel DevMeet 1.0 at St. Vincent Pallotti College of Engineering and Technology, Nagpur" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/02.jpg" alt="Intel DevMeet 1.0 Nagpur session" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/03.jpg" alt="Intel DevMeet 1.0 Nagpur session" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/04.jpg" alt="Hands-on lab session at Intel DevMeet 1.0, Nagpur" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/05.jpg" alt="Hands-on lab session at Intel DevMeet 1.0, Nagpur" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/06.jpg" alt="Audience at Intel DevMeet 1.0, Nagpur" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/07.jpg" alt="Auditorium audience at Intel DevMeet 1.0, Nagpur" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/08.jpg" alt="Intel DevMeet 1.0 Nagpur session" loading="lazy" /></div>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/04.jpg" alt="Felicitation on stage during the opening ceremony of Intel DevMeet 1.0 at St. Vincent Pallotti College of Engineering and Technology, Nagpur" loading="lazy" /><figcaption class="gallery__caption">Felicitation at the opening ceremony</figcaption></figure>
+                  <figure class="gallery__slide gallery__slide--contain" aria-roledescription="slide" style="--slide-bg:url('/assets/images/workshops/intel-devmeet-nagpur/05.jpg')"><img src="assets/images/workshops/intel-devmeet-nagpur/05.jpg" alt="Inauguration of Intel DevMeet 1.0 with faculty and guests beside the ceremonial lamp, Nagpur" loading="lazy" /><figcaption class="gallery__caption">Inauguration with faculty and guests</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/02.jpg" alt="Participants at workstations during the hands-on generative AI lab, Intel DevMeet 1.0, Nagpur" loading="lazy" /><figcaption class="gallery__caption">Hands-on generative AI lab</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/intel-devmeet-nagpur/07.jpg" alt="Auditorium audience for the opening session of Intel DevMeet 1.0, Nagpur" loading="lazy" /><figcaption class="gallery__caption">Opening session audience</figcaption></figure>
                 </div>
               </div>
             </div>
@@ -189,7 +191,7 @@
             <div class="talk-card__gallery">
               <div class="gallery" aria-roledescription="carousel" aria-label="Photo gallery">
                 <div class="gallery__track">
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/gemini-prompt-iitbhilai/01.jpg" alt="AI for Everyone: Foundations of Prompt Engineering with Gemini, GDG IIT Bhilai event banner" loading="lazy" /></div>
+                  <figure class="gallery__slide gallery__slide--contain" aria-roledescription="slide" style="--slide-bg:url('/assets/images/workshops/gemini-prompt-iitbhilai/01.jpg')"><img src="assets/images/workshops/gemini-prompt-iitbhilai/01.jpg" alt="Event poster for AI for Everyone: Foundations of Prompt Engineering with Gemini, GDG IIT Bhilai, 7 November 2025, speaker Nitin Mane" loading="lazy" /><figcaption class="gallery__caption">Event poster · LH-101, IIT Bhilai</figcaption></figure>
                 </div>
               </div>
             </div>
@@ -216,14 +218,9 @@
             <div class="talk-card__gallery">
               <div class="gallery" aria-roledescription="carousel" aria-label="Photo gallery">
                 <div class="gallery__track">
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/01.jpg" alt="Inauguration of the Intel OpenVINO workshop at Shri Sant Gajanan Maharaj College of Engineering, Shegaon" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/02.jpg" alt="Group photo with student volunteers, OpenVINO workshop, Shegaon" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/03.jpg" alt="OpenVINO workshop session, Shegaon" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/04.jpg" alt="OpenVINO workshop session, Shegaon" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/05.jpg" alt="OpenVINO workshop session, Shegaon" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/06.jpg" alt="OpenVINO workshop session, Shegaon" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/07.jpg" alt="OpenVINO workshop session, Shegaon" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/08.jpg" alt="OpenVINO workshop session, Shegaon" loading="lazy" /></div>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/01.jpg" alt="Felicitation on stage under the banner for Empowering Intelligent Visual Applications using Intel OpenVINO Toolkit, SSGMCE Shegaon" loading="lazy" /><figcaption class="gallery__caption">Felicitation under the workshop banner</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/03.jpg" alt="Workshop participants and organisers on stage after the OpenVINO session, SSGMCE Shegaon" loading="lazy" /><figcaption class="gallery__caption">Participants and organising team</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-shegaon/05.jpg" alt="OpenVINO workshop session in progress in the SSGMCE auditorium, Shegaon" loading="lazy" /><figcaption class="gallery__caption">Workshop session in the auditorium</figcaption></figure>
                 </div>
               </div>
             </div>
@@ -233,7 +230,7 @@
                   <span class="tag tag--cyan">IEEE SSGMCE Student Branch</span>
                   <span class="tag">CEDA</span>
                 </div>
-                <span class="talk-card__meta">Aug 2025</span>
+                <span class="talk-card__meta">Jul 24, 2025</span>
               </div>
               <h3 class="talk-card__title">Empowering Intelligent Visual Applications Using Intel OpenVINO Toolkit</h3>
               <p class="talk-card__meta">Shri Sant Gajanan Maharaj College of Engineering · Shegaon, India · Facilitator</p>
@@ -250,14 +247,10 @@
             <div class="talk-card__gallery">
               <div class="gallery" aria-roledescription="carousel" aria-label="Photo gallery">
                 <div class="gallery__track">
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/01.jpg" alt="Hands-on Intel OpenVINO lab session at Symbiosis International University, Pune" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/02.jpg" alt="Students working through the Intel OpenVINO lab session, Pune" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/03.jpg" alt="Intel OpenVINO lab session, Pune" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/04.jpg" alt="Intel OpenVINO lab session, Pune" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/05.jpg" alt="Intel OpenVINO lab session, Pune" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/06.jpg" alt="Intel OpenVINO lab session, Pune" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/07.jpg" alt="Intel OpenVINO lab session, Pune" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/08.jpg" alt="Intel OpenVINO lab session, Pune" loading="lazy" /></div>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/05.jpg" alt="Presenting OpenVINO 2025.2 to students in the computer lab at Symbiosis International University, Pune" loading="lazy" /><figcaption class="gallery__caption">Walking through OpenVINO 2025.2</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/03.jpg" alt="Title slide reading Empowering Intelligent Solutions with Intel OpenVINO Toolkit, Symbiosis International University, Pune" loading="lazy" /><figcaption class="gallery__caption">Session title on screen</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/02.jpg" alt="Students working through the hands-on OpenVINO lab at Symbiosis International University, Pune" loading="lazy" /><figcaption class="gallery__caption">Hands-on lab in progress</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/openvino-pune/08.jpg" alt="Felicitation handshake after the OpenVINO session, Symbiosis International University, Pune" loading="lazy" /><figcaption class="gallery__caption">Felicitation after the session</figcaption></figure>
                 </div>
               </div>
             </div>
@@ -283,14 +276,9 @@
             <div class="talk-card__gallery">
               <div class="gallery" aria-roledescription="carousel" aria-label="Photo gallery">
                 <div class="gallery__track">
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/07.jpg" alt="Group photo with school students after the STEM outreach camp session, Bhilai" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/01.jpg" alt="School students in a classroom during the robotics and electronics STEM session, Bhilai" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/02.jpg" alt="STEM outreach camp session with school students, Bhilai" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/03.jpg" alt="STEM outreach camp session with school students, Bhilai" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/04.jpg" alt="STEM outreach camp session with school students, Bhilai" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/05.jpg" alt="STEM outreach camp session with school students, Bhilai" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/06.jpg" alt="STEM outreach camp session with school students, Bhilai" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/08.jpg" alt="STEM outreach camp session with school students, Bhilai" loading="lazy" /></div>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/02.jpg" alt="Robotics and electronics session in a school science classroom, viewed from the back of the room, Bhilai" loading="lazy" /><figcaption class="gallery__caption">Robotics &amp; electronics session</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/06.jpg" alt="Two instructors at the board guiding school students through the STEM activity, Bhilai" loading="lazy" /><figcaption class="gallery__caption">Guiding the hands-on activity</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/summer-school-bhilai/03.jpg" alt="Instructor answering questions in front of the classroom during the STEM outreach camp, Bhilai" loading="lazy" /><figcaption class="gallery__caption">Questions from the class</figcaption></figure>
                 </div>
               </div>
             </div>
@@ -317,9 +305,8 @@
             <div class="talk-card__gallery">
               <div class="gallery" aria-roledescription="carousel" aria-label="Photo gallery">
                 <div class="gallery__track">
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/acharya-bangalore/07.jpg" alt="Nitin Mane presenting an invited talk to students at Acharya Institute of Technology, Bangalore" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/acharya-bangalore/08.jpg" alt="Felicitation after the invited talk at Acharya Institute of Technology, Bangalore" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/acharya-bangalore/03.jpg" alt="Acharya Institute of Technology campus, Bangalore" loading="lazy" /></div>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/acharya-bangalore/03.jpg" alt="Nitin Mane presenting the title slide of The Future Trends of AI in Electrical Technology and Maintenance at Acharya Institute of Technology, Bengaluru" loading="lazy" /><figcaption class="gallery__caption">Opening the invited talk</figcaption></figure>
+                  <figure class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/acharya-bangalore/08.jpg" alt="Nitin Mane receiving a memento after the invited talk at Acharya Institute of Technology, Bengaluru" loading="lazy" /><figcaption class="gallery__caption">Memento after the talk</figcaption></figure>
                 </div>
               </div>
             </div>
@@ -346,11 +333,9 @@
             <div class="talk-card__gallery">
               <div class="gallery" aria-roledescription="carousel" aria-label="Photo gallery">
                 <div class="gallery__track">
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/gdsc-mit/05.jpg" alt="Google Solution Challenge 2024 mentor and finalist spotlight event banner, GDSC MIT" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/gdsc-mit/01.jpg" alt="GDSC MIT Mentor Spotlight feature card for Nitin Mane" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/gdsc-mit/02.jpg" alt="GDSC MIT session graphic" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/gdsc-mit/03.jpg" alt="GDSC MIT session graphic" loading="lazy" /></div>
-                  <div class="gallery__slide" aria-roledescription="slide"><img src="assets/images/workshops/gdsc-mit/04.jpg" alt="GDSC MIT session graphic" loading="lazy" /></div>
+                  <figure class="gallery__slide gallery__slide--contain" aria-roledescription="slide" style="--slide-bg:url('/assets/images/workshops/gdsc-mit/05.jpg')"><img src="assets/images/workshops/gdsc-mit/05.jpg" alt="Event poster for Solution Challenge 2024: Journey to Innovation, GDSC Maharashtra Institute of Technology, 15 January 2024" loading="lazy" /><figcaption class="gallery__caption">Event poster · 15 Jan 2024</figcaption></figure>
+                  <figure class="gallery__slide gallery__slide--contain" aria-roledescription="slide" style="--slide-bg:url('/assets/images/workshops/gdsc-mit/01.jpg')"><img src="assets/images/workshops/gdsc-mit/01.jpg" alt="GDSC MIT Mentor Spotlight card featuring Nitin Mane, Google Innovator and Mentor" loading="lazy" /><figcaption class="gallery__caption">Mentor Spotlight feature</figcaption></figure>
+                  <figure class="gallery__slide gallery__slide--contain" aria-roledescription="slide" style="--slide-bg:url('/assets/images/workshops/gdsc-mit/04.jpg')"><img src="assets/images/workshops/gdsc-mit/04.jpg" alt="Thank-you note to Nitin Mane from Google Developer Student Clubs, Maharashtra Institute of Technology" loading="lazy" /><figcaption class="gallery__caption">Thank-you note from the GDSC MIT team</figcaption></figure>
                 </div>
               </div>
             </div>
@@ -391,7 +376,7 @@
               Get in Touch
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a href="assets/docs/Nitin_Mane_Resume.pdf" class="btn btn--ghost" download>Download Résumé</a>
+            <a href="mentor" class="btn btn--ghost">1:1 Mentorship</a>
           </div>
         </div>
       </div>
@@ -440,6 +425,7 @@
           <li><a href="blog">Blog</a></li>
           <li><a href="education">Education</a></li>
           <li><a href="speakers">Speaking</a></li>
+          <li><a href="mentor">Mentorship</a></li>
           <li><a href="contact">Contact</a></li>
         </ul>
       </nav>

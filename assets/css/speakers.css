@@ -104,15 +104,124 @@
 }
 
 .gallery__slide {
+  position: relative;
   flex: 0 0 100%;
   height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
+/* Slow "Ken Burns" push-in on the visible slide */
 .gallery__slide img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: scale(1.02);
+  filter: saturate(0.9) brightness(0.92);
+  transition: transform 7s linear, filter var(--dur-slow) var(--ease-out);
+}
+
+.gallery__slide.is-active img {
+  transform: scale(1.09);
+  filter: none;
+}
+
+/* Posters and portrait shots: show the whole frame over a blurred copy */
+.gallery__slide--contain {
+  background: var(--slide-bg) center / cover no-repeat;
+}
+
+.gallery__slide--contain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(22px) brightness(0.45);
+  -webkit-backdrop-filter: blur(22px) brightness(0.45);
+}
+
+.gallery__slide--contain img {
+  z-index: 1;
+  object-fit: contain;
+  transform: scale(0.98);
+}
+
+.gallery__slide--contain.is-active img {
+  transform: scale(1.02);
+}
+
+/* Light sweep each time a slide becomes active */
+.gallery__slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 35%, rgba(46, 230, 214, 0.16) 50%, transparent 65%);
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+
+.gallery__slide.is-active::after {
+  animation: gallery-sweep 1.4s var(--ease-out) 0.25s 1 forwards;
+}
+
+@keyframes gallery-sweep {
+  to {
+    transform: translateX(110%);
+  }
+}
+
+/* Caption rises in once the slide settles */
+.gallery__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: var(--space-7) var(--space-5) var(--space-7);
+  background: linear-gradient(180deg, transparent, rgba(6, 10, 18, 0.88));
+  color: #eaf2fb;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-s);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--dur-slow) var(--ease-out) 0.35s,
+    transform var(--dur-slow) var(--ease-out) 0.35s;
+}
+
+.gallery__slide.is-active .gallery__caption {
+  opacity: 1;
+  transform: none;
+}
+
+/* HUD corner brackets */
+.gallery::before,
+.gallery::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-cyan);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.gallery::before {
+  top: var(--space-3);
+  left: var(--space-3);
+  border-right: none;
+  border-bottom: none;
+}
+
+.gallery::after {
+  bottom: var(--space-3);
+  right: var(--space-3);
+  border-left: none;
+  border-top: none;
 }
 
 .gallery__arrow {
@@ -193,7 +302,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gallery__track {
+  .gallery__track,
+  .gallery__slide img,
+  .gallery__caption {
     transition: none;
+  }
+
+  .gallery__slide img,
+  .gallery__slide.is-active img {
+    transform: none;
+  }
+
+  .gallery__slide.is-active::after {
+    animation: none;
   }
 }

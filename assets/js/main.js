@@ -374,6 +374,7 @@
   document.querySelectorAll(".gallery").forEach((gallery) => {
     const track = gallery.querySelector(".gallery__track");
     const slides = Array.from(gallery.querySelectorAll(".gallery__slide"));
+    if (slides.length) slides[0].classList.add("is-active");
     if (!track || slides.length < 2) return;
 
     let index = 0;
@@ -400,6 +401,7 @@
     const dotEls = Array.from(dots.children);
     const render = () => {
       track.style.transform = `translateX(-${index * 100}%)`;
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === index));
       dotEls.forEach((d, i) => d.classList.toggle("is-active", i === index));
       count.textContent = `${index + 1} / ${slides.length}`;
     };

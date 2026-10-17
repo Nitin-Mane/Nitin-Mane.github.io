@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://www.nitinmane.me/about</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -56,13 +56,19 @@
   </url>
   <url>
     <loc>https://www.nitinmane.me/speakers</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.nitinmane.me/mentor</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.nitinmane.me/contact</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
