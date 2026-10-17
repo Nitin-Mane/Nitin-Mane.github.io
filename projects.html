@@ -76,14 +76,24 @@
       </a>
       <nav class="nav__links" id="nav-links" aria-label="Primary">
         <a href="/" class="nav__link">Home</a>
-        <a href="about" class="nav__link">About</a>
-        <a href="experience" class="nav__link">Experience</a>
-        <a href="projects" class="nav__link">Projects</a>
-        <a href="research" class="nav__link">Research</a>
+        <div class="nav__group">
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-menu-about">About<svg class="nav__chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav__menu" id="nav-menu-about">
+            <a href="about" class="nav__menu-link"><span class="nav__menu-title">About Me</span><span class="nav__menu-desc">Story, skills &amp; profile</span></a>
+            <a href="experience" class="nav__menu-link"><span class="nav__menu-title">Experience</span><span class="nav__menu-desc">Roles, research &amp; leadership</span></a>
+            <a href="education" class="nav__menu-link"><span class="nav__menu-title">Education</span><span class="nav__menu-desc">Degrees &amp; certifications</span></a>
+          </div>
+        </div>
+        <div class="nav__group">
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-menu-work">Work<svg class="nav__chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav__menu" id="nav-menu-work">
+            <a href="projects" class="nav__menu-link"><span class="nav__menu-title">Projects</span><span class="nav__menu-desc">AI, edge &amp; robotics builds</span></a>
+            <a href="research" class="nav__menu-link"><span class="nav__menu-title">Research</span><span class="nav__menu-desc">Publications &amp; papers</span></a>
+            <a href="aws-agent-engineer" class="nav__menu-link"><span class="nav__menu-title">AWS Agent Engineer</span><span class="nav__menu-desc">Agentic AI spotlight</span></a>
+          </div>
+        </div>
         <a href="blog" class="nav__link">Blog</a>
-        <a href="education" class="nav__link">Education</a>
         <a href="speakers" class="nav__link">Speaking</a>
-        <a href="contact" class="nav__link">Contact</a>
         <a href="contact" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
       </nav>
       <div class="nav__actions">

@@ -99,6 +99,44 @@
     });
   }
 
+  /* ---------- Nav: grouped dropdowns ---------- */
+  const navGroups = document.querySelectorAll(".nav__group");
+  const setGroupOpen = (group, isOpen) => {
+    group.classList.toggle("is-open", isOpen);
+    const toggle = group.querySelector(".nav__group-toggle");
+    if (toggle) toggle.setAttribute("aria-expanded", String(isOpen));
+  };
+  const closeGroups = (except) => {
+    navGroups.forEach((group) => {
+      if (group !== except) setGroupOpen(group, false);
+    });
+  };
+  navGroups.forEach((group) => {
+    const toggle = group.querySelector(".nav__group-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", () => {
+      const isOpen = !group.classList.contains("is-open");
+      closeGroups(group);
+      setGroupOpen(group, isOpen);
+    });
+    group.addEventListener("focusout", (e) => {
+      if (!group.contains(e.relatedTarget)) setGroupOpen(group, false);
+    });
+  });
+  if (navGroups.length) {
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".nav__group")) closeGroups();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const openGroup = document.querySelector(".nav__group.is-open");
+      if (!openGroup) return;
+      closeGroups();
+      const toggle = openGroup.querySelector(".nav__group-toggle");
+      if (toggle) toggle.focus();
+    });
+  }
+
   /* ---------- Nav: active link by current path ---------- */
   const normalizeRoute = (value) => {
     const path = (value || "").split("#")[0].split("?")[0].replace(/\/+$/g, "");
@@ -106,11 +144,14 @@
     return lastSegment.replace(/\.html$/i, "").toLowerCase() || "index";
   };
   const currentPath = normalizeRoute(location.pathname);
-  document.querySelectorAll(".nav__link").forEach((link) => {
+  document.querySelectorAll("a.nav__link, a.nav__menu-link").forEach((link) => {
     const href = normalizeRoute(link.getAttribute("href"));
     if (href === currentPath) {
       link.classList.add("is-active");
       link.setAttribute("aria-current", "page");
+      const group = link.closest(".nav__group");
+      const groupToggle = group && group.querySelector(".nav__group-toggle");
+      if (groupToggle) groupToggle.classList.add("is-active");
     }
   });
 
