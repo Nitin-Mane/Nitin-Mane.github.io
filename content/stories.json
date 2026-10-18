@@ -640,7 +640,7 @@
   {
     "id": "ieee-hta-malaysia",
     "page": "conferences",
-    "source": "Conference\\IEEE HTC 2025 Malaysia",
+    "source": "Conference\\IEEE HTC 2024 Malaysia",
     "title": "Humanitarian technology across borders",
     "role": "Community participation",
     "place": "Universiti Teknologi Malaysia · Kuala Lumpur",
@@ -1014,15 +1014,15 @@
   {
     "id": "stem-bhilai",
     "page": "speakers",
-    "title": "Hands-On Robotics & Electronics — STEM Outreach Camp",
+    "title": "Summer School Camp: robotics & electronics for school students",
     "role": "Invited speaker & mentor",
     "place": "School STEM outreach camp · Bhilai, Chhattisgarh",
-    "date": "2025-04-21",
-    "dateLabel": "Apr 21, 2025",
+    "date": "2025-04-19",
+    "dateLabel": "19 & 21 Apr 2025",
     "topics": [
       "Education"
     ],
-    "summary": "A joint initiative by IEEE SIGHT Pratham (IEEE Maharashtra Section) and IIT Bhilai,\n                bringing hands-on robotics and electronics sessions to school students under a\n                dedicated STEM outreach program.",
+    "summary": "A summer school camp with IIT Bhilai and IEEE Region 10 Humanitarian Technology Activities, bringing hands-on robotics and electronics activities to school students.",
     "detail": "",
     "outcome": "",
     "contain": false,
@@ -1038,9 +1038,21 @@
       {
         "src": "assets/images/workshops/summer-school-bhilai/03.jpg",
         "alt": "Instructor answering questions in front of the classroom during the STEM outreach camp, Bhilai"
+      },
+      {
+        "src": "assets/images/stories/stem-bhilai/01.webp",
+        "alt": "Summer School Camp banner with IEEE Humanitarian Technologies, IEEE Region 10 HTA and IIT Bhilai logos"
+      },
+      {
+        "src": "assets/images/stories/stem-bhilai/02.webp",
+        "alt": "Robotics kit parts laid out for students: chassis plates, wheels, motors and connectors"
+      },
+      {
+        "src": "assets/images/stories/stem-bhilai/03.webp",
+        "alt": "Students around a long table during the summer school camp session, viewed from behind"
       }
     ],
-    "source": "Existing speakers.html",
+    "source": "Speaker Session\\Summer School Camp Bhilai; Speaker Session\\Summer School Robotics Camp Bhilai",
     "venue": {
       "name": "School STEM outreach camp"
     },
@@ -1054,6 +1066,10 @@
       {
         "label": "IEEE SIGHT",
         "url": "https://sight.ieee.org/"
+      },
+      {
+        "label": "IEEE Region 10",
+        "url": "https://ieeer10.org/"
       }
     ]
   },
@@ -1125,5 +1141,168 @@
       "url": "https://www.mit.asia/"
     },
     "location": "Online session"
+  },
+  {
+    "id": "cods-2025",
+    "page": "conferences",
+    "source": "Conference\\CODS ACM 2025",
+    "title": "Presenting Autograder+ at ACM CODS 2025",
+    "role": "Poster presenter · co-author",
+    "date": "2025-12-17",
+    "dateLabel": "17–20 Dec 2025",
+    "topics": [
+      "Research",
+      "AI for education"
+    ],
+    "summary": "Presented the Autograder+ poster at the 13th ACM IKDD International Conference on Data Science (CODS 2025), hosted by IISER Pune.",
+    "detail": "Autograder+ pairs code analysis, contrastively trained code embeddings and prompt pooling to give students concept-focused feedback, and gives instructors cohort-level analytics on common misconceptions.",
+    "outcome": "Poster P-52, co-authored with Vikrant Sahu, Dr. Gagan Raj Gupta and Raghav Borikar of IIT Bhilai, alongside the paper in the CODS 2025 proceedings.",
+    "contain": false,
+    "venue": {
+      "name": "IISER Pune",
+      "url": "https://www.iiserpune.ac.in/"
+    },
+    "location": "Pashan, Pune, Maharashtra",
+    "map": "IISER Pune Guest House and Convention Centre",
+    "links": [
+      {
+        "label": "Read the paper",
+        "url": "research#autograder-plus"
+      },
+      {
+        "label": "ACM IKDD",
+        "url": "https://ikdd.acm.org/"
+      }
+    ],
+    "images": [
+      {
+        "src": "assets/images/stories/cods-2025/01.webp",
+        "alt": "Nitin Mane beside the Autograder+ poster (P-52) at ACM CODS 2025, IISER Pune"
+      },
+      {
+        "src": "assets/images/stories/cods-2025/02.webp",
+        "alt": "Nitin Mane at the CODS 2025 backdrop, 13th ACM IKDD International Conference on Data Science, IISER Pune"
+      },
+      {
+        "src": "assets/images/stories/cods-2025/03.webp",
+        "alt": "Welcome to IISER Pune slide at the opening of CODS 2025"
+      },
+      {
+        "src": "assets/images/stories/cods-2025/04.webp",
+        "alt": "Poster session hall at CODS 2025 with presenters beside their posters"
+      },
+      {
+        "src": "assets/images/stories/cods-2025/05.webp",
+        "alt": "IISER Pune Guest House and Convention Centre, venue of CODS 2025"
+      }
+    ],
+    "cover": "assets/images/stories/cods-2025/cover.webp",
+    "place": "IISER Pune · Pashan, Pune, Maharashtra"
+  },
+  {
+    "id": "ieee-htc-2025-japan",
+    "page": "conferences",
+    "source": "Conference\\IEEE HTC 2025 Japan",
+    "title": "Humanitarian technology in Japan",
+    "role": "Delegate · IEEE SIGHT volunteer",
+    "date": "2025-09-28",
+    "dateLabel": "28 Sep – 1 Oct 2025",
+    "topics": [
+      "Humanitarian tech",
+      "Leadership"
+    ],
+    "summary": "Took part in the IEEE R10 HTA Impact Congress and IEEE R10 HTC 2025 at Chiba University of Commerce in Ichikawa, Japan.",
+    "detail": "The Impact Congress on 28 September brought together IEEE Region 10 humanitarian technology volunteers ahead of HTC 2025, held 29 September – 1 October under the theme “Beyond SDGs – A New Humanitarian Era with Intelligent Partners.”",
+    "outcome": "Recognised on stage at the Impact Congress and connected with SIGHT volunteers and leaders from across the Asia-Pacific region.",
+    "contain": false,
+    "venue": {
+      "name": "Chiba University of Commerce",
+      "url": "https://www.cuc.ac.jp/"
+    },
+    "location": "Ichikawa, Chiba, Japan",
+    "map": "Chiba University of Commerce, Ichikawa, Chiba, Japan",
+    "links": [
+      {
+        "label": "IEEE R10 HTC 2025",
+        "url": "https://ieee-jp.org/section/tokyo/event/r10htc2025/general"
+      },
+      {
+        "label": "IEEE SIGHT",
+        "url": "https://sight.ieee.org/"
+      }
+    ],
+    "images": [
+      {
+        "src": "assets/images/stories/ieee-htc-2025-japan/01.webp",
+        "alt": "Nitin Mane recognised on stage at the IEEE R10 HTA Impact Congress, Ichikawa, Japan"
+      },
+      {
+        "src": "assets/images/stories/ieee-htc-2025-japan/02.webp",
+        "alt": "Nitin Mane with fellow IEEE volunteers holding an HTC 2025 fan"
+      },
+      {
+        "src": "assets/images/stories/ieee-htc-2025-japan/03.webp",
+        "alt": "Participants of the IEEE R10 HTA Impact Congress in front of the event banner"
+      },
+      {
+        "src": "assets/images/stories/ieee-htc-2025-japan/04.webp",
+        "alt": "Group photo of IEEE R10 HTC 2025 participants"
+      }
+    ],
+    "cover": "assets/images/stories/ieee-htc-2025-japan/cover.webp",
+    "place": "Chiba University of Commerce · Ichikawa, Chiba, Japan"
+  },
+  {
+    "id": "bsp-field-research",
+    "page": "research",
+    "source": "Research\\Ball Rod Mill Plant Bhilai Steel Plant",
+    "title": "Field research at the Bar & Rod Mill",
+    "role": "M.Tech researcher",
+    "date": "2025-10-13",
+    "dateLabel": "Mar & Oct 2025",
+    "topics": [
+      "Applied research",
+      "Automation"
+    ],
+    "summary": "Site visits to the Bar & Rod Mill at SAIL's Bhilai Steel Plant, where the industrial anomaly-detection research for my M.Tech at IIT Bhilai is grounded.",
+    "detail": "Seeing the rolling line and hot bars on the roller tables in person informs how the detection pipeline must cope with heat glare, dust, motion and occlusion on a real plant floor.",
+    "outcome": "Field observations feed directly into the edge-AI anomaly-detection case study.",
+    "contain": false,
+    "venue": {
+      "name": "Bhilai Steel Plant (SAIL)",
+      "url": "https://sail.co.in/en/plants/about-bhilai-steel-plant"
+    },
+    "location": "Bhilai, Chhattisgarh",
+    "map": "Bhilai Steel Plant, Bhilai, Chhattisgarh",
+    "links": [
+      {
+        "label": "Read the case study",
+        "url": "case-study-anomaly-detection"
+      },
+      {
+        "label": "IIT Bhilai",
+        "url": "https://www.iitbhilai.ac.in/"
+      }
+    ],
+    "images": [
+      {
+        "src": "assets/images/stories/bsp-field-research/01.webp",
+        "alt": "Nitin Mane in a safety helmet beside the rolling line at the Bar & Rod Mill, Bhilai Steel Plant"
+      },
+      {
+        "src": "assets/images/stories/bsp-field-research/02.webp",
+        "alt": "Hot bars moving along the roller table in the Bar & Rod Mill"
+      },
+      {
+        "src": "assets/images/stories/bsp-field-research/03.webp",
+        "alt": "Long view of the mill bay and rolling line at Bhilai Steel Plant"
+      },
+      {
+        "src": "assets/images/stories/bsp-field-research/04.webp",
+        "alt": "Glowing steel passing through a mill stand"
+      }
+    ],
+    "cover": "assets/images/stories/bsp-field-research/cover.webp",
+    "place": "Bhilai Steel Plant (SAIL) · Bhilai, Chhattisgarh"
   }
 ]

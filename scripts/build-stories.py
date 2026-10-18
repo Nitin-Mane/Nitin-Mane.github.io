@@ -27,7 +27,7 @@ PAGES = {
     'conferences': dict(label='Conferences', number='03', title='New perspectives.', accent='Shared purpose.',
         intro='Good engineering grows through conversation. These are moments of learning and exchange with developer communities and humanitarian technology leaders.',
         hero='ieee-hta-malaysia', caption='IEEE Region 10 · Kuala Lumpur', primary=('Explore the gatherings', '#stories'), secondary=('Discuss collaboration', 'contact'),
-        signals=[('2 gatherings', 'Selected conference experiences'), ('India & Malaysia', 'Connecting across communities'), ('Technology for people', 'Arm developers · IEEE SIGHT')],
+        signals=[('4 gatherings', 'Selected conference experiences'), ('India · Malaysia · Japan', 'Connecting across communities'), ('Research to people', 'ACM CODS · Arm · IEEE SIGHT')],
         heading='Beyond the conference badge.', lede='The topics, communities and conversations that stay with me.',
         cta='Bring people and ideas together.', ctabody='I welcome conversations about developer programs, humanitarian technology and opportunities to contribute to technical communities.', ctalabel='Start a conversation'),
     'mentor': dict(label='Mentoring', number='04', title='Build with clarity.', accent='Grow with support.',
@@ -93,7 +93,8 @@ def place(s):
                f'target="_blank" rel="noopener" aria-label="Open {location} in Google Maps">{PIN}{location}</a>')
     else:
         where=f'<span class="story-card__map">{PIN}{location}</span>'
-    links=''.join(f'<a href="{esc(l["url"])}" target="_blank" rel="noopener">{esc(l["label"])}<span aria-hidden="true"> ↗</span></a>'
+    links=''.join((f'<a href="{esc(l["url"])}" target="_blank" rel="noopener">{esc(l["label"])}<span aria-hidden="true"> ↗</span></a>'
+                   if l['url'].startswith('http') else f'<a href="{esc(l["url"])}">{esc(l["label"])}<span aria-hidden="true"> →</span></a>')
                   for l in s.get('links',[]))
     related=f'<p class="story-card__links"><span>Related</span>{links}</p>' if links else ''
     return f'<div class="story-card__place"><p class="story-card__venue">{name}</p><p>{where}</p>{related}</div>'
