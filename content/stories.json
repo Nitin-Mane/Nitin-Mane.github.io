@@ -1,0 +1,1129 @@
+[
+  {
+    "id": "openvino-pune",
+    "page": "speakers",
+    "source": "Speaker Session\\Empowering Intelligent Solution Applications using Intel® OpenVINO™ Toolkit",
+    "title": "Making AI deployment hands-on",
+    "role": "Workshop facilitator",
+    "place": "Symbiosis Institute of Technology (SIT) · Lavale, Pune, Maharashtra",
+    "date": "2025-07-23",
+    "dateLabel": "23 Jul 2025",
+    "topics": [
+      "Edge AI",
+      "OpenVINO"
+    ],
+    "summary": "A practical OpenVINO workshop for 60+ students and faculty, moving from image classification to LLM inference and a basic chatbot API.",
+    "detail": "Introduced the toolkit architecture and inference across CPUs, GPUs and edge devices. Participants installed OpenVINO, ran the Hello Image Classification demo, explored LLM inference and developed a basic chatbot API.",
+    "outcome": "Connected AI concepts to runnable applications on everyday laptops, with live coding, questions and a short quiz. Organized with IEEE SIT Pune, IEEE CEDA Bombay Section – Nagpur Chapter and the Intel OpenVINO Developer Community.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/openvino-pune/01.webp",
+        "alt": "Making AI deployment hands-on — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/openvino-pune/02.webp",
+        "alt": "Making AI deployment hands-on — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/openvino-pune/03.webp",
+        "alt": "Making AI deployment hands-on — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/openvino-pune/04.webp",
+        "alt": "Making AI deployment hands-on — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/openvino-pune/05.webp",
+        "alt": "Making AI deployment hands-on — event photo 5"
+      },
+      {
+        "src": "assets/images/stories/openvino-pune/06.webp",
+        "alt": "Making AI deployment hands-on — event photo 6"
+      }
+    ],
+    "cover": "assets/images/stories/openvino-pune/cover.webp",
+    "venue": {
+      "name": "Symbiosis Institute of Technology (SIT)",
+      "url": "https://www.sitpune.edu.in/"
+    },
+    "location": "Lavale, Pune, Maharashtra",
+    "map": "Symbiosis Institute of Technology, Lavale, Pune",
+    "links": [
+      {
+        "label": "IEEE CEDA",
+        "url": "https://ieee-ceda.org/"
+      },
+      {
+        "label": "Intel OpenVINO",
+        "url": "https://docs.openvino.ai/"
+      }
+    ]
+  },
+  {
+    "id": "openvino-shegaon",
+    "page": "speakers",
+    "source": "Speaker Session\\Empowering the Next Generation with Edge AI at SSGMCE Shegaon",
+    "title": "Edge AI, on everyday hardware",
+    "role": "Workshop facilitator",
+    "place": "Shri Sant Gajanan Maharaj College of Engineering (SSGMCE) · Shegaon, Buldhana, Maharashtra",
+    "date": "2025-07-24",
+    "dateLabel": "24 Jul 2025",
+    "topics": [
+      "Edge AI",
+      "OpenVINO"
+    ],
+    "summary": "A hands-on introduction to intelligent visual applications using Intel OpenVINO, built around the hardware students already have.",
+    "detail": "Demonstrated how AI models can be deployed on standard laptops and desktops, introducing visual applications in robotics, healthcare and automation.",
+    "outcome": "Brought practical deployment concepts to students through questions, examples and a quiz, in association with IEEE CEDA Bombay Section – Nagpur Chapter.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/openvino-shegaon/01.webp",
+        "alt": "Edge AI, on everyday hardware — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/openvino-shegaon/02.webp",
+        "alt": "Edge AI, on everyday hardware — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/openvino-shegaon/03.webp",
+        "alt": "Edge AI, on everyday hardware — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/openvino-shegaon/04.webp",
+        "alt": "Edge AI, on everyday hardware — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/openvino-shegaon/05.webp",
+        "alt": "Edge AI, on everyday hardware — event photo 5"
+      },
+      {
+        "src": "assets/images/stories/openvino-shegaon/06.webp",
+        "alt": "Edge AI, on everyday hardware — event photo 6"
+      }
+    ],
+    "cover": "assets/images/stories/openvino-shegaon/cover.webp",
+    "venue": {
+      "name": "Shri Sant Gajanan Maharaj College of Engineering (SSGMCE)",
+      "url": "https://www.ssgmce.ac.in/"
+    },
+    "location": "Shegaon, Buldhana, Maharashtra",
+    "map": "Shri Sant Gajanan Maharaj College of Engineering, Shegaon",
+    "links": [
+      {
+        "label": "IEEE CEDA",
+        "url": "https://ieee-ceda.org/"
+      },
+      {
+        "label": "Intel OpenVINO",
+        "url": "https://docs.openvino.ai/"
+      }
+    ]
+  },
+  {
+    "id": "school-ai-tamil-nadu",
+    "page": "speakers",
+    "source": "Speaker Session\\AI workshop for School Students Tamil Nadu",
+    "title": "A first encounter with applied AI",
+    "role": "Workshop facilitator",
+    "place": "Sowdambikaa Vidyalaya (CBSE) · Thottiyam, Tiruchirappalli, Tamil Nadu",
+    "date": "2024-05-06",
+    "dateLabel": "6–7 May 2024",
+    "topics": [
+      "AI foundations",
+      "Education"
+    ],
+    "summary": "Two days introducing school students to chatbots, computer vision and the possibilities of building with AI.",
+    "detail": "Covered chatbot building, age and gender detection, face recognition and sign character recognition in a school workshop organized with TechRadiance.",
+    "outcome": "Guided students and teachers through practical AI examples as part of their preparation for robotics and coding activities.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/school-ai-tamil-nadu/01.webp",
+        "alt": "A first encounter with applied AI — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/school-ai-tamil-nadu/02.webp",
+        "alt": "A first encounter with applied AI — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/school-ai-tamil-nadu/03.webp",
+        "alt": "A first encounter with applied AI — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/school-ai-tamil-nadu/04.webp",
+        "alt": "A first encounter with applied AI — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/school-ai-tamil-nadu/05.webp",
+        "alt": "A first encounter with applied AI — event photo 5"
+      }
+    ],
+    "cover": "assets/images/stories/school-ai-tamil-nadu/cover.webp",
+    "venue": {
+      "name": "Sowdambikaa Vidyalaya (CBSE)",
+      "url": "https://svtcbse.in/"
+    },
+    "location": "Thottiyam, Tiruchirappalli, Tamil Nadu",
+    "map": "Sowdambikaa Vidyalaya, Thottiyam, Tamil Nadu",
+    "links": [
+      {
+        "label": "Techradiance",
+        "url": "https://www.techradiance.in/"
+      },
+      {
+        "label": "Techfest, IIT Bombay",
+        "url": "https://techfest.org/"
+      }
+    ]
+  },
+  {
+    "id": "data-analytics-mgm",
+    "page": "speakers",
+    "source": "Speaker Session\\Data Analytics MGM",
+    "title": "Helping future managers think with data",
+    "role": "Guest speaker",
+    "place": "MGM Institute of Management · Chhatrapati Sambhajinagar (Aurangabad), Maharashtra",
+    "date": "",
+    "dateLabel": "Data analytics",
+    "topics": [
+      "Data science",
+      "Education"
+    ],
+    "summary": "A session connecting data analytics to business decisions, innovation and the value of interdisciplinary teamwork.",
+    "detail": "Discussed the role of analytics and data engineering with second-year and management-specialization students, connecting technical capabilities to organizational decisions.",
+    "outcome": "Created space for discussion about data-driven thinking and collaboration across different professional skill sets.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/data-analytics-mgm/01.webp",
+        "alt": "Helping future managers think with data — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/data-analytics-mgm/02.webp",
+        "alt": "Helping future managers think with data — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/data-analytics-mgm/03.webp",
+        "alt": "Helping future managers think with data — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/data-analytics-mgm/04.webp",
+        "alt": "Helping future managers think with data — event photo 4"
+      }
+    ],
+    "cover": "assets/images/stories/data-analytics-mgm/cover.webp",
+    "venue": {
+      "name": "MGM Institute of Management",
+      "url": "https://iomr.mgmu.ac.in/"
+    },
+    "location": "Chhatrapati Sambhajinagar (Aurangabad), Maharashtra",
+    "map": "MGM Institute of Management, Aurangabad"
+  },
+  {
+    "id": "engineers-day",
+    "page": "speakers",
+    "source": "Speaker Session\\Engineers Day MIT Aurangabad",
+    "title": "Generative AI meets Engineers’ Day",
+    "role": "Guest speaker",
+    "place": "Maharashtra Institute of Technology · Chhatrapati Sambhajinagar (Aurangabad), Maharashtra",
+    "date": "",
+    "dateLabel": "Engineers’ Day",
+    "topics": [
+      "Generative AI"
+    ],
+    "summary": "An introduction to generative AI, ChatGPT applications and large language models for an engineering audience.",
+    "detail": "Shared technical perspectives on generative AI and LLM applications during Engineers’ Day at Maharashtra Institute of Technology, Aurangabad.",
+    "outcome": "Connected emerging AI tools to engineering practice and professional learning.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/engineers-day/01.webp",
+        "alt": "Generative AI meets Engineers’ Day — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/engineers-day/02.webp",
+        "alt": "Generative AI meets Engineers’ Day — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/engineers-day/03.webp",
+        "alt": "Generative AI meets Engineers’ Day — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/engineers-day/04.webp",
+        "alt": "Generative AI meets Engineers’ Day — event photo 4"
+      }
+    ],
+    "cover": "assets/images/stories/engineers-day/cover.webp",
+    "venue": {
+      "name": "Maharashtra Institute of Technology",
+      "url": "https://www.mit.asia/"
+    },
+    "location": "Chhatrapati Sambhajinagar (Aurangabad), Maharashtra",
+    "map": "Maharashtra Institute of Technology, Aurangabad"
+  },
+  {
+    "id": "devfest-2023",
+    "page": "speakers",
+    "source": "Speaker Session\\Google DevFest 2023 at CSMS College Aurangabad",
+    "title": "Developer connections at DevFest",
+    "role": "Developer community",
+    "place": "CSMSS Chh. Shahu College of Engineering · Kanchanwadi, Paithan Road, Chhatrapati Sambhajinagar (Aurangabad)",
+    "date": "2023-12-03",
+    "dateLabel": "3 Dec 2023",
+    "topics": [
+      "Developer community"
+    ],
+    "summary": "Photo highlights from Google DevFest 2023 in Aurangabad: a gathering of developers, speakers and the local technology community.",
+    "detail": "An event photo journal from Google DevFest at CSMS College, Aurangabad.",
+    "outcome": "A glimpse of the people and conversations behind the local developer ecosystem.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/devfest-2023/01.webp",
+        "alt": "Developer connections at DevFest — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/devfest-2023/02.webp",
+        "alt": "Developer connections at DevFest — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/devfest-2023/03.webp",
+        "alt": "Developer connections at DevFest — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/devfest-2023/04.webp",
+        "alt": "Developer connections at DevFest — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/devfest-2023/05.webp",
+        "alt": "Developer connections at DevFest — event photo 5"
+      },
+      {
+        "src": "assets/images/stories/devfest-2023/06.webp",
+        "alt": "Developer connections at DevFest — event photo 6"
+      }
+    ],
+    "cover": "assets/images/stories/devfest-2023/cover.webp",
+    "venue": {
+      "name": "CSMSS Chh. Shahu College of Engineering",
+      "url": "https://csmssengg.org/"
+    },
+    "location": "Kanchanwadi, Paithan Road, Chhatrapati Sambhajinagar (Aurangabad)",
+    "map": "CSMSS Chh. Shahu College of Engineering, Kanchanwadi, Aurangabad",
+    "links": [
+      {
+        "label": "DevFest 2023 event page",
+        "url": "https://gdg.community.dev/events/details/google-gdg-aurangabad-presents-devfest-2023"
+      }
+    ]
+  },
+  {
+    "id": "humanitarian-technology",
+    "page": "speakers",
+    "source": "Speaker Session\\Humanitarian Technology",
+    "title": "Technology with a human purpose",
+    "role": "Invited speaker",
+    "place": "G H Raisoni College of Engineering (GHRCE) · Nagpur, Maharashtra",
+    "date": "2023-02-27",
+    "dateLabel": "27 Feb 2023",
+    "topics": [
+      "Humanitarian tech",
+      "Developer community"
+    ],
+    "summary": "A conversation with 100+ students and faculty about IEEE SIGHT and applying engineering to humanitarian challenges.",
+    "detail": "Spoke about IEEE membership, SIGHT initiatives and opportunities to collaborate on projects addressing local needs, drawing on my role as Vice Chair of IEEE Bombay Section SIGHT Pratham.",
+    "outcome": "Introduced students to community-led engineering and the role of project support and funding in humanitarian technology.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/humanitarian-technology/01.webp",
+        "alt": "Technology with a human purpose — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/humanitarian-technology/02.webp",
+        "alt": "Technology with a human purpose — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/humanitarian-technology/03.webp",
+        "alt": "Technology with a human purpose — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/humanitarian-technology/04.webp",
+        "alt": "Technology with a human purpose — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/humanitarian-technology/05.webp",
+        "alt": "Technology with a human purpose — event photo 5"
+      }
+    ],
+    "cover": "assets/images/stories/humanitarian-technology/cover.webp",
+    "venue": {
+      "name": "G H Raisoni College of Engineering (GHRCE)",
+      "url": "https://ghrce.raisoni.net/"
+    },
+    "location": "Nagpur, Maharashtra",
+    "map": "G H Raisoni College of Engineering, Nagpur",
+    "links": [
+      {
+        "label": "IEEE SIGHT",
+        "url": "https://sight.ieee.org/"
+      }
+    ]
+  },
+  {
+    "id": "ieee-grss",
+    "page": "speakers",
+    "source": "Speaker Session\\IEEE Membership Dive and GRSS Enhancement 2024",
+    "title": "Opening doors through IEEE & GRSS",
+    "role": "Guest speaker",
+    "place": "Maharashtra Institute of Technology · Chhatrapati Sambhajinagar (Aurangabad), Maharashtra",
+    "date": "2024",
+    "dateLabel": "2024",
+    "topics": [
+      "Developer community",
+      "Education"
+    ],
+    "summary": "An expert talk on IEEE membership, geoscience and remote sensing, and opportunities for students and faculty.",
+    "detail": "Discussed research opportunities, events, conferences, scholarships and collaboration through IEEE and GRSS, alongside a fellow community speaker.",
+    "outcome": "Helped students connect their technical interests with professional communities and research opportunities.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/ieee-grss/01.webp",
+        "alt": "Opening doors through IEEE & GRSS — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/ieee-grss/02.webp",
+        "alt": "Opening doors through IEEE & GRSS — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/ieee-grss/03.webp",
+        "alt": "Opening doors through IEEE & GRSS — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/ieee-grss/04.webp",
+        "alt": "Opening doors through IEEE & GRSS — event photo 4"
+      }
+    ],
+    "cover": "assets/images/stories/ieee-grss/cover.webp",
+    "venue": {
+      "name": "Maharashtra Institute of Technology",
+      "url": "https://www.mit.asia/"
+    },
+    "location": "Chhatrapati Sambhajinagar (Aurangabad), Maharashtra",
+    "map": "Maharashtra Institute of Technology, Aurangabad",
+    "links": [
+      {
+        "label": "IEEE GRSS",
+        "url": "https://www.grss-ieee.org/"
+      }
+    ]
+  },
+  {
+    "id": "python-workshop",
+    "page": "speakers",
+    "source": "Speaker Session\\Machine Learning with Python",
+    "title": "From Python to machine learning",
+    "role": "Workshop facilitator",
+    "place": "Arvind Gavali College of Engineering (AGCE) · Satara, Maharashtra",
+    "date": "",
+    "dateLabel": "Two-day workshop",
+    "topics": [
+      "Python",
+      "Data science",
+      "AI foundations"
+    ],
+    "summary": "A two-day workshop taking students from Python fundamentals to data analysis with NumPy and Pandas, then core ML concepts.",
+    "detail": "Led a hands-on learning sequence organized by the Computer Science & Engineering department in partnership with TechRadiance for the Techfest Championship.",
+    "outcome": "Combined practical exercises with assessments, with ten students selected for the next stage at IIT Bombay.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/python-workshop/01.webp",
+        "alt": "From Python to machine learning — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/python-workshop/02.webp",
+        "alt": "From Python to machine learning — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/python-workshop/03.webp",
+        "alt": "From Python to machine learning — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/python-workshop/04.webp",
+        "alt": "From Python to machine learning — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/python-workshop/05.webp",
+        "alt": "From Python to machine learning — event photo 5"
+      }
+    ],
+    "cover": "assets/images/stories/python-workshop/cover.webp",
+    "venue": {
+      "name": "Arvind Gavali College of Engineering (AGCE)",
+      "url": "https://agce.edu.in/"
+    },
+    "location": "Satara, Maharashtra",
+    "map": "Arvind Gavali College of Engineering, Satara",
+    "links": [
+      {
+        "label": "Techradiance",
+        "url": "https://www.techradiance.in/"
+      },
+      {
+        "label": "Techfest, IIT Bombay",
+        "url": "https://techfest.org/"
+      }
+    ]
+  },
+  {
+    "id": "ieee-volt",
+    "page": "awards",
+    "source": "Awards\\IEEE VoLT 2023",
+    "title": "IEEE VoLT: learning to lead globally",
+    "role": "Program graduate",
+    "place": "IEEE Volunteer Leadership Training",
+    "date": "2023",
+    "dateLabel": "2023",
+    "topics": [
+      "Leadership"
+    ],
+    "summary": "Completed IEEE’s Volunteer Leadership Training program, developing skills in leadership, ethics and program management.",
+    "detail": "Worked with an international team of IEEE volunteers and learned from experienced community leaders and mentors.",
+    "outcome": "A foundation for leading volunteer programs with purpose, integrity and stronger cross-cultural collaboration.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/ieee-volt/01.webp",
+        "alt": "IEEE VoLT: learning to lead globally — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/ieee-volt/02.webp",
+        "alt": "IEEE VoLT: learning to lead globally — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/ieee-volt/03.webp",
+        "alt": "IEEE VoLT: learning to lead globally — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/ieee-volt/04.webp",
+        "alt": "IEEE VoLT: learning to lead globally — event photo 4"
+      }
+    ],
+    "cover": "assets/images/stories/ieee-volt/cover.webp"
+  },
+  {
+    "id": "oneapi-contest",
+    "page": "awards",
+    "source": "Awards\\oneAPI AI Analtytics Toolkit",
+    "title": "oneAPI AI Analytics Toolkit contest",
+    "role": "Workshop contest winner",
+    "place": "Intel · oneAPI DevSummit Southeast Asia",
+    "date": "2022-09-15",
+    "dateLabel": "15 Sep 2022",
+    "topics": [
+      "Technical recognition",
+      "AI foundations"
+    ],
+    "summary": "Recognized as a winner of the oneAPI AI Analytics Toolkit workshop contest at oneAPI DevSummit Southeast Asia 2022.",
+    "detail": "The workshop centered on AI model optimization and cross-platform accelerated computing with Intel technologies.",
+    "outcome": "Recognition for participation in an applied technical learning challenge.",
+    "contain": true,
+    "images": [
+      {
+        "src": "assets/images/stories/oneapi-contest/01.webp",
+        "alt": "oneAPI AI Analytics Toolkit contest — recognition and event material 1"
+      }
+    ],
+    "cover": "assets/images/stories/oneapi-contest/cover.webp"
+  },
+  {
+    "id": "matlab-recognition",
+    "page": "awards",
+    "source": "Awards\\MATLAB Helper",
+    "title": "Employee of the Month",
+    "role": "Professional recognition",
+    "place": "MATLAB Helper",
+    "date": "2022-10",
+    "dateLabel": "Oct 2022",
+    "topics": [
+      "Technical recognition"
+    ],
+    "summary": "Recognized by MATLAB Helper for contributions as part of its technical team.",
+    "detail": "Received Employee of the Month recognition in October 2022 while contributing to a collaborative technical team.",
+    "outcome": "A professional milestone recognizing dedication and contribution to the organization.",
+    "contain": true,
+    "images": [
+      {
+        "src": "assets/images/stories/matlab-recognition/01.webp",
+        "alt": "Employee of the Month — recognition and event material 1"
+      },
+      {
+        "src": "assets/images/stories/matlab-recognition/02.webp",
+        "alt": "Employee of the Month — recognition and event material 2"
+      }
+    ],
+    "cover": "assets/images/stories/matlab-recognition/cover.webp"
+  },
+  {
+    "id": "aws-gold-badge",
+    "page": "awards",
+    "source": "Awards\\Udacity",
+    "title": "AWS × Udacity Gold Badge",
+    "role": "Learning milestone",
+    "place": "AWS Machine Learning Engineer Scholarship",
+    "date": "2022",
+    "dateLabel": "2022",
+    "topics": [
+      "AI foundations"
+    ],
+    "summary": "Earned a Gold Badge in the 2022 AWS Machine Learning Engineer Scholarship foundations course.",
+    "detail": "The badge recognizes completion among the first 5,500 learners to finish the foundations course.",
+    "outcome": "A milestone in building machine learning foundations through structured learning.",
+    "contain": true,
+    "images": [
+      {
+        "src": "assets/images/stories/aws-gold-badge/01.webp",
+        "alt": "AWS × Udacity Gold Badge — recognition and event material 1"
+      }
+    ],
+    "cover": "assets/images/stories/aws-gold-badge/cover.webp"
+  },
+  {
+    "id": "arm-devhub",
+    "page": "conferences",
+    "source": "Conference\\Arm DevHub Live",
+    "title": "Inside the Arm developer ecosystem",
+    "role": "Community participation",
+    "place": "Arm Bangalore Office · Bengaluru",
+    "date": "2024-05-03",
+    "dateLabel": "3 May 2024",
+    "topics": [
+      "Developer community",
+      "Arm"
+    ],
+    "summary": "A day of workshops, lightning talks and conversations about building software for Arm platforms.",
+    "detail": "The event covered Docker Build Cloud for Arm, Linux-capable Arm laptops and IoT development, with sessions from the Arm developer community.",
+    "outcome": "Connected with fellow ambassadors and industry developers around the practical challenges of software and hardware development.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/arm-devhub/01.webp",
+        "alt": "Inside the Arm developer ecosystem — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/arm-devhub/02.webp",
+        "alt": "Inside the Arm developer ecosystem — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/arm-devhub/03.webp",
+        "alt": "Inside the Arm developer ecosystem — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/arm-devhub/04.webp",
+        "alt": "Inside the Arm developer ecosystem — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/arm-devhub/05.webp",
+        "alt": "Inside the Arm developer ecosystem — event photo 5"
+      },
+      {
+        "src": "assets/images/stories/arm-devhub/06.webp",
+        "alt": "Inside the Arm developer ecosystem — event photo 6"
+      }
+    ],
+    "cover": "assets/images/stories/arm-devhub/cover.webp"
+  },
+  {
+    "id": "ieee-hta-malaysia",
+    "page": "conferences",
+    "source": "Conference\\IEEE HTC 2025 Malaysia",
+    "title": "Humanitarian technology across borders",
+    "role": "Community participation",
+    "place": "Universiti Teknologi Malaysia · Kuala Lumpur",
+    "date": "2024-09-30",
+    "dateLabel": "30 Sep 2024",
+    "topics": [
+      "Humanitarian tech",
+      "Leadership"
+    ],
+    "summary": "IEEE Region 10 HTA Impact Congress: sharing volunteer leadership experiences and connecting with SIGHT members across the region.",
+    "detail": "Joined the gathering ahead of IEEE HTC 2024, discussing volunteer engagement, funding mechanisms, SIGHT group sustainability and community partnerships.",
+    "outcome": "Exchanged perspectives with humanitarian technology leaders on how engineering communities can respond to local needs.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/ieee-hta-malaysia/01.webp",
+        "alt": "Humanitarian technology across borders — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/ieee-hta-malaysia/02.webp",
+        "alt": "Humanitarian technology across borders — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/ieee-hta-malaysia/03.webp",
+        "alt": "Humanitarian technology across borders — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/ieee-hta-malaysia/04.webp",
+        "alt": "Humanitarian technology across borders — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/ieee-hta-malaysia/05.webp",
+        "alt": "Humanitarian technology across borders — event photo 5"
+      },
+      {
+        "src": "assets/images/stories/ieee-hta-malaysia/06.webp",
+        "alt": "Humanitarian technology across borders — event photo 6"
+      }
+    ],
+    "cover": "assets/images/stories/ieee-hta-malaysia/cover.webp"
+  },
+  {
+    "id": "hackbyte",
+    "page": "mentor",
+    "source": "Mentoring\\HackByte 3.0 IIITDM Jabalpur",
+    "title": "Building alongside the next generation",
+    "role": "Hackathon mentor",
+    "place": "HackByte 3.0 · IIITDM Jabalpur",
+    "date": "2025-04-04",
+    "dateLabel": "4–6 Apr 2025",
+    "topics": [
+      "Hackathons",
+      "Developer community"
+    ],
+    "summary": "Supported student teams at HackByte 3.0 through idea discussions and late-night mentoring in an intensive hackathon environment.",
+    "detail": "Worked with student innovators exploring real-world problems at the MLH-member hackathon hosted by IIITDM Jabalpur.",
+    "outcome": "Provided a sounding board for teams as they developed ideas, collaborated and worked through technical challenges.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/hackbyte/01.webp",
+        "alt": "Building alongside the next generation — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/hackbyte/02.webp",
+        "alt": "Building alongside the next generation — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/hackbyte/03.webp",
+        "alt": "Building alongside the next generation — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/hackbyte/04.webp",
+        "alt": "Building alongside the next generation — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/hackbyte/05.webp",
+        "alt": "Building alongside the next generation — event photo 5"
+      },
+      {
+        "src": "assets/images/stories/hackbyte/06.webp",
+        "alt": "Building alongside the next generation — event photo 6"
+      }
+    ],
+    "cover": "assets/images/stories/hackbyte/cover.webp"
+  },
+  {
+    "id": "farmx",
+    "page": "mentor",
+    "source": "Mentoring\\GDSC Solution Challenge Demo Day 2023",
+    "title": "Mentoring FarmX to a global stage",
+    "role": "Team mentor",
+    "place": "Google Solution Challenge · FarmX, Nigeria",
+    "date": "2023-08-03",
+    "dateLabel": "3 Aug 2023",
+    "topics": [
+      "Google Solution Challenge",
+      "Social impact"
+    ],
+    "summary": "Mentored FarmX, a 2023 Solution Challenge Top 10 finalist and recipient of the global People’s Choice Award.",
+    "detail": "Supported a Nigerian student team building with Google technologies to address the United Nations Sustainable Development Goals.",
+    "outcome": "The team reached the global Demo Day and earned the People’s Choice Award. The achievement belongs to the students; my role was supporting their journey.",
+    "contain": true,
+    "images": [
+      {
+        "src": "assets/images/stories/farmx/01.webp",
+        "alt": "Mentoring FarmX to a global stage — recognition and event material 1"
+      },
+      {
+        "src": "assets/images/stories/farmx/02.webp",
+        "alt": "Mentoring FarmX to a global stage — recognition and event material 2"
+      },
+      {
+        "src": "assets/images/stories/farmx/03.webp",
+        "alt": "Mentoring FarmX to a global stage — recognition and event material 3"
+      }
+    ],
+    "cover": "assets/images/stories/farmx/cover.webp"
+  },
+  {
+    "id": "solution-challenge-2024",
+    "page": "mentor",
+    "source": "Mentoring\\Google Solution Challenge",
+    "title": "Supporting Solution Challenge teams",
+    "role": "Volunteer mentor",
+    "place": "Google Developer Student Clubs",
+    "date": "2024",
+    "dateLabel": "2024",
+    "topics": [
+      "Google Solution Challenge"
+    ],
+    "summary": "Volunteered as a mentor for teams in the 2024 Google Solution Challenge Top 100 cohort.",
+    "detail": "Supported student teams as they developed technical components and articulated the social impact of their projects.",
+    "outcome": "Received an acknowledgement from the program team for the time and expertise contributed to student mentorship.",
+    "contain": true,
+    "images": [
+      {
+        "src": "assets/images/stories/solution-challenge-2024/01.webp",
+        "alt": "Supporting Solution Challenge teams — recognition and event material 1"
+      }
+    ],
+    "cover": "assets/images/stories/solution-challenge-2024/cover.webp"
+  },
+  {
+    "id": "immunization-webapp",
+    "page": "mentor",
+    "source": "Mentoring\\Vaccination WebAPP for Doctor under IEEE SIGHT Bombay Section 2023",
+    "title": "Taking a student project into the field",
+    "role": "IEEE SIGHT contributor",
+    "place": "Khopoli Medical Center · Maharashtra",
+    "date": "2023",
+    "dateLabel": "2023",
+    "topics": [
+      "Social impact"
+    ],
+    "summary": "Joined a medical-center visit to demonstrate a web application for immunization analysis for children aged zero to six.",
+    "detail": "Worked alongside IEEE SIGHT members, medical professionals and the MGM engineering developer team during the project demonstration.",
+    "outcome": "Collected feedback from doctors, a medical officer and nurses to inform improvements to the application.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/immunization-webapp/01.webp",
+        "alt": "Taking a student project into the field — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/immunization-webapp/02.webp",
+        "alt": "Taking a student project into the field — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/immunization-webapp/03.webp",
+        "alt": "Taking a student project into the field — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/immunization-webapp/04.webp",
+        "alt": "Taking a student project into the field — event photo 4"
+      }
+    ],
+    "cover": "assets/images/stories/immunization-webapp/cover.webp"
+  },
+  {
+    "id": "chromatography",
+    "page": "research",
+    "source": "Research\\Chromatography",
+    "title": "Software meets laboratory automation",
+    "role": "Software engineering collaboration",
+    "place": "Infinity Tech Resources × Institute of Science · Aurangabad",
+    "date": "",
+    "dateLabel": "Research collaboration",
+    "topics": [
+      "Automation",
+      "Applied research"
+    ],
+    "summary": "A collaboration exploring software support and robotic automation for chromatography with biotechnology researchers.",
+    "detail": "At Infinity Tech Resources, participated in a research environment connecting software engineering with the Government Institute of Science Aurangabad’s Department of Biotechnology.",
+    "outcome": "Brought software and automation perspectives into discussions with biotechnology researchers about chromatography systems.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/chromatography/01.webp",
+        "alt": "Software meets laboratory automation — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/chromatography/02.webp",
+        "alt": "Software meets laboratory automation — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/chromatography/03.webp",
+        "alt": "Software meets laboratory automation — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/chromatography/04.webp",
+        "alt": "Software meets laboratory automation — event photo 4"
+      },
+      {
+        "src": "assets/images/stories/chromatography/05.webp",
+        "alt": "Software meets laboratory automation — event photo 5"
+      }
+    ],
+    "cover": "assets/images/stories/chromatography/cover.webp"
+  },
+  {
+    "id": "smart-sterilizer",
+    "page": "research",
+    "source": "Research\\Addressing Local Needs During COVID Time",
+    "title": "Engineering for a local healthcare need",
+    "role": "Project contributor",
+    "place": "IEEE HAC / SIGHT · MIT Hospital, Aurangabad",
+    "date": "2021",
+    "dateLabel": "2021",
+    "topics": [
+      "Humanitarian tech",
+      "Applied research"
+    ],
+    "summary": "Contributed to a Smart Sterilizer Box for masks and PPE kits under IEEE’s “Addressing Local Needs During COVID Time” initiative.",
+    "detail": "Worked with Dr. Abhilasha Dixit Mishra and the project team, supported by USD 450 in IEEE HAC/SIGHT and Region 10 funding.",
+    "outcome": "The project progressed from prototyping to a unit delivered to MIT Hospital, with input from medical staff. The completion certificate recognizes the team’s contribution.",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/stories/smart-sterilizer/01.webp",
+        "alt": "Engineering for a local healthcare need — event photo 1"
+      },
+      {
+        "src": "assets/images/stories/smart-sterilizer/02.webp",
+        "alt": "Engineering for a local healthcare need — event photo 2"
+      },
+      {
+        "src": "assets/images/stories/smart-sterilizer/03.webp",
+        "alt": "Engineering for a local healthcare need — event photo 3"
+      },
+      {
+        "src": "assets/images/stories/smart-sterilizer/04.webp",
+        "alt": "Engineering for a local healthcare need — event photo 4"
+      }
+    ],
+    "cover": "assets/images/stories/smart-sterilizer/cover.webp"
+  },
+  {
+    "id": "ai-electrical-webinar",
+    "page": "webinars",
+    "source": "Webinar\\AI Modelling in Electrical Technology Development and Maintenance",
+    "title": "AI in electrical engineering",
+    "role": "Invited webinar speaker",
+    "place": "IEEE PES · St. Joseph’s College of Engineering",
+    "date": "",
+    "dateLabel": "16 April · IEEE PES Day",
+    "topics": [
+      "AI foundations",
+      "Electrical engineering"
+    ],
+    "summary": "An invited webinar on AI modelling in electrical technology development and maintenance, celebrating IEEE PES Day.",
+    "detail": "Shared perspectives on AI applications with students through the college’s IEEE Power and Energy Society Student Branch Chapter.",
+    "outcome": "Connected an engineering audience with the role of AI in electrical technology through an online expert session.",
+    "contain": true,
+    "images": [
+      {
+        "src": "assets/images/stories/ai-electrical-webinar/01.webp",
+        "alt": "AI in electrical engineering — recognition and event material 1"
+      },
+      {
+        "src": "assets/images/stories/ai-electrical-webinar/02.webp",
+        "alt": "AI in electrical engineering — recognition and event material 2"
+      },
+      {
+        "src": "assets/images/stories/ai-electrical-webinar/03.webp",
+        "alt": "AI in electrical engineering — recognition and event material 3"
+      },
+      {
+        "src": "assets/images/stories/ai-electrical-webinar/04.webp",
+        "alt": "AI in electrical engineering — recognition and event material 4"
+      }
+    ],
+    "cover": "assets/images/stories/ai-electrical-webinar/cover.webp"
+  },
+  {
+    "id": "intel-devmeet",
+    "page": "speakers",
+    "title": "Intel DevMeet 1.0 — Hands-On Generative AI Session",
+    "role": "Invited speaker",
+    "place": "St. Vincent Pallotti College of Engineering & Technology · Nagpur, Maharashtra",
+    "date": "2026-03-28",
+    "dateLabel": "Mar 28, 2026",
+    "topics": [
+      "Generative AI"
+    ],
+    "summary": "Inaugural Intel DevMeet hosted for the IEEE St. Vincent Pallotti College Student\n                Branch — a hands-on session on generative AI and text-to-image models, organized\n                jointly by the IEEE Maharashtra Section and the Intel Developer Community.",
+    "detail": "",
+    "outcome": "",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/workshops/intel-devmeet-nagpur/04.jpg",
+        "alt": "Felicitation on stage during the opening ceremony of Intel DevMeet 1.0 at St. Vincent Pallotti College of Engineering and Technology, Nagpur"
+      },
+      {
+        "src": "assets/images/workshops/intel-devmeet-nagpur/05.jpg",
+        "alt": "Inauguration of Intel DevMeet 1.0 with faculty and guests beside the ceremonial lamp, Nagpur"
+      },
+      {
+        "src": "assets/images/workshops/intel-devmeet-nagpur/02.jpg",
+        "alt": "Participants at workstations during the hands-on generative AI lab, Intel DevMeet 1.0, Nagpur"
+      },
+      {
+        "src": "assets/images/workshops/intel-devmeet-nagpur/07.jpg",
+        "alt": "Auditorium audience for the opening session of Intel DevMeet 1.0, Nagpur"
+      }
+    ],
+    "source": "Existing speakers.html",
+    "venue": {
+      "name": "St. Vincent Pallotti College of Engineering & Technology",
+      "url": "https://stvincentngp.edu.in/"
+    },
+    "location": "Nagpur, Maharashtra",
+    "map": "St. Vincent Pallotti College of Engineering and Technology, Nagpur"
+  },
+  {
+    "id": "gemini-prompt-engineering",
+    "page": "speakers",
+    "title": "AI for Everyone: Foundations of Prompt Engineering with Gemini",
+    "role": "Speaker · Google Student Ambassador",
+    "place": "IIT Bhilai · LH-101 · Bhilai (Durg), Chhattisgarh",
+    "date": "2025-11-07",
+    "dateLabel": "Nov 7, 2025",
+    "topics": [
+      "Generative AI"
+    ],
+    "summary": "A hands-on session for GDG IIT Bhilai on structuring effective prompts, real-world\n                AI workflows and getting the most out of Google Gemini — from first principles to\n                practical use cases.",
+    "detail": "",
+    "outcome": "",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/workshops/gemini-prompt-iitbhilai/01.jpg",
+        "alt": "Event poster for AI for Everyone: Foundations of Prompt Engineering with Gemini, GDG IIT Bhilai, 7 November 2025, speaker Nitin Mane"
+      }
+    ],
+    "source": "Existing speakers.html",
+    "venue": {
+      "name": "IIT Bhilai · LH-101",
+      "url": "https://www.iitbhilai.ac.in/"
+    },
+    "location": "Bhilai (Durg), Chhattisgarh",
+    "map": "IIT Bhilai, Durg, Chhattisgarh",
+    "links": [
+      {
+        "label": "Google Gemini",
+        "url": "https://gemini.google.com/"
+      }
+    ]
+  },
+  {
+    "id": "stem-bhilai",
+    "page": "speakers",
+    "title": "Hands-On Robotics & Electronics — STEM Outreach Camp",
+    "role": "Invited speaker & mentor",
+    "place": "School STEM outreach camp · Bhilai, Chhattisgarh",
+    "date": "2025-04-21",
+    "dateLabel": "Apr 21, 2025",
+    "topics": [
+      "Education"
+    ],
+    "summary": "A joint initiative by IEEE SIGHT Pratham (IEEE Maharashtra Section) and IIT Bhilai,\n                bringing hands-on robotics and electronics sessions to school students under a\n                dedicated STEM outreach program.",
+    "detail": "",
+    "outcome": "",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/workshops/summer-school-bhilai/02.jpg",
+        "alt": "Robotics and electronics session in a school science classroom, viewed from the back of the room, Bhilai"
+      },
+      {
+        "src": "assets/images/workshops/summer-school-bhilai/06.jpg",
+        "alt": "Two instructors at the board guiding school students through the STEM activity, Bhilai"
+      },
+      {
+        "src": "assets/images/workshops/summer-school-bhilai/03.jpg",
+        "alt": "Instructor answering questions in front of the classroom during the STEM outreach camp, Bhilai"
+      }
+    ],
+    "source": "Existing speakers.html",
+    "venue": {
+      "name": "School STEM outreach camp"
+    },
+    "location": "Bhilai, Chhattisgarh",
+    "map": "Bhilai, Chhattisgarh",
+    "links": [
+      {
+        "label": "IIT Bhilai",
+        "url": "https://www.iitbhilai.ac.in/"
+      },
+      {
+        "label": "IEEE SIGHT",
+        "url": "https://sight.ieee.org/"
+      }
+    ]
+  },
+  {
+    "id": "ai-electrical-acharya",
+    "page": "speakers",
+    "title": "The Future Trends of AI in Electrical Technology & Maintenance",
+    "role": "Invited speaker",
+    "place": "Acharya Institute of Technology · Soladevanahalli, Bengaluru, Karnataka",
+    "date": "2024-05-08",
+    "dateLabel": "May 8, 2024",
+    "topics": [
+      "Education"
+    ],
+    "summary": "Invited guest talk for the IEEE student branch on how AI is reshaping electrical\n                engineering and maintenance practices — from predictive diagnostics to AI-assisted\n                electrical systems.",
+    "detail": "",
+    "outcome": "",
+    "contain": false,
+    "images": [
+      {
+        "src": "assets/images/workshops/acharya-bangalore/03.jpg",
+        "alt": "Nitin Mane presenting the title slide of The Future Trends of AI in Electrical Technology and Maintenance at Acharya Institute of Technology, Bengaluru"
+      },
+      {
+        "src": "assets/images/workshops/acharya-bangalore/08.jpg",
+        "alt": "Nitin Mane receiving a memento after the invited talk at Acharya Institute of Technology, Bengaluru"
+      }
+    ],
+    "source": "Existing speakers.html",
+    "venue": {
+      "name": "Acharya Institute of Technology",
+      "url": "https://www.acharya.ac.in/"
+    },
+    "location": "Soladevanahalli, Bengaluru, Karnataka",
+    "map": "Acharya Institute of Technology, Soladevanahalli, Bengaluru"
+  },
+  {
+    "id": "gdsc-mit-2024",
+    "page": "speakers",
+    "title": "Mentor Spotlight — Google Solution Challenge 2024: Journey to Innovation",
+    "role": "Mentor & invited speaker",
+    "place": "GDSC, Maharashtra Institute of Technology · Online session",
+    "date": "2024-01-15",
+    "dateLabel": "Jan 15, 2024",
+    "topics": [
+      "Education"
+    ],
+    "summary": "Featured as Mentor Spotlight for GDSC MIT's Google Solution Challenge 2024 session,\n                sharing experience as a Google Innovator & Mentor alongside a fellow speaker and\n                challenge finalist.",
+    "detail": "",
+    "outcome": "",
+    "contain": true,
+    "images": [
+      {
+        "src": "assets/images/workshops/gdsc-mit/05.jpg",
+        "alt": "Event poster for Solution Challenge 2024: Journey to Innovation, GDSC Maharashtra Institute of Technology, 15 January 2024"
+      },
+      {
+        "src": "assets/images/workshops/gdsc-mit/01.jpg",
+        "alt": "GDSC MIT Mentor Spotlight card featuring Nitin Mane, Google Innovator and Mentor"
+      },
+      {
+        "src": "assets/images/workshops/gdsc-mit/04.jpg",
+        "alt": "Thank-you note to Nitin Mane from Google Developer Student Clubs, Maharashtra Institute of Technology"
+      }
+    ],
+    "source": "Existing speakers.html",
+    "venue": {
+      "name": "GDSC, Maharashtra Institute of Technology",
+      "url": "https://www.mit.asia/"
+    },
+    "location": "Online session"
+  }
+]

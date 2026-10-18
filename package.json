@@ -4,7 +4,9 @@
   "description": "<!-- ========================================================= --> <!-- Personal Website README.md                               --> <!-- Static HTML/CSS Website Hosted on Namecheap              --> <!-- ========================================================= -->",
   "main": "index.js",
   "scripts": {
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom",
+    "preview": "http-server . -p 4173 -c-1",
+    "build:stories": "python scripts/build-stories.py"
   },
   "repository": {
     "type": "git",

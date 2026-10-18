@@ -1,62 +1,38 @@
 // Mock out THREE.js, as we don't want to load a remote URL in our tests.
-jest.mock("../assets/js/three.module.js", () => ({
-  Scene: class Scene {
-    constructor() {
-      this.rotation = { x: 0, y: 0, z: 0 };
-    }
-    add() {}
-  },
-  PerspectiveCamera: class PerspectiveCamera {
-    constructor() {
-      this.position = { set: jest.fn() };
-      this.aspect = 1;
-      this.updateProjectionMatrix = jest.fn();
-    }
-  },
-  WebGLRenderer: class WebGLRenderer {
-    constructor({ canvas }) {
-      if (global.throwWebGL) throw new Error('WebGL failed');
-      this.canvas = canvas;
-    }
-    setPixelRatio() {}
-    setSize() {}
-    render() {}
-  },
-  CanvasTexture: class CanvasTexture {},
-  Group: class Group {
-    constructor() {
-      this.rotation = { x: 0, y: 0, z: 0 };
-    }
-    add() {}
-  },
-  IcosahedronGeometry: class IcosahedronGeometry {
-    constructor() {
-      this.attributes = { position: { clone: () => ({}) } };
-    }
-  },
-  LineSegments: class LineSegments {
-    constructor() {
-      this.rotation = { set: jest.fn(), copy: jest.fn(), x: 0, y: 0, z: 0 };
-      this.position = { set: jest.fn(), copy: jest.fn(), x: 0, y: 0, z: 0 };
-    }
-  },
-  EdgesGeometry: class EdgesGeometry {},
-  LineBasicMaterial: class LineBasicMaterial {},
-  BufferGeometry: class BufferGeometry { setAttribute() {} },
-  BufferAttribute: class BufferAttribute {},
-  Points: class Points {
-    constructor() {
-      this.rotation = { set: jest.fn(), copy: jest.fn(), x: 0, y: 0, z: 0 };
-    }
-  },
-  PointsMaterial: class PointsMaterial {},
-  OctahedronGeometry: class OctahedronGeometry {},
-  TetrahedronGeometry: class TetrahedronGeometry {},
-  TorusGeometry: class TorusGeometry {},
-  BoxGeometry: class BoxGeometry {},
-  Clock: class Clock { getElapsedTime() { return 1; } },
-  AdditiveBlending: 'AdditiveBlending'
-}), { virtual: true });
+jest.mock("../assets/js/three.module.js", () => {
+  const vec = () => ({ x: 0, y: 0, z: 0, set: jest.fn(), copy() { return this; }, setScalar: jest.fn() });
+  return {
+    Scene: class Scene { add() {} },
+    PerspectiveCamera: class PerspectiveCamera {
+      constructor() { this.position = vec(); this.aspect = 1; this.updateProjectionMatrix = jest.fn(); }
+    },
+    WebGLRenderer: class WebGLRenderer {
+      constructor({ canvas }) { if (global.throwWebGL) throw new Error('WebGL failed'); this.canvas = canvas; global.renderCount = 0; }
+      setPixelRatio() {}
+      getPixelRatio() { return 1; }
+      setSize() {}
+      render() { global.renderCount += 1; }
+    },
+    Group: class Group {
+      constructor() { this.position = vec(); this.rotation = vec(); this.scale = vec(); }
+      add() {}
+      worldToLocal(v) { return v; }
+    },
+    BufferGeometry: class BufferGeometry { setAttribute() {} },
+    BufferAttribute: class BufferAttribute { setUsage() {} },
+    ShaderMaterial: class ShaderMaterial { constructor(o) { Object.assign(this, o); } },
+    Points: class Points {},
+    Color: class Color { setHex() { this.r = 1; this.g = 1; this.b = 1; return this; } },
+    Vector2: class Vector2 { constructor(x = 0, y = 0) { this.x = x; this.y = y; } },
+    Vector3: class Vector3 { constructor() { Object.assign(this, vec()); } },
+    Plane: class Plane {},
+    Raycaster: class Raycaster { constructor() { this.ray = { intersectPlane: () => null }; } setFromCamera() {} },
+    Clock: class Clock { getElapsedTime() { return 1; } },
+    AdditiveBlending: 'AdditiveBlending',
+    NormalBlending: 'NormalBlending',
+    DynamicDrawUsage: 'DynamicDrawUsage',
+  };
+}, { virtual: true });
 
 describe('hero-scene', () => {
   beforeEach(() => {
@@ -97,12 +73,6 @@ describe('hero-scene', () => {
     window.requestAnimationFrame = jest.fn();
 
     // Mock canvas getContext
-    HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
-      createRadialGradient: jest.fn(() => ({
-        addColorStop: jest.fn()
-      })),
-      fillRect: jest.fn()
-    }));
   });
 
   afterEach(() => {
@@ -110,7 +80,12 @@ describe('hero-scene', () => {
   });
 
   const setupCanvas = (mode = 'hero') => {
-    document.body.innerHTML = `<div data-scene-wrapper><canvas data-signal-scene="${mode}"></canvas></div>`;
+    document.body.innerHTML = `<section class="hero"><div data-scene-wrapper><canvas data-signal-scene="${mode}"></canvas></div>
+      <span data-swarm-label>core</span>
+      <button data-swarm-formation aria-pressed="true">Core</button>
+      <button data-swarm-formation aria-pressed="false">Vision</button>
+      <button data-swarm-formation aria-pressed="false">Lattice</button>
+      <button data-swarm-formation aria-pressed="false">Magnetic</button></section>`;
     const canvas = document.querySelector('canvas');
     canvas.parentElement.getBoundingClientRect = () => ({ width: 800, height: 600 });
     return canvas;
@@ -139,5 +114,25 @@ describe('hero-scene', () => {
     document.dispatchEvent(new Event('DOMContentLoaded'));
     const wrapper = document.querySelector('[data-scene-wrapper]');
     expect(wrapper.classList.contains('scene-fallback')).toBe(false);
+  });
+
+  it('switches swarm formation from the buttons', () => {
+    setupCanvas();
+    require('../assets/js/hero-scene.js');
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+    const buttons = document.querySelectorAll('[data-swarm-formation]');
+    buttons[3].click();
+    expect(buttons[3].getAttribute('aria-pressed')).toBe('true');
+    expect(buttons[0].getAttribute('aria-pressed')).toBe('false');
+    expect(document.querySelector('[data-swarm-label]').textContent).toBe('magnetic');
+  });
+
+  it('renders a single still frame when reduced motion is requested', () => {
+    window.matchMedia = jest.fn().mockImplementation(q => ({ matches: true, media: q, addEventListener: jest.fn(), removeEventListener: jest.fn(), addListener: jest.fn(), removeListener: jest.fn() }));
+    setupCanvas();
+    require('../assets/js/hero-scene.js');
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+    expect(window.requestAnimationFrame).not.toHaveBeenCalled();
+    expect(global.renderCount).toBe(1);
   });
 });

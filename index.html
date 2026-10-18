@@ -104,6 +104,7 @@
             <a href="about" class="nav__menu-link"><span class="nav__menu-title">About Me</span><span class="nav__menu-desc">Story, skills &amp; profile</span></a>
             <a href="experience" class="nav__menu-link"><span class="nav__menu-title">Experience</span><span class="nav__menu-desc">Roles, research &amp; leadership</span></a>
             <a href="education" class="nav__menu-link"><span class="nav__menu-title">Education</span><span class="nav__menu-desc">Degrees &amp; certifications</span></a>
+            <a href="awards" class="nav__menu-link"><span class="nav__menu-title">Awards</span><span class="nav__menu-desc">Recognition & learning milestones</span></a>
           </div>
         </div>
         <div class="nav__group">
@@ -120,6 +121,8 @@
           <div class="nav__menu" id="nav-menu-community">
             <a href="speakers" class="nav__menu-link"><span class="nav__menu-title">Speaking</span><span class="nav__menu-desc">Talks &amp; hands-on workshops</span></a>
             <a href="mentor" class="nav__menu-link"><span class="nav__menu-title">Mentorship</span><span class="nav__menu-desc">1:1 sessions on Topmate</span></a>
+            <a href="conferences" class="nav__menu-link"><span class="nav__menu-title">Conferences</span><span class="nav__menu-desc">Communities & global connections</span></a>
+            <a href="webinars" class="nav__menu-link"><span class="nav__menu-title">Webinars</span><span class="nav__menu-desc">Online talks & expert sessions</span></a>
           </div>
         </div>
         <a href="contact" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
@@ -142,8 +145,27 @@
   <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero" id="home">
+      <div class="hero__aurora" aria-hidden="true">
+        <span class="hero__wash hero__wash--blue"></span>
+        <span class="hero__wash hero__wash--violet"></span>
+        <span class="hero__wash hero__wash--rose"></span>
+        <span class="hero__wash hero__wash--cyan"></span>
+      </div>
+      <div class="hero__dots" aria-hidden="true"></div>
+      <div class="hero__dots hero__dots--live" aria-hidden="true"></div>
       <div class="hero__scene-wrap" data-scene-wrapper>
         <canvas data-signal-scene="hero" aria-hidden="true"></canvas>
+      </div>
+      <div class="hero__reticle" aria-hidden="true"><span></span></div>
+
+      <div class="hero__swarm-ui" role="group" aria-label="Microbot swarm formation">
+        <span class="hero__swarm-status"><span class="nav__status-dot"></span>Swarm · <span data-swarm-label>core</span></span>
+        <div class="hero__swarm-buttons">
+          <button type="button" data-swarm-formation aria-pressed="true">Core</button>
+          <button type="button" data-swarm-formation aria-pressed="false">Vision</button>
+          <button type="button" data-swarm-formation aria-pressed="false">Lattice</button>
+          <button type="button" data-swarm-formation aria-pressed="false">Magnetic</button>
+        </div>
       </div>
 
       <div class="container hero__inner">
@@ -184,10 +206,6 @@
           <div class="hero__hiring-row">
             <span class="hero__hiring-label">Global</span>
             <span>Japan / Luxembourg / Germany / USA (needs employer visa sponsorship)</span>
-          </div>
-          <div class="hero__hiring-row">
-            <span class="hero__hiring-label">Availability</span>
-            <span>METI internship in Japan, Nov 4 – Dec 20, 2026. Available for full-time roles from January 2027; interviewing now.</span>
           </div>
         </div>
 
@@ -605,18 +623,27 @@
         </div>
       </div>
 
-      <nav class="footer__nav" aria-label="Footer">
+      <nav class="footer__nav" aria-label="Footer: explore">
         <h3 class="footer__heading">Navigate</h3>
         <ul class="footer__links">
           <li><a href="/">Home</a></li>
           <li><a href="about">About</a></li>
           <li><a href="experience">Experience</a></li>
+          <li><a href="education">Education</a></li>
           <li><a href="projects">Projects</a></li>
           <li><a href="research">Research</a></li>
           <li><a href="blog">Blog</a></li>
-          <li><a href="education">Education</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__nav" aria-label="Footer: community">
+        <h3 class="footer__heading">Community</h3>
+        <ul class="footer__links">
           <li><a href="speakers">Speaking</a></li>
           <li><a href="mentor">Mentorship</a></li>
+          <li><a href="conferences">Conferences</a></li>
+          <li><a href="webinars">Webinars</a></li>
+          <li><a href="awards">Awards</a></li>
           <li><a href="contact">Contact</a></li>
         </ul>
       </nav>
@@ -635,7 +662,6 @@
 
     <div class="container footer__bottom">
       <span>&copy; <span data-year>2026</span> Nitin Mane. All systems nominal.</span>
-      <span>Designed &amp; built with HTML, CSS, vanilla JS and Three.js</span>
     </div>
   </footer>
 
