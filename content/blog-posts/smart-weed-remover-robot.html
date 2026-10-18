@@ -1,0 +1,154 @@
+<h2 id="problem">The problem</h2>
+<p>
+  Weeds compete with crops for water, light and nutrients, and removing them by hand is slow
+  while blanket herbicide spraying treats the whole field to reach a few plants. A robot that
+  can see a weed and remove just that plant is an appealing alternative, but it is a hard
+  mechatronics problem: perception and actuation have to agree in real space, not just on a
+  screen.
+</p>
+<p>
+  A false positive can uproot a crop. A slow loop can miss the weed. A perfect detector is
+  useless if the coordinate transform is off by a few centimetres. This project works through
+  that whole chain, from the dataset to the robot command, for an
+  <strong>NVIDIA Jetson Nano</strong> and an <strong>igus 3-DOF Delta parallel robot</strong>.
+</p>
+[[fig dashboard | Project summary: dataset audit, model evaluation, edge deployment, robotics integration, control-loop simulation and the field-validation plan.]]
+
+<h2 id="system">System at a glance</h2>
+<table class="blog-table">
+  <thead><tr><th>Area</th><th>Summary</th></tr></thead>
+  <tbody>
+    <tr><td>Dataset</td><td>2,822 images, 14,919 annotations, two classes: crop and weed</td></tr>
+    <tr><td>Best model</td><td>YOLOv5m, test mAP@0.5 0.701, recall 0.738</td></tr>
+    <tr><td>Edge formats</td><td>PyTorch, ONNX and TensorRT, with parity and latency checks</td></tr>
+    <tr><td>Robot</td><td>igus Delta parallel robot, 3 DOF, 1000 mm class, 2.5 kg payload</td></tr>
+    <tr><td>Jetson stack</td><td>RealSense RGB camera, DeepStream, TensorRT, YOLOv5, Python controller</td></tr>
+    <tr><td>Safety</td><td>ROI filtering, confidence threshold, repeated-frame confirmation, workspace limits, emergency stop</td></tr>
+  </tbody>
+</table>
+<p>
+  The work is organised as fifteen numbered notebooks, from the dataset audit through to the
+  field-validation plan, plus a separate <code>jetson_robot</code> package for deployment.
+</p>
+
+<h2 id="data">Understanding the data first</h2>
+<p>
+  Before training anything, the dataset was audited for missing labels, missing or corrupted
+  images, unsupported formats and duplicates. It scored <strong>97.14 / 100</strong> on the
+  health check. The audit also exposed the main challenge: the classes are heavily imbalanced.
+  Weeds account for <strong>94%</strong> of the 14,919 boxes and crops for just 6%.
+</p>
+[[fig samples | Representative crop and weed samples under varied field conditions.]]
+[[fig bbox-geometry | Bounding-box size and shape distributions. Many objects are small, which makes detection harder.]]
+<p>
+  Further notebooks checked for leakage between splits, analysed near-duplicates, corrected the
+  splits, measured the effect of brightness correction and confirmed that augmented images kept
+  their labels and a realistic field appearance.
+</p>
+
+<h2 id="training">Training two models</h2>
+<p>
+  Two YOLOv5 variants were trained and compared on the held-out test set. The medium model is
+  slightly more accurate; the nano model is ten times smaller, which matters on a Jetson Nano.
+</p>
+<table class="blog-table">
+  <thead><tr><th>Model</th><th>Size</th><th>Train time</th><th>Precision</th><th>Recall</th><th>mAP@0.5</th><th>mAP@0.5:0.95</th></tr></thead>
+  <tbody>
+    <tr><td>YOLOv5n</td><td>3.7 MB</td><td>92.5 min</td><td>0.719</td><td>0.708</td><td>0.682</td><td>0.344</td></tr>
+    <tr><td>YOLOv5m</td><td>40.2 MB</td><td>216.4 min</td><td>0.719</td><td>0.738</td><td>0.701</td><td>0.363</td></tr>
+  </tbody>
+</table>
+[[fig training-curves | Loss and validation metrics across epochs, used to judge convergence.]]
+[[gallery]]
+[[fig predictions | Predictions next to the ground truth, showing where the model matches or misses annotations.]]
+[[fig confusion-matrix | Confusion matrix for crop and weed predictions on evaluation data.]]
+[[/gallery]]
+
+<h2 id="errors">Where the model fails, and why it matters</h2>
+<p>
+  For a robot, the type of error matters more than the average score. A missed weed is a minor
+  loss; a crop wrongly classified as a weed is damage. The error-analysis notebook separates
+  true positives, false positives and false negatives, and measures how errors change with
+  lighting, crowding and object size.
+</p>
+[[fig error-covariates | Error rates by lighting, crowding and object size.]]
+
+<h2 id="edge">Getting it onto edge hardware</h2>
+<p>
+  The nano model was exported to ONNX and TensorRT. Each format was checked for parity against
+  a reference and benchmarked for latency:
+</p>
+<table class="blog-table">
+  <thead><tr><th>Format</th><th>Backend</th><th>Size</th><th>Latency</th><th>Parity</th></tr></thead>
+  <tbody>
+    <tr><td>PyTorch (.pt)</td><td>PyTorch, GPU</td><td>3.9 MB</td><td>16.96 ms</td><td>Reference</td></tr>
+    <tr><td>ONNX</td><td>ONNX Runtime, CPU</td><td>7.8 MB</td><td>33.26 ms</td><td>85.8% (different preprocessing)</td></tr>
+    <tr><td>TensorRT (FP32)</td><td>TensorRT, GPU</td><td>10.3 MB</td><td>17.12 ms</td><td>100% vs ONNX (matched preprocessing)</td></tr>
+  </tbody>
+</table>
+[[fig latency | Latency comparison of the three backends. | narrow]]
+<div class="blog-callout">
+  <p>These timings were measured on the development GPU, not yet on the Jetson Nano itself. They show that the pipeline is feasible and that the TensorRT engine is numerically faithful; on-device numbers come next.</p>
+</div>
+
+<h2 id="robot">From a bounding box to a robot motion</h2>
+<p>A detection only becomes useful once it turns into a safe physical motion:</p>
+<pre class="blog-code"><code>camera frame (RealSense RGB, DeepStream v4l2src)
+  → YOLOv5 TensorRT inference (nvinfer)
+  → keep weed class, confirm across <span class="hl">2</span> frames, confidence ≥ <span class="hl">0.50</span>
+  → weed ROI midpoint
+  → pixel-to-robot coordinate transform
+  → Delta inverse kinematics
+  → approach / pluck / retract trajectory
+  → serial or TCP command to the robot controller</code></pre>
+<p>
+  A Delta robot is a parallel mechanism: three arms share the load of one end effector. It
+  gives stiffness and precise positioning inside a bounded workspace, which suits a tool that
+  has to strike a small target point. The inverse kinematics are derived in the project notes,
+  and the trajectory planner generates the approach, pluck and retract motion.
+</p>
+
+<h2 id="safety">Safety comes before motion</h2>
+<p>
+  Combining vision with a physical actuator means safety cannot be an afterthought. The
+  controller defaults to a <strong>dry-run</strong> transport that prints commands instead of
+  moving hardware; real motion needs an explicit <code>--enable-motion</code> flag. Detections
+  must pass several gates before any command is issued:
+</p>
+<ul>
+  <li>a region-of-interest filter and crop-clearance check;</li>
+  <li>a confidence threshold of 0.50;</li>
+  <li>confirmation across two consecutive frames;</li>
+  <li>workspace limits for the Delta robot;</li>
+  <li>support for a hardware emergency stop.</li>
+</ul>
+
+<h2 id="loop">The simulated control loop</h2>
+<p>Before touching hardware, the whole loop was run in simulation:</p>
+<table class="blog-table">
+  <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Frames processed</td><td>48</td></tr>
+    <tr><td>Tracked detections</td><td>89</td></tr>
+    <tr><td>Actuation commands issued</td><td>70</td></tr>
+    <tr><td>Mean loop time</td><td>17.76 ms</td></tr>
+    <tr><td>Loop rate</td><td>56.3 FPS</td></tr>
+  </tbody>
+</table>
+[[fig control-loop | End-to-end loop timing and the actuation decisions made in simulation.]]
+[[fig decisions | Example detections after the confidence, confirmation, brightness and action filters.]]
+<p>
+  The latency budget is honest about what is still unknown. Of an estimated 80 ms from camera
+  capture to actuator response, only the inference step is measured; capture, preprocessing,
+  communication and the robot's mechanical response are still placeholders until the hardware
+  is in the loop.
+</p>
+
+<h2 id="next">What comes next</h2>
+<p>
+  The final notebook defines a field-validation protocol with sample-size planning and rollout
+  gates: dry runs first, then slow supervised commissioning with an emergency stop, then
+  autonomous trials. The goal is a robot that removes weeds selectively and uses less
+  herbicide, and that is precise enough for a farmer to trust. That only happens when the
+  vision, the kinematics and the mechanics are tested together.
+</p>

@@ -1,0 +1,140 @@
+<h2 id="why">Why an AI PC studio</h2>
+<p>
+  Most AI demos look great when everything is installed, the model is warm and the network is
+  fast. Real engineering work raises harder questions. Can this run locally? Which device is
+  doing the work: CPU, GPU or NPU? How much memory does the model need? What happens without a
+  network connection? And why did it work yesterday but not today?
+</p>
+<p>
+  <strong>UltraEdge AIPC Studio</strong> is my answer: a local-first development console for
+  running and evaluating AI workloads on Intel AI PCs. It brings model management,
+  <strong>OpenVINO</strong> inference, personal and coding assistants, speech and video
+  interfaces, runtime diagnostics and benchmarks into one application, so an AI PC can be used
+  as a small local AI lab rather than just a machine that runs a chatbot.
+</p>
+[[fig dashboard | The main dashboard, with entry points to the assistants, model management, benchmarks and security controls.]]
+
+<h2 id="requirements">Built for one class of hardware</h2>
+<p>
+  The studio targets <strong>Intel Core Ultra</strong> processors on Windows and Linux. It checks
+  the processor before installing anything and refuses to start on unsupported CPUs. That is a
+  deliberate choice: the point is to exercise the CPU, integrated GPU and NPU together, and
+  results from other hardware would be misleading.
+</p>
+<table class="blog-table">
+  <thead><tr><th>Component</th><th>Requirement</th></tr></thead>
+  <tbody>
+    <tr><td>Processor</td><td>Intel Core Ultra (startup is refused otherwise)</td></tr>
+    <tr><td>Operating system</td><td>Windows or Linux</td></tr>
+    <tr><td>Python / Node.js</td><td>Python 3.10+ and Node.js 20.19+</td></tr>
+    <tr><td>Acceleration</td><td>Intel graphics and NPU drivers for the host</td></tr>
+    <tr><td>Memory and storage</td><td>Depends on the model; multimodal models need a lot</td></tr>
+  </tbody>
+</table>
+
+<h2 id="architecture">Architecture</h2>
+<p>The application has three layers:</p>
+<table class="blog-table">
+  <thead><tr><th>Layer</th><th>Location</th><th>Responsibility</th></tr></thead>
+  <tbody>
+    <tr><td>Web client</td><td><code>frontend/src</code></td><td>React interface and client-side state</td></tr>
+    <tr><td>API service</td><td><code>backend/app/api</code></td><td>FastAPI request validation and endpoints</td></tr>
+    <tr><td>Runtime services</td><td><code>backend/app/runtime</code></td><td>OpenVINO model loading, inference, speech and tool dispatch</td></tr>
+  </tbody>
+</table>
+<p>
+  Chat history and settings are stored in SQLite, hardware checks have their own module, and
+  model download, verification and conversion sit in a dedicated models package. The backend
+  binds to <code>127.0.0.1</code> by default.
+</p>
+
+<h2 id="models">Managing models on the device</h2>
+<p>
+  The Model Manager shows which models are available, the precision options, the hardware each
+  one needs, download progress and optimisation stages. Models are downloaded, verified,
+  converted for OpenVINO, cached and loaded locally, and each can be benchmarked from the same
+  screen.
+</p>
+[[fig model-manager | The Model Manager: availability, precision, hardware requirements, download state and benchmark actions.]]
+
+<h2 id="assistants">Personal and coding assistants</h2>
+<p>
+  Before loading a model, each assistant shows exactly what it is about to do: the selected
+  engine, the target devices, the precision, the expected memory use and the detected
+  hardware. Text, image, audio and video interaction use supported Qwen models.
+</p>
+[[gallery]]
+[[fig personal-assistant | Personal Assistant pre-load view: multimodal engine, devices, precision and memory expectations.]]
+[[fig coding-agent | Coding Agent pre-load view, before the file browser and editor open.]]
+[[/gallery]]
+<p>
+  The coding workspace adds file browsing, editing and code generation. An optional local
+  executor can run the generated code, but it is <strong>disabled by default</strong> and is
+  not an operating-system sandbox, so it should only be enabled on a trusted development
+  machine.
+</p>
+
+<h2 id="speech">Talking to the model: audio and video</h2>
+<p>
+  Audio Chat keeps the listening state, elapsed time, controls, waveform and transcript in one
+  view. Video Chat adds a camera preview. Speech is generated with Token2Wav, with a profile for
+  low latency and another for quality.
+</p>
+[[gallery]]
+[[fig audio-chat | Audio Chat: listening state, waveform and transcript in one viewport.]]
+[[fig video-chat | Video Chat with a synthetic camera source used for documentation; a real install shows the selected camera.]]
+[[/gallery]]
+
+<h2 id="benchmarks">Measuring instead of guessing</h2>
+<p>
+  Benchmark Studio reports throughput, first-token latency, memory use and model load time once
+  measurements exist. It is the part I care about most for engineering decisions: whether a
+  model belongs on the NPU, the GPU or the CPU should be answered with numbers from the actual
+  machine.
+</p>
+[[fig benchmark | Benchmark Studio in its empty state, before any model has been measured.]]
+
+<h2 id="privacy">What "local-first" really means</h2>
+<p>
+  Chat history, settings, audit records, generated speech and the OpenVINO cache all stay on
+  the machine. Local-first does not mean permanently offline, though, and the project is
+  explicit about when the network is used:
+</p>
+<ul>
+  <li>installing Python or npm dependencies;</li>
+  <li>downloading a model from Hugging Face;</li>
+  <li>running a web-search, exchange-rate or URL-fetching tool you asked for;</li>
+  <li>configuring a non-local service endpoint.</li>
+</ul>
+<p>
+  The project also does not claim that its SQLite files or model caches are encrypted, so the
+  host account and disk need their own protection. The Security and Privacy page gathers
+  network access, local data, agent restrictions and privacy settings in one place.
+</p>
+[[fig security | Security and Privacy controls for network access, local data and agent restrictions.]]
+
+<h2 id="start">Getting started</h2>
+<pre class="blog-code"><code>git clone https://github.com/Nitin-Mane/ultraedge-aipc-studio.git
+cd ultraedge-aipc-studio
+python -m venv .venv &amp;&amp; . .venv/bin/activate      <span class="ok"># Windows: .venv\Scripts\Activate.ps1</span>
+python -m pip install -r backend/requirements.txt
+cd frontend &amp;&amp; npm install &amp;&amp; cd ..
+python start.py                                   <span class="ok"># API :8000, UI :3000</span></code></pre>
+<p>
+  <code>python start.py --check-only</code> reports whether the machine is suitable without
+  starting anything.
+</p>
+
+<h2 id="status">Project status</h2>
+<p>
+  The studio is in alpha (v0.1.1) and under active development, so interfaces, model
+  definitions and storage formats may change. It is released under the Apache License 2.0.
+  Backend checks use Ruff and pytest; the frontend uses ESLint, TypeScript, Vitest and a Vite
+  build. I maintain it as an Intel Software Innovator; that title does not mean Intel owns or
+  endorses the project.
+</p>
+<p>
+  Industrial AI does not need more magic. It needs local tests, visible hardware context,
+  practical model management, benchmark evidence and honest notes about what failed. That is
+  the workstation I wanted, so I built it.
+</p>
