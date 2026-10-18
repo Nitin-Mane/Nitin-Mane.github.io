@@ -1,0 +1,147 @@
+<h2 id="why">Why split one assistant into five</h2>
+<p>
+  NovaMart is a support assistant for a fictional online shop and the capstone of the Future
+  AWS Agent Engineer Nanodegree. A single customer question such as "Where's my order, and can
+  I still return it?" needs order data, a refund decision and policy text at the same time.
+  One agent holding every tool tends to blur those jobs: it reads policy while deciding
+  refunds, or answers account questions with policy text.
+</p>
+<p>
+  NovaMart gives each job to its own agent, makes the routing between them explicit, and keeps
+  their work in one shared, versioned record. The official assignment run scored
+  <strong>120/120</strong> on 8 October 2026.
+</p>
+
+<h2 id="architecture">Architecture</h2>
+<p>
+  The system runs on <strong>Amazon Bedrock AgentCore Runtime</strong> and is built with the
+  <strong>Strands Agents SDK</strong>. A <strong>Bedrock Guardrail</strong> checks each request
+  before it reaches the orchestrator. Order and customer data live in DynamoDB, policy
+  documents live in three Bedrock Knowledge Bases backed by <strong>Amazon S3 Vectors</strong>,
+  and CloudWatch with AWS X-Ray provides tracing.
+</p>
+[[fig architecture | NovaMart project cover and conceptual agent topology. The repository's Mermaid diagrams and config.py are the authoritative description of the submitted system.]]
+
+<h2 id="agents">Five agents, one job each</h2>
+<table class="blog-table">
+  <thead><tr><th>Agent</th><th>Responsibility</th><th>Tools</th></tr></thead>
+  <tbody>
+    <tr><td>Orchestrator (Claude Haiku 4.5)</td><td>Initialise state, choose specialists, enforce routing, call Communication last</td><td><code>initialize_session</code>, four <code>route_to_*</code></td></tr>
+    <tr><td>Inventory</td><td>Order and customer facts, no policy decisions</td><td><code>check_order_status</code>, <code>get_customer_tier</code>, <code>list_customer_orders</code></td></tr>
+    <tr><td>Policy</td><td>Search three policy domains at once and summarise grounded passages</td><td><code>search_all_policies</code></td></tr>
+    <tr><td>Refund</td><td>Evaluate eligibility; refund only when explicitly requested</td><td><code>get_inventory_context</code>, <code>initiate_refund</code></td></tr>
+    <tr><td>Communication</td><td>Read the accumulated state and write the customer reply</td><td><code>get_full_workflow_context</code></td></tr>
+  </tbody>
+</table>
+<p>The four workers run on Claude Sonnet 4.5; the cheaper, faster Haiku model handles routing.</p>
+
+<h2 id="routing">A routing contract, not a vibe</h2>
+<p>
+  Routing is written down as six rules and checked by tests in continuous integration, rather
+  than left to the orchestrator's judgement:
+</p>
+<table class="blog-table">
+  <thead><tr><th>Request type</th><th>Route before the final reply</th></tr></thead>
+  <tbody>
+    <tr><td>Account details or customer tier</td><td>Inventory only, never Policy</td></tr>
+    <tr><td>Order status or history</td><td>Inventory, then Refund for evaluation only</td></tr>
+    <tr><td>Policy-only question</td><td>Policy</td></tr>
+    <tr><td>Explicit return or refund</td><td>Inventory, then Policy, then Refund</td></tr>
+    <tr><td>Mixed order and policy</td><td>Inventory, then Policy</td></tr>
+    <tr><td>Arithmetic</td><td>Orchestrator only</td></tr>
+  </tbody>
+</table>
+<p>
+  Communication is always the last step. An order-status route may pass through the Refund
+  agent to evaluate eligibility, but it never authorises a refund unless the customer asks for
+  one.
+</p>
+[[fig request-flow | Representative execution paths for order, policy and direct-answer requests. Every path writes to shared state and ends with the Communication agent.]]
+
+<h2 id="retrieval">Searching three knowledge bases at once</h2>
+<p>
+  Returns, shipping and warranty policies each have their own knowledge base, so a question can
+  need any combination of them. The Policy agent's single tool starts three retriever
+  sub-agents in a thread pool and joins their grounded findings with source information:
+</p>
+<pre class="blog-code"><code>@tool
+def search_all_policies(query: str) -&gt; str:
+    """Query all three policy knowledge bases in parallel."""
+    retrievers = {
+        "Returns":  returns_retriever,
+        "Shipping": shipping_retriever,
+        "Warranty": warranty_retriever,
+    }
+    # each retriever runs concurrently in a ThreadPoolExecutor,
+    # then the passages are combined with their sources</code></pre>
+<p>
+  The total wait is roughly the slowest of the three searches rather than their sum, and the
+  Bedrock retrieval details stay inside the tool, so the agent's prompt only reasons over the
+  passages it gets back.
+</p>
+[[fig knowledge-bases | The three synchronised knowledge bases (warranty, shipping, returns) in the Amazon Bedrock console.]]
+
+<h2 id="state">Shared state that cannot be silently overwritten</h2>
+<p>
+  Agents pass their results through a DynamoDB <code>WorkflowStateTable</code>, not only through
+  prompts. Each record is keyed by <code>session_id</code> and stores the customer ID, a
+  creation time, a 24-hour TTL, a version number and one result column per worker. Every write
+  is conditional on the version it read:
+</p>
+<pre class="blog-code"><code>read state              → version = <span class="hl">n</span>
+worker produces result
+conditional write       → only if version is still <span class="hl">n</span>
+  <span class="ok">✓ success</span>             → store result, version = n + 1
+  <span class="bad">✗ conflict</span>            → reload state and retry</code></pre>
+<p>
+  This is optimistic locking. Two workers cannot overwrite each other without noticing, and the
+  Communication agent always reads a complete record. AgentCore Memory complements rather than
+  duplicates this: DynamoDB holds one request's operational state, while Memory's session
+  summary strategy keeps conversational summaries for seven days.
+</p>
+
+<h2 id="safety">Safety and privacy by default</h2>
+<ul>
+  <li>Service boundaries validate input and configuration before any agent runs.</li>
+  <li>Guardrail interventions become controlled responses rather than unhandled errors.</li>
+  <li>Telemetry uses process-local pseudonyms, omits raw request text and logs tool argument names without their values.</li>
+  <li>Resource identifiers come from environment variables or ignored local files, never the repository.</li>
+</ul>
+
+<h2 id="observability">Proving it works</h2>
+<p>
+  With CloudWatch logging and X-Ray tracing enabled, the trace map after the final run showed
+  the orchestrator connected to all four workers and all three knowledge bases, with no failed
+  nodes. If the trace map does not match the architecture diagram, one of them is wrong.
+</p>
+[[fig xray-map | CloudWatch X-Ray trace map from the final three-scenario run: one orchestrator, four workers, three knowledge bases. | narrow]]
+<table class="blog-table">
+  <thead><tr><th>Task: rubric area</th><th>Score</th></tr></thead>
+  <tbody>
+    <tr><td>2: Multi-agent graph, tools, models and routing</td><td>40/40</td></tr>
+    <tr><td>3: Guardrail and AgentCore Runtime</td><td>20/20</td></tr>
+    <tr><td>4: AgentCore Memory</td><td>15/15</td></tr>
+    <tr><td>5: Knowledge Bases and parallel retrieval</td><td>25/25</td></tr>
+    <tr><td>6: CloudWatch and X-Ray observability</td><td>20/20</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>120/120</strong></td></tr>
+  </tbody>
+</table>
+
+<h2 id="delivery">Delivery without long-lived keys</h2>
+<p>
+  The repository separates credential-free CI from protected delivery. The validation workflow
+  runs on every push and pull request with read-only permissions and no AWS credentials. It
+  lints and compiles the code, rejects committed secrets and private configuration, checks
+  secure defaults and the routing contract, runs the assignment test suite and builds the CDK
+  project. Deployment is manual only: an approval-protected environment uses GitHub OIDC to
+  obtain short-lived AWS credentials, so no access key is ever stored.
+</p>
+
+<h2 id="lessons">Advice for a first multi-agent system</h2>
+<ul>
+  <li><strong>One job per agent.</strong> If two agents could both answer a question, the routing rules are not specific enough.</li>
+  <li><strong>Write the routing down.</strong> A small table of rules can be tested; a prompt that "usually routes well" cannot.</li>
+  <li><strong>Put state where you can inspect it.</strong> A versioned table is auditable; a prompt is not.</li>
+  <li><strong>Run independent steps in parallel.</strong> It is easy once retrieval is wrapped in one tool.</li>
+  <li><strong>Plan cleanup.</strong> TTLs reduce stale data, but the deployment still has to be deleted when the review ends.</li>
+</ul>

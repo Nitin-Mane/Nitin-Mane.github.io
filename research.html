@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research &amp; Publications | Nitin Mane</title>
-  <meta name="description" content="Published research by Nitin Mane - Autograder+, an AI framework for programming-education feedback (ACM CODS 2025), followed by yearwise computer-vision and tracking research." />
+  <title>Research | Nitin Mane</title>
+  <meta name="description" content="Exploring the space between software, intelligent systems and real-world needs. From research publications to laboratory and humanitarian collaborations." />
   <meta name="keywords" content="Nitin Mane, Research, YOLOv5, Kalman Filter, Object Tracking, SSRN, Autograder+, ACM CODS, Computer Vision, Edge AI, Multi-modal LLM, Publications" />
   <meta name="author" content="Nitin Mane" />
-  <link rel="canonical" href="https://www.nitinmane.me/research" />
+  <link rel="canonical" href="https://www.nitinmane.me/research">
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#060a12" />
   <script src="assets/js/theme-init.js"></script>
@@ -15,15 +15,15 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Nitin Mane" />
-  <meta property="og:title" content="Research & Publications | Nitin Mane" />
-  <meta property="og:description" content="Autograder+, an AI framework for programming-education feedback (ACM CODS 2025), followed by Adaptive Kalman-filter-based YOLOv5 for real-time object tracking (SSRN, 2022)." />
+  <meta property="og:title" content="Research | Nitin Mane" />
+  <meta property="og:description" content="Exploring the space between software, intelligent systems and real-world needs. From research publications to laboratory and humanitarian collaborations." />
   <meta property="og:url" content="https://www.nitinmane.me/research" />
   <meta property="og:image" content="https://www.nitinmane.me/assets/images/profile_nitinmane.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Research & Publications | Nitin Mane" />
-  <meta name="twitter:description" content="Autograder+, an AI framework for programming-education feedback (ACM CODS 2025), followed by Adaptive Kalman-filter-based YOLOv5 for real-time object tracking (SSRN, 2022)." />
+  <meta name="twitter:title" content="Research | Nitin Mane" />
+  <meta name="twitter:description" content="Exploring the space between software, intelligent systems and real-world needs. From research publications to laboratory and humanitarian collaborations." />
   <meta name="twitter:image" content="https://www.nitinmane.me/assets/images/profile_nitinmane.png" />
 
   <!-- Icons -->
@@ -95,8 +95,9 @@
     "sameAs": "https://doi.org/10.1145/3799830.3799878"
   }
   </script>
+  <link rel="stylesheet" href="assets/css/stories.css">
 </head>
-<body>
+<body class="story-page story-page--research">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Ambient background -->
@@ -115,14 +116,33 @@
       </a>
       <nav class="nav__links" id="nav-links" aria-label="Primary">
         <a href="/" class="nav__link">Home</a>
-        <a href="about" class="nav__link">About</a>
-        <a href="experience" class="nav__link">Experience</a>
-        <a href="projects" class="nav__link">Projects</a>
-        <a href="research" class="nav__link">Research</a>
+        <div class="nav__group">
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-menu-about">About<svg class="nav__chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav__menu" id="nav-menu-about">
+            <a href="about" class="nav__menu-link"><span class="nav__menu-title">About Me</span><span class="nav__menu-desc">Story, skills &amp; profile</span></a>
+            <a href="experience" class="nav__menu-link"><span class="nav__menu-title">Experience</span><span class="nav__menu-desc">Roles, research &amp; leadership</span></a>
+            <a href="education" class="nav__menu-link"><span class="nav__menu-title">Education</span><span class="nav__menu-desc">Degrees &amp; certifications</span></a>
+            <a href="awards" class="nav__menu-link"><span class="nav__menu-title">Awards</span><span class="nav__menu-desc">Recognition & learning milestones</span></a>
+          </div>
+        </div>
+        <div class="nav__group">
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-menu-work">Work<svg class="nav__chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav__menu" id="nav-menu-work">
+            <a href="projects" class="nav__menu-link"><span class="nav__menu-title">Projects</span><span class="nav__menu-desc">AI, edge &amp; robotics builds</span></a>
+            <a href="research" class="nav__menu-link"><span class="nav__menu-title">Research</span><span class="nav__menu-desc">Publications &amp; papers</span></a>
+            <a href="aws-agent-engineer" class="nav__menu-link"><span class="nav__menu-title">AWS Agent Engineer</span><span class="nav__menu-desc">Agentic AI spotlight</span></a>
+          </div>
+        </div>
         <a href="blog" class="nav__link">Blog</a>
-        <a href="education" class="nav__link">Education</a>
-        <a href="speakers" class="nav__link">Speaking</a>
-        <a href="contact" class="nav__link">Contact</a>
+        <div class="nav__group">
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-menu-community">Community<svg class="nav__chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav__menu" id="nav-menu-community">
+            <a href="speakers" class="nav__menu-link"><span class="nav__menu-title">Speaking</span><span class="nav__menu-desc">Talks &amp; hands-on workshops</span></a>
+            <a href="mentor" class="nav__menu-link"><span class="nav__menu-title">Mentorship</span><span class="nav__menu-desc">1:1 sessions on Topmate</span></a>
+            <a href="conferences" class="nav__menu-link"><span class="nav__menu-title">Conferences</span><span class="nav__menu-desc">Communities & global connections</span></a>
+            <a href="webinars" class="nav__menu-link"><span class="nav__menu-title">Webinars</span><span class="nav__menu-desc">Online talks & expert sessions</span></a>
+          </div>
+        </div>
         <a href="contact" class="btn btn--primary btn--sm nav__link-cta">Let's Talk</a>
       </nav>
       <div class="nav__actions">
@@ -142,25 +162,26 @@
 
   <main id="main">
     <!-- ============ PAGE HEADER ============ -->
-    <section class="page-header">
-      <div class="container">
-        <div class="page-header__crumbs reveal">
-          <a href="/">Home</a>
-          <span>/</span>
-          <span class="text-cyan">Research</span>
-        </div>
-        <span class="eyebrow reveal" style="--reveal-delay:40ms">Research — 04</span>
-        <h1 class="page-header__title reveal" style="--reveal-delay:80ms">Research &amp; Publications</h1>
-        <p class="page-header__lede reveal" style="--reveal-delay:120ms">
-          Published work spanning real-time object tracking and AI-driven programming
-          education, plus the open research questions I'm currently chasing as an
-          M.Tech researcher at IIT Bhilai.
-        </p>
-      </div>
-    </section>
+    <!-- STORIES HERO START -->
+<nav class="story-nav container" aria-label="Explore my work"><div class="story-nav__inner"><span class="story-nav__label">The portfolio</span><div class="story-nav__links"><a href="speakers">Speaking</a><a href="awards">Awards</a><a href="conferences">Conferences</a><a href="mentor">Mentoring</a><a href="research" aria-current="page">Research</a><a href="webinars">Webinars</a></div></div></nav>
+<section class="story-hero container" aria-labelledby="story-page-title">
+  <div class="story-hero__grid">
+    <div><span class="story-kicker">05 / Research · Nitin Mane</span>
+      <h1 id="story-page-title">Curiosity, engineered.<br><em>Purpose, applied.</em></h1>
+      <p class="story-hero__intro">Exploring the space between software, intelligent systems and real-world needs. From research publications to laboratory and humanitarian collaborations.</p>
+      <div class="story-hero__actions"><a class="btn btn--primary" href="#publications">Read the publications <span aria-hidden="true">↗</span></a><a class="btn btn--ghost" href="#stories">Explore collaborations <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <figure class="story-hero__visual">
+      <img src="assets/images/stories/chromatography/01.webp" alt="Software meets laboratory automation — event photo 1" width="800" height="600" fetchpriority="high">
+      <figcaption><div><span>A moment from the work</span><strong>Software × laboratory automation</strong></div><a href="#chromatography" aria-label="Read the story: Software meets laboratory automation">↗</a></figcaption>
+    </figure>
+  </div>
+  <div class="story-signals"><div><strong>2 publications</strong><span>Programming education &amp; vision</span></div><div><strong>Applied research</strong><span>Edge AI · Robotics · Automation</span></div><div><strong>Cross-discipline</strong><span>Engineering with real-world context</span></div></div>
+</section>
+<!-- STORIES HERO END -->
 
     <!-- ============ FEATURED PUBLICATIONS ============ -->
-    <section class="section section--tight">
+    <section class="section section--tight" id="publications">
       <div class="container">
         <div class="section__head reveal">
           <span class="eyebrow">01 — Peer-Reviewed Publications</span>
@@ -397,7 +418,53 @@
     </section>
 
     <!-- ============ CTA ============ -->
-    <section class="section cta">
+    <!-- STORIES COLLECTION START -->
+<section class="story-collection container" id="stories" data-story-collection aria-labelledby="story-collection-title">
+  <div class="story-section-heading"><div><span class="story-kicker">Selected experiences</span><h2 id="story-collection-title">Research beyond the paper.</h2><p>Collaborations connecting software and engineering to practical needs.</p></div><span class="story-index">03 STORIES / RESEARCH</span></div>
+  <div class="story-tools" data-story-controls hidden>
+    <div class="story-tools__row"><label class="story-search"><span>Search the stories</span><input type="search" data-story-search placeholder="Try a topic, organization or city…" aria-controls="story-list"></label>
+      <label class="story-sort"><span>Display order</span><select data-story-sort aria-controls="story-list"><option value="featured">Featured first</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></label></div>
+    <div class="story-filters" role="group" aria-label="Filter by topic"><button type="button" data-topic="all" aria-pressed="true">All stories</button><button type="button" data-topic="Automation" aria-pressed="false">Automation</button><button type="button" data-topic="Applied research" aria-pressed="false">Applied research</button><button type="button" data-topic="Humanitarian tech" aria-pressed="false">Humanitarian tech</button></div>
+  </div>
+  <div class="story-result-line"><p data-story-count role="status" aria-live="polite" aria-atomic="true">3 stories</p><span>Open a photo. Explore the story.</span></div>
+  <div class="story-grid" id="story-list" data-story-list><article class="story-card" id="chromatography" data-story data-topics="Automation|Applied research" data-date="">
+  <a class="story-card__media" href="assets/images/stories/chromatography/01.webp" data-story-gallery="chromatography" aria-label="Open gallery: Software meets laboratory automation">
+    <img src="assets/images/stories/chromatography/cover.webp" alt="Software meets laboratory automation — event photo 1" width="720" height="480" loading="lazy" decoding="async">
+    <span class="story-photo-count">↗ View gallery · 05</span>
+  </a>
+  <div class="story-card__body">
+    <div class="story-card__meta"><span>Software engineering collaboration</span><span>Research collaboration</span></div>
+    <h3>Software meets laboratory automation</h3><p class="story-card__place">Infinity Tech Resources × Institute of Science · Aurangabad</p>
+    <p class="story-card__summary">A collaboration exploring software support and robotic automation for chromatography with biotechnology researchers.</p><div class="story-tags"><span>Automation</span><span>Applied research</span></div>
+    <details><summary>Explore the story</summary><h4>The work</h4><p>At Infinity Tech Resources, participated in a research environment connecting software engineering with the Government Institute of Science Aurangabad’s Department of Biotechnology.</p><h4>The contribution</h4><p>Brought software and automation perspectives into discussions with biotechnology researchers about chromatography systems.</p><a href="#chromatography" class="story-permalink">Link to this story <span aria-hidden="true">↗</span></a></details>
+  </div>
+</article><article class="story-card" id="smart-sterilizer" data-story data-topics="Humanitarian tech|Applied research" data-date="2021">
+  <a class="story-card__media" href="assets/images/stories/smart-sterilizer/01.webp" data-story-gallery="smart-sterilizer" aria-label="Open gallery: Engineering for a local healthcare need">
+    <img src="assets/images/stories/smart-sterilizer/cover.webp" alt="Engineering for a local healthcare need — event photo 1" width="720" height="480" loading="lazy" decoding="async">
+    <span class="story-photo-count">↗ View gallery · 04</span>
+  </a>
+  <div class="story-card__body">
+    <div class="story-card__meta"><span>Project contributor</span><span>2021</span></div>
+    <h3>Engineering for a local healthcare need</h3><p class="story-card__place">IEEE HAC / SIGHT · MIT Hospital, Aurangabad</p>
+    <p class="story-card__summary">Contributed to a Smart Sterilizer Box for masks and PPE kits under IEEE’s “Addressing Local Needs During COVID Time” initiative.</p><div class="story-tags"><span>Humanitarian tech</span><span>Applied research</span></div>
+    <details><summary>Explore the story</summary><h4>The work</h4><p>Worked with Dr. Abhilasha Dixit Mishra and the project team, supported by USD 450 in IEEE HAC/SIGHT and Region 10 funding.</p><h4>The contribution</h4><p>The project progressed from prototyping to a unit delivered to MIT Hospital, with input from medical staff. The completion certificate recognizes the team’s contribution.</p><a href="#smart-sterilizer" class="story-permalink">Link to this story <span aria-hidden="true">↗</span></a></details>
+  </div>
+</article><article class="story-card" id="bsp-field-research" data-story data-topics="Applied research|Automation" data-date="2025-10-13">
+  <a class="story-card__media" href="assets/images/stories/bsp-field-research/01.webp" data-story-gallery="bsp-field-research" aria-label="Open gallery: Field research at the Bar &amp; Rod Mill">
+    <img src="assets/images/stories/bsp-field-research/cover.webp" alt="Nitin Mane in a safety helmet beside the rolling line at the Bar &amp; Rod Mill, Bhilai Steel Plant" width="720" height="480" loading="lazy" decoding="async">
+    <span class="story-photo-count">↗ View gallery · 04</span>
+  </a>
+  <div class="story-card__body">
+    <div class="story-card__meta"><span>M.Tech researcher</span><span>Mar &amp; Oct 2025</span></div>
+    <h3>Field research at the Bar &amp; Rod Mill</h3><div class="story-card__place"><p class="story-card__venue"><a href="https://sail.co.in/en/plants/about-bhilai-steel-plant" target="_blank" rel="noopener">Bhilai Steel Plant (SAIL)</a></p><p><a class="story-card__map" href="https://www.google.com/maps/search/?api=1&amp;query=Bhilai+Steel+Plant%2C+Bhilai%2C+Chhattisgarh" target="_blank" rel="noopener" aria-label="Open Bhilai, Chhattisgarh in Google Maps"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bhilai, Chhattisgarh</a></p><p class="story-card__links"><span>Related</span><a href="case-study-anomaly-detection">Read the case study<span aria-hidden="true"> →</span></a><a href="https://www.iitbhilai.ac.in/" target="_blank" rel="noopener">IIT Bhilai<span aria-hidden="true"> ↗</span></a></p></div>
+    <p class="story-card__summary">Site visits to the Bar &amp; Rod Mill at SAIL&#x27;s Bhilai Steel Plant, where the industrial anomaly-detection research for my M.Tech at IIT Bhilai is grounded.</p><div class="story-tags"><span>Applied research</span><span>Automation</span></div>
+    <details><summary>Explore the story</summary><h4>The work</h4><p>Seeing the rolling line and hot bars on the roller tables in person informs how the detection pipeline must cope with heat glare, dust, motion and occlusion on a real plant floor.</p><h4>The contribution</h4><p>Field observations feed directly into the edge-AI anomaly-detection case study.</p><a href="#bsp-field-research" class="story-permalink">Link to this story <span aria-hidden="true">↗</span></a></details>
+  </div>
+</article></div>
+  <div class="story-empty" data-story-empty hidden><h3>No stories match just yet.</h3><p>Try another keyword or clear your filters to see everything.</p><button type="button" class="btn btn--ghost" data-story-reset>Clear filters</button></div>
+</section>
+<!-- STORIES COLLECTION END -->
+<section class="section cta">
       <div class="container">
         <div class="cta__panel reveal reveal--scale">
           <span class="eyebrow">Collaborate</span>
@@ -449,17 +516,27 @@
         </div>
       </div>
 
-      <nav class="footer__nav" aria-label="Footer">
+      <nav class="footer__nav" aria-label="Footer: explore">
         <h3 class="footer__heading">Navigate</h3>
         <ul class="footer__links">
           <li><a href="/">Home</a></li>
           <li><a href="about">About</a></li>
           <li><a href="experience">Experience</a></li>
+          <li><a href="education">Education</a></li>
           <li><a href="projects">Projects</a></li>
           <li><a href="research">Research</a></li>
           <li><a href="blog">Blog</a></li>
-          <li><a href="education">Education</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__nav" aria-label="Footer: community">
+        <h3 class="footer__heading">Community</h3>
+        <ul class="footer__links">
           <li><a href="speakers">Speaking</a></li>
+          <li><a href="mentor">Mentorship</a></li>
+          <li><a href="conferences">Conferences</a></li>
+          <li><a href="webinars">Webinars</a></li>
+          <li><a href="awards">Awards</a></li>
           <li><a href="contact">Contact</a></li>
         </ul>
       </nav>
@@ -478,7 +555,6 @@
 
     <div class="container footer__bottom">
       <span>© <span data-year>2026</span> Nitin Mane. All systems nominal.</span>
-      <span>Designed &amp; built with HTML, CSS, vanilla JS and Three.js</span>
     </div>
   </footer>
 
@@ -487,5 +563,14 @@
   </button>
 
   <script src="assets/js/main.js" defer></script>
+<!-- STORIES GALLERY START -->
+<dialog class="story-dialog" data-story-dialog aria-labelledby="gallery-title">
+  <div class="story-dialog__head"><h2 id="gallery-title" data-gallery-title>Photo gallery</h2><button type="button" data-gallery-close aria-label="Close gallery" autofocus>×</button></div>
+  <figure><img data-gallery-image alt="" width="1600" height="1000"><figcaption data-gallery-caption></figcaption></figure>
+  <div class="story-dialog__foot"><a data-gallery-original target="_blank" rel="noopener">Open image ↗</a><div class="story-dialog__controls"><button type="button" data-gallery-prev aria-label="Previous photo">←</button><span data-gallery-counter role="status" aria-live="polite"></span><button type="button" data-gallery-next aria-label="Next photo">→</button></div></div>
+</dialog>
+<script type="application/json" id="story-gallery-data">{"chromatography": {"title": "Software meets laboratory automation", "images": [{"src": "assets/images/stories/chromatography/01.webp", "alt": "Software meets laboratory automation — event photo 1"}, {"src": "assets/images/stories/chromatography/02.webp", "alt": "Software meets laboratory automation — event photo 2"}, {"src": "assets/images/stories/chromatography/03.webp", "alt": "Software meets laboratory automation — event photo 3"}, {"src": "assets/images/stories/chromatography/04.webp", "alt": "Software meets laboratory automation — event photo 4"}, {"src": "assets/images/stories/chromatography/05.webp", "alt": "Software meets laboratory automation — event photo 5"}]}, "smart-sterilizer": {"title": "Engineering for a local healthcare need", "images": [{"src": "assets/images/stories/smart-sterilizer/01.webp", "alt": "Engineering for a local healthcare need — event photo 1"}, {"src": "assets/images/stories/smart-sterilizer/02.webp", "alt": "Engineering for a local healthcare need — event photo 2"}, {"src": "assets/images/stories/smart-sterilizer/03.webp", "alt": "Engineering for a local healthcare need — event photo 3"}, {"src": "assets/images/stories/smart-sterilizer/04.webp", "alt": "Engineering for a local healthcare need — event photo 4"}]}, "bsp-field-research": {"title": "Field research at the Bar & Rod Mill", "images": [{"src": "assets/images/stories/bsp-field-research/01.webp", "alt": "Nitin Mane in a safety helmet beside the rolling line at the Bar & Rod Mill, Bhilai Steel Plant"}, {"src": "assets/images/stories/bsp-field-research/02.webp", "alt": "Hot bars moving along the roller table in the Bar & Rod Mill"}, {"src": "assets/images/stories/bsp-field-research/03.webp", "alt": "Long view of the mill bay and rolling line at Bhilai Steel Plant"}, {"src": "assets/images/stories/bsp-field-research/04.webp", "alt": "Glowing steel passing through a mill stand"}]}}</script>
+<!-- STORIES GALLERY END -->
+  <script src="assets/js/stories.js" defer></script>
 </body>
 </html>

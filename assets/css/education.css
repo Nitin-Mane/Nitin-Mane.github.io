@@ -90,6 +90,91 @@
   min-width: 150px;
 }
 
+/* Self-hosted badge artwork, linked to its verification page */
+.badge-card__art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  min-width: 150px;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, var(--color-cyan-dim), transparent 70%),
+    var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+
+.badge-card__art img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.badge-card__art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.28) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.badge-card__art::after {
+  content: "Verify ↗";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(6, 10, 18, 0.8);
+  color: #eaf2fb;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+
+.badge-card__art:hover,
+.badge-card__art:focus-visible {
+  border-color: var(--color-border-accent);
+  box-shadow: var(--glow-cyan);
+}
+
+.badge-card__art:hover img,
+.badge-card__art:focus-visible img {
+  transform: translateY(-6px) rotate(-3deg) scale(1.06);
+}
+
+.badge-card__art:hover::before,
+.badge-card__art:focus-visible::before {
+  transform: translateX(120%);
+  transition: transform 0.9s var(--ease-out);
+}
+
+.badge-card__art:hover::after,
+.badge-card__art:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-card__art img,
+  .badge-card__art::before {
+    transition: none;
+  }
+
+  .badge-card__art:hover img {
+    transform: none;
+  }
+}
+
 .badge-card__body {
   display: flex;
   flex-direction: column;
@@ -115,5 +200,16 @@
 @media (max-width: 900px) {
   .badges__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .badge-card {
+    flex-direction: column;
+  }
+
+  .badge-card__art {
+    width: 100%;
+    height: 170px;
   }
 }

@@ -1,0 +1,132 @@
+<h2 id="assistant">One assistant, six jobs</h2>
+<p>
+  The second Nanodegree project was a customer support assistant that handles a whole
+  e-commerce conversation in one place: tracking an order, issuing a refund, answering product
+  and policy questions, remembering the customer, working out a loyalty discount and reading a
+  live web page. It is an asynchronous <strong>Strands</strong> application hosted on
+  <strong>Amazon Bedrock AgentCore Runtime</strong>, running <strong>Amazon Nova 2 Lite</strong>
+  in <code>us-east-1</code> with Python 3.13.
+</p>
+<p>
+  The interesting part of a many-tool agent is not the number of tools. It is making sure each
+  one has a single clear job, that failures are explained rather than hidden, and that the
+  final reply the customer reads still matches what the tools returned.
+</p>
+
+<h2 id="services">How the services fit together</h2>
+<table class="blog-table">
+  <thead><tr><th>Service</th><th>Role in the assistant</th></tr></thead>
+  <tbody>
+    <tr><td>AgentCore Runtime</td><td>Runs the async entrypoint in <code>main.py</code></td></tr>
+    <tr><td>AgentCore Gateway (MCP)</td><td>Exposes the order REST API and a direct refund Lambda as tools</td></tr>
+    <tr><td>Bedrock Knowledge Base</td><td>Product and policy facts; catalog in S3, Titan Embeddings v2, OpenSearch Serverless</td></tr>
+    <tr><td>AgentCore Memory</td><td>Customer facts and preferences, recalled in later sessions</td></tr>
+    <tr><td>AgentCore Code Interpreter</td><td>Runs the loyalty arithmetic in a separate Python sandbox</td></tr>
+    <tr><td>AgentCore Browser</td><td>Opens a live website and reads its content</td></tr>
+    <tr><td>IAM and CloudWatch</td><td>Permissions and runtime diagnostics</td></tr>
+  </tbody>
+</table>
+<p>A request moves through five steps:</p>
+<ol>
+  <li>The entrypoint validates the prompt and fixes the customer and session IDs.</li>
+  <li>The app connects to the MCP Gateway and discovers its tools, keeping the connection open for the request.</li>
+  <li>Memory hooks fetch the customer's context and prepend it to the message.</li>
+  <li>The model calls the tools it needs; response handling keeps validated values intact.</li>
+  <li>The finished exchange is saved to memory, where extraction and indexing run asynchronously.</li>
+</ol>
+
+<h2 id="bug">The four-dollar bug</h2>
+<p>
+  Loyalty discounts have rules. Points are redeemed in blocks of 500. Redemption may not exceed
+  half of the order value. The tier discount applies to whatever is left
+  <em>after</em> points are redeemed. Because language models are unreliable at arithmetic, the
+  whole calculation runs in Code Interpreter as a complete Python program, using
+  <code>Decimal</code> with explicit rounding and a fresh context on every call. Pydantic
+  validates the structured result.
+</p>
+<p>
+  The live test was a Gold member with 4,250 points ordering $150 worth of goods. The tool got
+  it right: 4,000 points redeemed for $40, a 10% tier discount of $11 on the remaining $110,
+  and a final total of <strong>$99</strong>.
+</p>
+[[fig discount | Recorded output of the deployed runtime for the discount scenario. The JSON comes straight from the Code Interpreter calculation.]]
+<p>
+  The problem appeared one step later. When the model rewrote that result in friendly
+  language, it applied the 10% Gold discount to the original $150 instead of the $110 balance:
+  $150 − $40 − $15 = <strong>$95</strong>. The customer would have been promised a price the
+  backend would never charge. Every check on the tool itself had passed.
+</p>
+<div class="blog-callout">
+  <p>Testing the tool is not the same as testing the agent. The failure lived in the step after a correct tool call, where the model paraphrased a number.</p>
+</div>
+
+<h2 id="fix">The fix: the reply must carry the tool's numbers</h2>
+<p>
+  Reading the tool-call trace made the cause obvious. The fix was a validation step on the
+  final response that <strong>preserves the calculator's JSON fields</strong>, so the customer
+  sees exactly the figures the sandbox produced rather than the model's retelling of them.
+</p>
+<p>The same principle shaped how the assistant behaves when something breaks:</p>
+<ul>
+  <li><strong>No sandbox, no guessing.</strong> If Code Interpreter is unavailable, the reply gives a tier-only estimate and redeems no points.</li>
+  <li><strong>Missing configuration is explained.</strong> An empty Knowledge Base ID produces a clear configuration message instead of an empty answer.</li>
+  <li><strong>Gateway failures stop cleanly.</strong> A failed connection returns <code>GATEWAY_UNAVAILABLE</code> with recovery guidance, while details go to the runtime logs.</li>
+  <li><strong>Quotes are only quotes.</strong> Calculations never update a points ledger.</li>
+</ul>
+
+<h2 id="scenarios">Six live scenarios</h2>
+<p>
+  Every capability was tested against the deployed runtime, and each result was saved as a
+  recorded response. The panels below are those recordings (cropped to remove account
+  identifiers). The customer data is the course's fictional test data.
+</p>
+[[gallery]]
+[[fig order | Order tracking through the API Gateway target: shipped by UPS, with a tracking number and an estimated delivery date.]]
+[[fig refund | Refund flow: the order is looked up through the API target, then the direct refund Lambda approves $139.99.]]
+[[fig rag | Knowledge Base retrieval: Platinum benefits answered from the catalog, with the retrieved excerpt shown.]]
+[[fig memory | Cross-session memory: in a new session the assistant recalls the customer's name and preference for concise replies.]]
+[[/gallery]]
+[[fig browser | AgentCore Browser reads the live title of udacity.com.]]
+<table class="blog-table">
+  <thead><tr><th>Scenario</th><th>Recorded outcome</th></tr></thead>
+  <tbody>
+    <tr><td>Order tracking</td><td>SHIPPED · UPS</td></tr>
+    <tr><td>Refund (API + Lambda targets)</td><td>APPROVED · $139.99</td></tr>
+    <tr><td>Knowledge retrieval</td><td>15% · same-day</td></tr>
+    <tr><td>Cross-session memory</td><td>Recalled</td></tr>
+    <tr><td>Loyalty calculation</td><td>$99.00 · 349 pts left</td></tr>
+    <tr><td>Browser</td><td>Live title read</td></tr>
+  </tbody>
+</table>
+
+<h2 id="memory">How memory recalls a customer</h2>
+<p>
+  Memory uses two strategies, semantic facts and user preferences, stored under per-customer
+  namespaces. A <code>MemoryHook</code> retrieves across both strategies before each turn and
+  saves the final user and assistant exchange afterwards. To prove recall across sessions, the
+  test keeps the customer ID fixed and changes the session ID; the assistant still knows who it
+  is talking to.
+</p>
+
+<h2 id="production">What production would need</h2>
+<p>
+  This was coursework on test fixtures, and the course's open Gateway authorizer is meant only
+  for temporary use. Before real customers, I would add:
+</p>
+<ul>
+  <li><strong>Authenticated identity.</strong> The Gateway validates bearer tokens and derives the customer from the session, then checks that the customer owns the order.</li>
+  <li><strong>Idempotent refunds.</strong> Refund requests carry an idempotency key so a retry can never pay out twice.</li>
+  <li><strong>Memory governance.</strong> A retention period and a deletion process for stored customer facts.</li>
+</ul>
+<p>
+  These controls belong in the same test suite as the happy paths, not in a later hardening
+  phase.
+</p>
+
+<h2 id="lessons">What I took from it</h2>
+<ul>
+  <li><strong>Test the final answer.</strong> A correct tool result can still become a wrong reply.</li>
+  <li><strong>Keep arithmetic out of the model.</strong> Use a sandbox and pass its structured output through unchanged.</li>
+  <li><strong>Fail loudly and helpfully.</strong> Every failure path should tell the customer what to do next.</li>
+  <li><strong>Record evidence.</strong> Saved runtime responses made the bug easy to find and the results easy to verify.</li>
+</ul>

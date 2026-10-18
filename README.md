@@ -105,6 +105,7 @@ Nitin-Mane.github.io/
 ├── education.html
 ├── experience.html
 ├── index.html
+├── mentor.html
 ├── projects.html
 ├── research.html
 ├── speakers.html
@@ -128,6 +129,7 @@ Nitin-Mane.github.io/
 | `case-study-anomaly-detection.html` | Case study: Realtime Industrial Anomaly Detection project |
 | `education.html`   | Academic background and qualifications                  |
 | `experience.html`  | Professional experience and roles                       |
+| `mentor.html`      | 1:1 mentorship sessions with Topmate booking            |
 | `projects.html`    | Projects and technical work                             |
 | `research.html`    | Research work, publications, and academic contributions |
 | `blog.html`        | Blog or article section                                 |

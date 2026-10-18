@@ -99,6 +99,44 @@
     });
   }
 
+  /* ---------- Nav: grouped dropdowns ---------- */
+  const navGroups = document.querySelectorAll(".nav__group");
+  const setGroupOpen = (group, isOpen) => {
+    group.classList.toggle("is-open", isOpen);
+    const toggle = group.querySelector(".nav__group-toggle");
+    if (toggle) toggle.setAttribute("aria-expanded", String(isOpen));
+  };
+  const closeGroups = (except) => {
+    navGroups.forEach((group) => {
+      if (group !== except) setGroupOpen(group, false);
+    });
+  };
+  navGroups.forEach((group) => {
+    const toggle = group.querySelector(".nav__group-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", () => {
+      const isOpen = !group.classList.contains("is-open");
+      closeGroups(group);
+      setGroupOpen(group, isOpen);
+    });
+    group.addEventListener("focusout", (e) => {
+      if (!group.contains(e.relatedTarget)) setGroupOpen(group, false);
+    });
+  });
+  if (navGroups.length) {
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".nav__group")) closeGroups();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const openGroup = document.querySelector(".nav__group.is-open");
+      if (!openGroup) return;
+      closeGroups();
+      const toggle = openGroup.querySelector(".nav__group-toggle");
+      if (toggle) toggle.focus();
+    });
+  }
+
   /* ---------- Nav: active link by current path ---------- */
   const normalizeRoute = (value) => {
     const path = (value || "").split("#")[0].split("?")[0].replace(/\/+$/g, "");
@@ -106,11 +144,14 @@
     return lastSegment.replace(/\.html$/i, "").toLowerCase() || "index";
   };
   const currentPath = normalizeRoute(location.pathname);
-  document.querySelectorAll(".nav__link").forEach((link) => {
+  document.querySelectorAll("a.nav__link, a.nav__menu-link").forEach((link) => {
     const href = normalizeRoute(link.getAttribute("href"));
     if (href === currentPath) {
       link.classList.add("is-active");
       link.setAttribute("aria-current", "page");
+      const group = link.closest(".nav__group");
+      const groupToggle = group && group.querySelector(".nav__group-toggle");
+      if (groupToggle) groupToggle.classList.add("is-active");
     }
   });
 
@@ -318,6 +359,61 @@
     el.textContent = String(years);
   });
 
+  /* ---------- Session reel (mentor page): tabs + crossfading photo stage ---------- */
+  document.querySelectorAll("[data-reel]").forEach((reel) => {
+    const tabs = Array.from(reel.querySelectorAll(".reel__tab"));
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute("aria-controls")));
+    const indexEl = reel.querySelector("[data-reel-index]");
+    if (!tabs.length || panels.some((p) => !p)) return;
+    let current = 0;
+
+    const select = (i, focus) => {
+      current = (i + tabs.length) % tabs.length;
+      tabs.forEach((tab, n) => {
+        const on = n === current;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", String(on));
+        tab.tabIndex = on ? 0 : -1;
+        panels[n].classList.toggle("is-active", on);
+        if (on) panels[n].removeAttribute("inert");
+        else panels[n].setAttribute("inert", "");
+      });
+      if (indexEl) indexEl.textContent = String(current + 1).padStart(2, "0");
+      if (focus) tabs[current].focus();
+    };
+
+    tabs.forEach((tab, n) => {
+      tab.addEventListener("click", () => select(n));
+      tab.addEventListener("keydown", (e) => {
+        const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (step) {
+          e.preventDefault();
+          select(current + step, true);
+        } else if (e.key === "Home" || e.key === "End") {
+          e.preventDefault();
+          select(e.key === "Home" ? 0 : tabs.length - 1, true);
+        }
+      });
+      // The CSS progress animation is the timer: when it finishes, advance.
+      const progress = tab.querySelector(".reel__progress");
+      if (progress) progress.addEventListener("animationend", () => select(current + 1));
+    });
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      reel.classList.add("is-playing");
+      const pause = () => reel.classList.add("is-paused");
+      const resume = () => {
+        if (!reel.contains(document.activeElement)) reel.classList.remove("is-paused");
+      };
+      reel.addEventListener("mouseenter", pause);
+      reel.addEventListener("mouseleave", resume);
+      reel.addEventListener("focusin", pause);
+      reel.addEventListener("focusout", (e) => {
+        if (!reel.contains(e.relatedTarget)) reel.classList.remove("is-paused");
+      });
+    }
+  });
+
   /* ---------- Sliding photo galleries (speaking / workshop pages) ---------- */
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -333,6 +429,7 @@
   document.querySelectorAll(".gallery").forEach((gallery) => {
     const track = gallery.querySelector(".gallery__track");
     const slides = Array.from(gallery.querySelectorAll(".gallery__slide"));
+    if (slides.length) slides[0].classList.add("is-active");
     if (!track || slides.length < 2) return;
 
     let index = 0;
@@ -359,6 +456,7 @@
     const dotEls = Array.from(dots.children);
     const render = () => {
       track.style.transform = `translateX(-${index * 100}%)`;
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === index));
       dotEls.forEach((d, i) => d.classList.toggle("is-active", i === index));
       count.textContent = `${index + 1} / ${slides.length}`;
     };

@@ -1,0 +1,88 @@
+<h2 id="why">Why AI agents, and why now</h2>
+<p>
+  Most of my work has been computer vision on edge devices: cameras on plant floors, OpenVINO
+  pipelines and Jetson boards in the field. Language models first entered that work from the
+  side, to summarise alerts and to reason over sensor data. By 2026 it was clear that the next
+  step was not better summaries but <strong>agents</strong>: systems that decide, call tools,
+  keep state and recover when something fails.
+</p>
+<p>
+  I wanted to learn to build those systems properly, with the same discipline I apply to
+  embedded and vision systems. The <strong>AWS AI &amp; ML Scholars</strong> program offered a
+  structured route, and on <strong>8 October 2026</strong> I completed the
+  <strong>Future AWS Agent Engineer Nanodegree</strong>. My capstone passed all 120 points of its
+  official test suite on the same day.
+</p>
+
+<h2 id="program">How the program works</h2>
+<p>AWS AI &amp; ML Scholars is run by AWS and Udacity in two phases:</p>
+<table class="blog-table">
+  <thead><tr><th>Phase</th><th>What it involves</th></tr></thead>
+  <tbody>
+    <tr><td>1. Challenge</td><td>Free and self-paced, open to up to 100,000 learners. Follows the AWS AI Practitioner learning plan with hands-on work in Amazon PartyRock and Amazon Bedrock.</td></tr>
+    <tr><td>Assessment</td><td>Learners are ranked, and the top 4,500 receive a fully funded Udacity Nanodegree.</td></tr>
+    <tr><td>2. Nanodegree</td><td>One of three tracks. I chose the most technical: Future AWS Agent Engineer, covering Amazon Bedrock, Amazon Nova, retrieval-augmented generation and single- and multi-agent systems.</td></tr>
+  </tbody>
+</table>
+
+<h2 id="projects">Three projects, each harder than the last</h2>
+<p>
+  The Nanodegree is built around projects rather than exams. Each one raised the difficulty in a
+  specific way, and each taught one lesson I now apply everywhere.
+</p>
+
+<h3>August: a guarded support chatbot</h3>
+<p>
+  One agent on an AgentCore Harness with three fixed routes and a single database tool. A
+  routing guard written in plain code decides when a ticket may be saved, and the Lambda
+  function checks the payload again before writing. It scored 0.95 correctness in Bedrock
+  evaluation with zero harmfulness. <strong>Lesson: let the model suggest, let code decide.</strong>
+</p>
+[[fig agentcore-support-chatbot/architecture | The chatbot: a policy guard in front of the AgentCore Harness, one Gateway tool, one Lambda and one DynamoDB table.]]
+
+<h3>September: a support agent with six capabilities</h3>
+<p>
+  One Strands agent on AgentCore Runtime using Gateway tools, a Knowledge Base, Memory, Code
+  Interpreter and Browser. Every tool returned the right answer, yet the agent once quoted a
+  customer $95 for a $99 order because it paraphrased the calculator's result.
+  <strong>Lesson: test the final reply, not just the tool output.</strong>
+</p>
+
+<h3>October: a five-agent RAG system</h3>
+<p>
+  A supervisor routes each request to inventory, policy, refund and communication agents. The
+  policy agent searches three knowledge bases in parallel, and every agent writes to a shared
+  DynamoDB record protected by version checks. It scored 120/120.
+  <strong>Lesson: give each agent one job and keep shared state consistent.</strong>
+</p>
+[[fig novamart-multi-agent-rag/architecture | NovaMart's agent topology: one orchestrator, four specialist workers, three knowledge bases.]]
+
+<h2 id="habits">Habits I'm keeping</h2>
+<ul>
+  <li><strong>Separate the suggestion from the decision.</strong> The model may choose a route; code checks preconditions before anything is written.</li>
+  <li><strong>Write the rules down.</strong> NovaMart's routing is six explicit rules tested in CI, not a prompt that "usually works".</li>
+  <li><strong>Keep evidence.</strong> Every project shipped with recorded transcripts, screenshots, evaluation datasets and trace maps, so anyone can check the results.</li>
+  <li><strong>Report every number.</strong> Including the weak helpfulness score taught me more about evaluation than the strong correctness score.</li>
+  <li><strong>Tear everything down.</strong> Each project ended with an audit confirming no AWS resources were left running.</li>
+  <li><strong>Plan for production from day one.</strong> Even coursework includes notes on authentication, idempotent refunds and how long customer memory is kept.</li>
+</ul>
+
+<div class="blog-callout">
+  <p>An agent isn't ready because it handles a good demo. It's ready when you can show what it did, why it did it, and that it does nothing when it shouldn't act.</p>
+</div>
+
+<h2 id="advice">Advice for future applicants</h2>
+<ul>
+  <li><strong>Treat Phase 1 seriously.</strong> Only the top performers on the assessment move on, so the free material is worth doing thoroughly.</li>
+  <li><strong>Build beyond the rubric.</strong> A small local UI, an extra test suite or a cleanup script turns a submission into a portfolio piece.</li>
+  <li><strong>Watch your costs.</strong> Agents, vector stores and evaluation jobs all bill; set retention limits and delete resources when you finish.</li>
+  <li><strong>Write it up.</strong> Explaining a design forces you to understand it, and it shows employers how you think.</li>
+</ul>
+
+<h2 id="next">What's next</h2>
+<p>
+  The most interesting work, for me, is bringing these agent patterns back to where I started:
+  industrial and edge systems, where an agent's actions touch real equipment and the cost of a
+  wrong decision is physical. The habits above matter even more there. The three articles that
+  follow cover each project in depth.
+</p>
