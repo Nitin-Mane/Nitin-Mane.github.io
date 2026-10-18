@@ -418,3 +418,43 @@ describe('initFooterYear', () => {
     }).not.toThrow();
   });
 });
+
+describe('session reel', () => {
+  beforeEach(() => {
+    jest.resetModules();
+    window.matchMedia = jest.fn().mockImplementation((q) => ({ matches: false, media: q, addEventListener: jest.fn(), removeEventListener: jest.fn(), addListener: jest.fn(), removeListener: jest.fn() }));
+    document.body.innerHTML = `
+      <div class="reel" data-reel>
+        <button class="reel__tab is-active" aria-controls="p1" aria-selected="true"><span class="reel__progress"></span></button>
+        <button class="reel__tab" aria-controls="p2" aria-selected="false"><span class="reel__progress"></span></button>
+        <figure id="p1" class="reel__panel is-active"></figure>
+        <figure id="p2" class="reel__panel" inert></figure>
+        <span data-reel-index>01</span>
+      </div>`;
+    require('../assets/js/main.js');
+  });
+
+  it('switches panels on tab click and updates the counter', () => {
+    const [t1, t2] = document.querySelectorAll('.reel__tab');
+    t2.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+    expect(t2.getAttribute('aria-selected')).toBe('true');
+    expect(t1.getAttribute('aria-selected')).toBe('false');
+    expect(document.getElementById('p2').classList.contains('is-active')).toBe(true);
+    expect(document.getElementById('p1').hasAttribute('inert')).toBe(true);
+    expect(document.querySelector('[data-reel-index]').textContent).toBe('02');
+  });
+
+  it('advances when the progress animation ends and wraps around', () => {
+    const progress = document.querySelectorAll('.reel__progress');
+    progress[0].dispatchEvent(new window.Event('animationend'));
+    expect(document.getElementById('p2').classList.contains('is-active')).toBe(true);
+    progress[1].dispatchEvent(new window.Event('animationend'));
+    expect(document.getElementById('p1').classList.contains('is-active')).toBe(true);
+  });
+
+  it('supports arrow-key navigation', () => {
+    const [t1] = document.querySelectorAll('.reel__tab');
+    t1.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    expect(document.getElementById('p2').classList.contains('is-active')).toBe(true);
+  });
+});

@@ -359,6 +359,61 @@
     el.textContent = String(years);
   });
 
+  /* ---------- Session reel (mentor page): tabs + crossfading photo stage ---------- */
+  document.querySelectorAll("[data-reel]").forEach((reel) => {
+    const tabs = Array.from(reel.querySelectorAll(".reel__tab"));
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute("aria-controls")));
+    const indexEl = reel.querySelector("[data-reel-index]");
+    if (!tabs.length || panels.some((p) => !p)) return;
+    let current = 0;
+
+    const select = (i, focus) => {
+      current = (i + tabs.length) % tabs.length;
+      tabs.forEach((tab, n) => {
+        const on = n === current;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", String(on));
+        tab.tabIndex = on ? 0 : -1;
+        panels[n].classList.toggle("is-active", on);
+        if (on) panels[n].removeAttribute("inert");
+        else panels[n].setAttribute("inert", "");
+      });
+      if (indexEl) indexEl.textContent = String(current + 1).padStart(2, "0");
+      if (focus) tabs[current].focus();
+    };
+
+    tabs.forEach((tab, n) => {
+      tab.addEventListener("click", () => select(n));
+      tab.addEventListener("keydown", (e) => {
+        const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (step) {
+          e.preventDefault();
+          select(current + step, true);
+        } else if (e.key === "Home" || e.key === "End") {
+          e.preventDefault();
+          select(e.key === "Home" ? 0 : tabs.length - 1, true);
+        }
+      });
+      // The CSS progress animation is the timer: when it finishes, advance.
+      const progress = tab.querySelector(".reel__progress");
+      if (progress) progress.addEventListener("animationend", () => select(current + 1));
+    });
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      reel.classList.add("is-playing");
+      const pause = () => reel.classList.add("is-paused");
+      const resume = () => {
+        if (!reel.contains(document.activeElement)) reel.classList.remove("is-paused");
+      };
+      reel.addEventListener("mouseenter", pause);
+      reel.addEventListener("mouseleave", resume);
+      reel.addEventListener("focusin", pause);
+      reel.addEventListener("focusout", (e) => {
+        if (!reel.contains(e.relatedTarget)) reel.classList.remove("is-paused");
+      });
+    }
+  });
+
   /* ---------- Sliding photo galleries (speaking / workshop pages) ---------- */
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
