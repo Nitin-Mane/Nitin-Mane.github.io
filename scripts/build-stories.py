@@ -184,7 +184,7 @@ for page,cfg in PAGES.items():
     source=re.sub(r'<title>.*?</title>',f'<title>{title}</title>',source,count=1)
     for field,value in [('description',cfg['intro']),('og:title',title),('og:description',cfg['intro']),('og:url',f'https://www.nitinmane.me/{page}'),('twitter:title',title),('twitter:description',cfg['intro'])]:
         source=re.sub(rf'(<meta (?:name|property)="{field}" content=")[^"]*("\s*/?>)',lambda m:m[1]+esc(value)+m[2],source)
-    source=re.sub(r'<link rel="canonical" href="[^"]+"\s*/?>',f'<link rel="canonical" href="https://www.nitinmane.me/{page}">',source)
+    source=re.sub(r'<link rel="canonical" href="[^"]+"\s*/?>',f'<link rel="canonical" href="https://www.nitinmane.me/{page}">\n  <link rel="alternate" hreflang="en" href="https://www.nitinmane.me/{page}">\n  <link rel="alternate" hreflang="x-default" href="https://www.nitinmane.me/{page}">\n  <meta property="og:locale" content="en_US" />',source)
     if page not in ['mentor','research']:
         source=re.sub(r'\s*<script type="application/ld\+json">.*?</script>','',source,flags=re.S)
         source=re.sub(r'\s*<meta name="keywords"[^>]+>','',source)
