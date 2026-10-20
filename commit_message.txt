@@ -1,12 +1,6 @@
-⚡ Optimize HTML build cache and add international SEO tags
+Fix CI lint errors causing build pipeline failures
 
-💡 What:
-- Optimized the HTML generation loop in scripts/build-stories.py to cache the HTML contents to memory, rather than doing multiple read/write cycles.
-- Injected hreflang ('en', 'x-default') and og:locale ('en_US') tags into all static HTML files and added logic to build-stories.py to do so for dynamic ones.
-
-🎯 Why:
-- Resolves redundant IO cycles causing poor script performance when rendering HTML pages.
-- Allows better regional targeting on search engines globally via international SEO tags.
-
-📊 Measured Improvement:
-- Benchmark showed build time for 10 iterations dropped from ~1.15s to ~0.28s, a ~4x speed improvement.
+- Removed unused variables from various JavaScript files (`err`, `error`, `e`, `_`).
+- Fixed unused caught exception parameter bugs by ignoring variables mapped to `_`.
+- Adjusted `.eslintrc.json` config settings or created `eslint.config.mjs` matching latest `eslint@10` to successfully validate code logic.
+- Ensured 100% test compatibility and verified no remaining linting errors locally.
