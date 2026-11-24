@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Weed Remover Robot: YOLOv5 on Jetson Nano with a 3-DOF Delta Robot | Nitin Mane</title>
+  <title>Weed Remover Robot: YOLOv5, Jetson &amp; Delta Robot | Nitin Mane</title>
   <meta name="description" content="From a 2,822-image dataset to TensorRT inference and safe pluck trajectories: the full chain from seeing a weed to moving a parallel robot to remove it." />
   <meta name="keywords" content="Nitin Mane, Robotics, NVIDIA Jetson, YOLOv5, TensorRT" />
   <meta name="author" content="Nitin Mane" />
@@ -15,6 +15,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Nitin Mane" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Smart Weed Remover Robot: YOLOv5 on Jetson Nano with a 3-DOF Delta Robot" />
   <meta property="og:description" content="From a 2,822-image dataset to TensorRT inference and safe pluck trajectories: the full chain from seeing a weed to moving a parallel robot to remove it." />
   <meta property="og:url" content="https://www.nitinmane.me/blog-smart-weed-remover-robot" />
@@ -23,6 +24,7 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@Mnitin52" />
   <meta name="twitter:title" content="Smart Weed Remover Robot: YOLOv5 on Jetson Nano with a 3-DOF Delta Robot" />
   <meta name="twitter:description" content="From a 2,822-image dataset to TensorRT inference and safe pluck trajectories: the full chain from seeing a weed to moving a parallel robot to remove it." />
   <meta name="twitter:image" content="https://www.nitinmane.me/assets/images/blog/smart-weed-remover-robot/dashboard.webp" />
@@ -303,7 +305,7 @@
           <p class="post-toc__title">On this page</p>
           <ol><li><a href="#problem">The problem</a></li><li><a href="#system">System at a glance</a></li><li><a href="#data">Understanding the data first</a></li><li><a href="#training">Training two models</a></li><li><a href="#errors">Where the model fails, and why it matters</a></li><li><a href="#edge">Getting it onto edge hardware</a></li><li><a href="#robot">From a bounding box to a robot motion</a></li><li><a href="#safety">Safety comes before motion</a></li><li><a href="#loop">The simulated control loop</a></li><li><a href="#next">What comes next</a></li></ol>
         </nav>
-        <div class="post-toc__links"><a href="https://github.com/Nitin-Mane/weedcrop-jetson-delta-robot" class="project-card__link" target="_blank" rel="noopener">View the repository <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a><a href="blog#smart-weed-remover-robot" class="project-card__link">Article summary <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        <div class="post-toc__links"><a href="blog#smart-weed-remover-robot" class="project-card__link">Article summary <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
       </aside>
     </div>
 
@@ -377,6 +379,7 @@
       <div class="footer__nav">
         <h3 class="footer__heading">Currently</h3>
         <ul class="footer__links">
+          <li>Robotic Software Engineer Intern, Nakayama Holdings (METI Japan Internship 2026)</li>
           <li>M.Tech Mechatronics, IIT Bhilai, 2024–2026</li>
           <li>Intel Software Innovator</li>
           <li>Arm Developer Ambassador</li>
