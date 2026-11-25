@@ -26,7 +26,7 @@ EXTERNAL = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke=
             '<polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>')
 
 POSTS = [
-    dict(slug="aws-ai-ml-scholars-journey", series="Agentic AI on AWS · Part 0",
+    dict(slug="aws-ai-ml-scholars-journey", seo_title="AWS AI & ML Scholars: Scholar to Agent Engineer", seo_description="How the AWS AI & ML Scholars program became a funded Udacity Nanodegree and three agent systems built on Amazon Bedrock AgentCore.",  series="Agentic AI on AWS · Part 0",
          title="From Scholar to Agent Engineer: My AWS AI & ML Scholars Journey",
          lede="How a free AWS learning challenge became a funded Udacity Nanodegree, three agent systems on Amazon Bedrock AgentCore and a set of engineering habits I now use everywhere.",
          date="2026-10-16", date_label="October 2026", tags=["Agentic AI", "AWS AI & ML Scholars", "Udacity"],
@@ -35,7 +35,7 @@ POSTS = [
          facts=[("3", "Agent systems built"), ("120/120", "Capstone test score"), ("0.95", "Chatbot correctness"), ("Oct 8, 2026", "Nanodegree completed")],
          links=[("Verify the certificate", "https://www.udacity.com/certificate/e/ba1d41ec-900d-11f1-9972-03d0f79bde06"),
                 ("Credential spotlight", "aws-agent-engineer")]),
-    dict(slug="agentcore-support-chatbot", series="Agentic AI on AWS · Part 1",
+    dict(slug="agentcore-support-chatbot", seo_title="Support Chatbot on Amazon Bedrock AgentCore",  series="Agentic AI on AWS · Part 1",
          title="Three Routes, One Guard: A Support Chatbot That Knows When Not to Write",
          lede="Building a customer support chatbot on Amazon Bedrock AgentCore where the model chooses what to say and deterministic code decides what gets saved.",
          date="2026-10-16", date_label="October 2026", tags=["Bedrock AgentCore", "Amazon Nova", "Evaluation"],
@@ -51,7 +51,7 @@ POSTS = [
          facts=[("6/6", "Live scenarios passed"), ("$99.00", "Correct discount total"), ("$139.99", "Refund approved"), ("2", "Sessions, one memory")],
          links=[("View the repository", "https://github.com/Nitin-Mane/AI-Support-Agent"),
                 ("Project case study", "aws-agent-engineer#ai-support-agent")]),
-    dict(slug="novamart-multi-agent-rag", series="Agentic AI on AWS · Part 3",
+    dict(slug="novamart-multi-agent-rag", seo_title="Multi-Agent RAG on Amazon Bedrock AgentCore", seo_description="NovaMart: a five-agent RAG system on Amazon Bedrock AgentCore with parallel search over three knowledge bases and versioned shared state.",  series="Agentic AI on AWS · Part 3",
          title="Five Agents, One Customer: Multi-Agent RAG Without the Chaos",
          lede="NovaMart, the Nanodegree capstone: a supervisor and four specialist agents, parallel search over three knowledge bases, and shared state that cannot be silently overwritten.",
          date="2026-10-16", date_label="October 2026", tags=["Multi-Agent RAG", "Strands Agents", "S3 Vectors"],
@@ -59,14 +59,14 @@ POSTS = [
          facts=[("120/120", "Official test score"), ("5", "Cooperating agents"), ("3", "Knowledge bases in parallel"), ("0", "Failed trace nodes")],
          links=[("View the repository", "https://github.com/Nitin-Mane/Multi-Agent-E-commerce-RAG"),
                 ("Project case study", "aws-agent-engineer#multi-agent-ecommerce-rag")]),
-    dict(slug="smart-weed-remover-robot", series="Robotics & Edge AI",
+    dict(slug="smart-weed-remover-robot", seo_title="Weed Remover Robot: YOLOv5, Jetson & Delta Robot",  series="Robotics & Edge AI",
          title="Smart Weed Remover Robot: YOLOv5 on Jetson Nano with a 3-DOF Delta Robot",
          lede="From a 2,822-image dataset to TensorRT inference and safe pluck trajectories: the full chain from seeing a weed to moving a parallel robot to remove it.",
          date="2026-06-15", date_label="June 2026", tags=["Robotics", "NVIDIA Jetson", "YOLOv5", "TensorRT"],
          hero="dashboard", hero_alt="Weed detection and Delta robot project summary dashboard",
          facts=[("0.701", "Test mAP@0.5 (YOLOv5m)"), ("2,822", "Images · 14,919 boxes"), ("17.1 ms", "TensorRT inference"), ("56 FPS", "Simulated control loop")],
-         links=[("View the repository", "https://github.com/Nitin-Mane/weedcrop-jetson-delta-robot")]),
-    dict(slug="ultraedge-aipc-studio", series="AI PC & Edge AI",
+         links=[]),  # repository is private; add a link here if it is made public
+    dict(slug="ultraedge-aipc-studio", seo_title="UltraEdge AIPC Studio: Local AI on Intel AI PCs", seo_description="UltraEdge AIPC Studio: a local-first console to run, manage and benchmark AI models with OpenVINO on Intel Core Ultra AI PCs.",  series="AI PC & Edge AI",
          title="UltraEdge AIPC Studio: A Local Multimodal AI Lab on an Intel AI PC",
          lede="A local-first developer console that turns an Intel Core Ultra machine into a small AI lab: model management, OpenVINO inference across CPU, GPU and NPU, multimodal assistants and benchmarks.",
          date="2026-08-01", date_label="August 2026", tags=["AI PC", "OpenVINO", "Local AI"],
@@ -151,8 +151,8 @@ for i, post in enumerate(POSTS):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{esc(post['title'])} | Nitin Mane</title>
-  <meta name="description" content="{esc(post['lede'])}" />
+  <title>{esc(post.get('seo_title', post['title']))} | Nitin Mane</title>
+  <meta name="description" content="{esc(post.get('seo_description', post['lede']))}" />
   <meta name="keywords" content="Nitin Mane, {esc(', '.join(post['tags']))}" />
   <meta name="author" content="Nitin Mane" />
   <link rel="canonical" href="{url}" />
@@ -163,16 +163,18 @@ for i, post in enumerate(POSTS):
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Nitin Mane" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="{esc(post['title'])}" />
-  <meta property="og:description" content="{esc(post['lede'])}" />
+  <meta property="og:description" content="{esc(post.get('seo_description', post['lede']))}" />
   <meta property="og:url" content="{url}" />
   <meta property="og:image" content="{SITE}/{hero_src}" />
   <meta property="article:published_time" content="{post['date']}" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@Mnitin52" />
   <meta name="twitter:title" content="{esc(post['title'])}" />
-  <meta name="twitter:description" content="{esc(post['lede'])}" />
+  <meta name="twitter:description" content="{esc(post.get('seo_description', post['lede']))}" />
   <meta name="twitter:image" content="{SITE}/{hero_src}" />
 
   <!-- Icons -->
